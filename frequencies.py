@@ -15,6 +15,9 @@ def to_day_count(x, start_date):
         print(x)
         return -1
 
+def day_count_to_date(x, start_date):
+    return datetime.fromordinal(start_date + x)
+
 def load_and_aggregate(fname, min_date="2021-01-01", bin_size=7, with_country=False):
     d = pd.read_csv(fname, sep='\t')
     d["datetime"] = d.date.apply(parse_dates)
@@ -32,7 +35,10 @@ def load_and_aggregate(fname, min_date="2021-01-01", bin_size=7, with_country=Fa
         totals = d.groupby(by=["region", "time_bin"]).count()["day_count"].to_dict()
         counts = d.groupby(by=["region", "time_bin", "clade"]).count()["day_count"].to_dict()
 
-    return d, totals, counts
+    timebins = {x:day_count_to_date(x*bin_size, start_date) for x in d.time_bin.unique()}
+
+
+    return d, totals, counts, timebins
 
 def make_design_matrix(counts, totals, stiffness=7):
     geos = list(set([(x[0], x[1]) for x in totals.keys()]))
@@ -97,15 +103,19 @@ if __name__=='__main__':
     fname = "data/h3n2_clades.tsv"
 
     bin_size = 7
-    data, totals, counts = load_and_aggregate(fname, with_country=False, bin_size=7)
+    data, totals, counts, time_bins = load_and_aggregate(fname, with_country=False, bin_size=7)
     freqs = make_design_matrix(counts, totals, stiffness = 20/bin_size)
+    freqs["date"] = freqs.timepoint.apply(lambda x:time_bins[x])
 
     clades = freqs.cat.unique()
 
     region = 'europe'
+
     from matplotlib import pyplot as plt
-    plt.figure()
+    fig = plt.figure()
     for cat in clades:
         f = freqs.loc[(freqs.region==region)&(freqs.cat==cat)]
-
-        plt.plot(f.timepoint, f.freq)
+        if np.sum(f.freq)>0.1:
+            plt.plot(f.date, f.freq, label=f'clade: {cat}')
+    plt.legend(loc=2)
+    fig.autofmt_xdate()
