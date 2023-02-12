@@ -38,15 +38,14 @@ def load_and_aggregate(fname, geo_categories, freq_category, min_date="2021-01-0
     for fcat in fcats:
         counts[fcat] = d.loc[d[freq_category]==fcat].groupby(by=geo_categories + ["time_bin"]).count()["day_count"].to_dict()
 
-    timebins = {x:day_count_to_date(x*bin_size, start_date) for x in sorted(d.time_bin.unique())}
+    timebins = {int(x): day_count_to_date(x*bin_size, start_date) for x in sorted(d.time_bin.unique())}
 
     return d, totals, counts, timebins
 
-def fit_single_category(totals, counts, time_bins, stiffness=0.3, pc=3):
+def fit_single_category(totals, counts, time_bins, stiffness=0.3, pc=3, nstd = 2):
 
     values, column, row = [], [], []
     b = []
-    confidence = []
     for ti, t in enumerate(time_bins):
         if t==time_bins[0]:
             diag = stiffness
@@ -74,18 +73,18 @@ def fit_single_category(totals, counts, time_bins, stiffness=0.3, pc=3):
         values.append(diag)
         row.append(ti)
         column.append(ti)
-
         b.append(k*pre_fac)
-        confidence.append(np.sqrt((k + pc)*(n - k + pc)/(n+pc)**3))
 
     from scipy.sparse import csr_matrix
     from scipy.sparse.linalg import spsolve
+    from numpy.linalg import inv
     A = csr_matrix((values, (row, column)), shape=(len(b), len(b)))
     sol = spsolve(A,b)
+    confidence = np.sqrt(np.diag(inv(A.todense())))
 
-    return {t:{'val':sol[ti],
-               'upper': min(1.0, sol[ti] + confidence[ti]),
-               'lower':max(0.0, sol[ti]-confidence[ti])} for ti,t in enumerate(time_bins)}
+    return {t:{'val': sol[ti],
+               'upper': min(1.0, sol[ti] + nstd*confidence[ti]),
+               'lower': max(0.0, sol[ti] - nstd*confidence[ti])} for ti,t in enumerate(time_bins)}, A
 
 
 
@@ -98,6 +97,7 @@ if __name__=='__main__':
     parser.add_argument("--days", default=7, type=int, help="number of days in one time bin")
     parser.add_argument("--min-date", type=str, help="date to start frequency calculation")
     parser.add_argument("--output-mask", type=str, help="mask containing `{cat}` to plot")
+    parser.add_argument("--output-json", type=str, help="file for json output")
 
     args = parser.parse_args()
     stiffness = 5000/args.days
@@ -106,9 +106,10 @@ if __name__=='__main__':
                                                          bin_size=args.days, min_date=args.min_date)
 
 
+    dates = [time_bins[k] for k in time_bins]
     geo_cats = set([k[:-1] for k in totals])
-    geo_cats = {('Europe',)}
     import matplotlib.pyplot as plt
+    output_data = {"dates": {t:v.strftime('%Y-%m-%d') for t,v in time_bins.items()}}
     for geo_cat in geo_cats:
         frequencies = {}
         sub_counts = {}
@@ -116,12 +117,11 @@ if __name__=='__main__':
         for fcat in counts.keys():
             sub_counts[fcat] = {k[-1]:v for k,v in counts[fcat].items() if tuple(k[:-1])==geo_cat}
             if sum(sub_counts[fcat].values())>10:
-                frequencies[fcat] = fit_single_category(sub_totals, sub_counts[fcat],
+                frequencies[fcat],A = fit_single_category(sub_totals, sub_counts[fcat],
                                         sorted(time_bins.keys()), stiffness=stiffness)
 
 
         fig = plt.figure()
-        dates = [time_bins[k] for k in time_bins]
         for ci, fcat in enumerate(sorted(frequencies.keys())):
             plt.plot(dates, [sub_counts[fcat].get(t, 0)/sub_totals.get(t,0) if sub_totals.get(t,0) else np.nan for t in time_bins], 'o', c=f"C{ci}")
             plt.plot(dates, [frequencies[fcat][t]['val'] for t in time_bins], c=f"C{ci}", label=fcat)
@@ -131,5 +131,10 @@ if __name__=='__main__':
         fig.autofmt_xdate()
         plt.legend(loc=2)
         plt.savefig(args.output_mask.format(cat='-'.join([x.replace(' ', '_') for x in geo_cat])))
+        output_data[','.join(geo_cat)] = {"counts": sub_counts, "totals": sub_totals, "frequencies":frequencies}
+
+    import json
+    with open(args.output_json, 'w') as fh:
+        json.dump(output_data, fh)
 
 
