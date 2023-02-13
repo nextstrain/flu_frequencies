@@ -96,7 +96,6 @@ if __name__=='__main__':
     parser.add_argument("--geo-categories", nargs='+', type=str, help="field to use for geographic categories")
     parser.add_argument("--days", default=7, type=int, help="number of days in one time bin")
     parser.add_argument("--min-date", type=str, help="date to start frequency calculation")
-    parser.add_argument("--output-mask", type=str, help="mask containing `{cat}` to plot")
     parser.add_argument("--output-json", type=str, help="file for json output")
 
     args = parser.parse_args()
@@ -121,16 +120,16 @@ if __name__=='__main__':
                                         sorted(time_bins.keys()), stiffness=stiffness)
 
 
-        fig = plt.figure()
-        for ci, fcat in enumerate(sorted(frequencies.keys())):
-            plt.plot(dates, [sub_counts[fcat].get(t, 0)/sub_totals.get(t,0) if sub_totals.get(t,0) else np.nan for t in time_bins], 'o', c=f"C{ci}")
-            plt.plot(dates, [frequencies[fcat][t]['val'] for t in time_bins], c=f"C{ci}", label=fcat)
-            plt.fill_between(dates,
-                            [frequencies[fcat][t]['lower'] for t in time_bins],
-                            [frequencies[fcat][t]['upper'] for t in time_bins], color=f"C{ci}", alpha=0.2)
-        fig.autofmt_xdate()
-        plt.legend(loc=2)
-        plt.savefig(args.output_mask.format(cat='-'.join([x.replace(' ', '_') for x in geo_cat])))
+        # fig = plt.figure()
+        # for ci, fcat in enumerate(sorted(frequencies.keys())):
+        #     plt.plot(dates, [sub_counts[fcat].get(t, 0)/sub_totals.get(t,0) if sub_totals.get(t,0) else np.nan for t in time_bins], 'o', c=f"C{ci}")
+        #     plt.plot(dates, [frequencies[fcat][t]['val'] for t in time_bins], c=f"C{ci}", label=fcat)
+        #     plt.fill_between(dates,
+        #                     [frequencies[fcat][t]['lower'] for t in time_bins],
+        #                     [frequencies[fcat][t]['upper'] for t in time_bins], color=f"C{ci}", alpha=0.2)
+        # fig.autofmt_xdate()
+        # plt.legend(loc=2)
+        # plt.savefig(args.output_mask.format(cat='-'.join([x.replace(' ', '_') for x in geo_cat])))
         output_data[','.join(geo_cat)] = {"counts": sub_counts, "totals": sub_totals, "frequencies":frequencies}
 
     import json
