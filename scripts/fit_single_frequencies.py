@@ -21,8 +21,12 @@ def to_day_count(x, start_date):
 def day_count_to_date(x, start_date):
     return datetime.fromordinal(start_date + x)
 
-def load_and_aggregate(fname, geo_categories, freq_category, min_date="2021-01-01", bin_size=7):
-    d = pd.read_csv(fname, sep='\t')
+def load_and_aggregate(data, geo_categories, freq_category, min_date="2021-01-01", bin_size=7):
+    if type(data)==str:
+        d = pd.read_csv(data, sep='\t')
+    else:
+        d=data
+
     d["datetime"] = d.date.apply(parse_dates)
     d = d.loc[d.datetime.apply(lambda x:x is not None)]
     start_date = datetime.strptime(min_date, "%Y-%m-%d").toordinal()
@@ -101,7 +105,23 @@ if __name__=='__main__':
     args = parser.parse_args()
     stiffness = 5000/args.days
 
-    data, totals, counts, time_bins = load_and_aggregate(args.metadata, args.geo_categories, args.frequency_category,
+    d = pd.read_csv(args.metadata, sep='\t')
+    if args.frequency_category.startswith('mutation-'):
+        mutation = args.frequency_category.split('-')[-1]
+        def extract_mut(muts):
+            if type(muts)==str:
+                a = [y for y in muts.split(',') if y.startswith(mutation)]
+                return a[0] if len(a) else 'WT'
+            else:
+                return 'WT'
+        d["mutation"] = d.aaSubstitutions.apply(extract_mut)
+
+        print(d.mutation.value_counts())
+        freq_cat = "mutation"
+    else:
+        freq_cat = args.frequency_category
+
+    data, totals, counts, time_bins = load_and_aggregate(d, args.geo_categories, freq_cat,
                                                          bin_size=args.days, min_date=args.min_date)
 
 

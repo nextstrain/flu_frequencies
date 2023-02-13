@@ -42,8 +42,11 @@ rule combined_with_metadata:
     run:
         import pandas as pd
         clades = pd.read_csv(input[0], sep='\t', index_col='seqName')["short_clade"]
+        aaSubstitutions = pd.read_csv(input[0], sep='\t', index_col='seqName')["aaSubstitutions"]
+
         metadata = pd.read_csv(input[1], sep='\t', index_col='strain')
         metadata["clade"] = clades
+        metadata["aaSubstitutions"] = aaSubstitutions
 
         metadata.to_csv(output[0], sep='\t', index=False)
 
@@ -60,6 +63,20 @@ rule estimate_region_frequencies:
         python scripts/fit_single_frequencies.py --metadata {input} --geo-categories region --frequency-category clade \
                 --min-date {params.min_date} --days 14 --output-json {output.output_json}
         """
+
+rule estimate_region_mutation_frequencies:
+    input:
+        "data/{lineage}/combined.tsv"
+    output:
+        output_json = "data/{lineage}_mutation_{mutation}-frequencies.json"
+    params:
+        min_date = min_date
+    shell:
+        """
+        python scripts/fit_single_frequencies.py --metadata {input} --geo-categories region --frequency-category mutation-{wildcards.mutation} \
+                --min-date {params.min_date} --days 14 --output-json {output.output_json}
+        """
+
 
 rule estimate_region_country_frequencies:
     input:
@@ -87,6 +104,20 @@ rule plot_regions:
         python scripts/plot_region.py --frequencies {input.freqs} --region {wildcards.region:q} \
                 --max-freq {params.max_freq} --output {output.plot}
         """
+
+rule plot_mutations:
+    input:
+        freqs = "data/{lineage}_mutation_{mutation}-frequencies.json",
+    output:
+        plot = "plots/{lineage}/mutation_{region}-{mutation}.png",
+    params:
+        max_freq = 0.05
+    shell:
+        """
+        python scripts/plot_region.py --frequencies {input.freqs} --region {wildcards.region:q} \
+                --max-freq {params.max_freq} --output {output.plot}
+        """
+
 
 rule plot_country:
     input:
