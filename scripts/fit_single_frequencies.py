@@ -1,4 +1,4 @@
-import pandas as  pd
+import polars as  pl
 from datetime import datetime
 import numpy as np
 
@@ -23,26 +23,30 @@ def day_count_to_date(x, start_date):
 
 def load_and_aggregate(data, geo_categories, freq_category, min_date="2021-01-01", bin_size=7):
     if type(data)==str:
-        d = pd.read_csv(data, sep='\t')
+        d = pl.read_csv(data, sep='\t', parse_dates=True)
     else:
         d=data
 
-    d["datetime"] = d.date.apply(parse_dates)
-    d = d.loc[d.datetime.apply(lambda x:x is not None)]
+    # d["datetime"] = d.date.apply(parse_dates)
     start_date = datetime.strptime(min_date, "%Y-%m-%d").toordinal()
+    d = d.filter((~pl.col('date').is_null())&(~pl.col(freq_category).is_null()))
+    d = d.with_columns([pl.col('date').apply(lambda x: to_day_count(x, start_date)).alias("day_count")])
+    d  = d.filter(pl.col("day_count")>=0)
+    d = d.with_columns([(pl.col('day_count')//bin_size).alias("time_bin")])
 
-    d["day_count"] = d.datetime.apply(lambda x: to_day_count(x, start_date))
-    d  = d.loc[d["day_count"]>=0]
-    d["time_bin"] = d.day_count//bin_size
-
-    totals = d.groupby(by=geo_categories + ["time_bin"]).count()["day_count"].to_dict()
+    totals = dict()
+    for row in d.groupby(by=geo_categories + ["time_bin"]).count().iter_rows():
+        totals[row[:-1]] = row[-1]
 
     fcats = d[freq_category].unique()
     counts = {}
     for fcat in fcats:
-        counts[fcat] = d.loc[d[freq_category]==fcat].groupby(by=geo_categories + ["time_bin"]).count()["day_count"].to_dict()
+        tmp = {}
+        for row in d.filter(pl.col(freq_category)==fcat).groupby(by=geo_categories + ["time_bin"]).count().iter_rows():
+            tmp[row[:-1]] = row[-1]
+        counts[fcat] = tmp
 
-    timebins = {int(x): day_count_to_date(x*bin_size, start_date) for x in sorted(d.time_bin.unique())}
+    timebins = {int(x): day_count_to_date(x*bin_size, start_date) for x in sorted(d["time_bin"].unique())}
 
     return d, totals, counts, timebins
 
@@ -105,7 +109,7 @@ if __name__=='__main__':
     args = parser.parse_args()
     stiffness = 5000/args.days
 
-    d = pd.read_csv(args.metadata, sep='\t')
+    d = pl.read_csv(args.metadata, sep='\t', parse_dates=True)
     if args.frequency_category.startswith('mutation-'):
         mutation = args.frequency_category.split('-')[-1]
         def extract_mut(muts):
@@ -114,9 +118,9 @@ if __name__=='__main__':
                 return a[0] if len(a) else 'WT'
             else:
                 return 'WT'
-        d["mutation"] = d.aaSubstitutions.apply(extract_mut)
+        d = d.with_columns([d["aaSubstitutions",:].apply(extract_mut).alias("mutation")])
 
-        print(d.mutation.value_counts())
+        print(d["mutation"].value_counts())
         freq_cat = "mutation"
     else:
         freq_cat = args.frequency_category
