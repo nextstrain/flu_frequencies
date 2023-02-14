@@ -110,7 +110,7 @@ if __name__=='__main__':
     stiffness = 5000/args.days
 
     if args.frequency_category.startswith('mutation-'):
-        d = pl.read_csv(args.metadata, sep='\t', parse_dates=True, columns=args.geo_categories + ["aaSubstitutions", 'date'])
+        d = pl.read_csv(args.metadata, sep='\t', parse_dates=False, columns=args.geo_categories + ["aaSubstitutions", 'date'])
         mutation = args.frequency_category.split('-')[-1]
         def extract_mut(muts):
             if type(muts)==str:
@@ -123,9 +123,9 @@ if __name__=='__main__':
         print(d["mutation"].value_counts())
         freq_cat = "mutation"
     else:
-        d = pl.read_csv(args.metadata, sep='\t', parse_dates=True, columns=args.geo_categories + [args.frequency_category, 'date'])
+        d = pl.read_csv(args.metadata, sep='\t', parse_dates=False, columns=args.geo_categories + [args.frequency_category, 'date'])
         freq_cat = args.frequency_category
-
+    d = d.with_columns(pl.col("date").str.strptime(pl.Date, fmt="%Y-%m-%d", strict=False))
     data, totals, counts, time_bins = load_and_aggregate(d, args.geo_categories, freq_cat,
                                                          bin_size=args.days, min_date=args.min_date)
 
