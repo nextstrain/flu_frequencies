@@ -21,16 +21,25 @@ rule europe:
 
 
 
+rule get_nextclade_dataset:
+    output:
+         "{lineage}/reference.fasta"
+    threads: 4
+    shell:
+        """
+        nextclade dataset get -n flu_{wildcards.lineage}_ha --output-dir {wildcards.lineage}
+        """
 
 rule run_nextclade:
     input:
-        "data/{lineage}/ha.fasta"
+        sequences = "data/{lineage}/ha.fasta",
+        reference = "{lineage}/reference.fasta"
     output:
          "data/{lineage}/nextclade.tsv"
     threads: 4
     shell:
         """
-        nextclade run -j {threads} -D {wildcards.lineage} {input} --output-tsv {output}
+        nextclade run -j {threads} -D {wildcards.lineage} {input.sequences} --output-tsv {output}
         """
 
 rule combined_with_metadata:
@@ -39,9 +48,11 @@ rule combined_with_metadata:
         metadata = "data/{lineage}/metadata.tsv"
     output:
         "data/{lineage}/combined.tsv"
+    params:
+        col = lambda w: "clade" if w.lineage == "vic" else "short_clade"
     run:
         import pandas as pd
-        clades = pd.read_csv(input[0], sep='\t', index_col='seqName')["short_clade"]
+        clades = pd.read_csv(input[0], sep='\t', index_col='seqName')[params.col]
         aaSubstitutions = pd.read_csv(input[0], sep='\t', index_col='seqName')["aaSubstitutions"]
 
         metadata = pd.read_csv(input[1], sep='\t', index_col='strain')
@@ -130,6 +141,44 @@ rule plot_country:
         """
         python scripts/plot_country.py --frequencies {input.freqs} --region {wildcards.region:q} --country {wildcards.country:q} \
                 --max-freq {params.max_freq} --output {output.plot}
+        """
+
+rule multi_region_plot_clades:
+    input:
+        freqs = "data/{lineage}_region-frequencies.json",
+    output:
+        plot = "plots/{lineage}/region-clades.png",
+    params:
+        regions = [ 'Africa',
+                    'Europe',
+                    'North_America',
+                    'South_America',
+                    'South_Asia',
+                    'Oceania'
+                ],
+        max_freq = 0.2
+    shell:
+        """
+        python3 scripts/plot_multi-region.py --frequencies {input.freqs} --regions {params.regions}  --max-freq {params.max_freq} --output {output.plot}
+        """
+
+rule multi_region_plot_mutation:
+    input:
+        freqs = "data/{lineage}_mutation_{mutation}-frequencies.json",
+    output:
+        plot = "plots/{lineage}/region_mut-{mutation}.png",
+    params:
+        regions = [ 'Africa',
+                    'Europe',
+                    'North_America',
+                    'South_America',
+                    'South_Asia',
+                    'Oceania'
+                ],
+        max_freq = 0.2
+    shell:
+        """
+        python3 scripts/plot_multi-region.py --frequencies {input.freqs} --regions {params.regions}  --max-freq {params.max_freq} --output {output.plot}
         """
 
 #        clades = ['1a.1', '2a.1', '2a.1a', '2a.1b', '2a.3a',  '2a.3a.1','2a.3b', '2b'],
