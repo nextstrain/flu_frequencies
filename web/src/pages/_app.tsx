@@ -89,14 +89,14 @@ function Router({ children }: PropsWithChildren) {
 
   const result = useMemo(() => {
     {
-      const match = matchRoute(asPath, '/:pathogenName')
+      const match = matchRoute(asPath, '/pathogen/:pathogenName')
       if (match) {
         const { pathogenName } = match
         return <PathogenPage pathogenName={pathogenName} />
       }
     }
     {
-      const match = matchRoute(asPath, '/:pathogenName/variants')
+      const match = matchRoute(asPath, '/pathogen/:pathogenName/variants')
       if (match) {
         const { pathogenName } = match
         if (pathogenName) {
@@ -105,7 +105,7 @@ function Router({ children }: PropsWithChildren) {
       }
     }
     {
-      const match = matchRoute(asPath, '/:pathogenName/regions')
+      const match = matchRoute(asPath, '/pathogen/:pathogenName/regions')
       if (match) {
         const { pathogenName } = match
         if (pathogenName) {
