@@ -182,7 +182,7 @@ def extract_hierarchy_of_regions(df: pl.DataFrame):
 
     hierarchy = {region: list(set(region_df["country"]) - {region}) for region, region_df in regions_items}
 
-    styles = {country: {"color": colorhash(country), "lineStyle": "normal"} for country in countries}
+    styles = {country: {"color": colorhash(country), "lineStyle": "normal"} for country in regions + countries}
 
     return {"regionsHierarchy": hierarchy, "regions": regions, "countries": countries, "regionsStyles": styles}
 
