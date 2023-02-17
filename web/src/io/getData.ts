@@ -15,6 +15,11 @@ export interface RegionsData {
   regionsStyles: Record<string, ItemStyle>
 }
 
+export interface VariantsData {
+  variants: string[]
+  variantsStyles: Record<string, ItemStyle>
+}
+
 export interface VariantDatum {
   region: string
   country: string | null
@@ -39,6 +44,29 @@ export function useVariantDataQuery(
   })
 }
 
+export interface RegionDatum {
+  variant: string
+  date: string
+  freqHi: number
+  freqLo: number
+  freqMi: number
+}
+
+export interface RegionDataJson {
+  variant: string
+  values: RegionDatum[]
+}
+
+export function useRegionDataQuery(
+  pathogenName: string,
+  countryName: string,
+): { regionData: RegionDataJson; variantsData: VariantsData } {
+  return useAxiosQueries({
+    regionData: urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'regions', `${countryName}.json`),
+    variantsData: urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'variants.json'),
+  })
+}
+
 export function useRegionsDataQuery(pathogenName: string): RegionsData {
   return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'regions.json'))
 }
@@ -57,7 +85,7 @@ const DEFAULT_ITEM_STYLE: ItemStyle = {
   lineStyle: 'normal',
 }
 
-export interface ItemStyleInternal {
+export interface ItemStyleInternal extends ItemStyle {
   color: string
   lineStyle: string
   strokeDashArray: string | undefined

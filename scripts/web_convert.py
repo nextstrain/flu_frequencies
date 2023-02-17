@@ -115,21 +115,29 @@ def process_regions(df: pl.DataFrame, pathogen: dict, output_dir: str):
 
     for region_name, region_df in partition_by(df, ["region"]):
         for country_name, country_df in partition_by(region_df, ["country"]):
+
+            values = []
+            for date, country_date_df in partition_by(country_df, ["date"]):
+                avgs = country_date_df.select(["variant", "freqMi"])
+                avgs = {variant: value for variant, value in avgs.iter_rows()}
+
+                ranges = country_date_df.select([
+                    "variant",
+                    pl.concat_list(["freqLo", "freqHi"]).alias("range")
+                ])
+                ranges = {variant: val_range for variant, val_range in ranges.iter_rows()}
+
+                values.append({"date": date, "avgs": avgs, "ranges": ranges})
+
             country_json = {
                 "region": region_name,
                 "country": country_name,
-                "values": country_df.to_dicts()
+                "values": values
             }
 
-            if country_name == region_name:
-                # Country `None` means the entire region
-                filepath_base = join(output_dir, "pathogens", pathogen["name"], "regions", region_name)
-                csv_write(country_df, f"{filepath_base}.csv")
-                json_write(country_json, f"{filepath_base}.json")
-            else:
-                filepath_base = join(output_dir, "pathogens", pathogen["name"], "regions", region_name, country_name)
-                csv_write(country_df, f"{filepath_base}.csv")
-                json_write(country_json, f"{filepath_base}.json")
+            filepath_base = join(output_dir, "pathogens", pathogen["name"], "regions", country_name)
+            csv_write(country_df, f"{filepath_base}.csv")
+            json_write(country_json, f"{filepath_base}.json")
 
 
 def process_variants(df: pl.DataFrame, pathogen: dict, output_dir: str):
