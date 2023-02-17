@@ -77,9 +77,10 @@ export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, st
           </tr>
         </thead>
         <tbody>
-          {data.map(({ name, value, payload }) => {
+          {data.map(({ name, payload }) => {
             const country = name ?? '?'
             const range = get(payload.ranges, country)
+            const value = get(payload.avgs, country)
 
             return (
               <VariantsPlotTooltipRow
