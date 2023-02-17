@@ -34,7 +34,7 @@ const allowEscapeViewBox = { x: false, y: true }
 const tooltipStyle = { zIndex: 1000, outline: 'none' }
 
 // TODO
-const shouldPlotRanges = false
+const shouldPlotRanges = true
 
 interface LinePlotProps {
   width: number
@@ -81,18 +81,16 @@ function LinePlot({ width, height, pathogen, variantName }: LinePlotProps) {
   }, [countries, regions, regionsStyles])
 
   const ranges = useMemo(() => {
-    if (!shouldPlotRanges) {
-      return null
-    }
-
     return [...regions, ...countries].map((country) => (
       <Area
         key={`area-${country}`}
+        name={country}
         dataKey={(d) => get(d.ranges, country)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
         stroke="none"
         fill={getCountryColor(regionsStyles, country)}
         fillOpacity={0.1}
         isAnimationActive={false}
+        display={!shouldPlotRanges ? 'none' : undefined}
       />
     ))
   }, [countries, regions, regionsStyles])

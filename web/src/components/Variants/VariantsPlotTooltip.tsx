@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { get, isNil, reverse, sortBy } from 'lodash'
+import { get, isNil, reverse, sortBy, uniqBy } from 'lodash'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { useCountryStyle } from 'src/io/getData'
 import styled from 'styled-components'
@@ -61,7 +61,7 @@ export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, st
   // @ts-ignore
   const date = formatDateWeekly(payload[0]?.payload?.timestamp)
 
-  const data = reverse(sortBy(payload, 'value'))
+  const data = uniqBy(reverse(sortBy(payload, 'value')), 'name')
 
   return (
     <Tooltip>
