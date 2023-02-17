@@ -61,7 +61,7 @@ export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, st
   // @ts-ignore
   const date = formatDateWeekly(payload[0]?.payload?.timestamp)
 
-  const data = uniqBy(reverse(sortBy(payload, 'value')), 'name')
+  const data = reverse(sortBy(uniqBy(payload, 'name'), 'value'))
 
   return (
     <Tooltip>
