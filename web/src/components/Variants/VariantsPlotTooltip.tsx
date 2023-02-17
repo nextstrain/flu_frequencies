@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { get, isNil, reverse, sortBy, uniqBy } from 'lodash'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
+import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { useCountryStyle } from 'src/io/getData'
 import styled from 'styled-components'
 import { theme } from 'src/theme'
@@ -107,7 +108,7 @@ interface VariantsPlotTooltipRowProps {
 
 function VariantsPlotTooltipRow({ pathogenName, country, value, range }: VariantsPlotTooltipRowProps) {
   const { t } = useTranslationSafe()
-  const { color, strokeDashArray } = useCountryStyle(pathogenName, country)
+  const { color } = useCountryStyle(pathogenName, country)
 
   const valueDisplay = useMemo(() => {
     if (!isNil(value)) {
@@ -129,13 +130,7 @@ function VariantsPlotTooltipRow({ pathogenName, country, value, range }: Variant
   return (
     <tr key={country}>
       <td className="px-2 text-left">
-        <ColoredHorizontalLineIcon
-          width={theme.plot.country.legend.lineIcon.width}
-          height={theme.plot.country.legend.lineIcon.height}
-          stroke={color}
-          strokeWidth={theme.plot.country.legend.lineIcon.thickness}
-          strokeDasharray={strokeDashArray}
-        />
+        <ColoredBox $size={16} $color={color} />
         <span className="ml-2">{t(country)}</span>
       </td>
       <td className="px-2 text-right">{valueDisplay}</td>

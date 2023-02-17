@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react'
 import { get, isNil, reverse, sortBy, uniqBy } from 'lodash'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
-import { useCountryStyle } from 'src/io/getData'
+import { ColoredBox } from 'src/components/Common/ColoredBox'
+import { useVariantStyle } from 'src/io/getData'
 import styled from 'styled-components'
 import { theme } from 'src/theme'
 import { formatDateWeekly } from 'src/helpers/format'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { ColoredHorizontalLineIcon } from 'src/components/Common/ColoredHorizontalLineIcon'
 
 const EPSILON = 1e-3
 
@@ -71,7 +71,7 @@ export function RegionsPlotTooltip(props: DefaultTooltipContentProps<number, str
       <TooltipTable>
         <thead>
           <tr className="w-100">
-            <th className="px-2 text-left">{t('Country')}</th>
+            <th className="px-2 text-left">{t('Variant')}</th>
             <th className="px-2 text-right">{t('Frequency')}</th>
             <th className="px-2 text-right">{t('Range')}</th>
           </tr>
@@ -106,8 +106,7 @@ interface RegionsPlotTooltipRowProps {
 }
 
 function RegionsPlotTooltipRow({ pathogenName, variant, value, range }: RegionsPlotTooltipRowProps) {
-  const { t } = useTranslationSafe()
-  const { color, strokeDashArray } = useCountryStyle(pathogenName, variant)
+  const { color } = useVariantStyle(pathogenName, variant)
 
   const valueDisplay = useMemo(() => {
     if (!isNil(value)) {
@@ -129,13 +128,7 @@ function RegionsPlotTooltipRow({ pathogenName, variant, value, range }: RegionsP
   return (
     <tr key={variant}>
       <td className="px-2 text-left">
-        <ColoredHorizontalLineIcon
-          width={theme.plot.country.legend.lineIcon.width}
-          height={theme.plot.country.legend.lineIcon.height}
-          stroke={color}
-          strokeWidth={theme.plot.country.legend.lineIcon.thickness}
-          strokeDasharray={strokeDashArray}
-        />
+        <ColoredBox $size={16} $color={color} />
         <span className="ml-2">{variant}</span>
       </td>
       <td className="px-2 text-right">{valueDisplay}</td>

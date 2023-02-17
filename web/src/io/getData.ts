@@ -96,6 +96,11 @@ export function useCountryStyle(pathogenName: string, countryName: string): Item
   return getCountryStyle(regionsStyles, countryName)
 }
 
+export function useVariantStyle(pathogenName: string, variantName: string): ItemStyleInternal {
+  const { variantsStyles } = useVariantsDataQuery(pathogenName)
+  return getCountryStyle(variantsStyles, variantName)
+}
+
 export function getCountryStyle(regionsStyles: Record<string, ItemStyle>, countryName: string) {
   const { color, lineStyle } = get<Record<string, ItemStyle>, string>(regionsStyles, countryName) ?? DEFAULT_ITEM_STYLE
   return { color, lineStyle, strokeDashArray: lineStyleToStrokeDashArray(lineStyle) }
@@ -129,6 +134,7 @@ export function lineStyleToStrokeDashArray(lineStyle: string): string | undefine
 
 export interface VariantsJson {
   variants: string[]
+  variantsStyles: Record<string, ItemStyle>
 }
 
 export function useVariantsDataQuery(pathogenName: string): VariantsJson {
