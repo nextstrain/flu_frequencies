@@ -44,7 +44,7 @@ function LinePlot({ width, height, pathogen, variantName }: LinePlotProps) {
   const theme = useTheme()
   const {
     variantData,
-    regionsData: { countries, regionsStyles },
+    regionsData: { regions, countries, regionsStyles },
   } = useVariantDataQuery(pathogen.name, variantName)
 
   const data = useMemo(
@@ -62,7 +62,7 @@ function LinePlot({ width, height, pathogen, variantName }: LinePlotProps) {
   )
 
   const lines = useMemo(() => {
-    return countries.map((country) => (
+    return [...regions, ...countries].map((country) => (
       <Line
         key={country}
         type="monotone"
