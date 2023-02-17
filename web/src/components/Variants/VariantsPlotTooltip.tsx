@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { isNil, reverse, sortBy, uniqBy } from 'lodash'
+import { get, isNil, reverse, sortBy } from 'lodash'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { useCountryStyle } from 'src/io/getData'
 import styled from 'styled-components'
@@ -56,14 +56,12 @@ export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, st
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const data = payload[0]?.payload
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const date = formatDateWeekly(data?.timestamp)
+  const date = formatDateWeekly(payload[0]?.payload?.timestamp)
 
-  const payloadSorted = reverse(sortBy(payload, 'value'))
-  const payloadUnique = uniqBy(payloadSorted, (payload) => payload.name)
+  const data = reverse(sortBy(payload, 'value'))
 
   return (
     <Tooltip>
@@ -75,12 +73,23 @@ export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, st
           <tr className="w-100">
             <th className="px-2 text-left">{t('Country')}</th>
             <th className="px-2 text-right">{t('Frequency')}</th>
+            <th className="px-2 text-right">{t('Range')}</th>
           </tr>
         </thead>
         <tbody>
-          {payloadUnique.map(({ name, value, payload: _0 }) => {
+          {data.map(({ name, value, payload }) => {
             const country = name ?? '?'
-            return <VariantsPlotTooltipRow key={country} pathogenName={pathogenName} country={country} value={value} />
+            const range = get(payload.ranges, country)
+
+            return (
+              <VariantsPlotTooltipRow
+                key={country}
+                pathogenName={pathogenName}
+                country={country}
+                value={value}
+                range={range}
+              />
+            )
           })}
         </tbody>
       </TooltipTable>
@@ -92,9 +101,10 @@ interface VariantsPlotTooltipRowProps {
   pathogenName: string
   country: string
   value: number | undefined
+  range: [number, number] | undefined
 }
 
-function VariantsPlotTooltipRow({ pathogenName, country, value }: VariantsPlotTooltipRowProps) {
+function VariantsPlotTooltipRow({ pathogenName, country, value, range }: VariantsPlotTooltipRowProps) {
   const { t } = useTranslationSafe()
   const { color, strokeDashArray } = useCountryStyle(pathogenName, country)
 
@@ -107,6 +117,13 @@ function VariantsPlotTooltipRow({ pathogenName, country, value }: VariantsPlotTo
     }
     return '-'
   }, [value])
+
+  const rangeDisplay = useMemo(() => {
+    if (!isNil(range)) {
+      return `${range[0].toFixed(3)}..${range[1].toFixed(3)}`
+    }
+    return null
+  }, [range])
 
   return (
     <tr key={country}>
@@ -121,6 +138,7 @@ function VariantsPlotTooltipRow({ pathogenName, country, value }: VariantsPlotTo
         <span className="ml-2">{t(country)}</span>
       </td>
       <td className="px-2 text-right">{valueDisplay}</td>
+      <td className="px-2 text-right">{rangeDisplay}</td>
     </tr>
   )
 }

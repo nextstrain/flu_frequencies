@@ -1,7 +1,7 @@
 import { get, maxBy, minBy } from 'lodash'
 import { Interval } from 'luxon'
 import React, { useMemo } from 'react'
-import { CartesianGrid, Line, LineChart, Tooltip as RechartsTooltip, XAxis, YAxis } from 'recharts'
+import { Area, CartesianGrid, ComposedChart, Line, Tooltip as RechartsTooltip, XAxis, YAxis } from 'recharts'
 import { ChartContainer } from 'src/components/Charts/ChartContainer'
 import { VariantsPlotTooltip } from 'src/components/Variants/VariantsPlotTooltip'
 import { adjustTicks } from 'src/helpers/adjustTicks'
@@ -32,6 +32,9 @@ export function calculateTicks(data: VariantDatum[], availableWidth: number, tic
 
 const allowEscapeViewBox = { x: false, y: true }
 const tooltipStyle = { zIndex: 1000, outline: 'none' }
+
+// TODO
+const shouldPlotRanges = false
 
 interface LinePlotProps {
   width: number
@@ -64,7 +67,7 @@ function LinePlot({ width, height, pathogen, variantName }: LinePlotProps) {
   const lines = useMemo(() => {
     return [...regions, ...countries].map((country) => (
       <Line
-        key={country}
+        key={`line-${country}`}
         type="monotone"
         name={country}
         dataKey={(d) => get(d.avgs, country)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
@@ -75,12 +78,29 @@ function LinePlot({ width, height, pathogen, variantName }: LinePlotProps) {
         isAnimationActive={false}
       />
     ))
-  }, [countries, regionsStyles])
+  }, [countries, regions, regionsStyles])
+
+  const ranges = useMemo(() => {
+    if (!shouldPlotRanges) {
+      return null
+    }
+
+    return [...regions, ...countries].map((country) => (
+      <Area
+        key={`area-${country}`}
+        dataKey={(d) => get(d.ranges, country)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
+        stroke="none"
+        fill={getCountryColor(regionsStyles, country)}
+        fillOpacity={0.1}
+        isAnimationActive={false}
+      />
+    ))
+  }, [countries, regions, regionsStyles])
 
   const metadata = useMemo(() => ({ pathogenName: pathogen.name, variantName }), [pathogen.name, variantName])
 
   return (
-    <LineChart width={width} height={height} margin={theme.plot.margin} data={data}>
+    <ComposedChart width={width} height={height} margin={theme.plot.margin} data={data}>
       <XAxis
         dataKey="timestamp"
         type="number"
@@ -111,7 +131,8 @@ function LinePlot({ width, height, pathogen, variantName }: LinePlotProps) {
       />
       <CartesianGrid stroke="#2222" />
       {lines}
-    </LineChart>
+      {ranges}
+    </ComposedChart>
   )
 }
 
