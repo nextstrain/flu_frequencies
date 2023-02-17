@@ -4,10 +4,8 @@ import type { Props as DefaultTooltipContentProps } from 'recharts/types/compone
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { useCountryStyle } from 'src/io/getData'
 import styled from 'styled-components'
-import { theme } from 'src/theme'
 import { formatDateWeekly } from 'src/helpers/format'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { ColoredHorizontalLineIcon } from 'src/components/Common/ColoredHorizontalLineIcon'
 
 const EPSILON = 1e-3
 
