@@ -1,22 +1,11 @@
 import React, { Suspense } from 'react'
 import { Col, Container, Row } from 'reactstrap'
-import { usePathogenQuery } from 'src/io/getData'
-import urljoin from 'url-join'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { PageContainer } from 'src/components/Layout/PageContainer'
 import { LOADING } from 'src/components/Loading/Loading'
 import { VariantsPlot } from 'src/components/Variants/VariantsPlot'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { useAxiosQuery } from 'src/hooks/useAxiosQuery'
-import { getDataRootUrl } from 'src/io/getDataRootUrl'
-
-export interface VariantsJson {
-  variants: string[]
-}
-
-export function useVariantsDataQuery(pathogenName: string): VariantsJson {
-  return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'variants.json'))
-}
+import { usePathogenQuery, useVariantsDataQuery } from 'src/io/getData'
 
 export interface VariantsPageProps {
   pathogenName: string

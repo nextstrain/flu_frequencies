@@ -98,3 +98,11 @@ export function lineStyleToStrokeDashArray(lineStyle: string): string | undefine
   const style = get(LINE_STYLE_SYNONYMS, lineStyle, lineStyle)
   return get<typeof LINE_STYLES, string>(LINE_STYLES, style) ?? undefined
 }
+
+export interface VariantsJson {
+  variants: string[]
+}
+
+export function useVariantsDataQuery(pathogenName: string): VariantsJson {
+  return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'variants.json'))
+}
