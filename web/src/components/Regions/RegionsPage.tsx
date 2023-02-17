@@ -17,7 +17,7 @@ export function RegionsPage({ pathogenName }: RegionsPageProps) {
       <PageContainer>
         <Row noGutters>
           <Col>
-            <PageHeading>{t('{{name}} ', { name: pathogenName })}</PageHeading>
+            <PageHeading>{t('{{name}}: spread in regions', { name: pathogenName })}</PageHeading>
           </Col>
         </Row>
 

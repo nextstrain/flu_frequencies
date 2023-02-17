@@ -20,8 +20,13 @@ export function formatDateBiweekly(weekTimestamp: number) {
   return formatDateRange(weekTimestamp, { weeks: 2 })
 }
 
-export const formatDateHumanely = (date: number) => DateTime.fromSeconds(date).toFormat('MMM yyyy').replace(' ', '\n')
+export const formatDateHumanely = (date: number) =>
+  DateTime.fromSeconds(date).toLocaleString({ month: 'short', year: '2-digit' }).replace(' ', '\n')
 
-export function dateStringToSeconds(date: string): number {
-  return DateTime.fromFormat(date, 'yyyy-MM-dd').toSeconds()
+export function dateFromYmd(ymd: string): DateTime {
+  return DateTime.fromFormat(ymd, 'yyyy-MM-dd')
+}
+
+export function ymdToTimestamp(ymd: string): number {
+  return dateFromYmd(ymd).toSeconds()
 }
