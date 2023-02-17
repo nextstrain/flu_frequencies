@@ -34,10 +34,10 @@ export function HomePage() {
               {pathogens.map((pathogen) => (
                 <Fragment key={pathogen.name}>
                   <li>
-                    <Link href={`/pathogen/${pathogen.name}/variants`}>{`/pathogen//${pathogen.name}/variants`}</Link>
+                    <Link href={`/pathogen/${pathogen.name}/variants`}>{`/pathogen/${pathogen.name}/variants`}</Link>
                   </li>
                   <li>
-                    <Link href={`/pathogen/${pathogen.name}/regions`}>{`/pathogen//${pathogen.name}/regions`}</Link>
+                    <Link href={`/pathogen/${pathogen.name}/regions`}>{`/pathogen/${pathogen.name}/regions`}</Link>
                   </li>
                 </Fragment>
               ))}
