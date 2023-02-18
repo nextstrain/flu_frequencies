@@ -90,7 +90,7 @@ const nextConfig: NextConfig = {
     return config
   },
   async rewrites() {
-    return [{ source: '/variants/:variant', destination: '/' }]
+    return [{ source: '/:any*', destination: '/' }]
   },
 }
 
@@ -99,7 +99,7 @@ const withMDX = getWithMDX({
   options: {
     remarkPlugins: [
       // prettier-ignore
-      require("remark-breaks"),
+      require('remark-breaks'),
       require('remark-images'),
       require('remark-math'),
       require('remark-slug'),
@@ -147,7 +147,7 @@ const withTypeChecking = getWithTypeChecking({
 
 const transpilationListDev = [
   // prettier-ignore
-  "d3-scale",
+  'd3-scale',
 ]
 
 const transpilationListProd = uniq([

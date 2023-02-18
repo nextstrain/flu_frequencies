@@ -1,7 +1,7 @@
 import { get } from 'lodash'
-import React, { ComponentType, Fragment, SVGProps, useMemo } from 'react'
+import React, { ComponentType, SVGProps, useMemo } from 'react'
 import dynamic from 'next/dynamic'
-import { GeoIconWrapper } from 'src/components/Common/GeoIconCommon'
+import { EmptyIcon, GeoIconWrapper } from 'src/components/Common/GeoIconCommon'
 
 type S = SVGProps<SVGSVGElement>
 
@@ -13,7 +13,7 @@ const Oceania = dynamic<S>(() => import('src/assets/images/continents/Oceania.sv
 const SouthAmerica = dynamic<S>(() => import('src/assets/images/continents/South America.svg'), { ssr: false })
 
 export function GeoIconContinent({ continent }: { continent: string }) {
-  const Icon = useMemo(() => get(CONTINENT_ICONS, continent, Fragment), [continent])
+  const Icon = useMemo(() => get(CONTINENT_ICONS, continent, EmptyIcon), [continent])
   return (
     <GeoIconWrapper>
       <Icon fill="#444444" />

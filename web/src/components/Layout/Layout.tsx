@@ -8,7 +8,7 @@ const Header = styled.div`
 
 const Body = styled.div`
   position: absolute;
-  top: calc(${HEIGHT_NAVBAR}px + 1rem);
+  top: calc(${HEIGHT_NAVBAR}px);
   right: 0;
   bottom: 0;
   left: 0;

@@ -1,13 +1,17 @@
 import { get, maxBy, minBy } from 'lodash'
 import { Interval } from 'luxon'
 import React, { useMemo } from 'react'
+import { useTheme } from 'styled-components'
 import { Area, CartesianGrid, ComposedChart, Line, Tooltip as RechartsTooltip, XAxis, YAxis } from 'recharts'
+import { useRecoilValue } from 'recoil'
 import { ChartContainer } from 'src/components/Charts/ChartContainer'
 import { VariantsPlotTooltip } from 'src/components/Variants/VariantsPlotTooltip'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { dateFromYmd, formatDateHumanely, formatProportion, ymdToTimestamp } from 'src/helpers/format'
-import { getCountryColor, getCountryStrokeDashArray, Pathogen, useVariantDataQuery, VariantDatum } from 'src/io/getData'
-import { useTheme } from 'styled-components'
+import { getCountryColor, getCountryStrokeDashArray, useVariantDataQuery, VariantDatum } from 'src/io/getData'
+import { continentsAtom, countriesAtom } from 'src/state/geography.state'
+import { pathogenAtom } from 'src/state/pathogen.state'
+import { shouldShowRangesOnVariantsPlotAtom } from 'src/state/settings.state'
 
 export function calculateTicks(data: VariantDatum[], availableWidth: number, tickWidth: number) {
   if (data.length === 0) {
@@ -33,21 +37,22 @@ export function calculateTicks(data: VariantDatum[], availableWidth: number, tic
 const allowEscapeViewBox = { x: false, y: true }
 const tooltipStyle = { zIndex: 1000, outline: 'none' }
 
-// TODO
-const shouldPlotRanges = true
-
 interface LinePlotProps {
   width: number
   height: number
-  pathogen: Pathogen
   variantName: string
 }
 
-function LinePlot({ width, height, pathogen, variantName }: LinePlotProps) {
+function LinePlot({ width, height, variantName }: LinePlotProps) {
   const theme = useTheme()
+  const pathogen = useRecoilValue(pathogenAtom)
+  const shouldShowRanges = useRecoilValue(shouldShowRangesOnVariantsPlotAtom)
+  const regions = useRecoilValue(continentsAtom(pathogen.name))
+  const countries = useRecoilValue(countriesAtom(pathogen.name))
+
   const {
     variantData,
-    regionsData: { regions, countries, regionsStyles },
+    regionsData: { geographyStyles },
   } = useVariantDataQuery(pathogen.name, variantName)
 
   const data = useMemo(
@@ -64,36 +69,48 @@ function LinePlot({ width, height, pathogen, variantName }: LinePlotProps) {
     [theme.plot.tickWidthMin, variantData.values, width],
   )
 
-  const lines = useMemo(() => {
-    return [...regions, ...countries].map((country) => (
-      <Line
-        key={`line-${country}`}
-        type="monotone"
-        name={country}
-        dataKey={(d) => get(d.avgs, country)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
-        stroke={getCountryColor(regionsStyles, country)}
-        strokeWidth={2}
-        strokeDasharray={getCountryStrokeDashArray(regionsStyles, country)}
-        dot={false}
-        isAnimationActive={false}
-      />
-    ))
-  }, [countries, regions, regionsStyles])
+  const { lines, ranges } = useMemo(() => {
+    const locations = [...regions, ...countries]
 
-  const ranges = useMemo(() => {
-    return [...regions, ...countries].map((country) => (
-      <Area
-        key={`area-${country}`}
-        name={country}
-        dataKey={(d) => get(d.ranges, country)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
-        stroke="none"
-        fill={getCountryColor(regionsStyles, country)}
-        fillOpacity={0.1}
-        isAnimationActive={false}
-        display={!shouldPlotRanges ? 'none' : undefined}
-      />
-    ))
-  }, [countries, regions, regionsStyles])
+    const lines = locations
+      .map(
+        ({ name, enabled }) =>
+          enabled && (
+            <Line
+              key={`line-${name}`}
+              type="monotone"
+              name={name}
+              dataKey={(d) => get(d.avgs, name)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
+              stroke={getCountryColor(geographyStyles, name)}
+              strokeWidth={2}
+              strokeDasharray={getCountryStrokeDashArray(geographyStyles, name)}
+              dot={false}
+              isAnimationActive={false}
+            />
+          ),
+      )
+      .filter(Boolean)
+
+    const ranges = locations
+      .map(
+        ({ name, enabled }) =>
+          enabled && (
+            <Area
+              key={`area-${name}`}
+              name={name}
+              dataKey={(d) => get(d.ranges, name)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
+              stroke="none"
+              fill={getCountryColor(geographyStyles, name)}
+              fillOpacity={0.1}
+              isAnimationActive={false}
+              display={!shouldShowRanges ? 'none' : undefined}
+            />
+          ),
+      )
+      .filter(Boolean)
+
+    return { lines, ranges }
+  }, [regions, countries, geographyStyles, shouldShowRanges])
 
   const metadata = useMemo(() => ({ pathogenName: pathogen.name, variantName }), [pathogen.name, variantName])
 
@@ -134,15 +151,60 @@ function LinePlot({ width, height, pathogen, variantName }: LinePlotProps) {
   )
 }
 
+// export interface AvgLineProps {
+//   country: string
+// }
+//
+// export function AvgLine({ country }: AvgLineProps) {
+//   const pathogen = useRecoilValue(pathogenAtom)
+//   const { geographyStyles } = useRegionsDataQuery(pathogen.name)
+//   const enabled = useRecoilValue(countryAtom({ pathogen: pathogen.name, country }))
+//
+//   if (!enabled) {
+//     return null
+//   }
+//
+//   return (
+//
+//   )
+// }
+
+// export interface ConfidenceRangeProps {
+//   country: string
+// }
+//
+// export function ConfidenceRange({ country }: ConfidenceRangeProps) {
+//   const pathogen = useRecoilValue(pathogenAtom)
+//   const { geographyStyles } = useRegionsDataQuery(pathogen.name)
+//   const enabled = useRecoilValue(countryAtom({ pathogen: pathogen.name, country }))
+//   const shouldShowRanges = useRecoilValue(shouldShowRangesOnVariantsPlotAtom)
+//
+//   if (!enabled) {
+//     return null
+//   }
+//
+//   return (
+//     <Area
+//       key={`area-${country}`}
+//       name={country}
+//       dataKey={(d) => get(d.ranges, country)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
+//       stroke='none'
+//       fill={getCountryColor(geographyStyles, country)}
+//       fillOpacity={0.1}
+//       isAnimationActive={false}
+//       display={!shouldShowRanges ? 'none' : undefined}
+//     />
+//   )
+// }
+
 export interface VariantsPlotProps {
-  pathogen: Pathogen
   variantName: string
 }
 
-export function VariantsPlot({ pathogen, variantName }: VariantsPlotProps) {
+export function VariantsPlot({ variantName }: VariantsPlotProps) {
   return (
     <ChartContainer>
-      {({ width, height }) => <LinePlot width={width} height={height} pathogen={pathogen} variantName={variantName} />}
+      {({ width, height }) => <LinePlot width={width} height={height} variantName={variantName} />}
     </ChartContainer>
   )
 }

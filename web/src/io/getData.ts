@@ -1,4 +1,5 @@
 import { get } from 'lodash'
+import { axiosFetch } from 'src/io/axiosFetch'
 import urljoin from 'url-join'
 import { useAxiosQueries, useAxiosQuery } from 'src/hooks/useAxiosQuery'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
@@ -8,11 +9,11 @@ export interface Pathogen {
   nameFriendly: string
 }
 
-export interface RegionsData {
+export interface GeographyData {
   regions: string[]
   countries: string[]
-  regionsHierarchy: Record<string, string[]>
-  regionsStyles: Record<string, ItemStyle>
+  geography: Record<string, string[]>
+  geographyStyles: Record<string, ItemStyle>
 }
 
 export interface VariantsData {
@@ -37,10 +38,10 @@ export interface VariantDataJson {
 export function useVariantDataQuery(
   pathogenName: string,
   variantName: string,
-): { variantData: VariantDataJson; regionsData: RegionsData } {
+): { variantData: VariantDataJson; regionsData: GeographyData } {
   return useAxiosQueries({
     variantData: urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'variants', `${variantName}.json`),
-    regionsData: urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'regions.json'),
+    regionsData: urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'geography.json'),
   })
 }
 
@@ -62,17 +63,17 @@ export function useRegionDataQuery(
   countryName: string,
 ): { regionData: RegionDataJson; variantsData: VariantsData } {
   return useAxiosQueries({
-    regionData: urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'regions', `${countryName}.json`),
+    regionData: urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'geography', `${countryName}.json`),
     variantsData: urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'variants.json'),
   })
 }
 
-export function useRegionsDataQuery(pathogenName: string): RegionsData {
-  return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'regions.json'))
+export function useRegionsDataQuery(pathogenName: string): GeographyData {
+  return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'geography.json'))
 }
 
-export function usePathogenQuery(pathogenName: string): Pathogen {
-  return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'pathogen.json'))
+export function fetchPathogen(pathogenName: string) {
+  return axiosFetch<Pathogen>(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'pathogen.json'))
 }
 
 export interface ItemStyle {
@@ -92,8 +93,8 @@ export interface ItemStyleInternal extends ItemStyle {
 }
 
 export function useCountryStyle(pathogenName: string, countryName: string): ItemStyleInternal {
-  const { regionsStyles } = useRegionsDataQuery(pathogenName)
-  return getCountryStyle(regionsStyles, countryName)
+  const { geographyStyles } = useRegionsDataQuery(pathogenName)
+  return getCountryStyle(geographyStyles, countryName)
 }
 
 export function useVariantStyle(pathogenName: string, variantName: string): ItemStyleInternal {

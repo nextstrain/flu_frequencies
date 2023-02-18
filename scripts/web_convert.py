@@ -46,7 +46,7 @@ def process_one_pathogen(pathogen: dict, input_dir: str, output_dir: str):
     data = json_read(join(input_dir, f'{pathogen["name"]}.json'))
     df = convert_pathogen_dict_to_dataframe(data)
 
-    process_regions(df, pathogen, output_dir)
+    process_geography(df, pathogen, output_dir)
 
     process_variants(df, pathogen, output_dir)
 
@@ -109,9 +109,9 @@ def convert_pathogen_dict_to_dataframe(data: dict):
     )
 
 
-def process_regions(df: pl.DataFrame, pathogen: dict, output_dir: str):
-    regions_json = extract_hierarchy_of_regions(df)
-    json_write(regions_json, join(output_dir, "pathogens", pathogen["name"], "regions.json"))
+def process_geography(df: pl.DataFrame, pathogen: dict, output_dir: str):
+    regions_json = extract_geography_hierarchy(df)
+    json_write(regions_json, join(output_dir, "pathogens", pathogen["name"], "geography.json"))
 
     for region_name, region_df in partition_by(df, ["region"]):
         for country_name, country_df in partition_by(region_df, ["country"]):
@@ -135,7 +135,7 @@ def process_regions(df: pl.DataFrame, pathogen: dict, output_dir: str):
                 "values": values
             }
 
-            filepath_base = join(output_dir, "pathogens", pathogen["name"], "regions", country_name)
+            filepath_base = join(output_dir, "pathogens", pathogen["name"], "geography", country_name)
             csv_write(country_df, f"{filepath_base}.csv")
             json_write(country_json, f"{filepath_base}.json")
 
@@ -170,21 +170,21 @@ def process_variants(df: pl.DataFrame, pathogen: dict, output_dir: str):
         json_write(variant_json, f"{filepath_base}.json")
 
 
-def extract_hierarchy_of_regions(df: pl.DataFrame):
+def extract_geography_hierarchy(df: pl.DataFrame):
     regions = list(df["region"].unique(maintain_order=True))
     countries = list(set(df["country"].unique(maintain_order=True).drop_nulls()) - set(regions))
 
-    regions_items = df \
+    geo_items = df \
         .select(["region", "country"]) \
         .unique(subset=['country'], maintain_order=True) \
         .partition_by(groups=["region"], as_dict=True, maintain_order=True) \
         .items()
 
-    hierarchy = {region: list(set(region_df["country"]) - {region}) for region, region_df in regions_items}
+    geography = {region: list(set(region_df["country"]) - {region}) for region, region_df in geo_items}
 
     styles = {country: {"color": colorhash(country), "lineStyle": "normal"} for country in regions + countries}
 
-    return {"regionsHierarchy": hierarchy, "regions": regions, "countries": countries, "regionsStyles": styles}
+    return {"geography": geography, "regions": regions, "countries": countries, "geographyStyles": styles}
 
 
 def extract_list_of_variants(df: pl.DataFrame):

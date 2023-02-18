@@ -1,3 +1,4 @@
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
 export const GeoIconWrapper = styled.div`
@@ -11,3 +12,8 @@ export const GeoIconWrapper = styled.div`
     height: 100%;
   }
 `
+
+export function EmptyIcon() {
+  // eslint-disable-next-line react/jsx-no-useless-fragment,react/jsx-fragments
+  return <Fragment />
+}

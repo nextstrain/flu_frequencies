@@ -1,13 +1,13 @@
 import { get } from 'lodash'
-import React, { Fragment, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import iso3311a2 from 'iso-3166-1-alpha-2'
 import flags from 'country-flag-icons/react/3x2'
-import { GeoIconWrapper } from 'src/components/Common/GeoIconCommon'
+import { EmptyIcon, GeoIconWrapper } from 'src/components/Common/GeoIconCommon'
 
 export function GeoIconCountry({ country }: { country: string }) {
   const Icon = useMemo(() => {
     const countryCode = getCountryCode(country)
-    return get(flags, countryCode, Fragment)
+    return get(flags, countryCode, EmptyIcon)
   }, [country])
   return (
     <GeoIconWrapper>

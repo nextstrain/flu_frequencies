@@ -1,7 +1,7 @@
-import React, { ReactNode, useCallback } from 'react'
-import { FormGroup, Input, Label } from 'reactstrap'
-import { SetterOrUpdater } from 'src/types'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
+import type { SetterOrUpdater } from 'src/types'
+import { Checkbox } from 'src/components/Common/Checkbox'
 
 export interface CheckboxWithIconProps {
   label?: string
@@ -11,20 +11,13 @@ export interface CheckboxWithIconProps {
 }
 
 export function CheckboxWithIcon({ label, Icon = null, checked, setChecked }: CheckboxWithIconProps) {
-  const onChange = useCallback(() => {
-    setChecked((checkedPrev) => !checkedPrev)
-  }, [setChecked])
-
   return (
-    <FormGroup check title={label}>
-      <Label check>
-        <Input type="checkbox" checked={checked} onChange={onChange} />
-        <FlagAlignment>
-          {Icon}
-          <span>{label}</span>
-        </FlagAlignment>
-      </Label>
-    </FormGroup>
+    <Checkbox label={label} checked={checked} setChecked={setChecked}>
+      <FlagAlignment>
+        {Icon}
+        <span>{label}</span>
+      </FlagAlignment>
+    </Checkbox>
   )
 }
 

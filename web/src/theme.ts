@@ -101,6 +101,7 @@ export const font = {
 export const shadows = {
   lighter: `1px 1px 1px 1px ${rgba(gray500, 0.2)}`,
   light: `1px 1px 2px 2px ${rgba(gray600, 0.2)}`,
+  blurredLight: `1px 3px 30px 5px ${rgba(gray600, 0.25)}`,
   slight: `2px 2px 2px 2px ${rgba(gray700, 0.25)}`,
   medium: `2px 2px 3px 3px ${rgba(gray700, 0.25)}`,
   normal: `2px 2px 3px 3px ${rgba(gray900, 0.25)}`,
@@ -129,7 +130,7 @@ export const plot = {
       backgroundOdd: gray200,
     },
   },
-  country: {
+  name: {
     legend: {
       lineIcon: {
         thickness: 2,

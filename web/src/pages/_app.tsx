@@ -4,12 +4,13 @@ import 'css.escape'
 import Route from 'route-parser'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import React, { PropsWithChildren, Suspense, useEffect, useMemo } from 'react'
+import React, { PropsWithChildren, Suspense, useCallback, useEffect, useMemo } from 'react'
 import { QueryClient, QueryClientConfig, QueryClientProvider } from '@tanstack/react-query'
-import { RecoilRoot, useRecoilCallback } from 'recoil'
+import { MutableSnapshot, RecoilRoot, useRecoilCallback } from 'recoil'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import type { AppProps } from 'next/app'
 import { RegionsPage } from 'src/components/Regions/RegionsPage'
+import { fetchPathogen } from 'src/io/getData'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 import { I18nextProvider } from 'react-i18next'
@@ -26,6 +27,7 @@ import { PathogenPage } from 'src/components/Pathogen/PathogenPage'
 import { VariantsPage } from 'src/components/Variants/VariantsPage'
 import { localeAtom } from 'src/state/locale.state'
 import 'src/styles/global.scss'
+import { pathogenAtom } from 'src/state/pathogen.state'
 
 const NotFoundPage = dynamic(() => import('src/pages/404'))
 
@@ -87,45 +89,56 @@ function matchRoute<T extends Record<string, string | undefined>>(asPath: string
 function Router({ children }: PropsWithChildren) {
   const { asPath, route } = useRouter()
 
-  const result = useMemo(() => {
+  const { Component, pathogenName } = useMemo(() => {
     {
       const match = matchRoute(asPath, '/pathogen/:pathogenName')
       if (match) {
         const { pathogenName } = match
-        return <PathogenPage pathogenName={pathogenName} />
+        return { Component: <PathogenPage />, pathogenName }
       }
     }
     {
       const match = matchRoute(asPath, '/pathogen/:pathogenName/variants')
       if (match) {
         const { pathogenName } = match
-        if (pathogenName) {
-          return <VariantsPage pathogenName={pathogenName} />
-        }
+        return { Component: <VariantsPage />, pathogenName }
       }
     }
     {
       const match = matchRoute(asPath, '/pathogen/:pathogenName/regions')
       if (match) {
         const { pathogenName } = match
-        if (pathogenName) {
-          return <RegionsPage pathogenName={pathogenName} />
-        }
+        return { Component: <RegionsPage />, pathogenName }
       }
     }
 
     if (asPath !== route) {
-      return <NotFoundPage />
+      return { Component: <NotFoundPage /> }
     }
 
-    return children
+    return { Component: children }
   }, [asPath, children, route])
 
+  const initializeState = useCallback(
+    ({ set }: MutableSnapshot) => {
+      if (pathogenName) {
+        void fetchPathogen(pathogenName) // eslint-disable-line no-void
+          .then((pathogen) => set(pathogenAtom, pathogen))
+          .catch((error) => {
+            throw error
+          })
+      }
+    },
+    [pathogenName],
+  )
+
   return (
-    <RecoilRoot>
+    <RecoilRoot initializeState={initializeState}>
+      <RecoilStateInitializer />
       <MDXProvider components={getMdxComponents}>
-        <RecoilStateInitializer />
-        <Layout>{result}</Layout>
+        <Layout>
+          <Suspense fallback={LOADING}>{Component}</Suspense>
+        </Layout>
       </MDXProvider>
     </RecoilRoot>
   )
@@ -142,11 +155,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             <I18nextProvider i18n={i18n}>
               <Plausible domain={DOMAIN_STRIPPED} />
               <Suspense fallback={LOADING}>
-                <Suspense fallback={LOADING}>
-                  <Router>
-                    <Component {...pageProps} />
-                  </Router>
-                </Suspense>
+                <Router>
+                  <Component {...pageProps} />
+                </Router>
               </Suspense>
               <ReactQueryDevtools initialIsOpen={false} />
             </I18nextProvider>
@@ -162,4 +173,6 @@ async function run() {
   return MyApp
 }
 
-export default dynamic(() => run(), { ssr: false })
+export default dynamic(() => run(), {
+  ssr: false,
+})
