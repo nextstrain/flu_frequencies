@@ -17,29 +17,43 @@ rule europe:
         "plots/h1n1pdm/Country_Europe_Netherlands.png",
         "plots/h1n1pdm/Country_Europe_United-Kingdom.png",
         "plots/h1n1pdm/Country_Europe_France.png",
+        "plots/h3n2/region_mut-HA1:E50.png",
+        "plots/h3n2/region_mut-HA1:I140.png",
+        "plots/h3n2/region-clades.png",
+        "plots/h1n1pdm/region-clades.png",
+        "plots/vic/region-clades.png",
         ]
 
+rule download:
+    output:
+        sequences = "data/{lineage}/ha.fasta",
+        metadata = "data/{lineage}/metadata.tsv"
+    shell:
+        """
+        scp -r neher@login.scicore.unibas.ch:/scicore/home/neher/neher/nextstrain/seasonal-flu/data/{wildcards.lineage}/ha.fasta {output.sequences}
+        scp -r neher@login.scicore.unibas.ch:/scicore/home/neher/neher/nextstrain/seasonal-flu/data/{wildcards.lineage}/metadata.tsv {output.metadata}
+        """
 
 
 rule get_nextclade_dataset:
     output:
-         "{lineage}/reference.fasta"
+         "nextclade/{lineage}/reference.fasta"
     threads: 4
     shell:
         """
-        nextclade dataset get -n flu_{wildcards.lineage}_ha --output-dir {wildcards.lineage}
+        nextclade dataset get -n flu_{wildcards.lineage}_ha --output-dir nextclade/{wildcards.lineage}
         """
 
 rule run_nextclade:
     input:
         sequences = "data/{lineage}/ha.fasta",
-        reference = "{lineage}/reference.fasta"
+        reference = "nextclade/{lineage}/reference.fasta"
     output:
          "data/{lineage}/nextclade.tsv"
     threads: 4
     shell:
         """
-        nextclade run -j {threads} -D {wildcards.lineage} {input.sequences} --output-tsv {output}
+        nextclade run -j {threads} -D nextclade/{wildcards.lineage} {input.sequences} --quiet --output-tsv {output}
         """
 
 rule combined_with_metadata:
@@ -66,7 +80,7 @@ rule estimate_region_frequencies:
     input:
         "data/{lineage}/combined.tsv"
     output:
-        output_json = "data/{lineage}_region-frequencies.json"
+        output_json = "results/{lineage}/region-frequencies.json"
     params:
         min_date = min_date
     shell:
@@ -79,7 +93,7 @@ rule estimate_region_mutation_frequencies:
     input:
         "data/{lineage}/combined.tsv"
     output:
-        output_json = "data/{lineage}_mutation_{mutation}-frequencies.json"
+        output_json = "results/{lineage}/mutation_{mutation}-frequencies.json"
     params:
         min_date = min_date
     shell:
@@ -93,7 +107,7 @@ rule estimate_region_country_frequencies:
     input:
         "data/{lineage}/combined.tsv"
     output:
-        output_json = "data/{lineage}_region-country-frequencies.json",
+        output_json = "results/{lineage}/region-country-frequencies.json",
     params:
         min_date = min_date
     shell:
@@ -105,7 +119,7 @@ rule estimate_region_country_frequencies:
 
 rule plot_regions:
     input:
-        freqs = "data/{lineage}_region-frequencies.json",
+        freqs = "results/{lineage}/region-frequencies.json",
     output:
         plot = "plots/{lineage}/Region_{region}.png",
     params:
@@ -118,7 +132,7 @@ rule plot_regions:
 
 rule plot_mutations:
     input:
-        freqs = "data/{lineage}_mutation_{mutation}-frequencies.json",
+        freqs = "results/{lineage}/mutation_{mutation}-frequencies.json",
     output:
         plot = "plots/{lineage}/mutation_{region}-{mutation}.png",
     params:
@@ -132,7 +146,7 @@ rule plot_mutations:
 
 rule plot_country:
     input:
-        freqs = "data/{lineage}_region-country-frequencies.json",
+        freqs = "results/{lineage}/region-country-frequencies.json",
     output:
         plot = "plots/{lineage}/Country_{region}_{country}.png",
     params:
@@ -145,7 +159,7 @@ rule plot_country:
 
 rule multi_region_plot_clades:
     input:
-        freqs = "data/{lineage}_region-frequencies.json",
+        freqs = "results/{lineage}/region-frequencies.json",
     output:
         plot = "plots/{lineage}/region-clades.png",
     params:
@@ -164,7 +178,7 @@ rule multi_region_plot_clades:
 
 rule multi_region_plot_mutation:
     input:
-        freqs = "data/{lineage}_mutation_{mutation}-frequencies.json",
+        freqs = "results/{lineage}/mutation_{mutation}-frequencies.json",
     output:
         plot = "plots/{lineage}/region_mut-{mutation}.png",
     params:
