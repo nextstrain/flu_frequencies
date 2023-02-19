@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { VariantsPlot } from 'src/components/Variants/VariantsPlot'
 import { VariantsSidebar } from 'src/components/Variants/VariantsSidebar'
-import styled from 'styled-components'
+import { PageContainerHorizontal, PageMainWrapper } from 'src/components/Layout/PageContainer'
 import { pathogenAtom } from 'src/state/pathogen.state'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LOADING } from 'src/components/Loading/Loading'
@@ -20,7 +20,7 @@ export function VariantsPage() {
       <PageContainerHorizontal>
         <VariantsSidebar />
 
-        <MainWrapper>
+        <PageMainWrapper>
           <Row noGutters>
             <Col>
               <PageHeading>{t('{{name}}: variants', { name: t(pathogen.nameFriendly) })}</PageHeading>
@@ -40,21 +40,8 @@ export function VariantsPage() {
               </Container>
             </Col>
           </Row>
-        </MainWrapper>
+        </PageMainWrapper>
       </PageContainerHorizontal>
     </Suspense>
   )
 }
-
-export const PageContainerHorizontal = styled.div`
-  display: flex;
-  flex: 0;
-  flex-direction: row;
-  height: 100%;
-`
-
-const MainWrapper = styled.main`
-  flex: 1;
-  max-height: 100%;
-  overflow: hidden auto;
-`

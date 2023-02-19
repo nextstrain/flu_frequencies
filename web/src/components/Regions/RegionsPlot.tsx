@@ -1,6 +1,9 @@
 import { get, maxBy, minBy } from 'lodash'
 import { Interval } from 'luxon'
 import React, { useMemo } from 'react'
+import { useRecoilValue } from 'recoil'
+import { shouldShowRangesOnRegionsPlotAtom } from 'src/state/settings.state'
+import { variantsAtom } from 'src/state/variants.state'
 import { useTheme } from 'styled-components'
 import { Area, CartesianGrid, ComposedChart, Line, Tooltip as RechartsTooltip, XAxis, YAxis } from 'recharts'
 import { adjustTicks } from 'src/helpers/adjustTicks'
@@ -33,9 +36,6 @@ export function calculateTicks(data: RegionDatum[], availableWidth: number, tick
 const allowEscapeViewBox = { x: false, y: true }
 const tooltipStyle = { zIndex: 1000, outline: 'none' }
 
-// TODO
-const shouldPlotRanges = true
-
 interface LinePlotProps {
   width: number
   height: number
@@ -45,9 +45,11 @@ interface LinePlotProps {
 
 function RegionsPlotImpl({ width, height, pathogen, countryName }: LinePlotProps) {
   const theme = useTheme()
+  const shouldShowRanges = useRecoilValue(shouldShowRangesOnRegionsPlotAtom)
+  const variants = useRecoilValue(variantsAtom(pathogen.name))
   const {
     regionData,
-    variantsData: { variants, variantsStyles },
+    variantsData: { variantsStyles },
   } = useRegionDataQuery(pathogen.name, countryName)
 
   const data = useMemo(
@@ -64,36 +66,46 @@ function RegionsPlotImpl({ width, height, pathogen, countryName }: LinePlotProps
     [regionData.values, theme.plot.tickWidthMin, width],
   )
 
-  const lines = useMemo(() => {
-    return variants.map((variant) => (
-      <Line
-        key={`line-${variant}`}
-        type="monotone"
-        name={variant}
-        dataKey={(d) => get(d.avgs, variant)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
-        stroke={getCountryColor(variantsStyles, variant)}
-        strokeWidth={2}
-        strokeDasharray={getCountryStrokeDashArray(variantsStyles, variant)}
-        dot={false}
-        isAnimationActive={false}
-      />
-    ))
-  }, [variants, variantsStyles])
+  const { lines, ranges } = useMemo(() => {
+    const lines = variants
+      .map(
+        ({ name, enabled }) =>
+          enabled && (
+            <Line
+              key={`line-${name}`}
+              type="monotone"
+              name={name}
+              dataKey={(d) => get(d.avgs, name)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
+              stroke={getCountryColor(variantsStyles, name)}
+              strokeWidth={2}
+              strokeDasharray={getCountryStrokeDashArray(variantsStyles, name)}
+              dot={false}
+              isAnimationActive={false}
+            />
+          ),
+      )
+      .filter(Boolean)
 
-  const ranges = useMemo(() => {
-    return variants.map((variant) => (
-      <Area
-        key={`area-${variant}`}
-        name={variant}
-        dataKey={(d) => get(d.ranges, variant)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
-        stroke="none"
-        fill={getCountryColor(variantsStyles, variant)}
-        fillOpacity={0.1}
-        isAnimationActive={false}
-        display={!shouldPlotRanges ? 'none' : undefined}
-      />
-    ))
-  }, [variants, variantsStyles])
+    const ranges = variants
+      .map(
+        ({ name, enabled }) =>
+          enabled && (
+            <Area
+              key={`area-${name}`}
+              name={name}
+              dataKey={(d) => get(d.ranges, name)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
+              stroke="none"
+              fill={getCountryColor(variantsStyles, name)}
+              fillOpacity={0.1}
+              isAnimationActive={false}
+              display={!shouldShowRanges ? 'none' : undefined}
+            />
+          ),
+      )
+      .filter(Boolean)
+
+    return { lines, ranges }
+  }, [shouldShowRanges, variants, variantsStyles])
 
   const metadata = useMemo(() => ({ pathogenName: pathogen.name, countryName }), [countryName, pathogen.name])
 

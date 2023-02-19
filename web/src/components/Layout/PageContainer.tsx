@@ -13,3 +13,16 @@ export const PageContainer = styled(Container)`
   flex-direction: column;
   margin: 0 auto;
 `
+
+export const PageContainerHorizontal = styled.div`
+  display: flex;
+  flex: 0;
+  flex-direction: row;
+  height: 100%;
+`
+
+export const PageMainWrapper = styled.main`
+  flex: 1;
+  max-height: 100%;
+  overflow: hidden auto;
+`

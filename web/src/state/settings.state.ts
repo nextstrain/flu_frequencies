@@ -6,3 +6,15 @@ export const shouldShowRangesOnVariantsPlotAtom = atom({
   default: false,
   effects: [persistAtom],
 })
+
+export const shouldShowRangesOnRegionsPlotAtom = atom({
+  key: 'shouldShowRangesOnRegionsPlotAtom',
+  default: false,
+  effects: [persistAtom],
+})
+
+export const isSidebarSettingsCollapsedAtom = atom({
+  key: 'isSidebarSettingsCollapsedAtom',
+  default: false,
+  effects: [persistAtom],
+})
