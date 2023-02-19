@@ -80,26 +80,26 @@ rule estimate_region_frequencies:
     input:
         "data/{lineage}/combined.tsv"
     output:
-        output_json = "results/{lineage}/region-frequencies.json"
+        output_csv = "results/{lineage}/region-frequencies.csv"
     params:
         min_date = min_date
     shell:
         """
         python scripts/fit_single_frequencies.py --metadata {input} --geo-categories region --frequency-category clade \
-                --min-date {params.min_date} --days 14 --output-json {output.output_json}
+                --min-date {params.min_date} --days 14 --output-csv {output.output_csv}
         """
 
 rule estimate_region_mutation_frequencies:
     input:
         "data/{lineage}/combined.tsv"
     output:
-        output_json = "results/{lineage}/mutation_{mutation}-frequencies.json"
+        output_csv = "results/{lineage}/mutation_{mutation}-frequencies.csv"
     params:
         min_date = min_date
     shell:
         """
         python scripts/fit_single_frequencies.py --metadata {input} --geo-categories region --frequency-category mutation-{wildcards.mutation} \
-                --min-date {params.min_date} --days 14 --output-json {output.output_json}
+                --min-date {params.min_date} --days 14 --output-csv {output.output_csv}
         """
 
 
@@ -107,19 +107,19 @@ rule estimate_region_country_frequencies:
     input:
         "data/{lineage}/combined.tsv"
     output:
-        output_json = "results/{lineage}/region-country-frequencies.json",
+        output_csv = "results/{lineage}/region-country-frequencies.csv",
     params:
         min_date = min_date
     shell:
         """
         python scripts/fit_hierarchical_frequencies.py --metadata {input} \
                 --geo-categories region country --frequency-category clade \
-                --min-date {params.min_date} --days 14 --output-json {output.output_json}
+                --min-date {params.min_date} --days 14 --output-csv {output.output_csv}
         """
 
 rule plot_regions:
     input:
-        freqs = "results/{lineage}/region-frequencies.json",
+        freqs = "results/{lineage}/region-frequencies.csv",
     output:
         plot = "plots/{lineage}/Region_{region}.png",
     params:
@@ -132,7 +132,7 @@ rule plot_regions:
 
 rule plot_mutations:
     input:
-        freqs = "results/{lineage}/mutation_{mutation}-frequencies.json",
+        freqs = "results/{lineage}/mutation_{mutation}-frequencies.csv",
     output:
         plot = "plots/{lineage}/mutation_{region}-{mutation}.png",
     params:
@@ -146,7 +146,7 @@ rule plot_mutations:
 
 rule plot_country:
     input:
-        freqs = "results/{lineage}/region-country-frequencies.json",
+        freqs = "results/{lineage}/region-country-frequencies.csv",
     output:
         plot = "plots/{lineage}/Country_{region}_{country}.png",
     params:
@@ -159,7 +159,7 @@ rule plot_country:
 
 rule multi_region_plot_clades:
     input:
-        freqs = "results/{lineage}/region-frequencies.json",
+        freqs = "results/{lineage}/region-frequencies.csv",
     output:
         plot = "plots/{lineage}/region-clades.png",
     params:
@@ -178,7 +178,7 @@ rule multi_region_plot_clades:
 
 rule multi_region_plot_mutation:
     input:
-        freqs = "results/{lineage}/mutation_{mutation}-frequencies.json",
+        freqs = "results/{lineage}/mutation_{mutation}-frequencies.csv",
     output:
         plot = "plots/{lineage}/region_mut-{mutation}.png",
     params:
