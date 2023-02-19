@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { Button, Col, Form, FormGroup, Row } from 'reactstrap'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Pathogen, useRegionsDataQuery } from 'src/io/getData'
-import { fuzzySearch } from 'src/helpers/fuzzySearch'
+import { fuzzySearchObj } from 'src/helpers/fuzzySearch'
 import { pathogenAtom } from 'src/state/pathogen.state'
 import {
   continentAtom,
@@ -26,23 +26,31 @@ const Container = styled.div`
 `
 
 export function SidebarSectionGeography() {
+  const { t } = useTranslationSafe()
   const pathogen = useRecoilValue(pathogenAtom)
   const { countries, regions } = useRegionsDataQuery(pathogen.name)
   const [searchTerm] = useRecoilState(geographySearchTermAtom)
 
   const checkboxes = useMemo(() => {
+    const regionsTranslated = regions.map((region) => ({ region, regionTranslated: t(region) }))
+    const countriesTranslated = countries.map((country) => ({ country, countryTranslated: t(country) }))
+
     const scored = [
-      ...fuzzySearch(regions, searchTerm).map(({ item, score }) => ({
-        component: <ContinentCheckbox key={item} continent={item} />,
-        score,
-      })),
-      ...fuzzySearch(countries, searchTerm).map(({ item, score }) => ({
-        component: <CountryCheckbox key={item} country={item} />,
-        score,
-      })),
+      ...fuzzySearchObj(regionsTranslated, ['region', 'regionTranslated'], searchTerm).map(
+        ({ item: { region }, score }) => ({
+          component: <ContinentCheckbox key={region} continent={region} />,
+          score,
+        }),
+      ),
+      ...fuzzySearchObj(countriesTranslated, ['country', 'countryTranslated'], searchTerm).map(
+        ({ item: { country }, score }) => ({
+          component: <CountryCheckbox key={country} country={country} />,
+          score,
+        }),
+      ),
     ]
     return sortBy(scored, ({ score }) => score).map(({ component }) => component)
-  }, [countries, regions, searchTerm])
+  }, [countries, regions, searchTerm, t])
 
   return (
     <Container>

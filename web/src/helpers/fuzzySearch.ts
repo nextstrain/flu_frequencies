@@ -14,3 +14,22 @@ export function fuzzySearch(items: string[], searchTerm: string) {
   })
   return fuse.search(searchTerm)
 }
+
+export function fuzzySearchObj<T extends Record<string, any>>(
+  items: T[],
+  keys: (keyof T & string)[],
+  searchTerm: string,
+) {
+  if (isEmpty(searchTerm)) {
+    return items.map((item) => ({ item, score: 1 }))
+  }
+  const fuse = new Fuse(items, {
+    includeScore: true,
+    includeMatches: true,
+    minMatchCharLength: 1,
+    shouldSort: true,
+    findAllMatches: true,
+    keys,
+  })
+  return fuse.search(searchTerm)
+}
