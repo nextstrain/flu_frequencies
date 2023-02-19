@@ -121,6 +121,7 @@
     "route-parser": "0.0.5",
     "serialize-javascript": "6.0.0",
     "styled-components": "5.3.6",
+    "transliteration": "2.3.5",
     "typeface-droid-sans-mono": "0.0.44",
     "typeface-open-sans": "0.0.75",
     "url-join": "4.0.1",

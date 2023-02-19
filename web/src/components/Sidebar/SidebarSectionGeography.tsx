@@ -16,6 +16,7 @@ import {
   geographySearchTermAtom,
 } from 'src/state/geography.state'
 import { CheckboxWithIcon } from 'src/components/Common/Checkbox'
+import { transliterate } from 'transliteration'
 
 const GeoIconCountry = dynamic(() => import('src/components/Common/GeoIconCountry').then((m) => m.GeoIconCountry))
 const GeoIconContinent = dynamic(() => import('src/components/Common/GeoIconContinent').then((m) => m.GeoIconContinent))
@@ -32,17 +33,25 @@ export function SidebarSectionGeography() {
   const [searchTerm] = useRecoilState(geographySearchTermAtom)
 
   const checkboxes = useMemo(() => {
-    const regionsTranslated = regions.map((region) => ({ region, regionTranslated: t(region) }))
-    const countriesTranslated = countries.map((country) => ({ country, countryTranslated: t(country) }))
+    const regionsTranslated = regions.map((region) => {
+      const translated = t(region)
+      const transliterated = transliterate(translated)
+      return { region, translated, transliterated }
+    })
+    const countriesTranslated = countries.map((country) => {
+      const translated = t(country)
+      const transliterated = transliterate(translated)
+      return { country, translated, transliterated }
+    })
 
     const scored = [
-      ...fuzzySearchObj(regionsTranslated, ['region', 'regionTranslated'], searchTerm).map(
+      ...fuzzySearchObj(regionsTranslated, ['region', 'translated', 'transliterated'], searchTerm).map(
         ({ item: { region }, score }) => ({
           component: <ContinentCheckbox key={region} continent={region} />,
           score,
         }),
       ),
-      ...fuzzySearchObj(countriesTranslated, ['country', 'countryTranslated'], searchTerm).map(
+      ...fuzzySearchObj(countriesTranslated, ['country', 'translated', 'transliterated'], searchTerm).map(
         ({ item: { country }, score }) => ({
           component: <CountryCheckbox key={country} country={country} />,
           score,
