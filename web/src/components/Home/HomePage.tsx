@@ -1,5 +1,6 @@
 import React, { Fragment, Suspense } from 'react'
 import { Col, Row } from 'reactstrap'
+import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Pathogen } from 'src/io/getData'
 import urljoin from 'url-join'
 import { useAxiosQuery } from 'src/hooks/useAxiosQuery'
@@ -7,7 +8,6 @@ import { MdxContent } from 'src/i18n/getMdxContent'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
 import { PageContainerNarrow } from 'src/components/Layout/PageContainer'
 import { LOADING } from 'src/components/Loading/Loading'
-import { Link } from 'src/components/Link/Link'
 
 export interface IndexJson {
   pathogens: Pathogen[]
@@ -34,10 +34,14 @@ export function HomePage() {
               {pathogens.map((pathogen) => (
                 <Fragment key={pathogen.name}>
                   <li>
-                    <Link href={`/pathogen/${pathogen.name}/variants`}>{`/pathogen/${pathogen.name}/variants`}</Link>
+                    <LinkExternal
+                      href={`/pathogen/${pathogen.name}/variants`}
+                    >{`/pathogen/${pathogen.name}/variants`}</LinkExternal>
                   </li>
                   <li>
-                    <Link href={`/pathogen/${pathogen.name}/regions`}>{`/pathogen/${pathogen.name}/regions`}</Link>
+                    <LinkExternal
+                      href={`/pathogen/${pathogen.name}/regions`}
+                    >{`/pathogen/${pathogen.name}/regions`}</LinkExternal>
                   </li>
                 </Fragment>
               ))}
