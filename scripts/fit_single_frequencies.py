@@ -31,7 +31,7 @@ def load_and_aggregate(data, geo_categories, freq_category, min_date="2021-01-01
     start_date = datetime.strptime(min_date, "%Y-%m-%d").toordinal()
     d = d.filter((~pl.col('date').is_null())&(~pl.col(freq_category).is_null()))
     d = d.with_columns([pl.col('date').apply(lambda x: to_day_count(x, start_date)).alias("day_count")])
-    d  = d.filter(pl.col("day_count")>=0)
+    d = d.filter(pl.col("day_count")>=0)
     d = d.with_columns([(pl.col('day_count')//bin_size).alias("time_bin")])
 
     totals = dict()
@@ -150,7 +150,10 @@ if __name__=='__main__':
                                         "variant":fcat,
                                         "freqMi":frequencies[fcat][k]['val'], "freqLo":frequencies[fcat][k]['lower'], "freqUp":frequencies[fcat][k]['upper']})
 
-    pl.DataFrame(output_data).write_csv(args.output_csv, float_precision=4)
+    pl.DataFrame(output_dataschema={'date':str, 'region':str, 'country':str, 'variant':str,
+                                    'count':int, 'total':int,
+                                    'freqMi':float, 'freqLo':float, 'freqUp':float})\
+        .write_csv(args.output_csv, float_precision=4)
 
 
 

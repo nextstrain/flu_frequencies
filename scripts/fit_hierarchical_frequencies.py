@@ -148,15 +148,16 @@ if __name__=='__main__':
             for minor_geo_cat in sub_totals:
                 for k, date in time_bins.items():
                     output_data.append({"date": date.strftime('%Y-%m-%d'), "region": geo_label, "country": geo_label_map(minor_geo_cat),
-                                        "count": sub_counts[fcat][minor_geo_cat].get(k,0),
+                                        "variant":fcat, "count": sub_counts[fcat][minor_geo_cat].get(k,0),
                                         "total": sub_totals[minor_geo_cat].get(k,0),
                                         "freqMi":frequencies[fcat][minor_geo_cat][k]['val'],
                                         "freqLo":frequencies[fcat][minor_geo_cat][k]['lower'],
                                         "freqUp":frequencies[fcat][minor_geo_cat][k]['upper']})
 
 
-    df = pl.DataFrame(output_data)
-    region_totals = {(r[0], r[1]): r[2] for r in df.select(['date', 'region', 'total'])
+    df = pl.DataFrame(output_data, schema={'date':str, 'region':str, 'country':str, 'variant':str,
+                                           'count':int, 'total':int, 'freqMi':float, 'freqLo':float, 'freqUp':float})
+    region_totals = {(r[0], r[1]): r[2] for r in df.select(['date', 'region', 'count'])
                             .groupby(['date', 'region']).sum().iter_rows()}
     region_counts = {(r[0], r[1], r[2]): r[3] for r in df.select(['date', 'region', 'variant', 'count'])
                             .groupby(['date', 'region', 'variant']).sum().iter_rows()}
