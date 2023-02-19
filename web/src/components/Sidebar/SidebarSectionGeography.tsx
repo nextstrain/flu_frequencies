@@ -15,7 +15,7 @@ import {
   geographyEnableAllAtom,
   geographySearchTermAtom,
 } from 'src/state/geography.state'
-import { CheckboxWithIcon } from 'src/components/Common/CheckboxWithIcon'
+import { CheckboxWithIcon } from 'src/components/Common/Checkbox'
 
 const GeoIconCountry = dynamic(() => import('src/components/Common/GeoIconCountry').then((m) => m.GeoIconCountry))
 const GeoIconContinent = dynamic(() => import('src/components/Common/GeoIconContinent').then((m) => m.GeoIconContinent))
@@ -81,7 +81,10 @@ export function CountryCheckbox({ country }: { country: string }) {
   const pathogen = useRecoilValue(pathogenAtom)
   const [countryEnabled, setCountryEnabled] = useRecoilState(countryAtom({ pathogen: pathogen.name, country }))
   const Icon = useMemo(() => <GeoIconCountry country={country} />, [country])
-  return <CheckboxWithIcon label={t(country)} Icon={Icon} checked={countryEnabled} setChecked={setCountryEnabled} />
+  const text = useMemo(() => t(country), [country, t])
+  return (
+    <CheckboxWithIcon label={text} title={text} icon={Icon} checked={countryEnabled} setChecked={setCountryEnabled} />
+  )
 }
 
 export function ContinentCheckbox({ continent }: { continent: string }) {
@@ -89,7 +92,14 @@ export function ContinentCheckbox({ continent }: { continent: string }) {
   const pathogen = useRecoilValue(pathogenAtom)
   const [continentEnabled, setContinentEnabled] = useRecoilState(continentAtom({ pathogen: pathogen.name, continent }))
   const Icon = useMemo(() => <GeoIconContinent continent={continent} />, [continent])
+  const text = useMemo(() => t(continent), [continent, t])
   return (
-    <CheckboxWithIcon label={t(continent)} Icon={Icon} checked={continentEnabled} setChecked={setContinentEnabled} />
+    <CheckboxWithIcon
+      title={text}
+      label={text}
+      icon={Icon}
+      checked={continentEnabled}
+      setChecked={setContinentEnabled}
+    />
   )
 }

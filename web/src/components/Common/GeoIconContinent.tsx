@@ -12,11 +12,17 @@ const NorthAmerica = dynamic<S>(() => import('src/assets/images/continents/North
 const Oceania = dynamic<S>(() => import('src/assets/images/continents/Oceania.svg'), { ssr: false })
 const SouthAmerica = dynamic<S>(() => import('src/assets/images/continents/South America.svg'), { ssr: false })
 
-export function GeoIconContinent({ continent }: { continent: string }) {
+export interface GeoIconContinentProps {
+  continent: string
+  size?: number
+  color?: string
+}
+
+export function GeoIconContinent({ continent, size = 18, color = '#444444' }: GeoIconContinentProps) {
   const Icon = useMemo(() => get(CONTINENT_ICONS, continent, EmptyIcon), [continent])
   return (
-    <GeoIconWrapper>
-      <Icon fill="#444444" />
+    <GeoIconWrapper $size={size}>
+      <Icon fill={color} />
     </GeoIconWrapper>
   )
 }

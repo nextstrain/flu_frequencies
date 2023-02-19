@@ -2,10 +2,11 @@
 .DS_Store
 \.build
 \.cache
-\.ignore
 \.env
 \.idea
+\.ignore
+\.json-autotranslate-cache/
 \.reports
 \.vscode
-node_modules
 dist/
+node_modules

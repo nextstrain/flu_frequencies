@@ -14,6 +14,7 @@ export function Sidebar({ children }: PropsWithChildren) {
 
 export const SidebarOuterWrapper = styled.aside`
   flex: 0 0 300px;
+  width: 300px;
   box-shadow: ${(props) => props.theme.shadows.blurredLight};
 `
 

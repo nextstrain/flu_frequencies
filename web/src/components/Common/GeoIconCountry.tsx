@@ -4,13 +4,18 @@ import iso3311a2 from 'iso-3166-1-alpha-2'
 import flags from 'country-flag-icons/react/3x2'
 import { EmptyIcon, GeoIconWrapper } from 'src/components/Common/GeoIconCommon'
 
-export function GeoIconCountry({ country }: { country: string }) {
+export interface GeoIconCountryProps {
+  country: string
+  size?: number
+}
+
+export function GeoIconCountry({ country, size = 18 }: GeoIconCountryProps) {
   const Icon = useMemo(() => {
     const countryCode = getCountryCode(country)
     return get(flags, countryCode, EmptyIcon)
   }, [country])
   return (
-    <GeoIconWrapper>
+    <GeoIconWrapper $size={size}>
       <Icon />
     </GeoIconWrapper>
   )

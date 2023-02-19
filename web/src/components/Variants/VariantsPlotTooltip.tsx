@@ -72,7 +72,7 @@ export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, st
           <tr className="w-100">
             <th className="px-2 text-left">{t('Country')}</th>
             <th className="px-2 text-right">{t('Frequency')}</th>
-            <th className="px-2 text-right">{t('Range')}</th>
+            <th className="px-2 text-right">{t('Interval')}</th>
           </tr>
         </thead>
         <tbody>

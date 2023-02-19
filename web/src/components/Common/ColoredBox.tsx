@@ -4,7 +4,6 @@ export const ColoredBox = styled.div<{ $color: string; $size: number; $aspect?: 
   display: inline-block;
   padding: 0;
   margin: auto;
-  margin-right: ${(props) => props.$size / 2}px;
   background-color: ${(props) => props.$color};
   width: ${(props) => props.$size * (props.$aspect ?? 1)}px;
   height: ${(props) => props.$size}px;

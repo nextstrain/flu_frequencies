@@ -1,16 +1,11 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
-export const GeoIconWrapper = styled.div`
-  height: calc(1em + 2px);
-  width: calc(1.5em + 2px);
+export const GeoIconWrapper = styled.div<{ $size: number }>`
+  width: ${(props) => props.$size * 1.5}px;
+  height: ${(props) => props.$size}px;
   border: 1px solid #ced4da;
-  display: flex;
-
-  > * {
-    width: 100%;
-    height: 100%;
-  }
+  display: inline-flex;
 `
 
 export function EmptyIcon() {
