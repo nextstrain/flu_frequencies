@@ -15,7 +15,7 @@ export function fuzzySearch(items: string[], searchTerm: string) {
   return fuse.search(searchTerm)
 }
 
-export function fuzzySearchObj<T extends Record<string, any>>(
+export function fuzzySearchObj<T extends Record<string, unknown>>(
   items: T[],
   keys: (keyof T & string)[],
   searchTerm: string,

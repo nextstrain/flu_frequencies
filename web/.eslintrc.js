@@ -217,6 +217,8 @@ module.exports = {
         'next.config.js',
         'postcss.config.js',
         'stylelint.config.js',
+        'tools/**/*.js',
+        'tools/**/*.ts',
         'webpack.config.js',
       ],
       rules: {

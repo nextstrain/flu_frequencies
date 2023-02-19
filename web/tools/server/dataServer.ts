@@ -1,4 +1,4 @@
-/* eslint-disable unicorn/no-process-exit,unicorn/prefer-module */
+/* eslint-disable unicorn/no-process-exit */
 /**
  * Serves production build artifacts.
  *

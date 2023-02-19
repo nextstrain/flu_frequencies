@@ -57,7 +57,6 @@ export function VariantsSelectAll({ pathogen }: VariantsSelectAllProps) {
 }
 
 export function VariantsCheckbox({ variant }: { variant: string }) {
-  const { t } = useTranslationSafe()
   const pathogen = useRecoilValue(pathogenAtom)
   const { color } = useVariantStyle(pathogen.name, variant)
   const [variantEnabled, setVariantEnabled] = useRecoilState(variantAtom({ pathogen: pathogen.name, variant }))
