@@ -10,37 +10,6 @@ import { PageContainerHorizontal, PageMainWrapper } from 'src/components/Layout/
 import { RegionsSidebar } from 'src/components/Regions/RegionsSidebar'
 import { LOADING } from 'src/components/Loading/Loading'
 
-//   const { t } = useTranslationSafe()
-//   const pathogen = useRecoilValue(pathogenAtom)
-//   const { regions, countries } = useRegionsDataQuery(pathogen.name)
-//
-//   return (
-//     <Suspense fallback={LOADING}>
-//       <PageContainer>
-//         <Row noGutters>
-//           <Col>
-//             <PageHeading>{t('{{name}}: regions', { name: t(pathogen.nameFriendly) })}</PageHeading>
-//           </Col>
-//         </Row>
-//
-//         <Row noGutters>
-//           <Col>
-//             <Container fluid>
-//               {[...regions, ...countries].map((region) => (
-//                 <Row key={region} noGutters className="mb-5">
-//                   <Col>
-//                     <h3 className="text-center">{region}</h3>
-//                     <RegionsPlot pathogen={pathogen} countryName={region} />
-//                   </Col>
-//                 </Row>
-//               ))}
-//             </Container>
-//           </Col>
-//         </Row>
-//       </PageContainer>
-//     </Suspense>
-//   )
-
 export function RegionsPage() {
   const { t } = useTranslationSafe()
   const pathogen = useRecoilValue(pathogenAtom)

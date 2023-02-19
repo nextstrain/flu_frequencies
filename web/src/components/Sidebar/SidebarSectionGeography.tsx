@@ -1,13 +1,21 @@
+import { sortBy } from 'lodash'
 import React, { useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import { pathogenAtom } from 'src/state/pathogen.state'
 import styled from 'styled-components'
 import { Button, Col, Form, FormGroup, Row } from 'reactstrap'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { CheckboxWithIcon } from 'src/components/Common/CheckboxWithIcon'
-import { continentAtom, countryAtom, geographyDisableAllAtom, geographyEnableAllAtom } from 'src/state/geography.state'
 import { Pathogen, useRegionsDataQuery } from 'src/io/getData'
+import { fuzzySearch } from 'src/helpers/fuzzySearch'
+import { pathogenAtom } from 'src/state/pathogen.state'
+import {
+  continentAtom,
+  countryAtom,
+  geographyDisableAllAtom,
+  geographyEnableAllAtom,
+  geographySearchTermAtom,
+} from 'src/state/geography.state'
+import { CheckboxWithIcon } from 'src/components/Common/CheckboxWithIcon'
 
 const GeoIconCountry = dynamic(() => import('src/components/Common/GeoIconCountry').then((m) => m.GeoIconCountry))
 const GeoIconContinent = dynamic(() => import('src/components/Common/GeoIconContinent').then((m) => m.GeoIconContinent))
@@ -19,33 +27,27 @@ const Container = styled.div`
 
 export function SidebarSectionGeography() {
   const pathogen = useRecoilValue(pathogenAtom)
+  const { countries, regions } = useRegionsDataQuery(pathogen.name)
+  const [searchTerm] = useRecoilState(geographySearchTermAtom)
 
-  const regionComponents = useMemo(() => {
-    return (
-      <Row noGutters>
-        <Col>
-          <ContinentCheckboxes />
-        </Col>
-      </Row>
-    )
-  }, [])
-
-  const countryComponents = useMemo(
-    () => (
-      <Row noGutters>
-        <Col>
-          <CountryCheckboxes />
-        </Col>
-      </Row>
-    ),
-    [],
-  )
+  const checkboxes = useMemo(() => {
+    const scored = [
+      ...fuzzySearch(regions, searchTerm).map(({ item, score }) => ({
+        component: <ContinentCheckbox key={item} continent={item} />,
+        score,
+      })),
+      ...fuzzySearch(countries, searchTerm).map(({ item, score }) => ({
+        component: <CountryCheckbox key={item} country={item} />,
+        score,
+      })),
+    ]
+    return sortBy(scored, ({ score }) => score).map(({ component }) => component)
+  }, [countries, regions, searchTerm])
 
   return (
     <Container>
       <GeographySelectAll pathogen={pathogen} />
-      {regionComponents}
-      {countryComponents}
+      <Form>{checkboxes}</Form>
     </Container>
   )
 }
@@ -74,33 +76,12 @@ export function GeographySelectAll({ pathogen }: GeographySelectAllProps) {
   )
 }
 
-export function CountryCheckboxes() {
-  const pathogen = useRecoilValue(pathogenAtom)
-  const { countries } = useRegionsDataQuery(pathogen.name)
-  const countryCheckboxes = useMemo(
-    () => countries.map((country) => <CountryCheckbox key={country} country={country} />),
-    [countries],
-  )
-  return <Form>{countryCheckboxes}</Form>
-}
-
 export function CountryCheckbox({ country }: { country: string }) {
   const { t } = useTranslationSafe()
   const pathogen = useRecoilValue(pathogenAtom)
   const [countryEnabled, setCountryEnabled] = useRecoilState(countryAtom({ pathogen: pathogen.name, country }))
   const Icon = useMemo(() => <GeoIconCountry country={country} />, [country])
   return <CheckboxWithIcon label={t(country)} Icon={Icon} checked={countryEnabled} setChecked={setCountryEnabled} />
-}
-
-export function ContinentCheckboxes() {
-  const pathogen = useRecoilValue(pathogenAtom)
-  const { regions } = useRegionsDataQuery(pathogen.name)
-  const continentCheckboxes = useMemo(() => {
-    return regions.map((continent) => {
-      return <ContinentCheckbox key={continent} continent={continent} />
-    })
-  }, [regions])
-  return <Form>{continentCheckboxes}</Form>
 }
 
 export function ContinentCheckbox({ continent }: { continent: string }) {

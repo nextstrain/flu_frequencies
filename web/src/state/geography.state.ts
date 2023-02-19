@@ -1,5 +1,5 @@
 import copy from 'fast-copy'
-import { atomFamily, selector, selectorFamily } from 'recoil'
+import { atom, atomFamily, selector, selectorFamily } from 'recoil'
 import { axiosFetch } from 'src/io/axiosFetch'
 import { GeographyData } from 'src/io/getData'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
@@ -119,4 +119,14 @@ export const geographyDisableAllAtom = selectorFamily<unknown, string>({
       set(countriesAtom(region), setEnabledAll(get(countriesAtom(region)), false))
       set(continentsAtom(region), setEnabledAll(get(continentsAtom(region)), false))
     },
+})
+
+export const geographySearchTermAtom = atom({
+  key: 'geographySearchTermAtom',
+  default: '',
+})
+
+export const variantsSearchTermAtom = atom({
+  key: 'variantsSearchTermAtom',
+  default: '',
 })

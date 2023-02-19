@@ -151,52 +151,6 @@ function LinePlot({ width, height, variantName }: LinePlotProps) {
   )
 }
 
-// export interface AvgLineProps {
-//   country: string
-// }
-//
-// export function AvgLine({ country }: AvgLineProps) {
-//   const pathogen = useRecoilValue(pathogenAtom)
-//   const { geographyStyles } = useRegionsDataQuery(pathogen.name)
-//   const enabled = useRecoilValue(countryAtom({ pathogen: pathogen.name, country }))
-//
-//   if (!enabled) {
-//     return null
-//   }
-//
-//   return (
-//
-//   )
-// }
-
-// export interface ConfidenceRangeProps {
-//   country: string
-// }
-//
-// export function ConfidenceRange({ country }: ConfidenceRangeProps) {
-//   const pathogen = useRecoilValue(pathogenAtom)
-//   const { geographyStyles } = useRegionsDataQuery(pathogen.name)
-//   const enabled = useRecoilValue(countryAtom({ pathogen: pathogen.name, country }))
-//   const shouldShowRanges = useRecoilValue(shouldShowRangesOnVariantsPlotAtom)
-//
-//   if (!enabled) {
-//     return null
-//   }
-//
-//   return (
-//     <Area
-//       key={`area-${country}`}
-//       name={country}
-//       dataKey={(d) => get(d.ranges, country)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
-//       stroke='none'
-//       fill={getCountryColor(geographyStyles, country)}
-//       fillOpacity={0.1}
-//       isAnimationActive={false}
-//       display={!shouldShowRanges ? 'none' : undefined}
-//     />
-//   )
-// }
-
 export interface VariantsPlotProps {
   variantName: string
 }

@@ -1,13 +1,15 @@
 import React, { useMemo } from 'react'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import { ColoredBox } from 'src/components/Common/ColoredBox'
-import { pathogenAtom } from 'src/state/pathogen.state'
-import styled from 'styled-components'
 import { Button, Col, Form, FormGroup, Row } from 'reactstrap'
-import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import styled from 'styled-components'
 import { CheckboxWithIcon } from 'src/components/Common/CheckboxWithIcon'
-import { variantAtom, variantsDisableAllAtom, variantsEnableAllAtom } from 'src/state/variants.state'
+import { ColoredBox } from 'src/components/Common/ColoredBox'
+import { fuzzySearch } from 'src/helpers/fuzzySearch'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Pathogen, useVariantsDataQuery, useVariantStyle } from 'src/io/getData'
+import { variantsSearchTermAtom } from 'src/state/geography.state'
+import { pathogenAtom } from 'src/state/pathogen.state'
+import { variantAtom, variantsDisableAllAtom, variantsEnableAllAtom } from 'src/state/variants.state'
 
 const Container = styled.div`
   display: flex;
@@ -16,21 +18,16 @@ const Container = styled.div`
 
 export function SidebarSectionVariants() {
   const pathogen = useRecoilValue(pathogenAtom)
-
-  const variantsComponents = useMemo(() => {
-    return (
-      <Row noGutters>
-        <Col>
-          <VariantsCheckboxes />
-        </Col>
-      </Row>
-    )
-  }, [])
-
+  const { variants } = useVariantsDataQuery(pathogen.name)
+  const [searchTerm] = useRecoilState(variantsSearchTermAtom)
+  const checkboxes = useMemo(
+    () => fuzzySearch(variants, searchTerm).map(({ item }) => <VariantsCheckbox key={item} variant={item} />),
+    [searchTerm, variants],
+  )
   return (
     <Container>
       <VariantsSelectAll pathogen={pathogen} />
-      {variantsComponents}
+      <Form>{checkboxes}</Form>
     </Container>
   )
 }
@@ -57,16 +54,6 @@ export function VariantsSelectAll({ pathogen }: VariantsSelectAllProps) {
       </Col>
     </Row>
   )
-}
-
-export function VariantsCheckboxes() {
-  const pathogen = useRecoilValue(pathogenAtom)
-  const { variants } = useVariantsDataQuery(pathogen.name)
-  const countryCheckboxes = useMemo(
-    () => variants.map((variant) => <VariantsCheckbox key={variant} variant={variant} />),
-    [variants],
-  )
-  return <Form>{countryCheckboxes}</Form>
 }
 
 export function VariantsCheckbox({ variant }: { variant: string }) {
