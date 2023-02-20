@@ -1,62 +1,62 @@
 {
   "countries": [
-    "New Zealand",
-    "Netherlands",
-    "Togo",
-    "Ukraine",
-    "Singapore",
-    "Belgium",
-    "Poland",
-    "Russia",
-    "Norway",
-    "Romania",
-    "Lebanon",
-    "Portugal",
-    "Thailand",
-    "Australia",
-    "United Kingdom",
-    "China",
-    "Argentina",
-    "Denmark",
-    "Sweden",
     "Brazil",
-    "Spain",
-    "Usa",
-    "Italy",
-    "France",
-    "Canada",
-    "Switzerland",
     "Chile",
+    "New Zealand",
+    "France",
+    "Togo",
+    "Denmark",
+    "Argentina",
+    "Singapore",
     "Slovenia",
+    "United Kingdom",
+    "Poland",
+    "Thailand",
+    "Switzerland",
+    "Russia",
+    "Belgium",
+    "Spain",
+    "Germany",
+    "China(PRC)",
+    "Norway",
+    "Lebanon",
+    "Netherlands",
     "Austria",
-    "Germany"
+    "Australia",
+    "Usa",
+    "Portugal",
+    "Italy",
+    "Romania",
+    "Canada",
+    "Ukraine",
+    "Sweden"
   ],
   "geography": {
     "Africa": [
       "Togo"
     ],
-    "China region": [
-      "China"
+    "China": [
+      "China(PRC)"
     ],
     "Europe": [
-      "Netherlands",
-      "United Kingdom",
-      "Denmark",
-      "Ukraine",
-      "Sweden",
-      "Spain",
-      "Italy",
-      "Belgium",
-      "Poland",
-      "France",
-      "Switzerland",
-      "Slovenia",
-      "Russia",
-      "Germany",
       "Norway",
-      "Romania",
+      "France",
+      "Netherlands",
+      "Denmark",
+      "Slovenia",
+      "United Kingdom",
       "Austria",
-      "Portugal"
+      "Poland",
+      "Portugal",
+      "Switzerland",
+      "Russia",
+      "Belgium",
+      "Italy",
+      "Ukraine",
+      "Romania",
+      "Spain",
+      "Germany",
+      "Sweden"
     ],
     "Japan Korea": [],
     "North America": [
@@ -118,8 +118,8 @@
       "color": "#79d2a0",
       "lineStyle": "normal"
     },
-    "China region": {
-      "color": "#5340bf",
+    "China(PRC)": {
+      "color": "#783a44",
       "lineStyle": "normal"
     },
     "Denmark": {
@@ -244,15 +244,15 @@
     }
   },
   "regions": [
-    "West Asia",
-    "Southeast Asia",
-    "North America",
-    "Europe",
-    "China region",
+    "South America",
     "Japan Korea",
+    "Southeast Asia",
+    "China",
     "South Asia",
-    "Africa",
+    "North America",
+    "West Asia",
     "Oceania",
-    "South America"
+    "Africa",
+    "Europe"
   ]
 }
