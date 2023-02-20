@@ -150,7 +150,7 @@ if __name__=='__main__':
                                         "variant":fcat,
                                         "freqMi":frequencies[fcat][k]['val'], "freqLo":frequencies[fcat][k]['lower'], "freqUp":frequencies[fcat][k]['upper']})
 
-    pl.DataFrame(output_dataschema={'date':str, 'region':str, 'country':str, 'variant':str,
+    pl.DataFrame(output_data, schema={'date':str, 'region':str, 'country':str, 'variant':str,
                                     'count':int, 'total':int,
                                     'freqMi':float, 'freqLo':float, 'freqUp':float})\
         .write_csv(args.output_csv, float_precision=4)
