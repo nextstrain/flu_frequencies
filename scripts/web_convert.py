@@ -43,70 +43,13 @@ def main():
 def process_one_pathogen(pathogen: dict, input_dir: str, output_dir: str):
     json_write(pathogen, join(output_dir, "pathogens", pathogen["name"], "pathogen.json"))
 
-    data = json_read(join(input_dir, f'{pathogen["name"]}.json'))
-    df = convert_pathogen_dict_to_dataframe(data)
+    df = csv_read(join(input_dir, f'{pathogen["name"]}.csv'))
+
+    print(df)
 
     process_geography(df, pathogen, output_dir)
 
     process_variants(df, pathogen, output_dir)
-
-
-def convert_pathogen_dict_to_dataframe(data: dict):
-    dates = data["dates"]
-    region_names = list(data.keys() - {"dates"})
-    rows = []
-    for region_name in region_names:
-        region_data = data[region_name]
-
-        # Region - wise data
-        # counts = region_data['counts']
-        # totals = region_data['totals']
-        frequencies = region_data['frequencies']
-
-        for variant_name, variant_values in frequencies.items():
-            for date_id, frequencies in variant_values.items():
-                rows.append({
-                    "date": dates[date_id],
-                    "region": region_name,
-                    "country": region_name,
-                    "variant": variant_name,
-                    "freqLo": frequencies["lower"],
-                    "freqMi": frequencies["val"],
-                    "freqHi": frequencies["upper"]
-                })
-
-        country_names = list(map(
-            lambda key: remove_prefix(key, "frequencies-"),
-            region_data.keys() - {'counts', 'totals', 'frequencies'}
-        ))
-
-        for country_name in country_names:
-            country = region_data[f'frequencies-{country_name}']
-
-            for variant_name, variant_values in country.items():
-                for date_id, frequencies in variant_values.items():
-                    rows.append({
-                        "date": dates[date_id],
-                        "region": region_name,
-                        "country": country_name,
-                        "variant": variant_name,
-                        "freqLo": frequencies["lower"],
-                        "freqMi": frequencies["val"],
-                        "freqHi": frequencies["upper"]
-                    })
-
-    return pl.from_dicts(
-        rows,
-        schema={
-            "date": str,
-            "region": str,
-            "country": str,
-            "variant": str,
-            "freqLo": pl.Float64,
-            "freqMi": pl.Float64,
-            "freqHi": pl.Float64
-        }
-    )
 
 
 def process_geography(df: pl.DataFrame, pathogen: dict, output_dir: str):
@@ -123,7 +66,7 @@ def process_geography(df: pl.DataFrame, pathogen: dict, output_dir: str):
 
                 ranges = country_date_df.select([
                     "variant",
-                    pl.concat_list(["freqLo", "freqHi"]).alias("range")
+                    pl.concat_list(["freqLo", "freqUp"]).alias("range")
                 ])
                 ranges = {variant: val_range for variant, val_range in ranges.iter_rows()}
 
@@ -155,7 +98,7 @@ def process_variants(df: pl.DataFrame, pathogen: dict, output_dir: str):
 
             ranges = variant_date_df.select([
                 "country",
-                pl.concat_list(["freqLo", "freqHi"]).alias("range")
+                pl.concat_list(["freqLo", "freqUp"]).alias("range")
             ])
             ranges = {country: val_range for country, val_range in ranges.iter_rows()}
 
@@ -213,6 +156,10 @@ def json_write(obj: Union[dict, list], filepath: str):
     ensure_dir(filepath)
     with open(filepath, "w") as f:
         json.dump(obj, f, indent=2, sort_keys=True)
+
+
+def csv_read(filepath: str):
+    return pl.read_csv(filepath)
 
 
 def csv_write(df: pl.DataFrame, filepath: str):
