@@ -1,4 +1,4 @@
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import React, { ComponentType, SVGProps, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import { EmptyIcon, GeoIconWrapper } from 'src/components/Common/GeoIconCommon'

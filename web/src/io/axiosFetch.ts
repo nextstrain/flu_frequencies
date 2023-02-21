@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { isNil } from 'lodash'
+import { isNil } from 'lodash-es'
 import serializeJavascript from 'serialize-javascript'
 import { ErrorInternal } from 'src/helpers/ErrorInternal'
 import { sanitizeError } from 'src/helpers/sanitizeError'

@@ -1,6 +1,6 @@
 import fs from 'fs-extra'
 import path from 'path'
-import { difference, isObject, padStart, isEmpty, get } from 'lodash'
+import { difference, isObject, padStart, isEmpty, get } from 'lodash-es'
 import { notUndefined } from '../src/helpers/notUndefined'
 import { safeZip } from '../src/helpers/safeZip'
 
@@ -162,6 +162,4 @@ function main() {
   })
 }
 
-if (require.main === module) {
-  main()
-}
+main()

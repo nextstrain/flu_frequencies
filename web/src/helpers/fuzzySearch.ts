@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash'
+import { isEmpty } from 'lodash-es'
 import Fuse from 'fuse.js'
 
 export function fuzzySearch(items: string[], searchTerm: string) {

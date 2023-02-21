@@ -7,7 +7,7 @@
 
 import React from 'react'
 import Head from 'next/head'
-import { get, noop } from 'lodash'
+import { get, noop } from 'lodash-es'
 
 export interface PlausibleProps {
   domain: string

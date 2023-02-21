@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { isString } from 'lodash'
+import { isString } from 'lodash-es'
 import { useTranslation } from 'react-i18next'
 
 export interface UseTranslationSafeResult {

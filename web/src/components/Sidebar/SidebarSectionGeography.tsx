@@ -1,4 +1,4 @@
-import { sortBy } from 'lodash'
+import { sortBy } from 'lodash-es'
 import React, { useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'

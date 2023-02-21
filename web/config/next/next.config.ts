@@ -1,11 +1,12 @@
-import { NextConfig } from 'next'
+import type { NextConfig } from 'next'
 import path from 'path'
-
-import { uniq } from 'lodash'
-
+import { uniq } from 'lodash-es'
 import getWithMDX from '@next/mdx'
-import withPlugins from 'next-compose-plugins'
-import getWithTranspileModules from 'next-transpile-modules'
+import remarkBreaks from 'remark-breaks'
+import remarkMath from 'remark-math'
+import remarkToc from 'remark-toc'
+import remarkSlug from 'remark-slug'
+import remarkImages from 'remark-images'
 
 import { findModuleRoot } from '../../lib/findModuleRoot'
 import { getGitBranch } from '../../lib/getGitBranch'
@@ -16,7 +17,6 @@ import { getEnvVars } from './lib/getEnvVars'
 
 import getWithExtraWatch from './withExtraWatch'
 import getWithFriendlyConsole from './withFriendlyConsole'
-import getWithLodash from './withLodash'
 import { getWithRobotsTxt } from './withRobotsTxt'
 import getWithTypeChecking from './withTypeChecking'
 import withoutDebugPackage from './withoutDebugPackage'
@@ -55,18 +55,32 @@ const clientEnv = {
   DATA_ROOT_URL,
 }
 
+const transpilationListDev = [
+  // prettier-ignore
+  'd3-scale',
+]
+
+const transpilationListProd = uniq([
+  // prettier-ignore
+  ...transpilationListDev,
+  'debug',
+  'lodash',
+  'react-share',
+  'recharts',
+  'semver',
+])
+
 const nextConfig: NextConfig = {
   distDir: `.build/${process.env.NODE_ENV}/tmp`,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx', 'all-contributorsrc'],
   onDemandEntries: {
-    maxInactiveAge: 60 * 1000,
-    pagesBufferLength: 2,
+    maxInactiveAge: 180 * 1000,
+    pagesBufferLength: 5,
   },
-  modern: false,
-  reactStrictMode: false,
-  reactRoot: true,
+  reactStrictMode: true,
   experimental: {
     scrollRestoration: true,
+    swcMinify: true,
   },
   swcMinify: true,
   productionBrowserSourceMaps: ENABLE_SOURCE_MAPS,
@@ -89,6 +103,7 @@ const nextConfig: NextConfig = {
     config.experiments.topLevelAwait = true
     return config
   },
+  transpilePackages: PRODUCTION ? transpilationListProd : transpilationListDev,
   async rewrites() {
     return [{ source: '/:any*', destination: '/' }]
   },
@@ -98,17 +113,12 @@ const withMDX = getWithMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [
-      // prettier-ignore
-      require('remark-breaks'),
-      require('remark-images'),
-      require('remark-math'),
-      require('remark-slug'),
-      [
-        require('remark-toc'),
-        {
-          tight: true,
-        },
-      ],
+      remarkBreaks,
+      remarkImages,
+      remarkMath,
+      remarkSlug,
+      [remarkToc, { tight: true }],
+
       // [
       //   require('remark-autolink-headings'),
       //   {
@@ -128,8 +138,6 @@ const withMDX = getWithMDX({
 const withFriendlyConsole = getWithFriendlyConsole({
   clearConsole: false,
   projectRoot: path.resolve(moduleRoot),
-  packageName: pkg.name || 'web',
-  progressBarColor: '#3a5f0b',
 })
 
 const withExtraWatch = getWithExtraWatch({
@@ -137,52 +145,36 @@ const withExtraWatch = getWithExtraWatch({
   dirs: [],
 })
 
-const withLodash = getWithLodash({ unicode: false })
-
 const withTypeChecking = getWithTypeChecking({
   typeChecking: ENABLE_TYPE_CHECKS,
   eslint: ENABLE_ESLINT,
   memoryLimit: 4096,
 })
 
-const transpilationListDev = [
-  // prettier-ignore
-  'd3-scale',
-]
-
-const transpilationListProd = uniq([
-  // prettier-ignore
-  ...transpilationListDev,
-  'debug',
-  'lodash',
-  'react-share',
-  'recharts',
-  'semver',
-])
-
-const withTranspileModules = getWithTranspileModules(PRODUCTION ? transpilationListProd : transpilationListDev)
-
 const withRobotsTxt = getWithRobotsTxt(`User-agent: *\nDisallow:${BRANCH_NAME === 'release' ? '' : ' *'}\n`)
 
-const config = withPlugins(
-  [
-    [withIgnore],
-    [withExtraWatch],
-    [withSvg],
-    [withFriendlyConsole],
-    [withMDX],
-    [withLodash],
-    [withTypeChecking],
-    [withTranspileModules],
-    PROFILE && [withoutMinification],
-    WATCH_POLL && [withWebpackWatchPoll],
-    [withFriendlyChunkNames],
-    [withResolve],
-    [withRobotsTxt],
-    [withUrlAsset],
-    PRODUCTION && [withoutDebugPackage],
-  ].filter(Boolean),
-  nextConfig,
-)
+export default function config(phase: string, defaultConfig: NextConfig) {
+  const plugins = [
+    withIgnore,
+    withExtraWatch,
+    withSvg,
+    withFriendlyConsole,
+    withMDX,
+    withTypeChecking,
+    PROFILE && withoutMinification,
+    WATCH_POLL && withWebpackWatchPoll,
+    withFriendlyChunkNames,
+    withResolve,
+    withRobotsTxt,
+    withUrlAsset,
+    PRODUCTION && withoutDebugPackage,
+  ].filter(Boolean)
 
-export default config
+  return plugins.reduce(
+    (acc, plugin) => {
+      const update = plugin(acc)
+      return typeof update === 'function' ? update(phase, defaultConfig) : update
+    },
+    { ...nextConfig },
+  )
+}

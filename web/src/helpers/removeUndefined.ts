@@ -1,4 +1,4 @@
-import { pickBy, identity } from 'lodash'
+import { pickBy, identity } from 'lodash-es'
 
 /**
  * Removes object keys which have `undefined` value

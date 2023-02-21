@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import urljoin from 'url-join'
 import { ServerStyleSheet } from 'styled-components'
 import NextDocument, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'

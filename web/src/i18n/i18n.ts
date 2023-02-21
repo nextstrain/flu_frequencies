@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import type { StrictOmit } from 'ts-essentials'
-import { get, isNil, mapValues } from 'lodash'
+import { get, isNil, mapValues } from 'lodash-es'
 import i18nOriginal, { i18n as I18N, Resource } from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import { Settings as LuxonSettings } from 'luxon'

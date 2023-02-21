@@ -1,6 +1,6 @@
-import fs from 'fs-extra'
+import fs from 'fs-extra/esm'
 import path from 'path'
-import { sortBy, uniqBy } from 'lodash'
+import { sortBy, uniqBy } from 'lodash-es'
 import { I18N_RESOURCES_DIR, I18N_RESOURCES_DEFAULT_LOCALE_FILE, readJson } from './fixLocales'
 
 const ADDITIONAL_KEYS_FILE = path.join(I18N_RESOURCES_DIR, '../additional_keys.json')
@@ -20,4 +20,6 @@ function main() {
   fs.writeJsonSync(I18N_RESOURCES_DEFAULT_LOCALE_FILE, newJson, { spaces: 2 })
 }
 
-main()
+if (import.meta.url.endsWith(process.argv[1])) {
+  main()
+}

@@ -1,6 +1,6 @@
 import type { QueriesOptions, QueryKey, UseQueryOptions } from '@tanstack/react-query'
 import { useQuery } from '@tanstack/react-query'
-import { keys, values, zip } from 'lodash'
+import { keys, values, zip } from 'lodash-es'
 import { useMemo } from 'react'
 import { ErrorInternal } from 'src/helpers/ErrorInternal'
 import { axiosFetch } from 'src/io/axiosFetch'

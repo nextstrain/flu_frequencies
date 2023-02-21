@@ -1,6 +1,5 @@
 import FriendlyErrorsWebpackPlugin from '@nuxt/friendly-errors-webpack-plugin'
-import { NextConfig } from 'next'
-import WebpackBar from 'webpackbar'
+import type { NextConfig } from 'next'
 import { addWebpackPlugin } from './lib/addWebpackPlugin'
 
 interface FriendlyErrorsWebpackPluginError {
@@ -26,14 +25,12 @@ function stripProjectRoot(projectRoot: string) {
 export interface WithFriendlyConsoleParams {
   clearConsole: boolean
   projectRoot: string
-  packageName: string
-  progressBarColor: string
 }
 
 const getWithFriendlyConsole =
-  ({ clearConsole, projectRoot, packageName, progressBarColor }: WithFriendlyConsoleParams) =>
+  ({ clearConsole, projectRoot }: WithFriendlyConsoleParams) =>
   (nextConfig: NextConfig) => {
-    const cfg = addWebpackPlugin(
+    return addWebpackPlugin(
       nextConfig,
       new FriendlyErrorsWebpackPlugin({
         clearConsole,
@@ -41,8 +38,6 @@ const getWithFriendlyConsole =
         additionalFormatters: [],
       }),
     )
-
-    return addWebpackPlugin(cfg, new WebpackBar({ name: packageName, color: progressBarColor }))
   }
 
 export default getWithFriendlyConsole

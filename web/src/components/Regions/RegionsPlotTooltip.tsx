@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { get, isNil, reverse, sortBy, uniqBy } from 'lodash'
+import { get, isNil, reverse, sortBy, uniqBy } from 'lodash-es'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { useVariantStyle } from 'src/io/getData'

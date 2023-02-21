@@ -1,17 +1,11 @@
 import path from 'path'
+import { readJSONSync } from 'fs-extra/esm'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
-
 import type { NextConfig } from 'next'
 import { addWebpackPlugin } from './lib/addWebpackPlugin'
-
 import { findModuleRoot } from '../../lib/findModuleRoot'
-import tsConfig from '../../tsconfig.json'
 
 const { moduleRoot } = findModuleRoot()
-
-export interface CreateFormatterParams {
-  warningsAreErrors: boolean
-}
 
 export interface GetWithTypeCheckingParams {
   eslint: boolean
@@ -26,6 +20,8 @@ const getWithTypeChecking =
     if (!typeChecking && !eslint) {
       return nextConfig
     }
+
+    const tsConfig = readJSONSync('tsconfig.json')
 
     return addWebpackPlugin(
       nextConfig,

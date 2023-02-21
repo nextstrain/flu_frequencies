@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { PropsWithChildren, Suspense, useCallback, useEffect, useMemo } from 'react'
 import { QueryClient, QueryClientConfig, QueryClientProvider } from '@tanstack/react-query'
-import { MutableSnapshot, RecoilRoot, useRecoilCallback } from 'recoil'
+import { MutableSnapshot, RecoilRoot, RecoilEnv, useRecoilCallback } from 'recoil'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import type { AppProps } from 'next/app'
 import { RegionsPage } from 'src/components/Regions/RegionsPage'
@@ -30,6 +30,8 @@ import 'src/styles/global.scss'
 import { pathogenAtom } from 'src/state/pathogen.state'
 
 const NotFoundPage = dynamic(() => import('src/pages/404'))
+
+RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
 
 const REACT_QUERY_OPTIONS: QueryClientConfig = {
   defaultOptions: {

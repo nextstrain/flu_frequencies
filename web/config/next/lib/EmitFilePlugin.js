@@ -4,10 +4,10 @@
  * @author Kir_Antipov
  * See LICENSE.md file in root directory for full license.
  */
+import { Buffer } from 'buffer'
+import path from 'path'
+import webpack from 'webpack'
 
-const { Buffer } = require('buffer')
-const path = require('path')
-const webpack = require('webpack')
 const version = +webpack.version.split('.')[0]
 // Webpack 5 exposes the sources property to ensure the right version of webpack-sources is used.
 // require('webpack-sources') approach may result in the "Cannot find module 'webpack-sources'" error.
@@ -138,4 +138,4 @@ function emitFile(options, compilation, resolve) {
   })
 }
 
-module.exports = EmitFilePlugin
+export default EmitFilePlugin

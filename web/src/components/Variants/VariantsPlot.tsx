@@ -1,4 +1,4 @@
-import { get, maxBy, minBy } from 'lodash'
+import { get, maxBy, minBy } from 'lodash-es'
 import { Interval } from 'luxon'
 import React, { useMemo } from 'react'
 import { useTheme } from 'styled-components'

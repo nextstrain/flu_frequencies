@@ -1,4 +1,4 @@
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import { axiosFetch } from 'src/io/axiosFetch'
 import urljoin from 'url-join'
 import { useAxiosQueries, useAxiosQuery } from 'src/hooks/useAxiosQuery'

@@ -1,4 +1,4 @@
-import { get } from 'lodash'
+import { get } from 'lodash-es'
 import React, { useMemo } from 'react'
 import iso3311a2 from 'iso-3166-1-alpha-2'
 import flags from 'country-flag-icons/react/3x2'

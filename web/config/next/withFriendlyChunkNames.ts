@@ -1,4 +1,4 @@
-import { unset } from 'lodash'
+import { unset } from 'lodash-es'
 
 import type { NextConfig } from 'next'
 import { addWebpackConfig } from './lib/addWebpackConfig'

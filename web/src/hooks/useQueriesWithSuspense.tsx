@@ -7,7 +7,7 @@
  */
 
 import * as React from 'react'
-import { isNil, zip } from 'lodash'
+import { isNil, zip } from 'lodash-es'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 import { useSyncExternalStore } from 'use-sync-external-store/shim'
 import { notifyManager, QueriesObserver } from '@tanstack/query-core'

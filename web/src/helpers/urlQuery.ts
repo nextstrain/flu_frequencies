@@ -1,4 +1,4 @@
-import { omit } from 'lodash'
+import { omit } from 'lodash-es'
 import { merge } from 'merge-anything'
 import Router from 'next/router'
 import type { ParsedUrlQuery } from 'querystring'
