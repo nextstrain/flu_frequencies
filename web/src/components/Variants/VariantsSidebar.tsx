@@ -8,13 +8,17 @@ import { Sidebar, SidebarSection, SidebarSectionCollapsible } from 'src/componen
 import { geographySearchTermAtom } from 'src/state/geography.state'
 import { VariantsPlotSettings } from './VariantsPlotSettings'
 
-export function VariantsSidebar() {
+export interface VariantsSidebarProps {
+  pathogenName: string
+}
+
+export function VariantsSidebar({ pathogenName }: VariantsSidebarProps) {
   const { t } = useTranslationSafe()
   const geographyHeader = useMemo(() => <GeographySectionHeader />, [])
   return (
     <Sidebar>
       <SidebarSection header={geographyHeader}>
-        <SidebarSectionGeography />
+        <SidebarSectionGeography pathogenName={pathogenName} />
       </SidebarSection>
       <SidebarSectionCollapsible header={t('Settings')} recoilState={isSidebarSettingsCollapsedAtom}>
         <VariantsPlotSettings />

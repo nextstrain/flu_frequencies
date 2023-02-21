@@ -1,24 +1,26 @@
 import React, { Suspense } from 'react'
 import { Col, Container, Row } from 'reactstrap'
-import { useRecoilValue } from 'recoil'
-import { pathogenAtom } from 'src/state/pathogen.state'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { useRegionsDataQuery } from 'src/io/getData'
+import { usePathogen, useRegionsDataQuery } from 'src/io/getData'
 import { RegionsPlot } from 'src/components/Regions/RegionsPlot'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { PageContainerHorizontal, PageMainWrapper } from 'src/components/Layout/PageContainer'
 import { RegionsSidebar } from 'src/components/Regions/RegionsSidebar'
 import { LOADING } from 'src/components/Loading/Loading'
 
-export function RegionsPage() {
+export interface RegionsPageProps {
+  pathogenName: string
+}
+
+export function RegionsPage({ pathogenName }: RegionsPageProps) {
   const { t } = useTranslationSafe()
-  const pathogen = useRecoilValue(pathogenAtom)
+  const pathogen = usePathogen(pathogenName)
   const { regions, countries } = useRegionsDataQuery(pathogen.name)
 
   return (
     <Suspense fallback={LOADING}>
       <PageContainerHorizontal>
-        <RegionsSidebar />
+        <RegionsSidebar pathogenName={pathogenName} />
 
         <PageMainWrapper>
           <Row noGutters>

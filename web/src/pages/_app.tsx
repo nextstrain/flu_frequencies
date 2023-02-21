@@ -3,14 +3,13 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global'
 import Route from 'route-parser'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import React, { PropsWithChildren, Suspense, useCallback, useEffect, useMemo } from 'react'
+import React, { PropsWithChildren, Suspense, useEffect, useMemo } from 'react'
 import { QueryClient, QueryClientConfig, QueryClientProvider } from '@tanstack/react-query'
-import { MutableSnapshot, RecoilRoot, RecoilEnv, useRecoilCallback } from 'recoil'
+import { RecoilRoot, RecoilEnv, useRecoilCallback } from 'recoil'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import type { AppProps } from 'next/app'
 import NextProgress from 'next-progress'
 import { RegionsPage } from 'src/components/Regions/RegionsPage'
-import { fetchPathogen } from 'src/io/getData'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 import { I18nextProvider } from 'react-i18next'
@@ -27,7 +26,6 @@ import { PathogenPage } from 'src/components/Pathogen/PathogenPage'
 import { VariantsPage } from 'src/components/Variants/VariantsPage'
 import { localeAtom } from 'src/state/locale.state'
 import 'src/styles/global.scss'
-import { pathogenAtom } from 'src/state/pathogen.state'
 
 const NotFoundPage = dynamic(() => import('src/pages/404'))
 
@@ -93,26 +91,26 @@ function matchRoute<T extends Record<string, string | undefined>>(asPath: string
 function Router({ children }: PropsWithChildren) {
   const { asPath, route } = useRouter()
 
-  const { Component, pathogenName } = useMemo(() => {
+  const { Component } = useMemo(() => {
     {
       const match = matchRoute(asPath, '/pathogen/:pathogenName')
       if (match) {
         const { pathogenName } = match
-        return { Component: <PathogenPage />, pathogenName }
+        return { Component: <PathogenPage pathogenName={pathogenName} />, pathogenName }
       }
     }
     {
       const match = matchRoute(asPath, '/pathogen/:pathogenName/variants')
       if (match) {
         const { pathogenName } = match
-        return { Component: <VariantsPage />, pathogenName }
+        return { Component: <VariantsPage pathogenName={pathogenName} />, pathogenName }
       }
     }
     {
       const match = matchRoute(asPath, '/pathogen/:pathogenName/regions')
       if (match) {
         const { pathogenName } = match
-        return { Component: <RegionsPage />, pathogenName }
+        return { Component: <RegionsPage pathogenName={pathogenName} />, pathogenName }
       }
     }
 
@@ -123,21 +121,8 @@ function Router({ children }: PropsWithChildren) {
     return { Component: children }
   }, [asPath, children, route])
 
-  const initializeState = useCallback(
-    ({ set }: MutableSnapshot) => {
-      if (pathogenName) {
-        void fetchPathogen(pathogenName) // eslint-disable-line no-void
-          .then((pathogen) => set(pathogenAtom, pathogen))
-          .catch((error) => {
-            throw error
-          })
-      }
-    },
-    [pathogenName],
-  )
-
   return (
-    <RecoilRoot initializeState={initializeState}>
+    <RecoilRoot>
       <RecoilStateInitializer />
       <MDXProvider components={getMdxComponents}>
         <Layout>
@@ -178,6 +163,4 @@ async function run() {
   return MyApp
 }
 
-export default dynamic(() => run(), {
-  ssr: false,
-})
+export default dynamic(() => run(), { ssr: false })

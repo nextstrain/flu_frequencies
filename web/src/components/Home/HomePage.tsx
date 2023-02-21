@@ -1,6 +1,6 @@
 import React, { Fragment, Suspense } from 'react'
 import { Col, Row } from 'reactstrap'
-import { LinkExternal } from 'src/components/Link/LinkExternal'
+import { Link } from 'src/components/Link/Link'
 import { Pathogen } from 'src/io/getData'
 import urljoin from 'url-join'
 import { useAxiosQuery } from 'src/hooks/useAxiosQuery'
@@ -34,14 +34,10 @@ export function HomePage() {
               {pathogens.map((pathogen) => (
                 <Fragment key={pathogen.name}>
                   <li>
-                    <LinkExternal
-                      href={`/pathogen/${pathogen.name}/variants`}
-                    >{`/pathogen/${pathogen.name}/variants`}</LinkExternal>
+                    <Link href={`/pathogen/${pathogen.name}/variants`}>{`/pathogen/${pathogen.name}/variants`}</Link>
                   </li>
                   <li>
-                    <LinkExternal
-                      href={`/pathogen/${pathogen.name}/regions`}
-                    >{`/pathogen/${pathogen.name}/regions`}</LinkExternal>
+                    <Link href={`/pathogen/${pathogen.name}/regions`}>{`/pathogen/${pathogen.name}/regions`}</Link>
                   </li>
                 </Fragment>
               ))}

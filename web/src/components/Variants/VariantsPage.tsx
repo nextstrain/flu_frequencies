@@ -1,24 +1,26 @@
 import React, { Suspense } from 'react'
 import { Col, Container, Row } from 'reactstrap'
-import { useRecoilValue } from 'recoil'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { VariantsPlot } from 'src/components/Variants/VariantsPlot'
 import { VariantsSidebar } from 'src/components/Variants/VariantsSidebar'
 import { PageContainerHorizontal, PageMainWrapper } from 'src/components/Layout/PageContainer'
-import { pathogenAtom } from 'src/state/pathogen.state'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LOADING } from 'src/components/Loading/Loading'
-import { useVariantsDataQuery } from 'src/io/getData'
+import { usePathogen, useVariantsDataQuery } from 'src/io/getData'
 
-export function VariantsPage() {
+export interface VariantsPageProps {
+  pathogenName: string
+}
+
+export function VariantsPage({ pathogenName }: VariantsPageProps) {
   const { t } = useTranslationSafe()
-  const pathogen = useRecoilValue(pathogenAtom)
+  const pathogen = usePathogen(pathogenName)
   const { variants } = useVariantsDataQuery(pathogen.name)
 
   return (
     <Suspense fallback={LOADING}>
       <PageContainerHorizontal>
-        <VariantsSidebar />
+        <VariantsSidebar pathogenName={pathogenName} />
 
         <PageMainWrapper>
           <Row noGutters>
@@ -33,7 +35,7 @@ export function VariantsPage() {
                   <Row key={variant} noGutters className="mb-5">
                     <Col>
                       <h3 className="text-center">{variant}</h3>
-                      <VariantsPlot variantName={variant} />
+                      <VariantsPlot pathogenName={pathogenName} variantName={variant} />
                     </Col>
                   </Row>
                 ))}

@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react'
 import { Button, Col, Form, FormGroup, Row } from 'reactstrap'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import styled from 'styled-components'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { fuzzySearch } from 'src/helpers/fuzzySearch'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { Pathogen, useVariantsDataQuery, useVariantStyle } from 'src/io/getData'
+import { Pathogen, usePathogen, useVariantsDataQuery, useVariantStyle } from 'src/io/getData'
 import { variantsSearchTermAtom } from 'src/state/geography.state'
-import { pathogenAtom } from 'src/state/pathogen.state'
 import { variantAtom, variantsDisableAllAtom, variantsEnableAllAtom } from 'src/state/variants.state'
 import { CheckboxWithIcon } from 'src/components/Common/Checkbox'
 
@@ -16,13 +15,20 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-export function SidebarSectionVariants() {
-  const pathogen = useRecoilValue(pathogenAtom)
-  const { variants } = useVariantsDataQuery(pathogen.name)
+export interface SidebarSectionVariantsProps {
+  pathogenName: string
+}
+
+export function SidebarSectionVariants({ pathogenName }: SidebarSectionVariantsProps) {
+  const pathogen = usePathogen(pathogenName)
+  const { variants } = useVariantsDataQuery(pathogenName)
   const [searchTerm] = useRecoilState(variantsSearchTermAtom)
   const checkboxes = useMemo(
-    () => fuzzySearch(variants, searchTerm).map(({ item }) => <VariantsCheckbox key={item} variant={item} />),
-    [searchTerm, variants],
+    () =>
+      fuzzySearch(variants, searchTerm).map(({ item }) => (
+        <VariantsCheckbox pathogenName={pathogenName} key={item} variant={item} />
+      )),
+    [pathogenName, searchTerm, variants],
   )
   return (
     <Container>
@@ -56,8 +62,13 @@ export function VariantsSelectAll({ pathogen }: VariantsSelectAllProps) {
   )
 }
 
-export function VariantsCheckbox({ variant }: { variant: string }) {
-  const pathogen = useRecoilValue(pathogenAtom)
+export interface VariantsCheckboxProps {
+  pathogenName: string
+  variant: string
+}
+
+export function VariantsCheckbox({ pathogenName, variant }: VariantsCheckboxProps) {
+  const pathogen = usePathogen(pathogenName)
   const { color } = useVariantStyle(pathogen.name, variant)
   const [variantEnabled, setVariantEnabled] = useRecoilState(variantAtom({ pathogen: pathogen.name, variant }))
   const Icon = useMemo(() => <ColoredBox $color={color} $size={16} />, [color])

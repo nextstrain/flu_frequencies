@@ -8,13 +8,17 @@ import { SidebarSectionVariants } from 'src/components/Sidebar/SidebarSectionVar
 import { Sidebar, SidebarSection, SidebarSectionCollapsible } from 'src/components/Sidebar/SidebarCard'
 import { RegionsPlotSettings } from './RegionsPlotSettings'
 
-export function RegionsSidebar() {
+export interface RegionsSidebarProps {
+  pathogenName: string
+}
+
+export function RegionsSidebar({ pathogenName }: RegionsSidebarProps) {
   const { t } = useTranslationSafe()
   const variantsHeader = useMemo(() => <VariantsSectionHeader />, [])
   return (
     <Sidebar>
       <SidebarSection header={variantsHeader}>
-        <SidebarSectionVariants />
+        <SidebarSectionVariants pathogenName={pathogenName} />
       </SidebarSection>
       <SidebarSectionCollapsible header={t('Settings')} recoilState={isSidebarSettingsCollapsedAtom}>
         <RegionsPlotSettings />

@@ -1,5 +1,4 @@
 import { get } from 'lodash-es'
-import { axiosFetch } from 'src/io/axiosFetch'
 import urljoin from 'url-join'
 import { useAxiosQueries, useAxiosQuery } from 'src/hooks/useAxiosQuery'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
@@ -72,8 +71,8 @@ export function useRegionsDataQuery(pathogenName: string): GeographyData {
   return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'geography.json'))
 }
 
-export function fetchPathogen(pathogenName: string) {
-  return axiosFetch<Pathogen>(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'pathogen.json'))
+export function usePathogen(pathogenName: string): Pathogen {
+  return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'pathogen.json'))
 }
 
 export interface ItemStyle {

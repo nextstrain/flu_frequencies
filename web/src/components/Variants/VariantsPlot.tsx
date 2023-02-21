@@ -8,9 +8,14 @@ import { ChartContainer } from 'src/components/Charts/ChartContainer'
 import { VariantsPlotTooltip } from 'src/components/Variants/VariantsPlotTooltip'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { dateFromYmd, formatDateHumanely, formatProportion, ymdToTimestamp } from 'src/helpers/format'
-import { getCountryColor, getCountryStrokeDashArray, useVariantDataQuery, VariantDatum } from 'src/io/getData'
+import {
+  getCountryColor,
+  getCountryStrokeDashArray,
+  usePathogen,
+  useVariantDataQuery,
+  VariantDatum,
+} from 'src/io/getData'
 import { continentsAtom, countriesAtom } from 'src/state/geography.state'
-import { pathogenAtom } from 'src/state/pathogen.state'
 import { shouldShowRangesOnVariantsPlotAtom } from 'src/state/settings.state'
 
 export function calculateTicks(data: VariantDatum[], availableWidth: number, tickWidth: number) {
@@ -40,12 +45,13 @@ const tooltipStyle = { zIndex: 1000, outline: 'none' }
 interface LinePlotProps {
   width: number
   height: number
+  pathogenName: string
   variantName: string
 }
 
-function LinePlot({ width, height, variantName }: LinePlotProps) {
+function LinePlot({ width, height, pathogenName, variantName }: LinePlotProps) {
   const theme = useTheme()
-  const pathogen = useRecoilValue(pathogenAtom)
+  const pathogen = usePathogen(pathogenName)
   const shouldShowRanges = useRecoilValue(shouldShowRangesOnVariantsPlotAtom)
   const regions = useRecoilValue(continentsAtom(pathogen.name))
   const countries = useRecoilValue(countriesAtom(pathogen.name))
@@ -152,13 +158,16 @@ function LinePlot({ width, height, variantName }: LinePlotProps) {
 }
 
 export interface VariantsPlotProps {
+  pathogenName: string
   variantName: string
 }
 
-export function VariantsPlot({ variantName }: VariantsPlotProps) {
+export function VariantsPlot({ pathogenName, variantName }: VariantsPlotProps) {
   return (
     <ChartContainer>
-      {({ width, height }) => <LinePlot width={width} height={height} variantName={variantName} />}
+      {({ width, height }) => (
+        <LinePlot width={width} height={height} pathogenName={pathogenName} variantName={variantName} />
+      )}
     </ChartContainer>
   )
 }

@@ -1,15 +1,18 @@
 import React, { Suspense } from 'react'
 import { Col, Row } from 'reactstrap'
-import { useRecoilValue } from 'recoil'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { PageContainerNarrow } from 'src/components/Layout/PageContainer'
 import { LOADING } from 'src/components/Loading/Loading'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { pathogenAtom } from 'src/state/pathogen.state'
+import { usePathogen } from 'src/io/getData'
 
-export function PathogenPage() {
+export interface PathogenPageProps {
+  pathogenName: string
+}
+
+export function PathogenPage({ pathogenName }: PathogenPageProps) {
   const { t } = useTranslationSafe()
-  const pathogen = useRecoilValue(pathogenAtom)
+  const pathogen = usePathogen(pathogenName)
 
   return (
     <Suspense fallback={LOADING}>
