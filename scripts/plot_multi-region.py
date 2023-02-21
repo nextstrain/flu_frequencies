@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import polars as pl
 import numpy as np
+import json
 
 if __name__=='__main__':
     import argparse

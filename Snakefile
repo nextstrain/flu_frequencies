@@ -168,12 +168,17 @@ rule multi_region_plot_clades:
                     'North_America',
                     'South_America',
                     'South_Asia',
+                    'Southeast_Asia',
+                    'West_Asia',
                     'Oceania'
                 ],
         max_freq = 0.2
     shell:
         """
-        python3 scripts/plot_multi-region.py --frequencies {input.freqs} --regions {params.regions}  --max-freq {params.max_freq} --output {output.plot}
+        python3 scripts/plot_multi-region.py --frequencies {input.freqs}  \
+                --regions {params.regions}  --max-freq {params.max_freq} \
+                --auspice-config data/auspice_config.json \
+                --output {output.plot}
         """
 
 rule multi_region_plot_mutation:
@@ -187,6 +192,8 @@ rule multi_region_plot_mutation:
                     'North_America',
                     'South_America',
                     'South_Asia',
+                    'Southeast_Asia',
+                    'West_Asia',
                     'Oceania'
                 ],
         max_freq = 0.2
