@@ -123,10 +123,12 @@ function Router({ children }: PropsWithChildren) {
 
   return (
     <RecoilRoot>
-      <RecoilStateInitializer />
       <MDXProvider components={getMdxComponents}>
         <Layout>
-          <Suspense fallback={LOADING}>{Component}</Suspense>
+          <Suspense fallback={LOADING}>
+            <RecoilStateInitializer />
+            {Component}
+          </Suspense>
         </Layout>
       </MDXProvider>
     </RecoilRoot>

@@ -1,6 +1,5 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { Col, Row } from 'reactstrap'
-import { LOADING } from 'src/components/Loading/Loading'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { PageContainerNarrow } from 'src/components/Layout/PageContainer'
@@ -10,20 +9,18 @@ export function FaqPage() {
   const { t } = useTranslationSafe()
 
   return (
-    <Suspense fallback={LOADING}>
-      <PageContainerNarrow>
-        <Row noGutters>
-          <Col>
-            <PageHeading>{t('Frequently asked questions')}</PageHeading>
-          </Col>
-        </Row>
+    <PageContainerNarrow>
+      <Row noGutters>
+        <Col>
+          <PageHeading>{t('Frequently asked questions')}</PageHeading>
+        </Col>
+      </Row>
 
-        <Row noGutters>
-          <Col>
-            <MdxContent filepath="Faq.md" />
-          </Col>
-        </Row>
-      </PageContainerNarrow>
-    </Suspense>
+      <Row noGutters>
+        <Col>
+          <MdxContent filepath="Faq.md" />
+        </Col>
+      </Row>
+    </PageContainerNarrow>
   )
 }
