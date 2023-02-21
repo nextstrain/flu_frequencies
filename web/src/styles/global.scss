@@ -1,7 +1,7 @@
 @use 'sass:map';
 
-@import '~typeface-open-sans/index.css';
-@import '~typeface-droid-sans-mono/index.css';
+@import '../../node_modules/typeface-open-sans';
+@import '../../node_modules/typeface-droid-sans-mono';
 @import './font-family-system';
 
 @import './variables';

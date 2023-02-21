@@ -1,6 +1,5 @@
 import 'reflect-metadata'
 import 'resize-observer-polyfill/dist/ResizeObserver.global'
-import 'css.escape'
 import Route from 'route-parser'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'

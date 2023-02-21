@@ -125,7 +125,7 @@ export async function main() {
 
   await replace(
     ['node_modules/next/dist/build/output/store.js', 'node_modules/next/dist/esm/build/output/store.js'],
-    "Log.wait('compiling...');",
+    'Log.wait("compiling...");',
   )
 
   await replace(
@@ -153,12 +153,6 @@ export async function main() {
     'console.warn(_chalk.default.yellow.bold("Warning: ") + `For production Image Optimization with Next.js, the optional \'sharp\' package is strongly recommended. Run \'yarn add sharp\', and Next.js will use it automatically for Image Optimization.\\n` + "Read more: https://nextjs.org/docs/messages/sharp-missing-in-production");',
   )
 
-  // From fork-ts-checker-webpack-plugin
-  await replace(
-    'node_modules/fork-ts-checker-webpack-plugin/lib/hooks/tapDoneToAsyncGetIssues.js',
-    "configuration.logger.issues.log(chalk_1.default.cyan('Issues checking in progress...'));",
-  )
-
   // Fix timestamp in @nuxt/friendly-errors-webpack-plugin
   await replace(
     'node_modules/@nuxt/friendly-errors-webpack-plugin/src/reporters/base.js',
@@ -173,4 +167,4 @@ export async function main() {
   })
 }
 
-main().catch(console.error)
+await main()

@@ -1,7 +1,6 @@
-import { MDXProviderComponents } from '@mdx-js/react'
 import styled, { css } from 'styled-components'
-
 import { LinkSmart } from 'src/components/Link/LinkSmart'
+import type { MDXComponents } from 'mdx/types'
 
 export const CodeCommon = css`
   padding: 1px 5px;
@@ -34,6 +33,6 @@ export const mdxComponents = {
   p: P,
 }
 
-export function getMdxComponents(components: MDXProviderComponents): MDXProviderComponents {
+export function getMdxComponents(components: MDXComponents): MDXComponents {
   return { ...components, ...mdxComponents }
 }
