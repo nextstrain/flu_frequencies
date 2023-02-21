@@ -1,5 +1,5 @@
 import React from 'react'
-import ErrorPage from './_error'
+import ErrorPage from './ErrorPage'
 
 export default function InternalServerErrorPage() {
   const error: Error & { statusCode?: number } = new Error('Internal server error')

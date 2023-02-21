@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import ErrorPage from './_error'
+import ErrorPage from './ErrorPage'
 
 export default function NotFoundPage() {
   const { asPath } = useRouter()

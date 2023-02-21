@@ -79,6 +79,7 @@ const nextConfig: NextConfig = {
   },
   reactStrictMode: true,
   experimental: {
+    appDir: true,
     scrollRestoration: true,
     swcMinify: true,
   },

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 
 import { ErrorBoundary as ErrorBoundaryBase, FallbackProps } from 'react-error-boundary'
-import ErrorPage from 'src/pages/_error'
+import ErrorPage from './ErrorPage'
 
 export function ErrorFallback({ error }: FallbackProps) {
   return <ErrorPage error={error} />
