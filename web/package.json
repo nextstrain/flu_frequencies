@@ -88,6 +88,7 @@
     "marked": "4.2.12",
     "merge-anything": "5.1.4",
     "next": "13.1.6",
+    "next-progress": "2.2.0",
     "numbro": "2.3.6",
     "papaparse": "5.3.2",
     "polished": "4.2.2",

@@ -8,6 +8,7 @@ import { QueryClient, QueryClientConfig, QueryClientProvider } from '@tanstack/r
 import { MutableSnapshot, RecoilRoot, RecoilEnv, useRecoilCallback } from 'recoil'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import type { AppProps } from 'next/app'
+import NextProgress from 'next-progress'
 import { RegionsPage } from 'src/components/Regions/RegionsPage'
 import { fetchPathogen } from 'src/io/getData'
 import { ThemeProvider } from 'styled-components'
@@ -45,6 +46,8 @@ const REACT_QUERY_OPTIONS: QueryClientConfig = {
     },
   },
 }
+
+const NEXT_PROGRESS_OPTIONS = { showSpinner: false }
 
 export function RecoilStateInitializer() {
   // const router = useRouter()
@@ -155,6 +158,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <ThemeProvider theme={theme}>
             <I18nextProvider i18n={i18n}>
               <Plausible domain={DOMAIN_STRIPPED} />
+              <NextProgress delay={100} options={NEXT_PROGRESS_OPTIONS} />
               <Suspense fallback={LOADING}>
                 <Router>
                   <Component {...pageProps} />
