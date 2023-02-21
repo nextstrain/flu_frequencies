@@ -78,7 +78,10 @@ const nextConfig: NextConfig = {
     pagesBufferLength: 5,
   },
   reactStrictMode: true,
+  cleanDistDir: true,
   experimental: {
+    legacyBrowsers: true,
+    newNextLinkBehavior: true,
     scrollRestoration: true,
     swcMinify: true,
   },
