@@ -15,9 +15,9 @@ export function Checkbox({ title, checked, setChecked, children }: CheckboxProps
   }, [setChecked])
 
   return (
-    <FormGroup check title={title}>
-      <Label check>
-        <Input type="checkbox" checked={checked} onChange={onChange} />
+    <FormGroup check onClick={onChange}>
+      <Input id={title} type="checkbox" checked={checked} />
+      <Label htmlFor={title} check>
         {children}
       </Label>
     </FormGroup>
@@ -34,9 +34,9 @@ export function CheckboxWithText({ label, title, checked, setChecked }: Checkbox
   }, [setChecked])
 
   return (
-    <FormGroup check title={title}>
-      <Label check>
-        <Input type="checkbox" checked={checked} onChange={onChange} />
+    <FormGroup check title={title} onClick={onChange}>
+      <Input id={label} type="checkbox" checked={checked} />
+      <Label htmlFor={label} check>
         <CheckboxText>{label}</CheckboxText>
       </Label>
     </FormGroup>

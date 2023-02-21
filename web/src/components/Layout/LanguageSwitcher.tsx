@@ -46,8 +46,8 @@ export function LanguageSwitcherMenuItem({ locale }: { locale: Locale }) {
   return (
     <LanguageSwitcherItemWrapper>
       <FlagWrapper>{flag}</FlagWrapper>
-      <span className="pl-2 text-monospace">{`${key.toUpperCase()}`}</span>
-      <span className="pl-2">{label}</span>
+      <span className="ms-2 font-monospace">{`${key.toUpperCase()}`}</span>
+      <span className="ms-2">{label}</span>
     </LanguageSwitcherItemWrapper>
   )
 }
@@ -57,7 +57,7 @@ export function LanguageSwitcherCurrentItem({ locale }: { locale: Locale }) {
   return (
     <LanguageSwitcherItemWrapper>
       <FlagWrapper>{flag}</FlagWrapper>
-      <span className="pl-2 text-monospace">{`${key.toUpperCase()}`}</span>
+      <span className="ms-2 font-monospace">{`${key.toUpperCase()}`}</span>
     </LanguageSwitcherItemWrapper>
   )
 }

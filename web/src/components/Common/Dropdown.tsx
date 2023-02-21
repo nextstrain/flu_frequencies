@@ -41,7 +41,7 @@ export function Dropdown({ currentEntry, setCurrentEntry, entries, ...restProps 
         <DropdownToggleText>{currentEntry.value}</DropdownToggleText>
         <DropdownCaret />
       </DropdownToggle>
-      <DropdownMenu positionFixed>{menuItems}</DropdownMenu>
+      <DropdownMenu>{menuItems}</DropdownMenu>
     </DropdownStyled>
   )
 }

@@ -28,7 +28,7 @@ function ErrorPage({ title, error, showDetails = true }: ErrorPageProps) {
     }
 
     return (
-      <Row noGutters>
+      <Row className="g-0">
         <Col>
           <ErrorContent error={error} />
         </Col>
@@ -38,7 +38,7 @@ function ErrorPage({ title, error, showDetails = true }: ErrorPageProps) {
 
   return (
     <MainContent>
-      <Row noGutters>
+      <Row className="g-0">
         <Col className="text-center text-danger">
           <h2>{title ?? 'An error has occurred'}</h2>
         </Col>
@@ -46,13 +46,13 @@ function ErrorPage({ title, error, showDetails = true }: ErrorPageProps) {
 
       {errorContent}
 
-      <Row noGutters>
+      <Row className="g-0">
         <Col>
           <ErrorContentExplanation />
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className="g-0">
         <Col className="w-100 d-flex">
           <Button className="ml-auto" type="button" color="danger" title="Reload the page" onClick={reload}>
             {'Restart'}
