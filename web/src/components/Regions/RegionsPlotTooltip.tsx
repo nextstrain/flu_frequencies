@@ -38,29 +38,50 @@ const TooltipTable = styled.table`
   }
 `
 
+export interface RegionsPlotTooltipProps extends DefaultTooltipContentProps<number, string> {
+  metadata: { pathogenName: string }
+}
+
 // HACK: TODO: this component is not type safe. Typings in `recharts` are broken.
-export function RegionsPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
+export function RegionsPlotTooltip({ payload, metadata }: RegionsPlotTooltipProps) {
   const { t } = useTranslationSafe()
 
-  const {
-    payload,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    metadata: { pathogenName, countryName },
-  } = props
+  const result = useMemo(() => {
+    if (!payload || payload.length === 0) {
+      return null
+    }
 
-  if (!payload || payload.length === 0) {
-    return null
+    const date = formatDateWeekly(payload[0]?.payload?.timestamp)
+
+    const data = reverse(sortBy(uniqBy(payload, 'name'), 'value'))
+
+    const rows = data.map(({ name, payload }) => {
+      const variant = name ?? '?'
+      const range = get(payload.ranges, variant)
+      const value = get(payload.avgs, variant)
+      const count = get(payload.counts, variant)
+      const total = get(payload.totals, variant)
+
+      return (
+        <RegionsPlotTooltipRow
+          key={variant}
+          pathogenName={metadata.pathogenName}
+          variant={variant}
+          value={value}
+          range={range}
+          count={count}
+          total={total}
+        />
+      )
+    })
+
+    return { date, rows }
+  }, [metadata.pathogenName, payload])
+
+  if (!result) {
+    return result
   }
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const date = formatDateWeekly(payload[0]?.payload?.timestamp)
-
-  const data = reverse(sortBy(uniqBy(payload, 'name'), 'value'))
+  const { date, rows } = result
 
   return (
     <Tooltip>
@@ -76,27 +97,7 @@ export function RegionsPlotTooltip(props: DefaultTooltipContentProps<number, str
             <th className="px-2 text-right">{t('Total')}</th>
           </tr>
         </thead>
-        <tbody>
-          {data.map(({ name, payload }) => {
-            const variant = name ?? '?'
-            const range = get(payload.ranges, variant)
-            const value = get(payload.avgs, variant)
-            const count = get(payload.counts, variant)
-            const total = get(payload.totals, variant)
-
-            return (
-              <RegionsPlotTooltipRow
-                key={variant}
-                pathogenName={pathogenName}
-                variant={variant}
-                value={value}
-                range={range}
-                count={count}
-                total={total}
-              />
-            )
-          })}
-        </tbody>
+        <tbody>{rows}</tbody>
       </TooltipTable>
     </Tooltip>
   )

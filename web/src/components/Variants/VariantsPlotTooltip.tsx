@@ -38,29 +38,50 @@ const TooltipTable = styled.table`
   }
 `
 
+export interface VariantsPlotTooltipProps extends DefaultTooltipContentProps<number, string> {
+  metadata: { pathogenName: string }
+}
+
 // HACK: TODO: this component is not type safe. Typings in `recharts` are broken.
-export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
+export function VariantsPlotTooltip({ payload, metadata }: VariantsPlotTooltipProps) {
   const { t } = useTranslationSafe()
 
-  const {
-    payload,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    metadata: { pathogenName, variantName },
-  } = props
+  const result = useMemo(() => {
+    if (!payload || payload.length === 0) {
+      return null
+    }
 
-  if (!payload || payload.length === 0) {
-    return null
+    const date = formatDateWeekly(payload[0]?.payload?.timestamp)
+
+    const data = reverse(sortBy(uniqBy(payload, 'name'), 'value'))
+
+    const rows = data.map(({ name, payload }) => {
+      const country = name ?? '?'
+      const range = get(payload.ranges, country)
+      const value = get(payload.avgs, country)
+      const count = get(payload.counts, country)
+      const total = get(payload.totals, country)
+
+      return (
+        <VariantsPlotTooltipRow
+          key={country}
+          pathogenName={metadata.pathogenName}
+          country={country}
+          value={value}
+          range={range}
+          count={count}
+          total={total}
+        />
+      )
+    })
+
+    return { date, rows }
+  }, [metadata.pathogenName, payload])
+
+  if (!result) {
+    return result
   }
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const date = formatDateWeekly(payload[0]?.payload?.timestamp)
-
-  const data = reverse(sortBy(uniqBy(payload, 'name'), 'value'))
+  const { date, rows } = result
 
   return (
     <Tooltip>
@@ -76,27 +97,7 @@ export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, st
             <th className="px-2 text-right">{t('Total')}</th>
           </tr>
         </thead>
-        <tbody>
-          {data.map(({ name, payload }) => {
-            const country = name ?? '?'
-            const range = get(payload.ranges, country)
-            const value = get(payload.avgs, country)
-            const count = get(payload.counts, country)
-            const total = get(payload.totals, country)
-
-            return (
-              <VariantsPlotTooltipRow
-                key={country}
-                pathogenName={pathogenName}
-                country={country}
-                value={value}
-                range={range}
-                count={count}
-                total={total}
-              />
-            )
-          })}
-        </tbody>
+        <tbody>{rows}</tbody>
       </TooltipTable>
     </Tooltip>
   )

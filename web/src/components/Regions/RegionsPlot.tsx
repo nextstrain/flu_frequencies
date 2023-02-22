@@ -130,9 +130,9 @@ function RegionsPlotImpl({ width, height, pathogen, countryName }: LinePlotProps
         allowDataOverflow
       />
       <RechartsTooltip
-        content={RegionsPlotTooltip}
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
+        content={RegionsPlotTooltip}
         metadata={metadata}
         isAnimationActive={false}
         allowEscapeViewBox={allowEscapeViewBox}

@@ -141,9 +141,9 @@ function LinePlot({ width, height, pathogenName, variantName }: LinePlotProps) {
         allowDataOverflow
       />
       <RechartsTooltip
-        content={VariantsPlotTooltip}
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
+        content={VariantsPlotTooltip}
         metadata={metadata}
         isAnimationActive={false}
         allowEscapeViewBox={allowEscapeViewBox}
