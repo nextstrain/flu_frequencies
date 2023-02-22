@@ -72,7 +72,7 @@ const getWithTypeChecking =
       config = addWebpackPlugin(
         config,
         new ESLintWebpackPlugin({
-          threads: 4,
+          threads: true,
           files: [path.join(moduleRoot, 'src/**/*.{js,jsx,ts,tsx}')],
           cache: false,
           formatter: 'codeframe',
