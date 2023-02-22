@@ -9,7 +9,6 @@ import { RecoilRoot, RecoilEnv, useRecoilCallback } from 'recoil'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import type { AppProps } from 'next/app'
 import NextProgress from 'next-progress'
-import { RegionsPage } from 'src/components/Regions/RegionsPage'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 import { I18nextProvider } from 'react-i18next'
@@ -23,7 +22,8 @@ import { getMdxComponents } from 'src/components/Common/MdxComponents'
 import { ErrorBoundary } from 'src/components/Error/ErrorBoundary'
 import { Layout } from 'src/components/Layout/Layout'
 import { PathogenPage } from 'src/components/Pathogen/PathogenPage'
-import { VariantsPage } from 'src/components/Variants/VariantsPage'
+import { RegionPage } from 'src/components/Regions/RegionPage'
+import { VariantPage } from 'src/components/Variants/VariantPage'
 import { localeAtom } from 'src/state/locale.state'
 import 'src/styles/global.scss'
 
@@ -103,14 +103,14 @@ function Router({ children }: PropsWithChildren) {
       const match = matchRoute(asPath, '/pathogen/:pathogenName/variants/:variant')
       if (match) {
         const { pathogenName, variant } = match
-        return { Component: <VariantsPage pathogenName={pathogenName} variant={variant} />, pathogenName }
+        return { Component: <VariantPage pathogenName={pathogenName} variantName={variant} />, pathogenName }
       }
     }
     {
       const match = matchRoute(asPath, '/pathogen/:pathogenName/regions/:region')
       if (match) {
         const { pathogenName, region } = match
-        return { Component: <RegionsPage pathogenName={pathogenName} region={region} />, pathogenName }
+        return { Component: <RegionPage pathogenName={pathogenName} location={region} />, pathogenName }
       }
     }
 
