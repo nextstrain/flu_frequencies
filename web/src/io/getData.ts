@@ -39,6 +39,8 @@ export interface VariantDatum {
   freqHi: number
   freqLo: number
   freqMi: number
+  count: number
+  total: number
 }
 
 export interface VariantDataJson {
@@ -62,6 +64,8 @@ export interface RegionDatum {
   freqHi: number
   freqLo: number
   freqMi: number
+  count: number
+  total: number
 }
 
 export interface RegionDataJson {

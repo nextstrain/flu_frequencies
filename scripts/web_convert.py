@@ -86,14 +86,23 @@ def process_one_pathogen(pathogen: dict, input_dir: str, output_dir: str):
     return pathogen_json
 
 
+def two_columns_to_dict(date_df, key_column, value_column):
+    """
+    Collects adict of key-value pairs for 2 columns: one acts as a key and another as a value
+    """
+    values = date_df.select([key_column, value_column])
+    return {k: v for k, v in values.iter_rows()}
+
+
 def process_geography(df: pl.DataFrame, pathogen: dict, output_dir: str):
     for region_name, region_df in partition_by(df, ["region"]):
         for country_name, country_df in partition_by(region_df, ["country"]):
 
             values = []
             for date, country_date_df in partition_by(country_df, ["date"]):
-                avgs = country_date_df.select(["variant", "freqMi"])
-                avgs = {variant: value for variant, value in avgs.iter_rows()}
+                avgs = two_columns_to_dict(country_date_df, "variant", "freqMi")
+                counts = two_columns_to_dict(country_date_df, "variant", "count")
+                totals = two_columns_to_dict(country_date_df, "variant", "total")
 
                 ranges = country_date_df.select([
                     "variant",
@@ -101,7 +110,7 @@ def process_geography(df: pl.DataFrame, pathogen: dict, output_dir: str):
                 ])
                 ranges = {variant: val_range for variant, val_range in ranges.iter_rows()}
 
-                values.append({"date": date, "avgs": avgs, "ranges": ranges})
+                values.append({"date": date, "avgs": avgs, "ranges": ranges, "counts": counts, "totals": totals})
 
             country_json = {
                 "region": region_name,
@@ -121,8 +130,9 @@ def process_variants(df: pl.DataFrame, pathogen: dict, output_dir: str):
         values = []
 
         for date, variant_date_df in partition_by(variant_df, ["date"]):
-            avgs = variant_date_df.select(["country", "freqMi"])
-            avgs = {country: value for country, value in avgs.iter_rows()}
+            avgs = two_columns_to_dict(variant_date_df, "country", "freqMi")
+            counts = two_columns_to_dict(variant_date_df, "country", "count")
+            totals = two_columns_to_dict(variant_date_df, "country", "total")
 
             ranges = variant_date_df.select([
                 "country",
@@ -130,7 +140,7 @@ def process_variants(df: pl.DataFrame, pathogen: dict, output_dir: str):
             ])
             ranges = {country: val_range for country, val_range in ranges.iter_rows()}
 
-            values.append({"date": date, "avgs": avgs, "ranges": ranges})
+            values.append({"date": date, "avgs": avgs, "ranges": ranges, "counts": counts, "totals": totals})
 
         variant_json = {
             "variant": variant_name,

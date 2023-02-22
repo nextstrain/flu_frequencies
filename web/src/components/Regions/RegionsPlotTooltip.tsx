@@ -73,6 +73,8 @@ export function RegionsPlotTooltip(props: DefaultTooltipContentProps<number, str
             <th className="px-2 text-left">{t('Variant')}</th>
             <th className="px-2 text-right">{t('Frequency')}</th>
             <th className="px-2 text-right">{t('Interval')}</th>
+            <th className="px-2 text-right">{t('Count')}</th>
+            <th className="px-2 text-right">{t('Total')}</th>
           </tr>
         </thead>
         <tbody>
@@ -80,6 +82,8 @@ export function RegionsPlotTooltip(props: DefaultTooltipContentProps<number, str
             const variant = name ?? '?'
             const range = get(payload.ranges, variant)
             const value = get(payload.avgs, variant)
+            const count = get(payload.counts, variant)
+            const total = get(payload.totals, variant)
 
             return (
               <RegionsPlotTooltipRow
@@ -88,6 +92,8 @@ export function RegionsPlotTooltip(props: DefaultTooltipContentProps<number, str
                 variant={variant}
                 value={value}
                 range={range}
+                count={count}
+                total={total}
               />
             )
           })}
@@ -102,9 +108,11 @@ interface RegionsPlotTooltipRowProps {
   variant: string
   value: number | undefined
   range: [number, number] | undefined
+  count: number | undefined
+  total: number | undefined
 }
 
-function RegionsPlotTooltipRow({ pathogenName, variant, value, range }: RegionsPlotTooltipRowProps) {
+function RegionsPlotTooltipRow({ pathogenName, variant, value, range, count, total }: RegionsPlotTooltipRowProps) {
   const { color } = useVariantStyle(pathogenName, variant)
 
   const valueDisplay = useMemo(() => {
@@ -132,6 +140,8 @@ function RegionsPlotTooltipRow({ pathogenName, variant, value, range }: RegionsP
       </td>
       <td className="px-2 text-right">{valueDisplay}</td>
       <td className="px-2 text-right">{rangeDisplay}</td>
+      <td className="px-2 text-right">{count}</td>
+      <td className="px-2 text-right">{total}</td>
     </tr>
   )
 }

@@ -73,6 +73,8 @@ export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, st
             <th className="px-2 text-left">{t('Country')}</th>
             <th className="px-2 text-right">{t('Frequency')}</th>
             <th className="px-2 text-right">{t('Interval')}</th>
+            <th className="px-2 text-right">{t('Count')}</th>
+            <th className="px-2 text-right">{t('Total')}</th>
           </tr>
         </thead>
         <tbody>
@@ -80,6 +82,8 @@ export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, st
             const country = name ?? '?'
             const range = get(payload.ranges, country)
             const value = get(payload.avgs, country)
+            const count = get(payload.counts, country)
+            const total = get(payload.totals, country)
 
             return (
               <VariantsPlotTooltipRow
@@ -88,6 +92,8 @@ export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, st
                 country={country}
                 value={value}
                 range={range}
+                count={count}
+                total={total}
               />
             )
           })}
@@ -102,9 +108,11 @@ interface VariantsPlotTooltipRowProps {
   country: string
   value: number | undefined
   range: [number, number] | undefined
+  count: number | undefined
+  total: number | undefined
 }
 
-function VariantsPlotTooltipRow({ pathogenName, country, value, range }: VariantsPlotTooltipRowProps) {
+function VariantsPlotTooltipRow({ pathogenName, country, value, range, count, total }: VariantsPlotTooltipRowProps) {
   const { t } = useTranslationSafe()
   const { color } = useCountryStyle(pathogenName, country)
 
@@ -133,6 +141,8 @@ function VariantsPlotTooltipRow({ pathogenName, country, value, range }: Variant
       </td>
       <td className="px-2 text-right">{valueDisplay}</td>
       <td className="px-2 text-right">{rangeDisplay}</td>
+      <td className="px-2 text-right">{count}</td>
+      <td className="px-2 text-right">{total}</td>
     </tr>
   )
 }
