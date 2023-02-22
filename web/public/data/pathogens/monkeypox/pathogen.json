@@ -1,0 +1,17 @@
+{
+  "color": "#c5ba87",
+  "image": {
+    "credit": "Centers for Disease Control and Prevention Newsroom, Image Library",
+    "file": "pathogens/monkeypox/image.png",
+    "source": "https://www.cdc.gov/media/subtopic/images.htm"
+  },
+  "isEnabled": false,
+  "isVisible": true,
+  "maxDate": "",
+  "minDate": "",
+  "nCountries": 0,
+  "nRegions": 0,
+  "nVariants": 0,
+  "name": "monkeypox",
+  "nameFriendly": "Monkeypox"
+}

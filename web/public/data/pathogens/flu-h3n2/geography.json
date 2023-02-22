@@ -1,35 +1,35 @@
 {
   "countries": [
-    "Brazil",
-    "Chile",
-    "New Zealand",
-    "France",
-    "Togo",
-    "Denmark",
-    "Argentina",
-    "Singapore",
-    "Slovenia",
-    "United Kingdom",
-    "Poland",
-    "Thailand",
-    "Switzerland",
-    "Russia",
-    "Belgium",
     "Spain",
-    "Germany",
-    "China(PRC)",
-    "Norway",
     "Lebanon",
+    "Switzerland",
+    "Sweden",
+    "Romania",
     "Netherlands",
-    "Austria",
-    "Australia",
     "Usa",
     "Portugal",
+    "New Zealand",
+    "United Kingdom",
+    "Denmark",
     "Italy",
-    "Romania",
-    "Canada",
+    "Chile",
+    "Australia",
+    "Norway",
+    "France",
+    "Togo",
+    "Thailand",
+    "Slovenia",
     "Ukraine",
-    "Sweden"
+    "Singapore",
+    "Brazil",
+    "Argentina",
+    "China(PRC)",
+    "Germany",
+    "Poland",
+    "Canada",
+    "Austria",
+    "Russia",
+    "Belgium"
   ],
   "geography": {
     "Africa": [
@@ -39,43 +39,43 @@
       "China(PRC)"
     ],
     "Europe": [
+      "Spain",
       "Norway",
+      "Switzerland",
       "France",
+      "Sweden",
+      "Romania",
       "Netherlands",
-      "Denmark",
       "Slovenia",
+      "Ukraine",
+      "Portugal",
+      "Germany",
+      "Poland",
       "United Kingdom",
       "Austria",
-      "Poland",
-      "Portugal",
-      "Switzerland",
+      "Denmark",
       "Russia",
-      "Belgium",
       "Italy",
-      "Ukraine",
-      "Romania",
-      "Spain",
-      "Germany",
-      "Sweden"
+      "Belgium"
     ],
     "Japan Korea": [],
     "North America": [
-      "Usa",
-      "Canada"
+      "Canada",
+      "Usa"
     ],
     "Oceania": [
-      "New Zealand",
-      "Australia"
+      "Australia",
+      "New Zealand"
     ],
     "South America": [
+      "Argentina",
       "Brazil",
-      "Chile",
-      "Argentina"
+      "Chile"
     ],
     "South Asia": [],
     "Southeast Asia": [
-      "Singapore",
-      "Thailand"
+      "Thailand",
+      "Singapore"
     ],
     "West Asia": [
       "Lebanon"

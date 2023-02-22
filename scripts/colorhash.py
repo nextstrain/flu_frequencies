@@ -164,5 +164,5 @@ class ColorHash:
 def colorhash(s: str, reverse=False, prefix='', suffix=''):
     ss = s
     if reverse:
-        ss = reversed(ss)
+        ss = ss[::-1]
     return ColorHash(f'{prefix}{ss}{suffix}').hex

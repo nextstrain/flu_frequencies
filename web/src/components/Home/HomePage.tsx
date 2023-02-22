@@ -1,13 +1,13 @@
-import React, { Fragment, Suspense } from 'react'
+import React from 'react'
 import { Col, Row } from 'reactstrap'
-import { Link } from 'src/components/Link/Link'
-import { Pathogen } from 'src/io/getData'
 import urljoin from 'url-join'
+import styled from 'styled-components'
+import { Pathogen } from 'src/io/getData'
 import { useAxiosQuery } from 'src/hooks/useAxiosQuery'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
 import { PageContainerNarrow } from 'src/components/Layout/PageContainer'
-import { LOADING } from 'src/components/Loading/Loading'
+import { PathogenCard } from 'src/components/Home/PathogenCard'
 
 export interface IndexJson {
   pathogens: Pathogen[]
@@ -21,30 +21,27 @@ export function HomePage() {
   const { pathogens } = useIndexJsonQuery()
 
   return (
-    <Suspense fallback={LOADING}>
-      <PageContainerNarrow>
-        <Row noGutters>
-          <Col>
-            <MdxContent filepath="Home.md" />
+    <PageContainerNarrow>
+      <Row tag={Ul} noGutters className="mt-3">
+        {pathogens.map((pathogen) => (
+          <Col tag={Li} xs={12} sm={6} md={4} xl={3} key={pathogen.name}>
+            <PathogenCard pathogen={pathogen} />
           </Col>
-        </Row>
-        <Row noGutters>
-          <Col>
-            <ul>
-              {pathogens.map((pathogen) => (
-                <Fragment key={pathogen.name}>
-                  <li>
-                    <Link href={`/pathogen/${pathogen.name}/variants`}>{`/pathogen/${pathogen.name}/variants`}</Link>
-                  </li>
-                  <li>
-                    <Link href={`/pathogen/${pathogen.name}/regions`}>{`/pathogen/${pathogen.name}/regions`}</Link>
-                  </li>
-                </Fragment>
-              ))}
-            </ul>
-          </Col>
-        </Row>
-      </PageContainerNarrow>
-    </Suspense>
+        ))}
+      </Row>
+      <Row noGutters>
+        <Col>
+          <MdxContent filepath="Home.md" />
+        </Col>
+      </Row>
+    </PageContainerNarrow>
   )
 }
+
+const Ul = styled.ul`
+  padding: 0;
+`
+
+const Li = styled.li`
+  list-style: none;
+`

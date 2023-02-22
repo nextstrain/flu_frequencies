@@ -4,12 +4,15 @@
 """
 Converts data from intermediate format into a format suitable for consumption by the web app
 """
+import posixpath
+import shutil
 from datetime import datetime
 from os import makedirs
 from os.path import join, dirname
 import argparse
 import json
 from typing import Union, List
+from PIL import ImageOps, Image, ImageColor
 import polars as pl
 
 from colorhash import colorhash
@@ -26,36 +29,64 @@ def main():
 
     pathogens = json_read(args.input_pathogens_json)
 
-    for pathogen in pathogens:
+    pathogens = [
         process_one_pathogen(pathogen, input_dir, args.output_dir)
+        for pathogen in pathogens
+        if pathogen["isVisible"]
+    ]
 
     index_json = {
-        "pathogens": pathogens,
+        "lastUpdate": date_to_iso(date_now()),
+        "pathogens": pathogens
     }
     json_write(index_json, join(args.output_dir, "index.json"))
 
-    update_json = {
-        "lastUpdate": date_to_iso(date_now())
-    }
-    json_write(update_json, join(args.output_dir, "update.json"))
-
 
 def process_one_pathogen(pathogen: dict, input_dir: str, output_dir: str):
-    json_write(pathogen, join(output_dir, "pathogens", pathogen["name"], "pathogen.json"))
+    color = colorhash(pathogen["name"], reverse=True, prefix="321")
+    image_url = process_image(pathogen, color, input_dir, output_dir)
 
-    df = csv_read(join(input_dir, f'{pathogen["name"]}.csv'))
+    min_date = ''
+    max_date = ''
+    n_regions = 0
+    n_countries = 0
+    n_variants = 0
+    if pathogen["isEnabled"]:
+        df = csv_read(join(input_dir, f'{pathogen["name"]}.csv'))
 
-    print(df)
+        min_date = df["date"].min()
+        max_date = df["date"].max()
 
-    process_geography(df, pathogen, output_dir)
+        regions_json = extract_geography_hierarchy(df)
+        n_regions = len(regions_json["regions"])
+        n_countries = len(regions_json["countries"])
+        json_write(regions_json, join(output_dir, "pathogens", pathogen["name"], "geography.json"))
+        process_geography(df, pathogen, output_dir)
 
-    process_variants(df, pathogen, output_dir)
+        variants_json = extract_list_of_variants(df)
+        n_variants = len(variants_json["variants"])
+        json_write(variants_json, join(output_dir, "pathogens", pathogen["name"], "variants.json"))
+        process_variants(df, pathogen, output_dir)
+
+    pathogen_json = {
+        **pathogen,
+        "color": color,
+        "minDate": min_date,
+        "maxDate": max_date,
+        "nRegions": n_regions,
+        "nCountries": n_countries,
+        "nVariants": n_variants,
+        "image": {
+            **pathogen["image"],
+            "file": image_url
+        }
+    }
+    json_write(pathogen_json, join(output_dir, "pathogens", pathogen["name"], "pathogen.json"))
+
+    return pathogen_json
 
 
 def process_geography(df: pl.DataFrame, pathogen: dict, output_dir: str):
-    regions_json = extract_geography_hierarchy(df)
-    json_write(regions_json, join(output_dir, "pathogens", pathogen["name"], "geography.json"))
-
     for region_name, region_df in partition_by(df, ["region"]):
         for country_name, country_df in partition_by(region_df, ["country"]):
 
@@ -84,9 +115,6 @@ def process_geography(df: pl.DataFrame, pathogen: dict, output_dir: str):
 
 
 def process_variants(df: pl.DataFrame, pathogen: dict, output_dir: str):
-    variants_json = extract_list_of_variants(df)
-    json_write(variants_json, join(output_dir, "pathogens", pathogen["name"], "variants.json"))
-
     df = df.drop("region")
     for variant_name, variant_df in partition_by(df, ["variant"]):
 
@@ -136,6 +164,25 @@ def extract_list_of_variants(df: pl.DataFrame):
     return {"variants": variants, "variantsStyles": styles}
 
 
+def process_image(pathogen, color, input_dir, output_dir):
+    input_image_path = join(input_dir, pathogen["image"]["file"])
+    output_image_path = join(output_dir, "pathogens", pathogen["name"], "image.png")
+    image_url = posixpath.join("pathogens", pathogen["name"], "image.png")
+
+    image = Image.open(input_image_path)
+    image = ImageOps.fit(image, (250, 200))
+
+    if not pathogen["isEnabled"]:
+        image = image.convert('L')  # convert to grayscale
+        image = ImageOps.autocontrast(image)
+        # image = ImageOps.colorize(image, (0, 0, 0, 0), color)
+
+    ensure_dir(output_image_path)
+    image.save(output_image_path)
+
+    return image_url
+
+
 def partition_by(df: pl.DataFrame, column_names: List[str]):
     """
     Splits rows of the dataframe `df` by different values of the column `column_name`, into an iterator of pairs `(k, v)`,
@@ -170,6 +217,11 @@ def csv_write(df: pl.DataFrame, filepath: str):
 
 def ensure_dir(filepath: str):
     makedirs(dirname(filepath), exist_ok=True)
+
+
+def file_copy(src, dst):
+    ensure_dir(dst)
+    return shutil.copyfile(src, dst, follow_symlinks=True)
 
 
 def date_now():

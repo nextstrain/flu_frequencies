@@ -113,6 +113,12 @@ export const shadows = {
   },
 }
 
+export const textOutline = {
+  light: '-0.5px -0.5px 0 #0003, 0.5px -0.5px 0 #0003, -0.5px 0.5px 0 #0003, 0.5px 0.5px 0 #0003',
+  medium: '-1px -1px 0 #000a, 1px -1px 0 #000a, -1px 1px 0 #000a, 1px 1px 0 #000a',
+  strong: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #0003, 1px 1px 0 #000',
+}
+
 export const plot = {
   titleFontSize: '1.25rem',
   aspectRatio: 1.88,
@@ -174,6 +180,7 @@ export const theme = {
   link,
   font,
   shadows,
+  textOutline,
   plot,
   code,
   clusters,

@@ -4,8 +4,20 @@ import { useAxiosQueries, useAxiosQuery } from 'src/hooks/useAxiosQuery'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
 
 export interface Pathogen {
+  isEnabled: boolean
   name: string
   nameFriendly: string
+  nCountries: number
+  nRegions: number
+  nVariants: number
+  color: string
+  maxDate: ''
+  minDate: ''
+  image: {
+    credit: string
+    file: string
+    source: string
+  }
 }
 
 export interface GeographyData {
