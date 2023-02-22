@@ -66,7 +66,7 @@ export function VariantPage({ pathogenName, variantName }: VariantsPageProps) {
             </Col>
           </Row>
 
-          <VariantsPlot pathogenName={pathogenName} variantName={variant} />
+          <VariantsPlot pathogen={pathogen} variantName={variant} />
         </MainContentInner>
       </MainContent>
     </PageContainerHorizontal>

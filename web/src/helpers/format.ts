@@ -6,6 +6,10 @@ export const formatInteger = (value: number) => value.toFixed(0)
 
 export const formatDate = (date: number) => DateTime.fromSeconds(date).toISODate()
 
+export function timestampToDate(seconds: number) {
+  return DateTime.fromSeconds(seconds)
+}
+
 export function formatDateRange(weekTimestamp: number, range: DurationLike) {
   const begin = DateTime.fromSeconds(weekTimestamp)
   const end = begin.plus(range)

@@ -1,40 +1,31 @@
-import { get, maxBy, minBy } from 'lodash-es'
-import { Interval } from 'luxon'
-import React, { useMemo } from 'react'
-import styled, { useTheme } from 'styled-components'
-import { useResizeDetector } from 'react-resize-detector'
-import { Area, CartesianGrid, ComposedChart, Line, Tooltip as RechartsTooltip, XAxis, YAxis } from 'recharts'
+import React, { useCallback, useMemo, useState } from 'react'
+import { get, isArray, max, min } from 'lodash-es'
+import { DateTime, Interval } from 'luxon'
 import { useRecoilValue } from 'recoil'
-import { VariantsPlotTooltip } from 'src/components/Variants/VariantsPlotTooltip'
+import { useResizeDetector } from 'react-resize-detector'
+import styled, { useTheme } from 'styled-components'
+import { Area, CartesianGrid, ComposedChart, Line, Tooltip as RechartsTooltip, XAxis, YAxis } from 'recharts'
 import { adjustTicks } from 'src/helpers/adjustTicks'
-import { dateFromYmd, formatDateHumanely, formatProportion, ymdToTimestamp } from 'src/helpers/format'
 import {
-  getCountryColor,
-  getCountryStrokeDashArray,
-  usePathogen,
-  useVariantDataQuery,
-  VariantDatum,
-} from 'src/io/getData'
+  formatDateHumanely,
+  formatDateWeekly,
+  formatProportion,
+  timestampToDate,
+  ymdToTimestamp,
+} from 'src/helpers/format'
+import { getCountryColor, getCountryStrokeDashArray, Pathogen, useVariantDataQuery } from 'src/io/getData'
 import { continentsAtom, countriesAtom } from 'src/state/geography.state'
 import { shouldShowRangesOnVariantsPlotAtom } from 'src/state/settings.state'
+import { VariantsPlotTooltip } from 'src/components/Variants/VariantsPlotTooltip'
+import { DateSlider } from 'src/components/Common/DateSlider'
 
-export function calculateTicks(data: VariantDatum[], availableWidth: number, tickWidth: number) {
-  if (data.length === 0) {
-    return { adjustedTicks: [], domainX: [0, 0], domainY: [0, 0] }
-  }
-
-  const minDate = minBy(data, (d) => d.date)!.date // eslint-disable-line @typescript-eslint/no-non-null-assertion
-  const maxDate = maxBy(data, (d) => d.date)!.date // eslint-disable-line @typescript-eslint/no-non-null-assertion
-
-  const start = dateFromYmd(minDate)
-  const end = dateFromYmd(maxDate)
-
-  const ticks = Interval.fromDateTimes(start.startOf('month'), end.endOf('month'))
+export function calculateTicks(minDate: DateTime, maxDate: DateTime, availableWidth: number, tickWidth: number) {
+  const ticks = Interval.fromDateTimes(minDate.startOf('month'), maxDate.endOf('month'))
     .splitBy({ months: 1 })
     .map((d) => d.start.toSeconds())
 
   const adjustedTicks = adjustTicks(ticks, availableWidth, tickWidth)
-  const domainX = [adjustedTicks[0], end.toSeconds()]
+  const domainX = [adjustedTicks[0], maxDate.toSeconds()]
   const domainY = [0, 1]
   return { adjustedTicks, domainX, domainY }
 }
@@ -42,37 +33,28 @@ export function calculateTicks(data: VariantDatum[], availableWidth: number, tic
 const allowEscapeViewBox = { x: false, y: true }
 const tooltipStyle = { zIndex: 1000, outline: 'none' }
 
-interface LinePlotProps {
+interface LinePlotProps<T> {
+  data: T[]
+  minDate: DateTime
+  maxDate: DateTime
   width: number
   height: number
-  pathogenName: string
+  pathogen: Pathogen
   variantName: string
 }
 
-function LinePlot({ width, height, pathogenName, variantName }: LinePlotProps) {
+function LinePlot<T>({ width, height, data, minDate, maxDate, pathogen, variantName }: LinePlotProps<T>) {
   const theme = useTheme()
-  const pathogen = usePathogen(pathogenName)
   const shouldShowRanges = useRecoilValue(shouldShowRangesOnVariantsPlotAtom)
   const regions = useRecoilValue(continentsAtom(pathogen.name))
   const countries = useRecoilValue(countriesAtom(pathogen.name))
-
   const {
-    variantData,
     regionsData: { geographyStyles },
   } = useVariantDataQuery(pathogen.name, variantName)
 
-  const data = useMemo(
-    () =>
-      variantData.values.map(({ date, ...rest }) => {
-        const timestamp = ymdToTimestamp(date)
-        return { timestamp, ...rest }
-      }),
-    [variantData.values],
-  )
-
   const { adjustedTicks, domainX, domainY } = useMemo(
-    () => calculateTicks(variantData.values, width ?? 0, theme.plot.tickWidthMin),
-    [theme.plot.tickWidthMin, variantData.values, width],
+    () => calculateTicks(minDate, maxDate, width ?? 0, theme.plot.tickWidthMin),
+    [maxDate, minDate, theme.plot.tickWidthMin, width],
   )
 
   const { lines, ranges } = useMemo(() => {
@@ -158,11 +140,44 @@ function LinePlot({ width, height, pathogenName, variantName }: LinePlotProps) {
 }
 
 export interface VariantsPlotProps {
-  pathogenName: string
+  pathogen: Pathogen
   variantName: string
 }
 
-export function VariantsPlot({ pathogenName, variantName }: VariantsPlotProps) {
+export function VariantsPlot({ pathogen, variantName }: VariantsPlotProps) {
+  const { variantData } = useVariantDataQuery(pathogen.name, variantName)
+
+  const { minTimestamp, maxTimestamp, initialTimestampRange, marks } = useMemo(() => {
+    const timestamps = variantData.values.map(({ date }) => ymdToTimestamp(date))
+    const minTimestamp = min(timestamps) ?? 0
+    const maxTimestamp = max(timestamps) ?? 0
+    const initialTimestampRange = [minTimestamp, maxTimestamp]
+    const marks = Object.fromEntries(timestamps.map((timestamp) => [timestamp, formatDateWeekly(timestamp)]))
+    return { minTimestamp, maxTimestamp, initialTimestampRange, marks }
+  }, [variantData.values])
+
+  const [dateRange, setDateRange] = useState(initialTimestampRange)
+
+  const onDateRangeChange = useCallback((range: number | number[]) => {
+    if (isArray(range)) {
+      setDateRange(range)
+    }
+  }, [])
+
+  const { data, minDate, maxDate } = useMemo(() => {
+    const data = variantData.values
+      .filter(({ date }) => {
+        const ts = ymdToTimestamp(date)
+        return ts <= dateRange[1] && ts >= dateRange[0]
+      })
+      .map(({ date, ...rest }) => ({ ...rest, timestamp: ymdToTimestamp(date) }))
+
+    const minDate = timestampToDate(dateRange[0])
+    const maxDate = timestampToDate(dateRange[1])
+
+    return { data, minDate, maxDate }
+  }, [dateRange, variantData.values])
+
   const {
     width = 0,
     height = 0,
@@ -175,9 +190,27 @@ export function VariantsPlot({ pathogenName, variantName }: VariantsPlotProps) {
   })
 
   return (
-    <PlotWrapper ref={resizeRef}>
-      <LinePlot width={width} height={height} pathogenName={pathogenName} variantName={variantName} />
-    </PlotWrapper>
+    <>
+      <PlotWrapper ref={resizeRef}>
+        <LinePlot
+          data={data}
+          width={width}
+          height={height}
+          minDate={minDate}
+          maxDate={maxDate}
+          pathogen={pathogen}
+          variantName={variantName}
+        />
+      </PlotWrapper>
+
+      <DateSlider
+        minTimestamp={minTimestamp}
+        maxTimestamp={maxTimestamp}
+        initialTimestampRange={initialTimestampRange}
+        marks={marks}
+        onDateRangeChange={onDateRangeChange}
+      />
+    </>
   )
 }
 
