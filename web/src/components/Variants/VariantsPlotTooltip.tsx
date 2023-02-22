@@ -64,7 +64,6 @@ export function VariantsPlotTooltip(props: DefaultTooltipContentProps<number, st
 
   return (
     <Tooltip>
-      <TooltipTitle>{variantName}</TooltipTitle>
       <TooltipTitle>{date}</TooltipTitle>
 
       <TooltipTable>

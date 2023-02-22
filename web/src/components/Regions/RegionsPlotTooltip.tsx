@@ -64,7 +64,6 @@ export function RegionsPlotTooltip(props: DefaultTooltipContentProps<number, str
 
   return (
     <Tooltip>
-      <TooltipTitle>{countryName}</TooltipTitle>
       <TooltipTitle>{date}</TooltipTitle>
 
       <TooltipTable>
