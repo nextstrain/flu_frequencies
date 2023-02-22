@@ -9,9 +9,10 @@ import { usePathogen, useVariantsDataQuery } from 'src/io/getData'
 
 export interface VariantsPageProps {
   pathogenName: string
+  variant: string
 }
 
-export function VariantsPage({ pathogenName }: VariantsPageProps) {
+export function VariantsPage({ pathogenName, variant }: VariantsPageProps) {
   const { t } = useTranslationSafe()
   const pathogen = usePathogen(pathogenName)
   const { variants } = useVariantsDataQuery(pathogen.name)

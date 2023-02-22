@@ -9,9 +9,10 @@ import { RegionsSidebar } from 'src/components/Regions/RegionsSidebar'
 
 export interface RegionsPageProps {
   pathogenName: string
+  region: string
 }
 
-export function RegionsPage({ pathogenName }: RegionsPageProps) {
+export function RegionsPage({ pathogenName, region }: RegionsPageProps) {
   const { t } = useTranslationSafe()
   const pathogen = usePathogen(pathogenName)
   const { regions, countries } = useRegionsDataQuery(pathogen.name)

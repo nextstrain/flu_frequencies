@@ -100,17 +100,17 @@ function Router({ children }: PropsWithChildren) {
       }
     }
     {
-      const match = matchRoute(asPath, '/pathogen/:pathogenName/variants')
+      const match = matchRoute(asPath, '/pathogen/:pathogenName/variants/:variant')
       if (match) {
-        const { pathogenName } = match
-        return { Component: <VariantsPage pathogenName={pathogenName} />, pathogenName }
+        const { pathogenName, variant } = match
+        return { Component: <VariantsPage pathogenName={pathogenName} variant={variant} />, pathogenName }
       }
     }
     {
-      const match = matchRoute(asPath, '/pathogen/:pathogenName/regions')
+      const match = matchRoute(asPath, '/pathogen/:pathogenName/regions/:region')
       if (match) {
-        const { pathogenName } = match
-        return { Component: <RegionsPage pathogenName={pathogenName} />, pathogenName }
+        const { pathogenName, region } = match
+        return { Component: <RegionsPage pathogenName={pathogenName} region={region} />, pathogenName }
       }
     }
 
