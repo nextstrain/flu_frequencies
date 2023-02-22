@@ -82,6 +82,8 @@ const nextConfig: NextConfig = {
   experimental: {
     legacyBrowsers: true,
     newNextLinkBehavior: true,
+    legacyBrowsers: true,
+    newNextLinkBehavior: true,
     scrollRestoration: true,
     swcMinify: true,
   },
