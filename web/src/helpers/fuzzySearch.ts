@@ -8,7 +8,6 @@ export function fuzzySearch(items: string[], searchTerm: string) {
   const fuse = new Fuse(items, {
     includeScore: true,
     includeMatches: true,
-    minMatchCharLength: 2,
     shouldSort: true,
     findAllMatches: true,
   })
@@ -26,7 +25,6 @@ export function fuzzySearchObj<T extends Record<string, unknown>>(
   const fuse = new Fuse(items, {
     includeScore: true,
     includeMatches: true,
-    minMatchCharLength: 1,
     shouldSort: true,
     findAllMatches: true,
     keys,

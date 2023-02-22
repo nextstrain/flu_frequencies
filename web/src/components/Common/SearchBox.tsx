@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useMemo } from 'react'
+import React, { ChangeEvent, useCallback, useMemo, HTMLProps } from 'react'
 import styled from 'styled-components'
 import { Form, Input as InputBase } from 'reactstrap'
 import { MdSearch as IconSearchBase, MdClear as IconClearBase } from 'react-icons/md'
@@ -42,13 +42,13 @@ const Input = styled(InputBase)`
   height: 2.2em;
 `
 
-export interface TableSearchBoxProps {
+export interface TableSearchBoxProps extends Omit<HTMLProps<HTMLFormElement>, 'as'> {
   searchTitle?: string
   searchTerm: string
   onSearchTermChange(term: string): void
 }
 
-export function SearchBox({ searchTitle, searchTerm, onSearchTermChange }: TableSearchBoxProps) {
+export function SearchBox({ searchTitle, searchTerm, onSearchTermChange, ...restProps }: TableSearchBoxProps) {
   const { t } = useTranslationSafe()
 
   const onChange = useCallback(
@@ -74,7 +74,7 @@ export function SearchBox({ searchTitle, searchTerm, onSearchTermChange }: Table
   }, [onClear, searchTerm.length, t])
 
   return (
-    <SearchForm>
+    <SearchForm {...restProps}>
       <IconSearchWrapper>
         <IconSearch size={25} />
       </IconSearchWrapper>

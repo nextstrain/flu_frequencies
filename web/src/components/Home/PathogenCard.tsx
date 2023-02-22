@@ -14,7 +14,7 @@ export interface PathogenCardProps {
 export function PathogenCard({ pathogen }: PathogenCardProps) {
   const { t } = useTranslationSafe()
   const href = useMemo(
-    () => (pathogen.isEnabled ? `/pathogen/${pathogen.name}/variants` : undefined),
+    () => (pathogen.isEnabled ? `/pathogen/${pathogen.name}` : undefined),
     [pathogen.isEnabled, pathogen.name],
   )
   const overlay = useMemo(() => {
