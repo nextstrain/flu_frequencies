@@ -16,24 +16,6 @@ const Body = styled.div`
   background-color: ${(props) => props.theme.bodyBg};
 `
 
-const Main = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-`
-
-const Content = styled.div`
-  flex: 1;
-  display: flex;
-`
-
-const Box = styled.div`
-  min-height: min-content;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-`
-
 export interface LayoutProps {
   wide?: boolean
 }
@@ -45,13 +27,7 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
         <NavigationBar />
       </Header>
 
-      <Body>
-        <Main>
-          <Content>
-            <Box>{children}</Box>
-          </Content>
-        </Main>
-      </Body>
+      <Body>{children}</Body>
     </div>
   )
 }

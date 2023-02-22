@@ -1,6 +1,5 @@
 import React, { ReactNode, useMemo } from 'react'
 import styled from 'styled-components'
-import { PageHeading } from 'src/components/Common/PageHeading'
 import { VariantsPlot } from 'src/components/Variants/VariantsPlot'
 import { VariantsSidebar } from 'src/components/Variants/VariantsSidebar'
 import { PageContainerHorizontal } from 'src/components/Layout/PageContainer'
@@ -51,32 +50,39 @@ export function VariantPage({ pathogenName, variantName }: VariantsPageProps) {
       <VariantsSidebar pathogenName={pathogenName} />
 
       <MainContent>
-        <Row noGutters>
-          <Col>
-            <span className="d-flex w-100">
-              <span className="mr-auto">{prev}</span>
-              <span className="ml-auto">{next}</span>
-            </span>
-            <PageHeading>
-              {t('{{name}}, variant {{variant}}', {
-                name: t(pathogen.nameFriendly),
-                variant: variantName,
-              })}
-            </PageHeading>
-          </Col>
-        </Row>
+        <MainContentInner>
+          <Row noGutters>
+            <Col>
+              <span className="d-flex w-100">
+                <span className="mr-auto">{prev}</span>
+                <span className="ml-auto">{next}</span>
+              </span>
+              <h4 className="text-center">
+                {t('{{name}}, variant {{variant}}', {
+                  name: t(pathogen.nameFriendly),
+                  variant: variantName,
+                })}
+              </h4>
+            </Col>
+          </Row>
 
-        <Row noGutters>
-          <Col>
-            <VariantsPlot pathogenName={pathogenName} variantName={variant} />
-          </Col>
-        </Row>
+          <VariantsPlot pathogenName={pathogenName} variantName={variant} />
+        </MainContentInner>
       </MainContent>
     </PageContainerHorizontal>
   )
 }
 
 const MainContent = styled.div`
-  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 100%;
+  overflow: hidden;
+`
+
+const MainContentInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
   overflow: hidden;
 `

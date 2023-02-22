@@ -1,10 +1,10 @@
 import { get, maxBy, minBy } from 'lodash-es'
 import { Interval } from 'luxon'
 import React, { useMemo } from 'react'
-import { useTheme } from 'styled-components'
+import styled, { useTheme } from 'styled-components'
+import { useResizeDetector } from 'react-resize-detector'
 import { Area, CartesianGrid, ComposedChart, Line, Tooltip as RechartsTooltip, XAxis, YAxis } from 'recharts'
 import { useRecoilValue } from 'recoil'
-import { ChartContainer } from 'src/components/Charts/ChartContainer'
 import { VariantsPlotTooltip } from 'src/components/Variants/VariantsPlotTooltip'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { dateFromYmd, formatDateHumanely, formatProportion, ymdToTimestamp } from 'src/helpers/format'
@@ -163,11 +163,24 @@ export interface VariantsPlotProps {
 }
 
 export function VariantsPlot({ pathogenName, variantName }: VariantsPlotProps) {
+  const {
+    width = 0,
+    height = 0,
+    ref: resizeRef,
+  } = useResizeDetector({
+    handleWidth: true,
+    handleHeight: true,
+    refreshRate: 300,
+    refreshMode: 'debounce',
+  })
+
   return (
-    <ChartContainer>
-      {({ width, height }) => (
-        <LinePlot width={width} height={height} pathogenName={pathogenName} variantName={variantName} />
-      )}
-    </ChartContainer>
+    <PlotWrapper ref={resizeRef}>
+      <LinePlot width={width} height={height} pathogenName={pathogenName} variantName={variantName} />
+    </PlotWrapper>
   )
 }
+
+const PlotWrapper = styled.div`
+  flex: 1;
+`

@@ -3,7 +3,6 @@ import { Col, Row } from 'reactstrap'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { usePathogen, useRegionsDataQuery } from 'src/io/getData'
 import { RegionsPlot } from 'src/components/Regions/RegionsPlot'
-import { PageHeading } from 'src/components/Common/PageHeading'
 import { PageContainerHorizontal } from 'src/components/Layout/PageContainer'
 import { RegionsSidebar } from 'src/components/Regions/RegionsSidebar'
 import { Link } from 'src/components/Link/Link'
@@ -49,32 +48,39 @@ export function RegionPage({ pathogenName, location }: RegionsPageProps) {
       <RegionsSidebar pathogenName={pathogenName} />
 
       <MainContent>
-        <Row noGutters>
-          <Col>
-            <span className="d-flex w-100">
-              <span className="mr-auto">{prev}</span>
-              <span className="ml-auto">{next}</span>
-            </span>
-            <PageHeading>
-              {t('{{name}} in {{region}}', {
-                name: t(pathogen.nameFriendly),
-                region: t(location),
-              })}
-            </PageHeading>
-          </Col>
-        </Row>
+        <MainContentInner>
+          <Row noGutters>
+            <Col>
+              <span className="d-flex w-100">
+                <span className="mr-auto">{prev}</span>
+                <span className="ml-auto">{next}</span>
+              </span>
+              <h4 className="text-center">
+                {t('{{name}} in {{region}}', {
+                  name: t(pathogen.nameFriendly),
+                  region: t(location),
+                })}
+              </h4>
+            </Col>
+          </Row>
 
-        <Row noGutters>
-          <Col>
-            <RegionsPlot pathogen={pathogen} countryName={location} />
-          </Col>
-        </Row>
+          <RegionsPlot pathogen={pathogen} countryName={location} />
+        </MainContentInner>
       </MainContent>
     </PageContainerHorizontal>
   )
 }
 
 const MainContent = styled.div`
-  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 100%;
+  overflow: hidden;
+`
+
+const MainContentInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
   overflow: hidden;
 `

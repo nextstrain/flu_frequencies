@@ -2,14 +2,14 @@ import { get, maxBy, minBy } from 'lodash-es'
 import { Interval } from 'luxon'
 import React, { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
+import { useResizeDetector } from 'react-resize-detector'
 import { shouldShowRangesOnRegionsPlotAtom } from 'src/state/settings.state'
 import { variantsAtom } from 'src/state/variants.state'
-import { useTheme } from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import { Area, CartesianGrid, ComposedChart, Line, Tooltip as RechartsTooltip, XAxis, YAxis } from 'recharts'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { dateFromYmd, formatDateHumanely, formatProportion, ymdToTimestamp } from 'src/helpers/format'
 import { getCountryColor, getCountryStrokeDashArray, Pathogen, RegionDatum, useRegionDataQuery } from 'src/io/getData'
-import { ChartContainer } from 'src/components/Charts/ChartContainer'
 import { RegionsPlotTooltip } from 'src/components/Regions/RegionsPlotTooltip'
 
 export function calculateTicks(data: RegionDatum[], availableWidth: number, tickWidth: number) {
@@ -152,11 +152,24 @@ export interface RegionsPlotProps {
 }
 
 export function RegionsPlot({ pathogen, countryName }: RegionsPlotProps) {
+  const {
+    width = 0,
+    height = 0,
+    ref: resizeRef,
+  } = useResizeDetector({
+    handleWidth: true,
+    handleHeight: true,
+    refreshRate: 300,
+    refreshMode: 'debounce',
+  })
+
   return (
-    <ChartContainer>
-      {({ width, height }) => (
-        <RegionsPlotImpl width={width} height={height} pathogen={pathogen} countryName={countryName} />
-      )}
-    </ChartContainer>
+    <PlotWrapper ref={resizeRef}>
+      <RegionsPlotImpl width={width} height={height} pathogen={pathogen} countryName={countryName} />
+    </PlotWrapper>
   )
 }
+
+const PlotWrapper = styled.div`
+  flex: 1;
+`

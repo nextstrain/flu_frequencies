@@ -16,9 +16,8 @@ export const PageContainer = styled(Container)`
 
 export const PageContainerHorizontal = styled.div`
   display: flex;
-  flex: 0;
+  flex: 1;
   flex-direction: row;
-  height: 100%;
 `
 
 export const PageMainWrapper = styled.main`

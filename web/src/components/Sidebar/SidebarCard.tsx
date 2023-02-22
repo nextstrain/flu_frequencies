@@ -13,13 +13,13 @@ export function Sidebar({ children }: PropsWithChildren) {
 }
 
 export const SidebarOuterWrapper = styled.aside`
+  display: flex;
   flex: 0 0 300px;
   width: 300px;
   box-shadow: ${(props) => props.theme.shadows.blurredLight};
 `
 
 export const SidebarInnerWrapper = styled.div`
-  height: 100%;
   padding-top: 0;
   display: flex;
   flex: 1;
@@ -77,7 +77,7 @@ const CardHeader = styled(CardHeaderBase)`
 const CardBody = styled(CardBodyBase)`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1;
   overflow: hidden auto;
   border-radius: 0 !important;
 `
