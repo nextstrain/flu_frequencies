@@ -1,11 +1,10 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { get, isArray, max, min } from 'lodash-es'
-import { DateTime, Interval } from 'luxon'
+import { DateTime } from 'luxon'
 import { useRecoilValue } from 'recoil'
 import { useResizeDetector } from 'react-resize-detector'
 import styled, { useTheme } from 'styled-components'
 import { Area, CartesianGrid, ComposedChart, Line, Tooltip as RechartsTooltip, XAxis, YAxis } from 'recharts'
-import { adjustTicks } from 'src/helpers/adjustTicks'
 import {
   formatDateHumanely,
   formatDateWeekly,
@@ -13,22 +12,12 @@ import {
   timestampToDate,
   ymdToTimestamp,
 } from 'src/helpers/format'
+import { calculateTicks } from 'src/helpers/adjustTicks'
 import { getCountryColor, getCountryStrokeDashArray, Pathogen, useVariantDataQuery } from 'src/io/getData'
 import { continentsAtom, countriesAtom } from 'src/state/geography.state'
 import { shouldShowRangesOnVariantsPlotAtom } from 'src/state/settings.state'
 import { VariantsPlotTooltip } from 'src/components/Variants/VariantsPlotTooltip'
 import { DateSlider } from 'src/components/Common/DateSlider'
-
-export function calculateTicks(minDate: DateTime, maxDate: DateTime, availableWidth: number, tickWidth: number) {
-  const ticks = Interval.fromDateTimes(minDate.startOf('month'), maxDate.endOf('month'))
-    .splitBy({ months: 1 })
-    .map((d) => d.start.toSeconds())
-
-  const adjustedTicks = adjustTicks(ticks, availableWidth, tickWidth)
-  const domainX = [adjustedTicks[0], maxDate.toSeconds()]
-  const domainY = [0, 1]
-  return { adjustedTicks, domainX, domainY }
-}
 
 const allowEscapeViewBox = { x: false, y: true }
 const tooltipStyle = { zIndex: 1000, outline: 'none' }

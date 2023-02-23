@@ -45,7 +45,6 @@ export function DateSlider({
           onChange={onChange}
           step={null}
           allowCross={false}
-          draggableTrack
           {...dateSliderStyle}
         />
       </DateSliderWrapper>
