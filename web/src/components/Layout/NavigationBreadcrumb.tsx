@@ -93,7 +93,7 @@ export function NavigationBreadcrumb() {
     for (const [i, segment] of segments.entries()) {
       segmentsAndArrows.push(segment)
       if (i < segments.length - 1) {
-        segmentsAndArrows.push(<BreadcrumbArrow key={i} />)
+        segmentsAndArrows.push(<BreadcrumbArrow key={`arrow-${i}`} />)
       }
     }
     return segmentsAndArrows
