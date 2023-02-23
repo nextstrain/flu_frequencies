@@ -1,10 +1,11 @@
 import { isArray } from 'lodash-es'
-import React, { ReactNode, useCallback } from 'react'
+import React, { CSSProperties, ReactNode, useCallback, useMemo } from 'react'
 import Slider from 'rc-slider'
 import type { MarkObj } from 'rc-slider/lib/Marks'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import { formatDateHumanely } from 'src/helpers/format'
 import 'rc-slider/assets/index.css'
+import { Theme } from 'src/theme'
 
 export interface DateSliderProps {
   minTimestamp: number
@@ -21,6 +22,8 @@ export function DateSlider({
   marks,
   onDateRangeChange,
 }: DateSliderProps) {
+  const theme = useTheme()
+
   const onChange = useCallback(
     (range: number | number[]) => {
       if (isArray(range)) {
@@ -29,6 +32,8 @@ export function DateSlider({
     },
     [onDateRangeChange],
   )
+
+  const dateSliderStyle = useMemo(() => getDateSliderStyle(theme), [theme])
 
   return (
     <DateSliderOuter>
@@ -81,10 +86,12 @@ const DateSliderText = styled.span`
   margin-bottom: 0.9rem;
 `
 
-const dateSliderStyle = {
-  railStyle: { height: 10 },
-  trackStyle: { height: 10 },
-  dotStyle: { display: 'none' },
-  activeDotStyle: { display: 'none' },
-  handleStyle: { height: 20, width: 20 },
+function getDateSliderStyle(theme: Theme): Record<string, CSSProperties> {
+  return {
+    railStyle: { height: 10, backgroundColor: theme.gray300 },
+    trackStyle: { height: 10, backgroundColor: theme.primary },
+    dotStyle: { display: 'none' },
+    activeDotStyle: { display: 'none' },
+    handleStyle: { height: 20, width: 20, borderColor: theme.primary, borderWidth: 1 },
+  }
 }
