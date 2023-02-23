@@ -50,7 +50,7 @@ export interface PathogenPageProps {
 export function PathogenPage({ pathogenName }: PathogenPageProps) {
   return (
     <PageContainer>
-      <ScreenHeightRow noGutter>
+      <ScreenHeightRow noGutters>
         <ScreenHeightCol md={6}>
           <ListOfVariants pathogenName={pathogenName} />
         </ScreenHeightCol>
