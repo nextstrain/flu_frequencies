@@ -26,7 +26,7 @@ export const SidebarInnerWrapper = styled.div`
   padding-top: 0;
   display: flex;
   flex-direction: column;
-  flex: 0;
+  flex: 1;
   width: ${SIDEBAR_WIDTH}px;
 `
 
