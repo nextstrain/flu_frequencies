@@ -12,18 +12,22 @@ export function Sidebar({ children }: PropsWithChildren) {
   )
 }
 
+const SIDEBAR_WIDTH = 300
+
 export const SidebarOuterWrapper = styled.aside`
   display: flex;
-  flex: 0 0 300px;
-  width: 300px;
+  flex-direction: row;
+  flex: 0;
+  width: ${SIDEBAR_WIDTH}px;
   box-shadow: ${(props) => props.theme.shadows.blurredLight};
 `
 
 export const SidebarInnerWrapper = styled.div`
   padding-top: 0;
   display: flex;
-  flex: 1;
   flex-direction: column;
+  flex: 0;
+  width: ${SIDEBAR_WIDTH}px;
 `
 
 export interface SidebarSectionProps extends PropsWithChildren {
@@ -80,6 +84,7 @@ const CardBody = styled(CardBodyBase)`
   flex: 1 1;
   overflow: hidden auto;
   border-radius: 0 !important;
+  padding: 0.5rem 1rem;
 `
 
 const CardCollapsible = styled(Card)<{ $isCollapsed: boolean }>`
