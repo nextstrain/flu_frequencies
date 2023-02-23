@@ -10,7 +10,7 @@ import { BsCaretRightFill as ArrowRight } from 'react-icons/bs'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Link } from 'src/components/Link/Link'
 import { DropdownOption } from 'src/components/Common/DropdownWithSearch'
-import { useRegionsDataQuery, useVariantsDataQuery } from 'src/io/getData'
+import { usePathogen, useRegionsDataQuery, useVariantsDataQuery } from 'src/io/getData'
 
 const paths = [
   '/pathogen/:pathogenName',
@@ -66,20 +66,20 @@ export function NavigationBreadcrumb() {
     if (path === '/pathogen/:pathogenName' && !isNil(pathogenName)) {
       segments.push(
         <BreadcrumbLink key={pathogenName} href={urljoin('pathogen', pathogenName)}>
-          {t(pathogenName)}
+          <PathogenName pathogenName={pathogenName} />
         </BreadcrumbLink>,
       )
     } else if (path === '/pathogen/:pathogenName/variants/:variant' && !isNil(pathogenName) && !isNil(variant)) {
       segments.push(
         <BreadcrumbLink key={pathogenName} href={urljoin('pathogen', pathogenName)}>
-          {t(pathogenName)}
+          <PathogenName pathogenName={pathogenName} />
         </BreadcrumbLink>,
         <BreadcrumbVariantSelector key={variant} pathogenName={pathogenName} variant={variant} />,
       )
     } else if (path === '/pathogen/:pathogenName/regions/:region' && !isNil(pathogenName) && !isNil(region)) {
       segments.push(
         <BreadcrumbLink key={pathogenName} href={urljoin('pathogen', pathogenName)}>
-          {t(pathogenName)}
+          <PathogenName pathogenName={pathogenName} />
         </BreadcrumbLink>,
         <BreadcrumbRegionSelector key={region} pathogenName={pathogenName} region={region} />,
       )
@@ -93,7 +93,7 @@ export function NavigationBreadcrumb() {
     for (const [i, segment] of segments.entries()) {
       segmentsAndArrows.push(segment)
       if (i < segments.length - 1) {
-        segmentsAndArrows.push(<BreadcrumbArrow />)
+        segmentsAndArrows.push(<BreadcrumbArrow key={i} />)
       }
     }
     return segmentsAndArrows
@@ -114,6 +114,17 @@ export function BreadcrumbLink({ href, children }: BreadcrumbLinkProps) {
       </NavLink>
     </NavItem>
   )
+}
+
+export interface PathogenNameProps {
+  pathogenName: string
+}
+
+export function PathogenName({ pathogenName }: PathogenNameProps) {
+  const { t } = useTranslationSafe()
+  const pathogen = usePathogen(pathogenName)
+
+  return <>{t(pathogen.nameFriendly)}</>
 }
 
 export const NavItem = styled(NavItemBase)`
