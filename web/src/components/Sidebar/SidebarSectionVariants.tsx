@@ -1,14 +1,15 @@
 import React, { useMemo } from 'react'
-import { Button, Col, Form, FormGroup, Row } from 'reactstrap'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { Form } from 'reactstrap'
+import { useRecoilState } from 'recoil'
 import styled from 'styled-components'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { fuzzySearch } from 'src/helpers/fuzzySearch'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Pathogen, usePathogen, useVariantsDataQuery, useVariantStyle } from 'src/io/getData'
 import { variantsSearchTermAtom } from 'src/state/geography.state'
-import { variantAtom, variantsDisableAllAtom, variantsEnableAllAtom } from 'src/state/variants.state'
-import { CheckboxWithIcon } from 'src/components/Common/Checkbox'
+import { variantAtom, variantsEnableAllAtom } from 'src/state/variants.state'
+import { CheckboxIndeterminateWithText, CheckboxWithIcon } from 'src/components/Common/Checkbox'
+import { isEmpty } from 'lodash-es'
 
 const Container = styled.div`
   display: flex;
@@ -23,16 +24,17 @@ export function SidebarSectionVariants({ pathogenName }: SidebarSectionVariantsP
   const pathogen = usePathogen(pathogenName)
   const { variants } = useVariantsDataQuery(pathogenName)
   const [searchTerm] = useRecoilState(variantsSearchTermAtom)
-  const checkboxes = useMemo(
-    () =>
-      fuzzySearch(variants, searchTerm).map(({ item }) => (
-        <VariantsCheckbox pathogenName={pathogenName} key={item} variant={item} />
-      )),
-    [pathogenName, searchTerm, variants],
-  )
+  const checkboxes = useMemo(() => {
+    const checkboxes = fuzzySearch(variants, searchTerm).map(({ item }) => (
+      <VariantsCheckbox pathogenName={pathogenName} key={item} variant={item} />
+    ))
+    if (isEmpty(searchTerm)) {
+      checkboxes.unshift(<VariantsSelectAll key="VariantsSelectAll" pathogen={pathogen} />)
+    }
+    return checkboxes
+  }, [pathogen, pathogenName, searchTerm, variants])
   return (
     <Container>
-      <VariantsSelectAll pathogen={pathogen} />
       <Form>{checkboxes}</Form>
     </Container>
   )
@@ -44,21 +46,14 @@ export interface VariantsSelectAllProps {
 
 export function VariantsSelectAll({ pathogen }: VariantsSelectAllProps) {
   const { t } = useTranslationSafe()
-  const selectAll = useSetRecoilState(variantsEnableAllAtom(pathogen.name))
-  const deselectAll = useSetRecoilState(variantsDisableAllAtom(pathogen.name))
+  const [isAllEnabled, setIsAllEnabled] = useRecoilState(variantsEnableAllAtom(pathogen.name))
   return (
-    <Row noGutters>
-      <Col className="d-flex">
-        <FormGroup className="flex-grow-0 mx-auto">
-          <Button type="button" color="link" onClick={selectAll}>
-            {t('Select all')}
-          </Button>
-          <Button type="button" color="link" onClick={deselectAll}>
-            {t('Deselect all')}
-          </Button>
-        </FormGroup>
-      </Col>
-    </Row>
+    <CheckboxIndeterminateWithText
+      label={t('Select all')}
+      title={t('Select all')}
+      state={isAllEnabled}
+      onChange={setIsAllEnabled}
+    />
   )
 }
 

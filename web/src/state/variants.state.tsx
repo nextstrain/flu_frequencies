@@ -5,7 +5,7 @@ import { VariantsData } from 'src/io/getData'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
 import urljoin from 'url-join'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
-import { ErrorInternal } from 'src/helpers/ErrorInternal'
+import { CheckboxState } from 'src/components/Common/Checkbox'
 
 const variantDataAtom = atomFamily<VariantsData, string>({
   key: 'variantDataAtom',
@@ -52,30 +52,41 @@ export const variantAtom = selectorFamily<boolean, { pathogen: string; variant: 
     },
 })
 
+function isEnabledAll<T extends { enabled: boolean }>(items: T[]) {
+  return items.every((item) => item.enabled)
+}
+
+function isDisabledAll<T extends { enabled: boolean }>(items: T[]) {
+  return items.every((item) => !item.enabled)
+}
+
 function setEnabledAll<T extends { enabled: boolean }>(items: T[], enabled: boolean) {
   return items.map((item) => ({ ...item, enabled }))
 }
 
-export const variantsEnableAllAtom = selectorFamily<unknown, string>({
+export const variantsEnableAllAtom = selectorFamily<CheckboxState, string>({
   key: 'variantsEnableAllAtom',
-  get() {
-    throw new ErrorInternal("Attempt to read from write-only atom: 'variantsEnableAllAtom'")
-  },
-  set:
+  get:
     (region) =>
-    ({ get, set }) => {
-      set(variantsAtom(region), setEnabledAll(get(variantsAtom(region)), true))
+    ({ get }) => {
+      const variants = get(variantsAtom(region))
+      if (isEnabledAll(variants)) {
+        return CheckboxState.Checked
+      }
+      if (isDisabledAll(variants)) {
+        return CheckboxState.Unchecked
+      }
+      return CheckboxState.Indeterminate
     },
-})
-
-export const variantsDisableAllAtom = selectorFamily<unknown, string>({
-  key: 'variantsDisableAllAtom',
-  get() {
-    throw new ErrorInternal("Attempt to read from write-only atom: 'variantsDisableAllAtom'")
-  },
   set:
     (region) =>
-    ({ get, set }) => {
-      set(variantsAtom(region), setEnabledAll(get(variantsAtom(region)), false))
+    ({ get, set, reset }, value) => {
+      if (isDefaultValue(value)) {
+        reset(variantsAtom(region))
+      } else if (value === CheckboxState.Checked) {
+        set(variantsAtom(region), setEnabledAll(get(variantsAtom(region)), true))
+      } else if (value === CheckboxState.Unchecked) {
+        set(variantsAtom(region), setEnabledAll(get(variantsAtom(region)), false))
+      }
     },
 })

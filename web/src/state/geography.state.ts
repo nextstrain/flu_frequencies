@@ -5,7 +5,7 @@ import { GeographyData } from 'src/io/getData'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
 import urljoin from 'url-join'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
-import { ErrorInternal } from 'src/helpers/ErrorInternal'
+import { CheckboxState } from 'src/components/Common/Checkbox'
 
 const geographyAtom = atomFamily<GeographyData, string>({
   key: 'geographyAtom',
@@ -91,33 +91,47 @@ export const countryAtom = selectorFamily<boolean, { pathogen: string; country: 
     },
 })
 
+function isEnabledAll<T extends { enabled: boolean }>(items: T[]) {
+  return items.every((item) => item.enabled)
+}
+
+function isDisabledAll<T extends { enabled: boolean }>(items: T[]) {
+  return items.every((item) => !item.enabled)
+}
+
 function setEnabledAll<T extends { enabled: boolean }>(items: T[], enabled: boolean) {
   return items.map((item) => ({ ...item, enabled }))
 }
 
-export const geographyEnableAllAtom = selectorFamily<unknown, string>({
+export const geographyEnableAllAtom = selectorFamily<CheckboxState, string>({
   key: 'geographyEnableAllAtom',
-  get() {
-    throw new ErrorInternal("Attempt to read from write-only atom: 'geographyEnableAllAtom'")
-  },
-  set:
+  get:
     (region) =>
-    ({ get, set }) => {
-      set(countriesAtom(region), setEnabledAll(get(countriesAtom(region)), true))
-      set(continentsAtom(region), setEnabledAll(get(continentsAtom(region)), true))
+    ({ get }) => {
+      const countries = get(countriesAtom(region))
+      const regions = get(continentsAtom(region))
+      const locations = [...regions, ...countries]
+      if (isEnabledAll(locations)) {
+        return CheckboxState.Checked
+      }
+      if (isDisabledAll(locations)) {
+        return CheckboxState.Unchecked
+      }
+      return CheckboxState.Indeterminate
     },
-})
-
-export const geographyDisableAllAtom = selectorFamily<unknown, string>({
-  key: 'geographyDisableAllAtom',
-  get() {
-    throw new ErrorInternal("Attempt to read from write-only atom: 'geographyDisableAllAtom'")
-  },
   set:
     (region) =>
-    ({ get, set }) => {
-      set(countriesAtom(region), setEnabledAll(get(countriesAtom(region)), false))
-      set(continentsAtom(region), setEnabledAll(get(continentsAtom(region)), false))
+    ({ get, set, reset }, value) => {
+      if (isDefaultValue(value)) {
+        reset(countriesAtom(region))
+        reset(continentsAtom(region))
+      } else if (value === CheckboxState.Checked) {
+        set(countriesAtom(region), setEnabledAll(get(countriesAtom(region)), true))
+        set(continentsAtom(region), setEnabledAll(get(continentsAtom(region)), true))
+      } else if (value === CheckboxState.Unchecked) {
+        set(countriesAtom(region), setEnabledAll(get(countriesAtom(region)), false))
+        set(continentsAtom(region), setEnabledAll(get(continentsAtom(region)), false))
+      }
     },
 })
 
