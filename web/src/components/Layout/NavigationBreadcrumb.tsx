@@ -150,7 +150,7 @@ export const NavLink = styled(NavLinkBase)<{ active?: boolean }>`
 `
 
 export function BreadcrumbArrow() {
-  return <ArrowRight size={20} className="mx-2" />
+  return <ArrowRight size={20} className="mx-2 pb-1" />
 }
 
 export interface BreadcrumbVariantSelectorProps {
