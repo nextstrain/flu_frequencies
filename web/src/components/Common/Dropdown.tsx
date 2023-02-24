@@ -87,6 +87,8 @@ const DropdownMenu = styled(DropdownMenuBase)`
   color: ${(props) => props.theme.bodyColor};
   background-color: ${(props) => props.theme.bodyBg};
   box-shadow: ${(props) => props.theme.shadows.blurredMedium};
+  max-height: 70vh;
+  overflow-y: scroll;
 `
 
 const DropdownItem = styled(DropdownItemBase)<{ active: boolean }>`
