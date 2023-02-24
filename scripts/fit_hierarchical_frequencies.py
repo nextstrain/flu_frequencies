@@ -122,7 +122,7 @@ if __name__=='__main__':
         for minor_geo_cat  in minor_geo_cats:
             tmp = {k[-1]:v for k,v in totals.items() if k[:-2]==geo_cat and k[-2]==minor_geo_cat}
             data_totals[minor_geo_cat] = sum(tmp.values())
-            if data_totals[minor_geo_cat]>100:
+            if data_totals[minor_geo_cat]>20:
                 sub_totals[minor_geo_cat] = tmp
         sub_counts = {}
         frequencies = {}

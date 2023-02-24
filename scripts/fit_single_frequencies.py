@@ -3,6 +3,7 @@ from datetime import datetime
 import numpy as np
 
 def zero_one_clamp(x):
+    if np.isnan(x): return x
     return max(0,min(1,x))
 
 def parse_dates(x):
