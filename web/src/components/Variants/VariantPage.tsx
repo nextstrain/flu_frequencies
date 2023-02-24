@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import { VariantsPlot } from 'src/components/Variants/VariantsPlot'
 import { VariantsSidebar } from 'src/components/Variants/VariantsSidebar'
@@ -7,7 +7,7 @@ import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { usePathogen, useVariantDataQuery, useVariantsDataQuery } from 'src/io/getData'
 import { Col, Row } from 'reactstrap'
 import urljoin from 'url-join'
-import { Link } from 'src/components/Link/Link'
+import { LinkButtonNext, LinkButtonPrev } from 'src/components/Common/LinkButtonNextPrev'
 
 export interface VariantsPageProps {
   pathogenName: string
@@ -24,26 +24,12 @@ export function VariantPage({ pathogenName, variantName }: VariantsPageProps) {
 
   const { prev, next } = useMemo(() => {
     const i = variants.indexOf(variant)
-    let prev: ReactNode = null
-    if (i > 0) {
-      const prevName = variants[i - 1]
-      prev = (
-        <Link href={urljoin('pathogen', pathogenName, 'variants', prevName)}>
-          {t('Previous: {{name}}', { name: prevName })}
-        </Link>
-      )
-    }
-    let next: ReactNode = null
-    if (i < variants.length - 1) {
-      const nextName = variants[i + 1]
-      next = (
-        <Link href={urljoin('pathogen', pathogenName, 'variants', nextName)}>
-          {t('Next: {{name}}', { name: nextName })}
-        </Link>
-      )
-    }
+    const prevName = variants[i - 1] ?? variants[variants.length - 1]
+    const prev = <LinkButtonPrev text={t(prevName)} href={urljoin('pathogen', pathogenName, 'variants', prevName)} />
+    const nextName = variants[i + 1] ?? variants[0]
+    const next = <LinkButtonNext text={t(nextName)} href={urljoin('pathogen', pathogenName, 'variants', nextName)} />
     return { prev, next }
-  }, [pathogenName, t, variant, variants])
+  }, [variants, variant, t, pathogenName])
 
   return (
     <PageContainerHorizontal>
@@ -53,16 +39,16 @@ export function VariantPage({ pathogenName, variantName }: VariantsPageProps) {
         <MainContentInner>
           <Row noGutters>
             <Col>
-              <span className="d-flex w-100">
-                <span className="mr-auto">{prev}</span>
-                <span className="ml-auto">{next}</span>
+              <span className="d-flex w-100 mt-2">
+                <span className="ml-2 mr-auto">{prev}</span>
+                <h4 className="text-center">
+                  {t('{{name}}, variant {{variant}}', {
+                    name: t(pathogen.nameFriendly),
+                    variant: variantName,
+                  })}
+                </h4>
+                <span className="mr-2 ml-auto">{next}</span>
               </span>
-              <h4 className="text-center">
-                {t('{{name}}, variant {{variant}}', {
-                  name: t(pathogen.nameFriendly),
-                  variant: variantName,
-                })}
-              </h4>
             </Col>
           </Row>
 

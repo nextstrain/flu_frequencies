@@ -1,13 +1,13 @@
-import React, { ReactNode, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
+import urljoin from 'url-join'
+import styled from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { usePathogen, useRegionsDataQuery } from 'src/io/getData'
 import { RegionsPlot } from 'src/components/Regions/RegionsPlot'
 import { PageContainerHorizontal } from 'src/components/Layout/PageContainer'
 import { RegionsSidebar } from 'src/components/Regions/RegionsSidebar'
-import { Link } from 'src/components/Link/Link'
-import urljoin from 'url-join'
-import styled from 'styled-components'
+import { LinkButtonNext, LinkButtonPrev } from 'src/components/Common/LinkButtonNextPrev'
 
 export interface RegionsPageProps {
   pathogenName: string
@@ -22,26 +22,12 @@ export function RegionPage({ pathogenName, location }: RegionsPageProps) {
 
   const { prev, next } = useMemo(() => {
     const i = locations.indexOf(location)
-    let prev: ReactNode = null
-    if (i > 0) {
-      const prevName = locations[i - 1]
-      prev = (
-        <Link href={urljoin('pathogen', pathogenName, 'regions', prevName)}>
-          {t('Previous: {{name}}', { name: t(prevName) })}
-        </Link>
-      )
-    }
-    let next: ReactNode = null
-    if (i < locations.length - 1) {
-      const nextName = locations[i + 1]
-      next = (
-        <Link href={urljoin('pathogen', pathogenName, 'regions', nextName)}>
-          {t('Next: {{name}}', { name: t(nextName) })}
-        </Link>
-      )
-    }
+    const prevName = locations[i - 1] ?? locations[locations.length - 1]
+    const prev = <LinkButtonPrev text={t(prevName)} href={urljoin('pathogen', pathogenName, 'regions', prevName)} />
+    const nextName = locations[i + 1] ?? locations[0]
+    const next = <LinkButtonNext text={t(nextName)} href={urljoin('pathogen', pathogenName, 'regions', nextName)} />
     return { prev, next }
-  }, [pathogenName, t, location, locations])
+  }, [locations, location, t, pathogenName])
 
   return (
     <PageContainerHorizontal>
@@ -51,16 +37,16 @@ export function RegionPage({ pathogenName, location }: RegionsPageProps) {
         <MainContentInner>
           <Row noGutters>
             <Col>
-              <span className="d-flex w-100">
-                <span className="mr-auto">{prev}</span>
-                <span className="ml-auto">{next}</span>
+              <span className="d-flex w-100 mt-2">
+                <span className="ml-2 mr-auto">{prev}</span>
+                <h4 className="text-center">
+                  {t('{{pathogen}} in {{region}}', {
+                    pathogen: t(pathogen.nameFriendly),
+                    region: t(location),
+                  })}
+                </h4>
+                <span className="mr-2 ml-auto">{next}</span>
               </span>
-              <h4 className="text-center">
-                {t('{{name}} in {{region}}', {
-                  name: t(pathogen.nameFriendly),
-                  region: t(location),
-                })}
-              </h4>
             </Col>
           </Row>
 
