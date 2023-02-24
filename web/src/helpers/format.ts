@@ -25,7 +25,7 @@ export function formatDateBiweekly(weekTimestamp: number) {
 }
 
 export const formatDateHumanely = (date: number) =>
-  DateTime.fromSeconds(date).toLocaleString({ month: 'short', year: '2-digit' }).replace(' ', '\n')
+  DateTime.fromSeconds(date).toLocaleString({ month: 'short', year: 'numeric' }).replace(' ', '\n')
 
 export function dateFromYmd(ymd: string): DateTime {
   return DateTime.fromFormat(ymd, 'yyyy-MM-dd')
