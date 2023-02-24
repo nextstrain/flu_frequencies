@@ -38,6 +38,7 @@ const LinkLookingLikeButton = styled(LinkLookingLikeButtonBase)`
   padding: 0.2rem 0.3rem;
   min-width: 120px;
   font-size: 0.8rem;
+  border-radius: 2px;
 `
 
 const ArrowRight = styled(ArrowRightBase)`

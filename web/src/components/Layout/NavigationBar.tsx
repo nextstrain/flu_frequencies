@@ -5,6 +5,7 @@ import { Link } from 'src/components/Link/Link'
 import BrandLogoBase from 'src/assets/images/logo.svg'
 import { LanguageSwitcher } from 'src/components/Layout/LanguageSwitcher'
 import { NavigationBreadcrumb } from 'src/components/Layout/NavigationBreadcrumb'
+import { PROJECT_NAME } from 'src/constants'
 
 export const HEIGHT_NAVBAR = 50
 
@@ -38,23 +39,10 @@ export const NavWrappable = styled(NavBase)`
   }
 `
 
-export const BrandLogoSmall = styled(BrandLogoBase)`
-  height: 30px;
-`
-
-const BrandWrapper = styled.div`
-  margin-right: 2rem;
-  margin-left: 1rem;
-`
-
 export function NavigationBar() {
   return (
     <Navbar expand="xs" role="navigation">
-      <BrandWrapper>
-        <Link href="/">
-          <BrandLogoSmall />
-        </Link>
-      </BrandWrapper>
+      <Brand />
 
       <NavWrappable navbar>
         <NavigationBreadcrumb />
@@ -64,5 +52,36 @@ export function NavigationBar() {
         <LanguageSwitcher />
       </Nav>
     </Navbar>
+  )
+}
+
+const BrandWrapper = styled.div`
+  display: flex;
+  height: 100%;
+  margin-bottom: 0.1rem;
+`
+export const BrandLogoSmall = styled(BrandLogoBase)`
+  flex: 1;
+  height: 36px;
+  margin-left: 1rem;
+`
+
+const BrandNameStyled = styled.span`
+  flex: 1;
+  color: #521717;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 1rem;
+  margin-right: 2rem;
+`
+
+export function Brand() {
+  return (
+    <Link href="/" className="text-decoration-none">
+      <BrandWrapper>
+        <BrandLogoSmall />
+        <BrandNameStyled>{PROJECT_NAME}</BrandNameStyled>
+      </BrandWrapper>
+    </Link>
   )
 }
