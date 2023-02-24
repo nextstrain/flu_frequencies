@@ -56,7 +56,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
               name={name}
               dataKey={(d) => get(d.avgs, name)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
               stroke={getCountryColor(variantsStyles, name)}
-              strokeWidth={2}
+              strokeWidth={theme.plot.line.strokeWidth}
               strokeDasharray={getCountryStrokeDashArray(variantsStyles, name)}
               dot={false}
               isAnimationActive={false}

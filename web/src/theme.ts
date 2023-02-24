@@ -127,6 +127,9 @@ export const plot = {
     x: { fontSize: 16 },
     y: { fontSize: 16 },
   },
+  line: {
+    strokeWidth: 3,
+  },
   tickMargin: {
     y: 4,
     x: 6,

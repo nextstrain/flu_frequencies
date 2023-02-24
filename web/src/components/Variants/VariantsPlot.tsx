@@ -59,7 +59,7 @@ function LinePlot<T>({ width, height, data, minDate, maxDate, pathogen, variantN
               name={name}
               dataKey={(d) => get(d.avgs, name)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
               stroke={getCountryColor(geographyStyles, name)}
-              strokeWidth={2}
+              strokeWidth={theme.plot.line.strokeWidth}
               strokeDasharray={getCountryStrokeDashArray(geographyStyles, name)}
               dot={false}
               isAnimationActive={false}
