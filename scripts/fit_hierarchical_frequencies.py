@@ -7,7 +7,8 @@ def geo_label_map(x):
     if x=='China': return 'China(PRC)'
     return x
 
-def fit_hierarchical_frequencies(totals, counts, time_bins, stiffness=0.5, stiffness_minor=0.1, mu=0.3):
+def fit_hierarchical_frequencies(totals, counts, time_bins, stiffness=0.5, stiffness_minor=0.1,
+                                 mu=0.3, use_inverse_for_confidence=True):
 
     minor_cats = list(totals.keys())
     n_tp = len(time_bins)
@@ -43,7 +44,7 @@ def fit_hierarchical_frequencies(totals, counts, time_bins, stiffness=0.5, stiff
             b_res += k*pre_fac
 
         pre_fac = total_n**2/(total_k + pc)/(total_n - total_k + pc)
-        extra_major = 1.0
+        extra_major = 0.2
         values.append(diag + res + extra_major*total_n*pre_fac); row.append(ti); column.append(ti)
         sq_confidence.append((total_k + pc)*(total_n - total_k + pc)/(total_n**3+pc))
         b.append(b_res + extra_major*total_k*pre_fac)
@@ -78,17 +79,26 @@ def fit_hierarchical_frequencies(totals, counts, time_bins, stiffness=0.5, stiff
     A = csr_matrix((values, (row, column)), shape=(len(b), len(b)))
     sol = spsolve(A,b)
 
+    if use_inverse_for_confidence:
+        window = len(time_bins)
+        matrix_conf_intervals = []
+        for wi in range(len(b)//window):
+            matrix_conf_intervals.extend(np.diag(np.linalg.inv(A[wi*window:(wi+1)*window,wi*window:(wi+1)*window].todense())))
+        conf_to_use = matrix_conf_intervals
+    else:
+        conf_to_use = sq_confidence
+
     freqs = {"time_points": time_bins}
     freqs["major_frequencies"] = {t:{"val": zero_one_clamp(sol[ti]),
-                                     "upper":zero_one_clamp(sol[ti]+np.sqrt(sq_confidence[ti])),
-                                     "lower":zero_one_clamp(sol[ti]-np.sqrt(sq_confidence[ti]))}
+                                     "upper":zero_one_clamp(sol[ti]+np.sqrt(conf_to_use[ti])),
+                                     "lower":zero_one_clamp(sol[ti]-np.sqrt(conf_to_use[ti]))}
                                      for ti,t in enumerate(time_bins)}
     for ci, cat in enumerate(minor_cats):
         freqs[cat] = {}
         for ti,t in enumerate(time_bins):
             row_index = ti + (ci+1)*n_tp
             val = zero_one_clamp(sol[ti] + sol[row_index])
-            dev = np.sqrt(sq_confidence[ti] + sq_confidence[row_index])
+            dev = np.sqrt(conf_to_use[ti] + conf_to_use[row_index])
             freqs[cat][t] = {"val": val, "upper": zero_one_clamp(val+dev), "lower": zero_one_clamp(val-dev)}
 
     return freqs

@@ -66,11 +66,13 @@ Rearranging this to separate constant and $p_i$ dependent parts yields
 \frac{n_j^3}{(k_j+p_c)(n_j-k_j+p_c)}p_j  + \lambda (2p_j - p_{j-1} - p_{j+1}) =  \frac{n_j^2 k_j}{(k_j+p_c)(n_j-k_j+p_c)}
 \end{equation}
 
-The second derivative with respect to frequencies would be
+The second derivative of the objective function with respect to frequencies would have the diagonal elements
 \begin{equation}
-    \frac{n_i^3}{(k_i+p_c)(n_i-k_i+p_c)}
+    \frac{n_i^3}{(k_i+p_c)(n_i-k_i+p_c)} + 2\lambda
 \end{equation}
-which means that the inverse should be the confidence intervals
+and off-diagonal elements $(i, i+1)$ of $-\lambda$.
+The confidence intervals would then be the square root of the diagonal of the inverse of this Hessian.
+
 
 
 \section*{Hierarchial frequencies}
