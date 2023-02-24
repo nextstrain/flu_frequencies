@@ -98,6 +98,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
         ticks={adjustedTicks}
         tick={theme.plot.tickStyle}
         tickMargin={theme.plot.tickMargin?.x}
+        style={theme.plot.axes.x}
         allowDataOverflow
       />
       <YAxis
@@ -106,6 +107,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
         domain={domainY}
         tick={theme.plot.tickStyle}
         tickMargin={theme.plot.tickMargin?.y}
+        style={theme.plot.axes.y}
         allowDataOverflow
       />
       <RechartsTooltip
@@ -118,7 +120,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
         offset={50}
         wrapperStyle={tooltipStyle}
       />
-      <CartesianGrid stroke="#2222" />
+      <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
       {lines}
       {ranges}
     </ComposedChart>
