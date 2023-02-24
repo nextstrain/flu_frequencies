@@ -87,7 +87,7 @@ function LinePlot<T>({ width, height, data, minDate, maxDate, pathogen, variantN
       .filter(Boolean)
 
     return { lines, ranges }
-  }, [regions, countries, geographyStyles, shouldShowRanges])
+  }, [regions, countries, geographyStyles, theme.plot.line.strokeWidth, shouldShowRanges])
 
   const metadata = useMemo(() => ({ pathogenName: pathogen.name, variantName }), [pathogen.name, variantName])
 

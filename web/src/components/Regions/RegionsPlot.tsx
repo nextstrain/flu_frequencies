@@ -84,7 +84,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
       .filter(Boolean)
 
     return { lines, ranges }
-  }, [shouldShowRanges, variants, variantsStyles])
+  }, [shouldShowRanges, theme.plot.line.strokeWidth, variants, variantsStyles])
 
   const metadata = useMemo(() => ({ pathogenName: pathogen.name, countryName }), [countryName, pathogen.name])
 

@@ -4,7 +4,7 @@ import { NavItem as NavItemBase, NavLink as NavLinkBase } from 'reactstrap'
 import Route from 'route-parser'
 import { head, isNil } from 'lodash-es'
 import { useRouter } from 'next/router'
-import Select, { StylesConfig } from 'react-select'
+import Select, { SingleValue, StylesConfig } from 'react-select'
 import urljoin from 'url-join'
 import { BsCaretRightFill as ArrowRight } from 'react-icons/bs'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
@@ -165,7 +165,7 @@ export function BreadcrumbVariantSelector({ pathogenName, variant }: BreadcrumbV
   const options = useMemo(() => variants.map((variant) => ({ label: variant, value: variant })), [variants])
   const option = useMemo(() => ({ label: value, value }), [value])
   const onChange = useCallback(
-    (option: DropdownOption<string> | null) => {
+    (option: SingleValue<{ label: string; value: string }>) => {
       if (option) {
         void push(urljoin('pathogen', pathogenName, 'variants', option.value)) // eslint-disable-line no-void
         setValue(option.value)
