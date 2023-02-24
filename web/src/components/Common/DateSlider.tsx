@@ -1,11 +1,13 @@
 import { isArray } from 'lodash-es'
 import React, { CSSProperties, ReactNode, useCallback, useMemo } from 'react'
+import { useRecoilValue } from 'recoil'
 import Slider from 'rc-slider'
 import type { MarkObj } from 'rc-slider/lib/Marks'
 import styled, { useTheme } from 'styled-components'
 import { formatDateHumanely } from 'src/helpers/format'
 import 'rc-slider/assets/index.css'
 import { Theme } from 'src/theme'
+import { localeAtom } from 'src/state/locale.state'
 
 export interface DateSliderProps {
   minTimestamp: number
@@ -23,6 +25,7 @@ export function DateSlider({
   onDateRangeChange,
 }: DateSliderProps) {
   const theme = useTheme()
+  const locale = useRecoilValue(localeAtom)
 
   const onChange = useCallback(
     (range: number | number[]) => {
@@ -38,7 +41,7 @@ export function DateSlider({
   return (
     <DateSliderOuter>
       <DateSliderTextWrapper>
-        <DateSliderText>{formatDateHumanely(minTimestamp)}</DateSliderText>
+        <DateSliderText>{formatDateHumanely(locale)(minTimestamp)}</DateSliderText>
       </DateSliderTextWrapper>
       <DateSliderWrapper>
         <Slider
@@ -54,7 +57,7 @@ export function DateSlider({
         />
       </DateSliderWrapper>
       <DateSliderTextWrapper>
-        <DateSliderText>{formatDateHumanely(maxTimestamp)}</DateSliderText>
+        <DateSliderText>{formatDateHumanely(locale)(maxTimestamp)}</DateSliderText>
       </DateSliderTextWrapper>
     </DateSliderOuter>
   )

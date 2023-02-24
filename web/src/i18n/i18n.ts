@@ -76,7 +76,13 @@ export interface Locale {
 
 // prettier-ignore
 export const locales: Record<LocaleKey, Locale> = {
-  en: { key: 'en', full: 'en-US', name: languages.en.name, native: languages.en.native, flag: getFlag('United Kingdom') },
+  en: {
+    key: 'en',
+    full: 'en-US',
+    name: languages.en.name,
+    native: languages.en.native,
+    flag: getFlag('United Kingdom'),
+  },
   ar: { key: 'ar', full: 'ar-SA', name: languages.ar.name, native: languages.ar.native, flag: getFlag('Saudi Arabia') },
   de: { key: 'de', full: 'de-DE', name: languages.de.name, native: languages.de.native, flag: getFlag('Germany') },
   el: { key: 'el', full: 'el-GR', name: languages.el.name, native: languages.el.native, flag: getFlag('Greece') },
@@ -126,10 +132,13 @@ const prettyBytes = new PrettyBytes()
 
 export function i18nInit({ localeKey }: I18NInitParams) {
   const enUS = numbro.languages()['en-US']
-  const allNumbroLanguages = numbroLanguages as numbro.NumbroLanguage[]
-  Object.values(allNumbroLanguages).forEach((languageRaw) => {
-    // If a language object lacks some of the features, substitute these features from English
-    numbro.registerLanguage({ ...enUS, ...languageRaw })
+  const allNumbroLanguages = numbroLanguages as Record<string, numbro.NumbroLanguage>
+
+  Object.values(locales).forEach((locale) => {
+    const numbroLocale = Object.values(allNumbroLanguages).find(
+      (numbroLocale) => numbroLocale.languageTag === locale.full,
+    )
+    numbro.registerLanguage({ ...enUS, ...numbroLocale })
   })
 
   const i18n = i18nOriginal.use(initReactI18next).createInstance({
@@ -149,6 +158,7 @@ export function i18nInit({ localeKey }: I18NInitParams) {
   const locale = locales[localeKey]
   LuxonSettings.defaultLocale = localeKey
   numbro.setLanguage(locale.full)
+  numbro.setDefaults({ thousandSeparated: true })
 
   return i18n
 }

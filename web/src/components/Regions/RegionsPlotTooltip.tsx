@@ -1,13 +1,16 @@
 import React, { useMemo } from 'react'
+import { useRecoilValue } from 'recoil'
+import styled from 'styled-components'
 import { get, isNil, reverse, sortBy, uniqBy } from 'lodash-es'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
-import { ColoredBox } from 'src/components/Common/ColoredBox'
+import { maybe } from 'src/helpers/notUndefined'
+import { formatDateWeekly, formatInteger, formatProportion, formatRange } from 'src/helpers/format'
 import { useVariantStyle } from 'src/io/getData'
-import styled from 'styled-components'
-import { formatDateWeekly } from 'src/helpers/format'
+import { localeAtom } from 'src/state/locale.state'
+import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
-const EPSILON = 1e-3
+const EPSILON = 1e-2
 
 const Tooltip = styled.div`
   display: flex;
@@ -113,24 +116,28 @@ interface RegionsPlotTooltipRowProps {
 }
 
 function RegionsPlotTooltipRow({ pathogenName, variant, value, range, count, total }: RegionsPlotTooltipRowProps) {
+  const locale = useRecoilValue(localeAtom)
   const { color } = useVariantStyle(pathogenName, variant)
 
   const valueDisplay = useMemo(() => {
     if (!isNil(value)) {
       if (value > EPSILON) {
-        return value.toFixed(2)
+        return formatProportion(locale)(value)
       }
-      return `<${EPSILON}`
+      return `<${formatProportion(locale)(EPSILON)}`
     }
     return '-'
-  }, [value])
+  }, [locale, value])
 
   const rangeDisplay = useMemo(() => {
     if (!isNil(range)) {
-      return `${range[0].toFixed(2)}..${range[1].toFixed(2)}`
+      return formatRange(locale)(range[0], range[1])
     }
     return null
-  }, [range])
+  }, [locale, range])
+
+  const countDisplay = useMemo(() => maybe(formatInteger(locale), count), [count, locale])
+  const totalDisplay = useMemo(() => maybe(formatInteger(locale), total), [total, locale])
 
   return (
     <tr key={variant}>
@@ -140,8 +147,8 @@ function RegionsPlotTooltipRow({ pathogenName, variant, value, range, count, tot
       </td>
       <td className="px-2 text-right">{valueDisplay}</td>
       <td className="px-2 text-right">{rangeDisplay}</td>
-      <td className="px-2 text-right">{count}</td>
-      <td className="px-2 text-right">{total}</td>
+      <td className="px-2 text-right">{countDisplay}</td>
+      <td className="px-2 text-right">{totalDisplay}</td>
     </tr>
   )
 }

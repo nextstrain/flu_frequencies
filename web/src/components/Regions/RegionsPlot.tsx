@@ -18,6 +18,7 @@ import { shouldShowRangesOnRegionsPlotAtom } from 'src/state/settings.state'
 import { variantsAtom } from 'src/state/variants.state'
 import { RegionsPlotTooltip } from 'src/components/Regions/RegionsPlotTooltip'
 import { DateSlider } from 'src/components/Common/DateSlider'
+import { localeAtom } from 'src/state/locale.state'
 
 const allowEscapeViewBox = { x: false, y: true }
 const tooltipStyle = { zIndex: 1000, outline: 'none' }
@@ -34,6 +35,7 @@ interface LinePlotProps<T> {
 
 function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, countryName }: LinePlotProps<T>) {
   const theme = useTheme()
+  const locale = useRecoilValue(localeAtom)
   const shouldShowRanges = useRecoilValue(shouldShowRangesOnRegionsPlotAtom)
   const variants = useRecoilValue(variantsAtom(pathogen.name))
   const {
@@ -93,7 +95,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
       <XAxis
         dataKey="timestamp"
         type="number"
-        tickFormatter={formatDateHumanely}
+        tickFormatter={formatDateHumanely(locale)}
         domain={domainX}
         ticks={adjustedTicks}
         tick={theme.plot.tickStyle}
@@ -103,7 +105,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
       />
       <YAxis
         type="number"
-        tickFormatter={formatProportion}
+        tickFormatter={formatProportion(locale)}
         domain={domainY}
         tick={theme.plot.tickStyle}
         tickMargin={theme.plot.tickMargin?.y}
