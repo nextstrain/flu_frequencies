@@ -118,7 +118,7 @@ function RegionsPlotTooltipRow({ pathogenName, variant, value, range, count, tot
   const valueDisplay = useMemo(() => {
     if (!isNil(value)) {
       if (value > EPSILON) {
-        return value.toFixed(3)
+        return value.toFixed(2)
       }
       return `<${EPSILON}`
     }
@@ -127,7 +127,7 @@ function RegionsPlotTooltipRow({ pathogenName, variant, value, range, count, tot
 
   const rangeDisplay = useMemo(() => {
     if (!isNil(range)) {
-      return `${range[0].toFixed(3)}..${range[1].toFixed(3)}`
+      return `${range[0].toFixed(2)}..${range[1].toFixed(2)}`
     }
     return null
   }, [range])
