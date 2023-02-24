@@ -62,7 +62,7 @@ export const countriesAtom = atomFamily<{ name: string; enabled: boolean }[], st
     selector({
       key: `countriesAtom/default/${pathogen}`,
       get({ get }) {
-        return getAllCountryNames(get(geographyAtom(pathogen))).map((name) => ({ name, enabled: true }))
+        return getAllCountryNames(get(geographyAtom(pathogen))).map((name) => ({ name, enabled: false }))
       },
     }),
 })
