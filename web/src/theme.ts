@@ -122,13 +122,13 @@ export const textOutline = {
 export const plot = {
   titleFontSize: '1.25rem',
   aspectRatio: 1.88,
-  margin: { left: 10, top: 12, bottom: 10, right: 30 },
+  margin: { left: 30, top: 32, bottom: 30, right: 50 },
   axes: {
     x: { fontSize: 16 },
     y: { fontSize: 16 },
   },
   line: {
-    strokeWidth: 3,
+    strokeWidth: 4,
   },
   tickMargin: {
     y: 4,
