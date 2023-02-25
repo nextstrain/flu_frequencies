@@ -26,6 +26,10 @@ if __name__=='__main__':
                                                             bin_size=args.days, min_date=args.min_date)
         if 'H1N1pdm' in name:
             time_bins = {k:v for k,v in time_bins.items() if v>datetime(2009,3,1) - timedelta(days=args.days)}
+        if 'SARS-CoV-2' in name:
+            time_bins = {k:v for k,v in time_bins.items() if v>datetime(2019,12,1) - timedelta(days=args.days)}
+        if 'Yam' not in name:
+            time_bins = {k:v for k,v in list(time_bins.items())[:-1]}
 
         plt.plot(time_bins.values(), [totals[('dummy', x)] for x in time_bins], label=name, lw=2)
 
