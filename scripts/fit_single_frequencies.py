@@ -24,7 +24,7 @@ def day_count_to_date(x, start_date):
 
 def load_and_aggregate(data, geo_categories, freq_category, min_date="2021-01-01", bin_size=7):
     if type(data)==str:
-        d = pl.read_csv(data, sep='\t', parse_dates=True)
+        d = pl.read_csv(data, sep='\t', parse_dates=True, columns = geo_categories + [freq_category, 'date'])
     else:
         d=data
 
