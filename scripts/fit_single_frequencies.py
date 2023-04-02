@@ -27,8 +27,7 @@ def load_and_aggregate(data, geo_categories, freq_category, min_date="2021-01-01
         d = pl.read_csv(data, separator='\t', try_parse_dates=True, columns = geo_categories + [freq_category, 'date'])
     else:
         d=data
-    print(d)
-    # d["datetime"] = d.date.apply(parse_dates)
+
     start_date = datetime.strptime(min_date, "%Y-%m-%d").toordinal()
     d = d.filter((~pl.col('date').is_null())&(~pl.col(freq_category).is_null()))
     d = d.with_columns([pl.col('date').apply(lambda x: to_day_count(x, start_date)).alias("day_count")])
@@ -77,7 +76,12 @@ def fit_single_category(totals, counts, time_bins, stiffness=0.3, pc=3, nstd = 2
 
         k = counts.get(t, 0)
         n = totals.get(t, 0)
-        pre_fac = n**2/(k + pc)/(n - k + pc)
+        try:
+            pre_fac = n**2/(k + pc)/(n - k + pc)
+        except:
+            print(n,k,pc)
+            pre_fac = n**2/(k + pc)/(n - k + pc)
+
         diag += n*pre_fac
         values.append(diag)
         row.append(ti)

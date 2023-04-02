@@ -18,7 +18,7 @@ if __name__=='__main__':
     args = parser.parse_args()
     stiffness = 500/args.days
 
-    d = pl.read_csv(args.metadata, sep='\t', parse_dates=False, columns=["aaSubstitutions", 'date'])
+    d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=["region", "aaSubstitutions", 'date'])
     d = d.filter((pl.col('date')>=args.min_date)&(pl.col('date')<args.max_date))
 
     mutation_count_by_year = defaultdict(int)
@@ -27,7 +27,7 @@ if __name__=='__main__':
     for row in d.iter_rows():
         year = int(row[0][:4])
         try:
-            for mut in row[1].split(','):
+            for mut in row[2].split(','):
                 mutation_count_by_year[(year, mut[:-1])]+=1
             sequence_count_by_year[year]+=1
         except:
@@ -61,11 +61,11 @@ if __name__=='__main__':
         data, tmp_totals, counts, time_bins = load_and_aggregate(d, ['dummy'], mut,
                                                     bin_size=args.days, min_date=args.min_date)
 
-        totals = {k[-1]:v for k,v in tmp_totals.items()}
-        sub_counts = {}
         geo_label = 'dummy'
+        totals = {k[-1]:v for k,v in tmp_totals.items() if k[0]==geo_label}
+        sub_counts = {}
         for fcat in counts.keys():
-            sub_counts[fcat] = {k[-1]:v for k,v in counts[fcat].items()}
+            sub_counts[fcat] = {k[-1]:v for k,v in counts[fcat].items() if k[0]==geo_label}
             freqs, A = fit_single_category(totals, sub_counts[fcat],
                                            sorted(time_bins.keys()), stiffness=stiffness)
 
