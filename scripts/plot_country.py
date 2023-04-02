@@ -25,15 +25,15 @@ if __name__=='__main__':
     plt.title(args.country)
     for ci,clade in enumerate(clades):
         subset = d.filter( pl.col('variant')==clade ).sort(by='date')
-        dates = subset['date']
+        dates = list(subset['date'])
         if max(subset['freqMi'])<args.max_freq: continue
 
         plt.plot(dates, [subset[i,'count']/subset[i,'total'] if subset[i,'total'] else np.nan
                                 for i in range(len(dates))], 'o', c=f"C{ci}")
-        plt.plot(dates, subset['freqMi'], c=f"C{ci}", label=clade)
+        plt.plot(dates, list(subset['freqMi']), c=f"C{ci}", label=clade)
         plt.fill_between(dates,
-                        subset["freqLo"],
-                        subset["freqUp"], color=f"C{ci}", alpha=0.2)
+                        list(subset["freqLo"]),
+                        list(subset["freqUp"]), color=f"C{ci}", alpha=0.2)
         print(clade, max(subset['freqUp']))
     fig.autofmt_xdate()
     plt.legend(loc=2)
