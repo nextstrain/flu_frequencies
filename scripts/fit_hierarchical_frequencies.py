@@ -80,11 +80,15 @@ def fit_hierarchical_frequencies(totals, counts, time_bins, stiffness=0.5, stiff
     sol = spsolve(A,b)
 
     if use_inverse_for_confidence:
-        window = len(time_bins)
-        matrix_conf_intervals = []
-        for wi in range(len(b)//window):
-            matrix_conf_intervals.extend(np.diag(np.linalg.inv(A[wi*window:(wi+1)*window,wi*window:(wi+1)*window].todense())))
-        conf_to_use = matrix_conf_intervals
+        try:
+            window = len(time_bins)
+            matrix_conf_intervals = []
+            for wi in range(len(b)//window):
+                matrix_conf_intervals.extend(np.diag(np.linalg.inv(A[wi*window:(wi+1)*window,wi*window:(wi+1)*window].todense())))
+            conf_to_use = matrix_conf_intervals
+        except:
+            print("Confidence through matrix inversion didn't work, using diagonal approximation instead.")
+            conf_to_use = sq_confidence
     else:
         conf_to_use = sq_confidence
 
@@ -123,7 +127,7 @@ if __name__=='__main__':
     major_geo_cats = set([tuple(k[:-2]) for k in totals])
     output_data = []
     # major_geo_cats = set([('Europe',)])
-    stiffness = 50000/args.days
+    stiffness = 5000/args.days
     for geo_cat in major_geo_cats:
         geo_label = ','.join(geo_cat)
         minor_geo_cats = set([k[-2] for k in totals if k[:-2]==geo_cat])

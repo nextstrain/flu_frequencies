@@ -2,83 +2,30 @@ regions = ['North America', 'Europe', 'Japan Korea', 'Africa', 'West Asia',
            'Oceania', 'South America', 'South Asia',
            'Southeast Asia']
 
-min_date = '2021-12-01'
+min_date = '2020-02-01'
 
 rule europe:
     input:
         [
-        "plots/h3n2/Region_Europe.png",
-        "plots/h1n1pdm/Region_Europe.png",
-        "plots/h3n2/Country_Europe_Spain.png",
-        "plots/h3n2/Country_Europe_Netherlands.png",
-        "plots/h3n2/Country_Europe_United-Kingdom.png",
-        "plots/h3n2/Country_Europe_France.png",
-        "plots/h1n1pdm/Country_Europe_Spain.png",
-        "plots/h1n1pdm/Country_Europe_Netherlands.png",
-        "plots/h1n1pdm/Country_Europe_United-Kingdom.png",
-        "plots/h1n1pdm/Country_Europe_France.png",
-        "plots/h3n2/region_mut-HA1:E50.png",
-        "plots/h3n2/region_mut-HA1:I140.png",
-        "plots/h3n2/region-clades.png",
-        "plots/h1n1pdm/region-clades.png",
-        "plots/vic/region-clades.png",
+        "plots/SC2/Region_Europe.png",
+        "plots/SC2/Country_Europe_Spain.png",
+        "plots/SC2/Country_Europe_Netherlands.png",
+        "plots/SC2/Country_Europe_United-Kingdom.png",
+        "plots/SC2/Country_Europe_France.png",
         ]
 
 rule download:
     output:
-        sequences = "data/{lineage}/ha.fasta",
-        metadata = "data/{lineage}/metadata.tsv"
+        metadata = "data/{lineage}/metadata.tsv.gz"
     shell:
         """
-        scp -r neher@login.scicore.unibas.ch:/scicore/home/neher/neher/nextstrain/seasonal-flu/data/{wildcards.lineage}/ha.fasta {output.sequences}
-        scp -r neher@login.scicore.unibas.ch:/scicore/home/neher/neher/nextstrain/seasonal-flu/data/{wildcards.lineage}/metadata.tsv {output.metadata}
+        aws s3 cp s3://nextstrain-ncov-private/metadata.tsv.gz {output.metadata}
         """
-
-
-rule get_nextclade_dataset:
-    output:
-         "nextclade/{lineage}/reference.fasta"
-    threads: 4
-    shell:
-        """
-        nextclade dataset get -n flu_{wildcards.lineage}_ha --output-dir nextclade/{wildcards.lineage}
-        """
-
-rule run_nextclade:
-    input:
-        sequences = "data/{lineage}/ha.fasta",
-        reference = "nextclade/{lineage}/reference.fasta"
-    output:
-         "data/{lineage}/nextclade.tsv"
-    threads: 4
-    shell:
-        """
-        nextclade run -j {threads} -D nextclade/{wildcards.lineage} {input.sequences} --quiet --output-tsv {output}
-        """
-
-rule combined_with_metadata:
-    input:
-        nextclade = "data/{lineage}/nextclade.tsv",
-        metadata = "data/{lineage}/metadata.tsv"
-    output:
-        "data/{lineage}/combined.tsv"
-    params:
-        col = lambda w: "clade" if w.lineage == "vic" else "short_clade"
-    run:
-        import pandas as pd
-        clades = pd.read_csv(input[0], sep='\t', index_col='seqName')[params.col]
-        aaSubstitutions = pd.read_csv(input[0], sep='\t', index_col='seqName')["aaSubstitutions"]
-
-        metadata = pd.read_csv(input[1], sep='\t', index_col='strain')
-        metadata["clade"] = clades
-        metadata["aaSubstitutions"] = aaSubstitutions
-
-        metadata.to_csv(output[0], sep='\t', index=False)
 
 
 rule estimate_region_frequencies:
     input:
-        "data/{lineage}/combined.tsv"
+        "data/{lineage}/metadata.tsv.gz"
     output:
         output_csv = "results/{lineage}/region-frequencies.csv"
     params:
@@ -89,23 +36,10 @@ rule estimate_region_frequencies:
                 --min-date {params.min_date} --days 14 --output-csv {output.output_csv}
         """
 
-rule estimate_region_mutation_frequencies:
-    input:
-        "data/{lineage}/combined.tsv"
-    output:
-        output_csv = "results/{lineage}/mutation_{mutation}-frequencies.csv"
-    params:
-        min_date = min_date
-    shell:
-        """
-        python scripts/fit_single_frequencies.py --metadata {input} --geo-categories region --frequency-category mutation-{wildcards.mutation} \
-                --min-date {params.min_date} --days 14 --output-csv {output.output_csv}
-        """
-
 
 rule estimate_region_country_frequencies:
     input:
-        "data/{lineage}/combined.tsv"
+        "data/{lineage}/metadata.tsv.gz"
     output:
         output_csv = "results/{lineage}/region-country-frequencies.csv",
     params:
@@ -167,9 +101,7 @@ rule multi_region_plot_clades:
                     'Europe',
                     'North_America',
                     'South_America',
-                    'South_Asia',
-                    'Southeast_Asia',
-                    'West_Asia',
+                    'Asia',
                     'Oceania'
                 ],
         max_freq = 0.2
@@ -177,7 +109,7 @@ rule multi_region_plot_clades:
         """
         python3 scripts/plot_multi-region.py --frequencies {input.freqs}  \
                 --regions {params.regions}  --max-freq {params.max_freq} \
-                --auspice-config config/auspice_config.json \
+                --auspice-config data/auspice_config.json \
                 --output {output.plot}
         """
 
@@ -191,9 +123,7 @@ rule multi_region_plot_mutation:
                     'Europe',
                     'North_America',
                     'South_America',
-                    'South_Asia',
-                    'Southeast_Asia',
-                    'West_Asia',
+                    'Asia',
                     'Oceania'
                 ],
         max_freq = 0.2

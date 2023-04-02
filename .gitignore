@@ -1,3 +1,8 @@
 *.pyc
 \.ipynb_checkpoints/
 __pycache__/
+
+notes/*aux
+notes/*pdf
+notes/*out
+notes/*log
