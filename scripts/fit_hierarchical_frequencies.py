@@ -119,7 +119,12 @@ if __name__=='__main__':
 
     args = parser.parse_args()
 
-    data, totals, counts, time_bins = load_and_aggregate(args.metadata, args.geo_categories, args.frequency_category,
+    d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=args.geo_categories + [args.frequency_category, 'date'])
+    freq_cat = args.frequency_category
+
+    d = d.with_columns(pl.col("date").str.strptime(pl.Date, fmt="%Y-%m-%d", strict=False))
+
+    data, totals, counts, time_bins = load_and_aggregate(d, args.geo_categories, freq_cat,
                                                          bin_size=args.days, min_date=args.min_date)
 
     dates = [time_bins[k] for k in time_bins]

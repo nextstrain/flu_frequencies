@@ -32,7 +32,7 @@ rule estimate_region_frequencies:
         min_date = min_date
     shell:
         """
-        python scripts/fit_single_frequencies.py --metadata {input} --geo-categories region --frequency-category clade \
+        python scripts/fit_single_frequencies.py --metadata {input} --geo-categories region --frequency-category Nextstrain_clade \
                 --min-date {params.min_date} --days 14 --output-csv {output.output_csv}
         """
 
@@ -47,7 +47,7 @@ rule estimate_region_country_frequencies:
     shell:
         """
         python scripts/fit_hierarchical_frequencies.py --metadata {input} \
-                --geo-categories region country --frequency-category clade \
+                --geo-categories region country --frequency-category Nextstrain_clade \
                 --min-date {params.min_date} --days 14 --output-csv {output.output_csv}
         """
 
