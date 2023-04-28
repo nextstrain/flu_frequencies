@@ -48,5 +48,5 @@ These steps were used to install dependencies and this module on a system runnin
    art@Kestrel:~/git/flu_frequencies/web$ which node
    /home/art/.nvm/versions/node/v18.14.0/bin/node
    ```
-5. Run `npm install`
-5. The above step also installs the [Node Package Manager](https://www.npmjs.com/) `npm` in the same local directory.  We use this package manager to install the [Yarn](https://yarnpkg.com/) package manager:
+5. The above step also installs the [Node Package Manager](https://www.npmjs.com/) `npm` in the same local directory.  We use this package manager to install the [Yarn](https://yarnpkg.com/) package manager: `npm install --global yarn`
+6. Run `yarn dev`
