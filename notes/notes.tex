@@ -31,17 +31,18 @@ We previously fitted to a sampling likelihood with a stiffness prior of the type
     L(\{p_i\} | \{n_i\}, \{k_i\}) \sim \prod_i p_i^{k_i} (1-p_i)^{n_i-k_i} \times \prod_i e^{ - \lambda (p_i - p_{i-1})^2/2}
 \end{equation}
 where the stiffness $\lambda$ might want to depend on $p_i$ itself.
+If regularization is diffusive, we expect the parameter $\lambda$ the scale as $\lambda = 1/2D(t_i-t_{i-1})$.
 This non-linear likelihood is difficult to optimize.
 Since we don't really think that the data we have is well described by iid sampling, we might just as well approximate the binomial sampling LH by a gaussian with mean $\hat{p}_i = k_i/n_i$ and variance
 \begin{equation}
-    \sigma^2 = \frac{k_i(n_i-k_i)}{n_i}
+    \sigma^2 = \frac{k_i(n_i-k_i)}{n_i^3}
 \end{equation}
 Not that this variance diverges when $n_i=0$, corresponding to the case when there is no information.
 The log-likelihood then looks like this
 \begin{equation}
-    L(\{p_i\} | \{n_i\}, \{k_i\}) = C + \sum_i n_i\frac{(k_i - p_i n_i)^2}{2k_i(n_i-k_i)}  + \sum_i \lambda (p_i - p_{i-1})^2/2
+    logL(\{p_i\} | \{n_i\}, \{k_i\}) = C + \sum_i n_i\frac{(k_i - p_i n_i)^2}{2k_i(n_i-k_i)}  + \sum_i \lambda (p_i - p_{i-1})^2/2
 \end{equation}
-We still need to guard this against cases where $k_i=0$ or $k_i=n_i$, or more generally cases were the binomial is not well approximated by a Gaussian. This can be achieved by simply inflating the variance -- the variance is anyway underestimated by the idd approximation.
+We still need to guard this against cases where $k_i=0$ or $k_i=n_i$, or more generally cases where the binomial is not well approximated by a Gaussian. This can be achieved by simply inflating the variance -- the variance is anyway underestimated by the idd approximation.
 Here, we add pseudo-counts $p_c$ to both terms of the variance.
 \begin{equation}
     logL(\{p_i\} | \{n_i\}, \{k_i\}) = C + \sum_i n_i\frac{(k_i - p_i n_i)^2}{2(k_i+p_c)(n_i-k_i+p_c)}  + \sum_i \lambda (p_i - p_{i-1})^2/2
@@ -79,10 +80,10 @@ The confidence intervals would then be the square root of the diagonal of the in
 
 Different countries in a region are pretty well mixed but deviate from the region-average frequency.
 It thus makes sense to tie them together.
-If we express the frequency in a country as $p_c(t_i) = p_r(t_i) + \delta p_c(t_i)$ we can regularize the $\Delta p_c$ to with a quadratic penalty.
+If we express the frequency in a country as $p_c(t_i) = p_r(t_i) + \Delta p_c(t_i)$ we can regularize the $\Delta p_c$ to with a quadratic penalty.
 The Gaussian logLH is thus
 \begin{equation}
-    logL(\{p_i\} | \{n_i\}, \{k_i\}) = C + \sum_i \sum_c n^c_i\frac{(k^c_i - (p_i + \Delta p^c) n^c_i)^2}{2(k^c_i+p_c)(n^c_i-k^c_i+p_c)}  + \sum_i \lambda (p_i - p_{i-1})^2/2 + \frac{1}{2}\sum_i\sum_c \left(\lambda (\Delta p^c_i - \Delta p^c_{i-1})^2 +\mu \Delta (p^c_{i})^2\right)
+    logL(\{p_i\} | \{n_i\}, \{k_i\}) = C + \sum_i \sum_c n^c_i\frac{(k^c_i - (p_i + \Delta p^c) n^c_i)^2}{2(k^c_i+p_c)(n^c_i-k^c_i+p_c)}  + \sum_i \lambda (p_i - p_{i-1})^2/2 + \frac{1}{2}\sum_i\sum_c \left(\lambda (\Delta p^c_i - \Delta p^c_{i-1})^2 +\mu (\Delta p^c_{i})^2\right)
 \end{equation}
 The derivative with respect to the $p_i$ and $\Delta p_i^c$ now look somewhat different.
 The derivative with respect to $p_j$ is
