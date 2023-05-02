@@ -6,3 +6,6 @@ notes/*aux
 notes/*pdf
 notes/*out
 notes/*log
+notes/*fdb_latexmk
+notes/*fls
+notes/*synctex.gz
