@@ -17,9 +17,9 @@ if __name__=='__main__':
 
     plt.figure(figsize=(10,6))
     for fname, name in zip(args.metadata, args.names):
-        d = pl.read_csv(fname, sep='\t', parse_dates=False, columns=['date'])
+        d = pl.read_csv(fname, sep='\t', try_parse_dates=False, columns=['date'])
 
-        d = d.with_columns([pl.col("date").str.strptime(pl.Date, fmt="%Y-%m-%d", strict=False),
+        d = d.with_columns([pl.col("date").str.strptime(pl.Date, format="%Y-%m-%d", strict=False),
                             pl.col('date').apply(lambda x:'dummy').alias('dummy')])
 
         data, totals, counts, time_bins = load_and_aggregate(d, ['dummy'], 'dummy',

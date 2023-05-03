@@ -14,7 +14,7 @@ if __name__=='__main__':
 
     args = parser.parse_args()
 
-    d = pl.read_csv(args.frequencies, parse_dates=True)
+    d = pl.read_csv(args.frequencies, try_parse_dates=True)
 
     region = args.region.replace('_', ' ')
     country = args.country.replace('-', ' ')

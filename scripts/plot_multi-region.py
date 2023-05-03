@@ -32,7 +32,7 @@ if __name__=='__main__':
                     break
 
 
-    d = pl.read_csv(args.frequencies, parse_dates=True)
+    d = pl.read_csv(args.frequencies, try_parse_dates=True)
     clades = sorted(d['variant'].unique())
     all_dates = sorted(d['date'].unique())
 
