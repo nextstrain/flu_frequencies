@@ -115,7 +115,7 @@ if __name__=='__main__':
     stiffness = 5000/args.days
 
     if args.frequency_category.startswith('mutation-'):
-        d = pl.read_csv(args.metadata, seperator='\t', try_parse_dates=False, columns=args.geo_categories + ["aaSubstitutions", 'date'])
+        d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=args.geo_categories + ["aaSubstitutions", 'date'])
         mutation = args.frequency_category.split('-')[-1]
         def extract_mut(muts):
             if type(muts)==str:
