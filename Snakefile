@@ -4,6 +4,7 @@ regions = ['North America', 'Europe', 'Japan Korea', 'Africa', 'West Asia',
 
 min_date = '2021-12-01'
 
+
 rule europe:
     input:
         [
@@ -28,10 +29,14 @@ rule download:
     output:
         sequences = "data/{lineage}/ha.fasta",
         metadata = "data/{lineage}/metadata.tsv"
+    params:
+        scicore_user = config["scicore_user"]
     shell:
         """
-        scp -r neher@login.scicore.unibas.ch:/scicore/home/neher/neher/nextstrain/seasonal-flu/data/{wildcards.lineage}/ha.fasta {output.sequences}
-        scp -r neher@login.scicore.unibas.ch:/scicore/home/neher/neher/nextstrain/seasonal-flu/data/{wildcards.lineage}/metadata.tsv {output.metadata}
+        scp -C {params.scicore_user}@login.scicore.unibas.ch:/scicore/home/neher/neher/nextstrain/seasonal-flu/data/{wildcards.lineage}/ha.fasta \
+            {output.sequences}
+        scp -C {params.scicore_user}@login.scicore.unibas.ch:/scicore/home/neher/neher/nextstrain/seasonal-flu/data/{wildcards.lineage}/metadata.tsv \
+            {output.metadata}
         """
 
 
