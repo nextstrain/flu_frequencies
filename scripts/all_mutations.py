@@ -52,7 +52,7 @@ if __name__=='__main__':
         new_columns.append(d["aaSubstitutions"].apply((lambda x:extract_mut(x, mut))).alias(mut))
 
     d = d.with_columns(new_columns + [pl.col('date').apply(lambda x:'dummy').alias('dummy'),
-                        pl.col("date").str.strptime(pl.Date, fmt="%Y-%m-%d", strict=False)])
+                        pl.col("date").str.strptime(pl.Date, format="%Y-%m-%d", strict=False)])
 
     frequencies = {}
     traj_counts = {}
