@@ -1,0 +1,16 @@
+# This file contains command line arguments (not config variables)
+# Should be called cli_args.yaml but snakemake forces the name to be config.yaml
+
+# The config dict is defined here
+configfile: profiles/flu/config_dict.yaml
+
+# Base snakefile
+snakefile: Snakefile
+
+# Standard CLI arguments
+cores: all
+keep-going: true
+printshellcmds: true
+reason: true
+show-failed-logs: true
+rerun-incomplete: true

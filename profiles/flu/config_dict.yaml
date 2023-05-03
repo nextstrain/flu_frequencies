@@ -1,0 +1,2 @@
+# Everything here is available through the `config` dict in the Snakefile
+scicore_user: roemer0001 # neher for Richard
