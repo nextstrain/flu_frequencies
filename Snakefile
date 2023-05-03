@@ -177,7 +177,6 @@ rule multi_region_plot_clades:
         """
         python3 scripts/plot_multi-region.py --frequencies {input.freqs}  \
                 --regions {params.regions}  --max-freq {params.max_freq} \
-                --auspice-config config/auspice_config.json \
                 --output {output.plot}
         """
 
