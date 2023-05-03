@@ -9,3 +9,11 @@ notes/*log
 notes/*fdb_latexmk
 notes/*fls
 notes/*synctex.gz
+
+plots
+results
+data
+nextclade
+.snakemake
+.vscode
+.DS_Store
