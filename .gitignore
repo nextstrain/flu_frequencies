@@ -2,18 +2,19 @@
 \.ipynb_checkpoints/
 __pycache__/
 
-notes/*aux
-notes/*pdf
-notes/*out
-notes/*log
-notes/*fdb_latexmk
-notes/*fls
-notes/*synctex.gz
+/notes/*aux
+/notes/*pdf
+/notes/*out
+/notes/*log
+/notes/*fdb_latexmk
+/notes/*fls
+/notes/*synctex.gz
 
-plots
-results
-data
-nextclade
-.snakemake
-.vscode
+/plots/
+/results/
+/data/
+/nextclade/
+
+/.snakemake/
+/.vscode/
 .DS_Store
