@@ -29,7 +29,7 @@ This document provides some instructions for setting up a development environmen
    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
    ```
 3. Open a new terminal window so that `$PATH` binary search path includes the `.nvm` directory.
-4. Run `nvm install 18.14.0`.
+4. We want to install the Node.js version specified in the hidden `.nvmrc` file.  (Currently the version number is `18.14.0`.)  To automatically install the required version, run `nvm install` and `nvm use`:
    ```console
    Downloading and installing node v18.14.0...
    Downloading https://nodejs.org/dist/v18.14.0/node-v18.14.0-linux-x64.tar.xz...
@@ -47,4 +47,5 @@ This document provides some instructions for setting up a development environmen
 5. The above step also installs the [Node Package Manager](https://www.npmjs.com/) `npm` in the same local directory.  Install the package dependencies by running `npm install` (if the package manager complains about conflicting dependencies, use a `-force` flag).
 6. Install the [Yarn](https://yarnpkg.com/) package manager: `npm install --global yarn`
 7. Copy the environment variables with `cp .env.example .env`.
-8. Run `yarn dev` to start the server.
+8. Run `yarn install` and `yarn dev` to start the server.
+9. Navigate to `localhost:3000` in your web browser.
