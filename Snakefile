@@ -1,16 +1,5 @@
-regions = [
-    "North America",
-    "Europe",
-    "Japan Korea",
-    "Africa",
-    "West Asia",
-    "Oceania",
-    "South America",
-    "South Asia",
-    "Southeast Asia",
-]
-
-min_date = "2021-12-01"
+regions = config["regions"]
+min_date = config["min_date"]
 
 
 rule europe:
@@ -34,18 +23,38 @@ rule europe:
         ],
 
 
-rule download:
+rule download_sequences:
+    output:
+        sequences="data/{lineage}/raw_ha.fasta",
+    params:
+        s3_path="s3://nextstrain-data-private/files/workflows/seasonal-flu/{lineage}/ha/raw_sequences.fasta.xz",
+    shell:
+        """
+        aws s3 cp {params.s3_path} - | xz -c -d > {output.sequences}
+        """
+
+
+rule parse:
+    """
+    Parsing fasta into sequences and metadata
+    TODO: Download results directly once https://github.com/nextstrain/seasonal-flu/issues/107 is resolved
+    """
+    input:
+        sequences="data/{lineage}/raw_ha.fasta",
     output:
         sequences="data/{lineage}/ha.fasta",
         metadata="data/{lineage}/metadata.tsv",
     params:
-        scicore_user=config["scicore_user"],
+        fasta_fields=config["fasta_fields"],
+        prettify_fields=config["prettify_fields"],
     shell:
         """
-        scp -C {params.scicore_user}@login.scicore.unibas.ch:/scicore/home/neher/neher/nextstrain/seasonal-flu/data/{wildcards.lineage}/ha.fasta \
-            {output.sequences}
-        scp -C {params.scicore_user}@login.scicore.unibas.ch:/scicore/home/neher/neher/nextstrain/seasonal-flu/data/{wildcards.lineage}/metadata.tsv \
-            {output.metadata}
+        augur parse \
+            --sequences {input.sequences} \
+            --output-sequences {output.sequences} \
+            --output-metadata {output.metadata} \
+            --fields {params.fasta_fields} \
+            --prettify-fields {params.prettify_fields}
         """
 
 
