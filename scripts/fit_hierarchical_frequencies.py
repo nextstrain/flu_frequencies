@@ -1,7 +1,18 @@
-import polars as  pl
-import numpy as np
-from fit_single_frequencies import load_and_aggregate, zero_one_clamp
+"""
+Script to estimate binomial probabilities
+- for each time bin
+- independently for each class of interest variant/mutation (vs rest)
+- for 2-level hierarchy of geographic categories
+- top levels are estimated independently from each other
+- lower levels share information with top level
+- information is shared across time bins using Gaussian penalty
+"""
+
 import matplotlib.pyplot as plt
+import numpy as np
+import polars as pl
+from fit_single_frequencies import load_and_aggregate, zero_one_clamp
+
 
 def geo_label_map(x):
     if x=='China': return 'China(PRC)'

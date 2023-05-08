@@ -1,6 +1,16 @@
-import polars as  pl
+"""
+Script to estimate binomial probabilities
+- for each time bin
+- independently for each geographic category
+- independently for each class of interest variant/mutation (vs rest)
+- information is shared across time bins using Gaussian penalty
+"""
+
 from datetime import datetime
+
 import numpy as np
+import polars as pl
+
 
 def zero_one_clamp(x):
     if np.isnan(x): return x
@@ -88,9 +98,9 @@ def fit_single_category(totals, counts, time_bins, stiffness=0.3, pc=3, nstd = 2
         column.append(ti)
         b.append(k*pre_fac)
 
+    from numpy.linalg import inv
     from scipy.sparse import csr_matrix
     from scipy.sparse.linalg import spsolve
-    from numpy.linalg import inv
     A = csr_matrix((values, (row, column)), shape=(len(b), len(b)))
     sol = spsolve(A,b)
     confidence = np.sqrt(np.diag(inv(A.todense())))
@@ -109,7 +119,7 @@ if __name__=='__main__':
     parser.add_argument("--geo-categories", nargs='+', type=str, help="field to use for geographic categories")
     parser.add_argument("--days", default=7, type=int, help="number of days in one time bin")
     parser.add_argument("--min-date", type=str, help="date to start frequency calculation")
-    parser.add_argument("--output-csv", type=str, help="file for json output")
+    parser.add_argument("--output-csv", type=str, help="file for csv output")
 
     args = parser.parse_args()
     stiffness = 5000/args.days
@@ -137,7 +147,6 @@ if __name__=='__main__':
 
     dates = [time_bins[k] for k in time_bins]
     geo_cats = set([k[:-1] for k in totals])
-    import matplotlib.pyplot as plt
     output_data = []
     for geo_cat in geo_cats:
         geo_label = ','.join(geo_cat)
