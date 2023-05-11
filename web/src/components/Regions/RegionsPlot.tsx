@@ -50,12 +50,15 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
   const { lines, ranges } = useMemo(() => {
     // add points with area in proportion to variant count
     const CustomizedDot: FunctionComponent<any> = (props: any) => {
-      const { cx, cy, stroke, fill, name, payload } = props;
+      //console.log(props);
+      const { cx, cy, stroke, fill, name, payload, value } = props;
+      let ev = payload.counts[name] / payload.totals[name];  // empirical value (freq)
+      let y0 = 32;
       return(
-        <circle cx={cx} cy={cy} stroke={stroke} strokeWidth={2} fill={fill} 
+        <circle cx={cx} cy={(cy-y0)*(1-ev)/(1-value) + y0} 
+        stroke={stroke} strokeWidth={2} fill="#ffffff88" 
         r={1 + 0.6 * Math.sqrt(payload.counts[name])}
-        >
-        </circle>
+        />
       )
     };
 
@@ -70,9 +73,12 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
         );
       } 
       else {
+        let r1 = payload.ranges[name][0],
+            r2 = payload.ranges[name][1],
+            y0 = 32;  // FIXME: top margin - need to pass from parent
         return(
-          <line x1={cx} y1={(1-payload.ranges[name][0])/(1-value) * cy} 
-                x2={cx} y2={(1-payload.ranges[name][1])/(1-value) * cy}
+          <line x1={cx} y1={(cy-y0)*(1-r2)/(1-value) + y0}
+                x2={cx} y2={(cy-y0)*(1-r1)/(1-value) + y0}
                 stroke={fill} strokeWidth={3}
           /> 
         );
