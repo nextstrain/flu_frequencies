@@ -52,13 +52,19 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
     const CustomizedDot: FunctionComponent<any> = (props: any) => {
       //console.log(props);
       const { cx, cy, stroke, fill, name, payload, value } = props;
-      let ev = payload.counts[name] / payload.totals[name];  // empirical value (freq)
-      let y0 = 32;
+      let ev = payload.counts[name] / payload.totals[name],  // empirical value (freq)
+          y0 = 32,  // vertical offset (top margin) 
+          cy2 = (cy-y0)*(1-ev)/(1-value) + y0,  // empirical val mapped to plot region
+          rad = 1 + 0.6 * Math.sqrt(payload.counts[name])
       return(
-        <circle cx={cx} cy={(cy-y0)*(1-ev)/(1-value) + y0} 
-        stroke={stroke} strokeWidth={2} fill="#ffffff88" 
-        r={1 + 0.6 * Math.sqrt(payload.counts[name])}
-        />
+        <>
+          <circle cx={cx} cy={cy2} stroke={stroke} strokeWidth={2} 
+                  fill="#ffffff88" r={rad}
+          />
+          <line x1={cx} y1={cy} x2={cx} y2={(cy<cy2) ? (cy2-rad) : (cy2+rad)}
+                stroke={stroke} strokeWidth={1}
+          />
+        </>
       )
     };
 
@@ -79,7 +85,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
         return(
           <line x1={cx} y1={(cy-y0)*(1-r2)/(1-value) + y0}
                 x2={cx} y2={(cy-y0)*(1-r1)/(1-value) + y0}
-                stroke={fill} strokeWidth={3}
+                stroke={fill} strokeWidth={5}
           /> 
         );
       }
