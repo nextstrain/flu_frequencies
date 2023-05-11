@@ -48,13 +48,35 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
   )
 
   const { lines, ranges } = useMemo(() => {
-    // line plots
+    // add points with area in proportion to variant count
     const CustomizedDot: FunctionComponent<any> = (props: any) => {
-      console.log(props);
       const { cx, cy, stroke, fill, name, payload } = props;
       return(
-        <circle cx={cx} cy={cy} stroke={stroke} strokeWidth={2} fill={fill} r={Math.sqrt(payload.counts[name])}></circle>
+        <circle cx={cx} cy={cy} stroke={stroke} strokeWidth={2} fill={fill} 
+        r={1 + 0.6 * Math.sqrt(payload.counts[name])}
+        >
+        </circle>
       )
+    };
+
+    const CustomizedActiveDot: FunctionComponent<any> = (props: any) => {
+      //console.log(props);
+      const { cx, cy, fill, name, payload, value } = props;
+      if (shouldShowRanges) {
+        return(
+          <circle cx={cx} cy={cy} stroke={fill} strokeWidth={2} fill={fill} 
+                  r={1 + 0.6 * Math.sqrt(payload.counts[name])}
+          />
+        );
+      } 
+      else {
+        return(
+          <line x1={cx} y1={(1-payload.ranges[name][0])/(1-value) * cy} 
+                x2={cx} y2={(1-payload.ranges[name][1])/(1-value) * cy}
+                stroke={fill} strokeWidth={3}
+          /> 
+        );
+      }
     };
 
     const lines = variants
@@ -70,7 +92,9 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
               strokeWidth={theme.plot.line.strokeWidth}
               strokeDasharray={getCountryStrokeDashArray(variantsStyles, name)}
               dot={<CustomizedDot />}
+              activeDot={<CustomizedActiveDot name={name} />}
               isAnimationActive={false}
+              animationDuration={300}
             />
           ),
       )
@@ -89,6 +113,8 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
               fill={getCountryColor(variantsStyles, name)}
               fillOpacity={0.1}
               isAnimationActive={false}
+              animationDuration={300}
+              activeDot={false}
               display={!shouldShowRanges ? 'none' : undefined}
             />
           ),
