@@ -1,8 +1,19 @@
-import pandas as  pd
+"""
+Script to estimate binomial probabilities
+- for each time bin
+- independently for each geographic category
+- independently for each class of interest variant/mutation (vs rest)
+- information is shared across time bins using Gaussian penalty
+"""
+
 from datetime import datetime
+
 import numpy as np
+import polars as pl
+
 
 def zero_one_clamp(x):
+    if np.isnan(x): return x
     return max(0,min(1,x))
 
 def parse_dates(x):
@@ -23,26 +34,29 @@ def day_count_to_date(x, start_date):
 
 def load_and_aggregate(data, geo_categories, freq_category, min_date="2021-01-01", bin_size=7):
     if type(data)==str:
-        d = pd.read_csv(data, sep='\t')
+        d = pl.read_csv(data, separator='\t', try_parse_dates=True, columns = geo_categories + [freq_category, 'date'])
     else:
         d=data
 
-    d["datetime"] = d.date.apply(parse_dates)
-    d = d.loc[d.datetime.apply(lambda x:x is not None)]
     start_date = datetime.strptime(min_date, "%Y-%m-%d").toordinal()
+    d = d.filter((~pl.col('date').is_null())&(~pl.col(freq_category).is_null()))
+    d = d.with_columns([pl.col('date').apply(lambda x: to_day_count(x, start_date)).alias("day_count")])
+    d = d.filter(pl.col("day_count")>=0)
+    d = d.with_columns([(pl.col('day_count')//bin_size).alias("time_bin")])
 
-    d["day_count"] = d.datetime.apply(lambda x: to_day_count(x, start_date))
-    d  = d.loc[d["day_count"]>=0]
-    d["time_bin"] = d.day_count//bin_size
-
-    totals = d.groupby(by=geo_categories + ["time_bin"]).count()["day_count"].to_dict()
+    totals = dict()
+    for row in d.groupby(by=geo_categories + ["time_bin"]).count().iter_rows():
+        totals[row[:-1]] = row[-1]
 
     fcats = d[freq_category].unique()
     counts = {}
     for fcat in fcats:
-        counts[fcat] = d.loc[d[freq_category]==fcat].groupby(by=geo_categories + ["time_bin"]).count()["day_count"].to_dict()
+        tmp = {}
+        for row in d.filter(pl.col(freq_category)==fcat).groupby(by=geo_categories + ["time_bin"]).count().iter_rows():
+            tmp[row[:-1]] = row[-1]
+        counts[fcat] = tmp
 
-    timebins = {int(x): day_count_to_date(x*bin_size, start_date) for x in sorted(d.time_bin.unique())}
+    timebins = {int(x): day_count_to_date(x*bin_size, start_date) for x in sorted(d["time_bin"].unique())}
 
     return d, totals, counts, timebins
 
@@ -72,16 +86,21 @@ def fit_single_category(totals, counts, time_bins, stiffness=0.3, pc=3, nstd = 2
 
         k = counts.get(t, 0)
         n = totals.get(t, 0)
-        pre_fac = n**2/(k + pc)/(n - k + pc)
+        try:
+            pre_fac = n**2/(k + pc)/(n - k + pc)
+        except:
+            print(n,k,pc)
+            pre_fac = n**2/(k + pc)/(n - k + pc)
+
         diag += n*pre_fac
         values.append(diag)
         row.append(ti)
         column.append(ti)
         b.append(k*pre_fac)
 
+    from numpy.linalg import inv
     from scipy.sparse import csr_matrix
     from scipy.sparse.linalg import spsolve
-    from numpy.linalg import inv
     A = csr_matrix((values, (row, column)), shape=(len(b), len(b)))
     sol = spsolve(A,b)
     confidence = np.sqrt(np.diag(inv(A.todense())))
@@ -100,13 +119,13 @@ if __name__=='__main__':
     parser.add_argument("--geo-categories", nargs='+', type=str, help="field to use for geographic categories")
     parser.add_argument("--days", default=7, type=int, help="number of days in one time bin")
     parser.add_argument("--min-date", type=str, help="date to start frequency calculation")
-    parser.add_argument("--output-json", type=str, help="file for json output")
+    parser.add_argument("--output-csv", type=str, help="file for csv output")
 
     args = parser.parse_args()
     stiffness = 5000/args.days
 
-    d = pd.read_csv(args.metadata, sep='\t')
     if args.frequency_category.startswith('mutation-'):
+        d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=args.geo_categories + ["aaSubstitutions", 'date'])
         mutation = args.frequency_category.split('-')[-1]
         def extract_mut(muts):
             if type(muts)==str:
@@ -114,22 +133,23 @@ if __name__=='__main__':
                 return a[0] if len(a) else 'WT'
             else:
                 return 'WT'
-        d["mutation"] = d.aaSubstitutions.apply(extract_mut)
+        d = d.with_columns([d["aaSubstitutions",:].apply(extract_mut).alias("mutation")])
 
-        print(d.mutation.value_counts())
+        print(d["mutation"].value_counts())
         freq_cat = "mutation"
     else:
+        d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=args.geo_categories + [args.frequency_category, 'date'])
         freq_cat = args.frequency_category
-
+    d = d.with_columns(pl.col("date").str.strptime(pl.Date, format="%Y-%m-%d", strict=False))
     data, totals, counts, time_bins = load_and_aggregate(d, args.geo_categories, freq_cat,
                                                          bin_size=args.days, min_date=args.min_date)
 
 
     dates = [time_bins[k] for k in time_bins]
     geo_cats = set([k[:-1] for k in totals])
-    import matplotlib.pyplot as plt
-    output_data = {"dates": {t:v.strftime('%Y-%m-%d') for t,v in time_bins.items()}}
+    output_data = []
     for geo_cat in geo_cats:
+        geo_label = ','.join(geo_cat)
         frequencies = {}
         sub_counts = {}
         sub_totals = {k[-1]:v for k,v in totals.items() if tuple(k[:-1])==geo_cat}
@@ -138,22 +158,16 @@ if __name__=='__main__':
             if sum(sub_counts[fcat].values())>10:
                 frequencies[fcat],A = fit_single_category(sub_totals, sub_counts[fcat],
                                         sorted(time_bins.keys()), stiffness=stiffness)
+                for k, date in time_bins.items():
+                    output_data.append({"date": date.strftime('%Y-%m-%d'), "region": geo_label, "country": None,
+                                        "count": sub_counts[fcat].get(k, 0), "total": sub_totals.get(k, 0),
+                                        "variant":fcat,
+                                        "freqMi":frequencies[fcat][k]['val'], "freqLo":frequencies[fcat][k]['lower'], "freqUp":frequencies[fcat][k]['upper']})
 
+    df = pl.DataFrame(output_data, schema={'date':str, 'region':str, 'country':str, 'variant':str,
+                                    'count':int, 'total':int,
+                                    'freqMi':float, 'freqLo':float, 'freqUp':float})
+    df.write_csv(args.output_csv, float_precision=4)
 
-        # fig = plt.figure()
-        # for ci, fcat in enumerate(sorted(frequencies.keys())):
-        #     plt.plot(dates, [sub_counts[fcat].get(t, 0)/sub_totals.get(t,0) if sub_totals.get(t,0) else np.nan for t in time_bins], 'o', c=f"C{ci}")
-        #     plt.plot(dates, [frequencies[fcat][t]['val'] for t in time_bins], c=f"C{ci}", label=fcat)
-        #     plt.fill_between(dates,
-        #                     [frequencies[fcat][t]['lower'] for t in time_bins],
-        #                     [frequencies[fcat][t]['upper'] for t in time_bins], color=f"C{ci}", alpha=0.2)
-        # fig.autofmt_xdate()
-        # plt.legend(loc=2)
-        # plt.savefig(args.output_mask.format(cat='-'.join([x.replace(' ', '_') for x in geo_cat])))
-        output_data[','.join(geo_cat)] = {"counts": sub_counts, "totals": sub_totals, "frequencies":frequencies}
-
-    import json
-    with open(args.output_json, 'w') as fh:
-        json.dump(output_data, fh)
 
 

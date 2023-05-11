@@ -1,9 +1,25 @@
-import pandas as  pd
-import numpy as np
-from fit_single_frequencies import load_and_aggregate, zero_one_clamp
-import matplotlib.pyplot as plt
+"""
+Script to estimate binomial probabilities
+- for each time bin
+- independently for each class of interest variant/mutation (vs rest)
+- for 2-level hierarchy of geographic categories
+- top levels are estimated independently from each other
+- lower levels share information with top level
+- information is shared across time bins using Gaussian penalty
+"""
 
-def fit_hierarchical_frequencies(totals, counts, time_bins, stiffness=0.5, stiffness_minor=0.1, mu=0.3):
+import matplotlib.pyplot as plt
+import numpy as np
+import polars as pl
+from fit_single_frequencies import load_and_aggregate, zero_one_clamp
+
+
+def geo_label_map(x):
+    if x=='China': return 'China(PRC)'
+    return x
+
+def fit_hierarchical_frequencies(totals, counts, time_bins, stiffness=0.5, stiffness_minor=0.1,
+                                 mu=0.3, use_inverse_for_confidence=True):
 
     minor_cats = list(totals.keys())
     n_tp = len(time_bins)
@@ -39,7 +55,7 @@ def fit_hierarchical_frequencies(totals, counts, time_bins, stiffness=0.5, stiff
             b_res += k*pre_fac
 
         pre_fac = total_n**2/(total_k + pc)/(total_n - total_k + pc)
-        extra_major = 1.0
+        extra_major = 0.2
         values.append(diag + res + extra_major*total_n*pre_fac); row.append(ti); column.append(ti)
         sq_confidence.append((total_k + pc)*(total_n - total_k + pc)/(total_n**3+pc))
         b.append(b_res + extra_major*total_k*pre_fac)
@@ -74,17 +90,30 @@ def fit_hierarchical_frequencies(totals, counts, time_bins, stiffness=0.5, stiff
     A = csr_matrix((values, (row, column)), shape=(len(b), len(b)))
     sol = spsolve(A,b)
 
+    if use_inverse_for_confidence:
+        try:
+            window = len(time_bins)
+            matrix_conf_intervals = []
+            for wi in range(len(b)//window):
+                matrix_conf_intervals.extend(np.diag(np.linalg.inv(A[wi*window:(wi+1)*window,wi*window:(wi+1)*window].todense())))
+            conf_to_use = matrix_conf_intervals
+        except:
+            print("Confidence through matrix inversion didn't work, using diagonal approximation instead.")
+            conf_to_use = sq_confidence
+    else:
+        conf_to_use = sq_confidence
+
     freqs = {"time_points": time_bins}
     freqs["major_frequencies"] = {t:{"val": zero_one_clamp(sol[ti]),
-                                     "upper":zero_one_clamp(sol[ti]+np.sqrt(sq_confidence[ti])),
-                                     "lower":zero_one_clamp(sol[ti]-np.sqrt(sq_confidence[ti]))}
+                                     "upper":zero_one_clamp(sol[ti]+np.sqrt(conf_to_use[ti])),
+                                     "lower":zero_one_clamp(sol[ti]-np.sqrt(conf_to_use[ti]))}
                                      for ti,t in enumerate(time_bins)}
     for ci, cat in enumerate(minor_cats):
         freqs[cat] = {}
         for ti,t in enumerate(time_bins):
             row_index = ti + (ci+1)*n_tp
             val = zero_one_clamp(sol[ti] + sol[row_index])
-            dev = np.sqrt(sq_confidence[ti] + sq_confidence[row_index])
+            dev = np.sqrt(conf_to_use[ti] + conf_to_use[row_index])
             freqs[cat][t] = {"val": val, "upper": zero_one_clamp(val+dev), "lower": zero_one_clamp(val-dev)}
 
     return freqs
@@ -97,27 +126,33 @@ if __name__=='__main__':
     parser.add_argument("--geo-categories", nargs='+', type=str, help="field to use for geographic categories")
     parser.add_argument("--days", default=7, type=int, help="number of days in one time bin")
     parser.add_argument("--min-date", type=str, help="date to start frequency calculation")
-    parser.add_argument("--output-json", type=str, help="output json file")
+    parser.add_argument("--output-csv", type=str, help="output csv file")
 
     args = parser.parse_args()
 
-    data, totals, counts, time_bins = load_and_aggregate(args.metadata, args.geo_categories, args.frequency_category,
+    d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=args.geo_categories + [args.frequency_category, 'date'])
+    freq_cat = args.frequency_category
+
+    d = d.with_columns(pl.col("date").str.strptime(pl.Date, format="%Y-%m-%d", strict=False))
+
+    data, totals, counts, time_bins = load_and_aggregate(d, args.geo_categories, freq_cat,
                                                          bin_size=args.days, min_date=args.min_date)
 
     dates = [time_bins[k] for k in time_bins]
 
     major_geo_cats = set([tuple(k[:-2]) for k in totals])
-    output_data = {"dates": {t:v.strftime('%Y-%m-%d') for t,v in time_bins.items()}}
+    output_data = []
     # major_geo_cats = set([('Europe',)])
-    stiffness = 50000/args.days
+    stiffness = 5000/args.days
     for geo_cat in major_geo_cats:
+        geo_label = ','.join(geo_cat)
         minor_geo_cats = set([k[-2] for k in totals if k[:-2]==geo_cat])
         sub_totals = {}
         data_totals = {}
         for minor_geo_cat  in minor_geo_cats:
             tmp = {k[-1]:v for k,v in totals.items() if k[:-2]==geo_cat and k[-2]==minor_geo_cat}
             data_totals[minor_geo_cat] = sum(tmp.values())
-            if data_totals[minor_geo_cat]>100:
+            if data_totals[minor_geo_cat]>20:
                 sub_totals[minor_geo_cat] = tmp
         sub_counts = {}
         frequencies = {}
@@ -129,42 +164,43 @@ if __name__=='__main__':
             frequencies[fcat] = fit_hierarchical_frequencies(sub_totals, sub_counts[fcat],
                                     sorted(time_bins.keys()), stiffness=stiffness,
                                     stiffness_minor=stiffness, mu=5.0)
-        output_data[','.join(geo_cat)] = {"counts": sub_counts, "totals": sub_totals,
-                                "frequencies":{fcat:frequencies[fcat]["major_frequencies"] for fcat in frequencies}}
 
-        for minor_geo_cat in minor_geo_cats:
-            try:
-                output_data[','.join(geo_cat)][f"frequencies-{minor_geo_cat}"] = {fcat:frequencies[fcat][minor_geo_cat] for fcat in frequencies}
-            except:
-                pass
+            ## append entries for region frequencies
+            for k, date in time_bins.items():
+                output_data.append({"date": date.strftime('%Y-%m-%d'), "region": geo_label,
+                                    "country": geo_label, "variant":fcat,
+                                    "count": 0, "total": 0,
+                                    "freqMi":frequencies[fcat]["major_frequencies"][k]['val'],
+                                    "freqLo":frequencies[fcat]["major_frequencies"][k]['lower'],
+                                    "freqUp":frequencies[fcat]["major_frequencies"][k]['upper']})
+
+            ## append entries for individual countries.
+            for minor_geo_cat in sub_totals:
+                for k, date in time_bins.items():
+                    output_data.append({"date": date.strftime('%Y-%m-%d'), "region": geo_label, "country": geo_label_map(minor_geo_cat),
+                                        "variant":fcat, "count": sub_counts[fcat][minor_geo_cat].get(k,0),
+                                        "total": sub_totals[minor_geo_cat].get(k,0),
+                                        "freqMi":frequencies[fcat][minor_geo_cat][k]['val'],
+                                        "freqLo":frequencies[fcat][minor_geo_cat][k]['lower'],
+                                        "freqUp":frequencies[fcat][minor_geo_cat][k]['upper']})
 
 
-        if sum(data_totals.values())<2000: continue
+    df = pl.DataFrame(output_data, schema={'date':str, 'region':str, 'country':str, 'variant':str,
+                                           'count':int, 'total':int, 'freqMi':float, 'freqLo':float, 'freqUp':float})
+    region_totals = {(r[0], r[1]): r[2] for r in df.select(['date', 'region', 'count'])
+                            .groupby(['date', 'region']).sum().iter_rows()}
+    region_counts = {(r[0], r[1], r[2]): r[3] for r in df.select(['date', 'region', 'variant', 'count'])
+                            .groupby(['date', 'region', 'variant']).sum().iter_rows()}
 
-        fig=plt.figure()
-        plt.title(', '.join(geo_cat))
-        ls = ['--', '-.', ':']
-        for fi, fcat in enumerate(frequencies):
-            col = f"C{fi}"
-            plt.plot(dates,
-                    [frequencies[fcat]["major_frequencies"][t]['val'] for t in frequencies[fcat]["time_points"]], c=col)
-            plt.fill_between(dates,
-                    [frequencies[fcat]["major_frequencies"][t]['lower'] for t in frequencies[fcat]["time_points"]],
-                    [frequencies[fcat]["major_frequencies"][t]['upper'] for t in frequencies[fcat]["time_points"]],
-                    color=col, alpha=0.2)
+    df = df.with_columns([
+          pl.struct(['date','region', 'country', 'total']).apply(
+                        lambda x:region_totals.get((x['date'], x['region']),0)
+                                 if x['region']==x['country'] else x['total'])
+            .alias('total'),
+          pl.struct(['date','region', 'country', 'variant', 'count']).apply(
+                        lambda x:region_counts.get((x['date'], x['region'], x['variant']), 0)
+                                  if x['region']==x['country'] else x['count'])
+            .alias('count')
+    ])
 
-            for ci, (country,n) in enumerate(sorted(data_totals.items(), key=lambda x:x[1], reverse=True)[:3]):
-                try:
-                    plt.plot(dates,
-                        [frequencies[fcat][country][t]['val'] for t in frequencies[fcat]["time_points"]], c=col, ls=ls[ci%3])
-                except:
-                    pass
-                # plt.fill_between(frequencies[fcat]["time_points"],
-                #         [frequencies[fcat][country][t]['lower'] for t in frequencies[fcat]["time_points"]],
-                #         [frequencies[fcat][country][t]['upper'] for t in frequencies[fcat]["time_points"]],
-                #         color=col, alpha=0.2)
-        fig.autofmt_xdate()
-
-    import json
-    with open(args.output_json, 'w') as fh:
-        json.dump(output_data, fh)
+    df.write_csv(args.output_csv, float_precision=4)

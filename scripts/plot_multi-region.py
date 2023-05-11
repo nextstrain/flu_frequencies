@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
-import json, datetime
+import polars as pl
 import numpy as np
+import json
 
 if __name__=='__main__':
     import argparse
@@ -30,20 +31,24 @@ if __name__=='__main__':
 
                     break
 
-    with open(args.frequencies, 'r') as fh:
-        d = json.load(fh)
 
-    dates = [datetime.datetime.strptime(x, "%Y-%m-%d") for x in d['dates'].values()]
+    d = pl.read_csv(args.frequencies, try_parse_dates=True)
+    clades = sorted(d['variant'].unique())
+    all_dates = sorted(d['date'].unique())
+
     regions = [x.replace('_', ' ') for x in args.regions]
+
     n_regions = len(regions)
     n_rows = int(np.ceil(n_regions/2))
     fig, axs = plt.subplots(n_rows,2, sharex=True, sharey=True, figsize=(10,3*n_rows))
     clades_to_plot = set()
+
     for region in regions:
-        for clade in d[region]["frequencies"]:
-            freqs = [d[region]["frequencies"][clade][t]['val'] for t in d["dates"]]
-            if max(freqs)>args.max_freq:
+        for clade in clades:
+            subset = d.filter((pl.col('region')==region)&(pl.col('variant')==clade)).sort(by='date')
+            if len(subset) and max(subset['freqMi'])>args.max_freq:
                 clades_to_plot.add(clade)
+
     clades_to_plot = sorted(clades_to_plot)
 
     for ri, region in enumerate(regions):
@@ -51,20 +56,19 @@ if __name__=='__main__':
         ax.grid(color='grey', alpha=0.2)
         for ci,clade in enumerate(clades_to_plot):
             clade_color = color_map.get(clade, f"C{ci}")
-
-            if clade in d[region]["frequencies"]:
-                freqs = [d[region]["frequencies"][clade][t]['val'] for t in d["dates"]]
-                ax.plot(dates, [d[region]['counts'][clade].get(t, 0)/d[region]['totals'].get(t,0)
-                                    if d[region]['totals'].get(t, 0) else np.nan
-                                        for t in d['dates']], 'o', c=clade_color)
-                ax.plot(dates, freqs, c=clade_color, label=clade if ri==0 else '')
+            subset = d.filter((pl.col('region')==region)&(pl.col('variant')==clade)).sort(by='date')
+            dates = subset['date']
+            if len(subset):
+                ax.plot(dates, [subset[i,'count']/subset[i,'total'] if subset[i,'total'] else np.nan
+                                        for i in range(len(dates))], 'o', c=clade_color)
+                ax.plot(dates, subset['freqMi'], c=clade_color, label=clade)
                 ax.fill_between(dates,
-                                [d[region]["frequencies"][clade][t]['lower'] for t in d["dates"]],
-                                [d[region]["frequencies"][clade][t]['upper'] for t in d["dates"]], color=clade_color, alpha=0.2)
+                                subset["freqLo"],
+                                subset["freqUp"], color=clade_color, alpha=0.2)
             else:
-                ax.plot(dates[:2], [0,0], label=clade, c=clade_color)
-        ax.plot(dates, np.ones(len(dates)), c='k', alpha=0.5)
-        ax.text(dates[len(dates)//2], 1.1, region)
+                ax.plot(all_dates[:2], [0,0], label=clade, c=clade_color)
+        ax.plot(all_dates, np.ones(len(all_dates)), c='k', alpha=0.5)
+        ax.text(all_dates[len(all_dates)//2], 1.1, region)
         ax.set_ylim(0,1.2)
     fig.autofmt_xdate()
     axs[0,0].legend(loc=3, ncol=2)
