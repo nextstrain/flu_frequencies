@@ -1,0 +1,91 @@
+{
+  "variants": [
+    "2a.1a",
+    "2b",
+    "2c",
+    "3C.2a1b.1a",
+    "2a.1",
+    "3C.2",
+    "2a.3",
+    "2",
+    "2a.3a",
+    "2a.1b",
+    "1a.1",
+    "2a.3b",
+    "2a",
+    "1",
+    "2a.2",
+    "3C.2a1b.1b",
+    "2a.3a.1"
+  ],
+  "variantsStyles": {
+    "1": {
+      "color": "#6ce0bf",
+      "lineStyle": "normal"
+    },
+    "1a.1": {
+      "color": "#2d5886",
+      "lineStyle": "normal"
+    },
+    "2": {
+      "color": "#ac5356",
+      "lineStyle": "normal"
+    },
+    "2a": {
+      "color": "#862d7d",
+      "lineStyle": "normal"
+    },
+    "2a.1": {
+      "color": "#2d7686",
+      "lineStyle": "normal"
+    },
+    "2a.1a": {
+      "color": "#4440bf",
+      "lineStyle": "normal"
+    },
+    "2a.1b": {
+      "color": "#d279bf",
+      "lineStyle": "normal"
+    },
+    "2a.2": {
+      "color": "#93c587",
+      "lineStyle": "normal"
+    },
+    "2a.3": {
+      "color": "#79d291",
+      "lineStyle": "normal"
+    },
+    "2a.3a": {
+      "color": "#d27e79",
+      "lineStyle": "normal"
+    },
+    "2a.3a.1": {
+      "color": "#79b6d2",
+      "lineStyle": "normal"
+    },
+    "2a.3b": {
+      "color": "#79d291",
+      "lineStyle": "normal"
+    },
+    "2b": {
+      "color": "#c5a487",
+      "lineStyle": "normal"
+    },
+    "2c": {
+      "color": "#79d2b0",
+      "lineStyle": "normal"
+    },
+    "3C.2": {
+      "color": "#785d3a",
+      "lineStyle": "normal"
+    },
+    "3C.2a1b.1a": {
+      "color": "#3a7778",
+      "lineStyle": "normal"
+    },
+    "3C.2a1b.1b": {
+      "color": "#2d8673",
+      "lineStyle": "normal"
+    }
+  }
+}

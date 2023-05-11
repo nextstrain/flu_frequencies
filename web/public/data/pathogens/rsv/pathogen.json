@@ -1,0 +1,17 @@
+{
+  "color": "#79d2a7",
+  "image": {
+    "credit": "Centers for Disease Control and Prevention Newsroom, Public Health Image Library (PHIL)",
+    "file": "pathogens/rsv/image.png",
+    "source": "https://phil.cdc.gov/Details.aspx?pid=2175"
+  },
+  "isEnabled": false,
+  "isVisible": true,
+  "maxDate": "",
+  "minDate": "",
+  "nCountries": 0,
+  "nRegions": 0,
+  "nVariants": 0,
+  "name": "rsv",
+  "nameFriendly": "Respiratory Syncytial Virus (RSV)"
+}

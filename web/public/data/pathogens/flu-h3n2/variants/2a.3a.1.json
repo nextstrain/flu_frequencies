@@ -1,0 +1,9026 @@
+{
+  "values": [
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0003,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0,
+        "France": 0.006,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0501,
+        "Netherlands": 0.0,
+        "New Zealand": 0.0,
+        "North America": 0.0,
+        "Norway": 0.0,
+        "Oceania": 0.0,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.0118,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.072,
+        "Spain": 0.0,
+        "Sweden": 0.0006,
+        "Switzerland": 0.001,
+        "Thailand": 0.0967,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0,
+        "Usa": 0.0,
+        "West Asia": 0.0576
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2021-12-01",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.4177
+        ],
+        "Australia": [
+          0.0,
+          0.3837
+        ],
+        "Austria": [
+          0.0,
+          0.433
+        ],
+        "Belgium": [
+          0.0,
+          0.3498
+        ],
+        "Brazil": [
+          0.0,
+          0.0083
+        ],
+        "Canada": [
+          0.0,
+          0.3873
+        ],
+        "Chile": [
+          0.0,
+          0.4177
+        ],
+        "China": [
+          0.0,
+          0.5599
+        ],
+        "China(PRC)": [
+          0.0,
+          0.6599
+        ],
+        "Denmark": [
+          0.0,
+          0.1518
+        ],
+        "Europe": [
+          0.0,
+          0.0054
+        ],
+        "France": [
+          0.0,
+          0.2823
+        ],
+        "Germany": [
+          0.0,
+          0.4177
+        ],
+        "Italy": [
+          0.0,
+          0.433
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          0.4968
+        ],
+        "Netherlands": [
+          0.0,
+          0.0697
+        ],
+        "New Zealand": [
+          0.0,
+          0.5236
+        ],
+        "North America": [
+          0.0,
+          0.0042
+        ],
+        "Norway": [
+          0.0,
+          0.0602
+        ],
+        "Oceania": [
+          0.0,
+          0.2945
+        ],
+        "Poland": [
+          0.0,
+          0.433
+        ],
+        "Portugal": [
+          0.0,
+          0.2204
+        ],
+        "Romania": [
+          0.0,
+          0.433
+        ],
+        "Russia": [
+          0.0,
+          0.0135
+        ],
+        "Singapore": [
+          0.0,
+          1.0
+        ],
+        "Slovenia": [
+          0.0,
+          0.433
+        ],
+        "South America": [
+          0.0,
+          0.0058
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0,
+          1.0
+        ],
+        "Spain": [
+          0.0,
+          0.0474
+        ],
+        "Sweden": [
+          0.0,
+          0.1224
+        ],
+        "Switzerland": [
+          0.0,
+          0.4187
+        ],
+        "Thailand": [
+          0.0,
+          1.0
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.3873
+        ],
+        "United Kingdom": [
+          0.0,
+          0.0487
+        ],
+        "Usa": [
+          0.0,
+          0.0059
+        ],
+        "West Asia": [
+          0.0,
+          0.4088
+        ]
+      },
+      "totals": {
+        "Africa": 1,
+        "Argentina": 2,
+        "Australia": 7,
+        "Austria": 0,
+        "Belgium": 4,
+        "Brazil": 295,
+        "Canada": 3,
+        "Chile": 2,
+        "China": 4,
+        "China(PRC)": 4,
+        "Denmark": 12,
+        "Europe": 325,
+        "France": 6,
+        "Germany": 2,
+        "Italy": 1,
+        "Japan Korea": 0,
+        "Lebanon": 6,
+        "Netherlands": 26,
+        "New Zealand": 0,
+        "North America": 415,
+        "Norway": 30,
+        "Oceania": 7,
+        "Poland": 0,
+        "Portugal": 8,
+        "Romania": 0,
+        "Russia": 141,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 299,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 38,
+        "Sweden": 15,
+        "Switzerland": 2,
+        "Thailand": 0,
+        "Togo": 1,
+        "Ukraine": 3,
+        "United Kingdom": 37,
+        "Usa": 412,
+        "West Asia": 6
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0004,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0,
+        "France": 0.0061,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0504,
+        "Netherlands": 0.0,
+        "New Zealand": 0.0,
+        "North America": 0.0,
+        "Norway": 0.0,
+        "Oceania": 0.0,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.0117,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.072,
+        "Spain": 0.0,
+        "Sweden": 0.0006,
+        "Switzerland": 0.001,
+        "Thailand": 0.0967,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0,
+        "Usa": 0.0,
+        "West Asia": 0.0579
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2021-12-15",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.4331
+        ],
+        "Australia": [
+          0.0,
+          0.4467
+        ],
+        "Austria": [
+          0.0,
+          0.3873
+        ],
+        "Belgium": [
+          0.0,
+          0.4334
+        ],
+        "Brazil": [
+          0.0,
+          0.0136
+        ],
+        "Canada": [
+          0.0,
+          0.0756
+        ],
+        "Chile": [
+          0.0,
+          0.3874
+        ],
+        "China": [
+          0.0,
+          1.0
+        ],
+        "China(PRC)": [
+          0.0,
+          1.0
+        ],
+        "Denmark": [
+          0.0,
+          0.0726
+        ],
+        "Europe": [
+          0.0,
+          0.0055
+        ],
+        "France": [
+          0.0,
+          0.3934
+        ],
+        "Germany": [
+          0.0,
+          0.1988
+        ],
+        "Italy": [
+          0.0,
+          0.4177
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          0.4341
+        ],
+        "Netherlands": [
+          0.0,
+          0.0564
+        ],
+        "New Zealand": [
+          0.0,
+          0.5575
+        ],
+        "North America": [
+          0.0,
+          0.0056
+        ],
+        "Norway": [
+          0.0,
+          0.1142
+        ],
+        "Oceania": [
+          0.0,
+          0.3512
+        ],
+        "Poland": [
+          0.0,
+          0.433
+        ],
+        "Portugal": [
+          0.0,
+          0.0911
+        ],
+        "Romania": [
+          0.0,
+          0.2762
+        ],
+        "Russia": [
+          0.0,
+          0.0248
+        ],
+        "Singapore": [
+          0.0,
+          1.0
+        ],
+        "Slovenia": [
+          0.0,
+          0.433
+        ],
+        "South America": [
+          0.0,
+          0.0095
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0,
+          1.0
+        ],
+        "Spain": [
+          0.0,
+          0.036
+        ],
+        "Sweden": [
+          0.0,
+          0.0796
+        ],
+        "Switzerland": [
+          0.0,
+          0.3122
+        ],
+        "Thailand": [
+          0.0,
+          1.0
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.165
+        ],
+        "United Kingdom": [
+          0.0,
+          0.0462
+        ],
+        "Usa": [
+          0.0,
+          0.0083
+        ],
+        "West Asia": [
+          0.0,
+          0.3523
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 1,
+        "Australia": 6,
+        "Austria": 3,
+        "Belgium": 0,
+        "Brazil": 179,
+        "Canada": 24,
+        "Chile": 3,
+        "China": 1,
+        "China(PRC)": 1,
+        "Denmark": 25,
+        "Europe": 317,
+        "France": 3,
+        "Germany": 9,
+        "Italy": 2,
+        "Japan Korea": 0,
+        "Lebanon": 7,
+        "Netherlands": 32,
+        "New Zealand": 0,
+        "North America": 310,
+        "Norway": 16,
+        "Oceania": 6,
+        "Poland": 0,
+        "Portugal": 20,
+        "Romania": 6,
+        "Russia": 73,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 183,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 50,
+        "Sweden": 23,
+        "Switzerland": 5,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 11,
+        "United Kingdom": 39,
+        "Usa": 286,
+        "West Asia": 7
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0004,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0001,
+        "Europe": 0.0001,
+        "France": 0.0062,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0512,
+        "Netherlands": 0.0001,
+        "New Zealand": 0.0,
+        "North America": 0.0,
+        "Norway": 0.0001,
+        "Oceania": 0.0,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.0115,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.072,
+        "Spain": 0.0001,
+        "Sweden": 0.0007,
+        "Switzerland": 0.0011,
+        "Thailand": 0.0968,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0001,
+        "Usa": 0.0,
+        "West Asia": 0.0585
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2021-12-29",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.2763
+        ],
+        "Australia": [
+          0.0,
+          0.866
+        ],
+        "Austria": [
+          0.0,
+          0.2763
+        ],
+        "Belgium": [
+          0.0,
+          0.4335
+        ],
+        "Brazil": [
+          0.0,
+          0.0101
+        ],
+        "Canada": [
+          0.0,
+          0.4331
+        ],
+        "Chile": [
+          0.0,
+          0.0727
+        ],
+        "China": [
+          0.0,
+          1.0
+        ],
+        "China(PRC)": [
+          0.0,
+          1.0
+        ],
+        "Denmark": [
+          0.0,
+          0.0505
+        ],
+        "Europe": [
+          0.0,
+          0.0081
+        ],
+        "France": [
+          0.0,
+          0.4393
+        ],
+        "Germany": [
+          0.0,
+          0.1219
+        ],
+        "Italy": [
+          0.0,
+          0.4331
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          0.3868
+        ],
+        "Netherlands": [
+          0.0,
+          0.07
+        ],
+        "New Zealand": [
+          0.0,
+          0.8874
+        ],
+        "North America": [
+          0.0,
+          0.0086
+        ],
+        "Norway": [
+          0.0,
+          0.1307
+        ],
+        "Oceania": [
+          0.0,
+          0.7746
+        ],
+        "Poland": [
+          0.0,
+          0.4331
+        ],
+        "Portugal": [
+          0.0,
+          0.2461
+        ],
+        "Romania": [
+          0.0,
+          0.1405
+        ],
+        "Russia": [
+          0.0,
+          0.1075
+        ],
+        "Singapore": [
+          0.0,
+          1.0
+        ],
+        "Slovenia": [
+          0.0,
+          0.3112
+        ],
+        "South America": [
+          0.0,
+          0.0067
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0,
+          1.0
+        ],
+        "Spain": [
+          0.0,
+          0.07
+        ],
+        "Sweden": [
+          0.0,
+          0.1813
+        ],
+        "Switzerland": [
+          0.0,
+          0.2
+        ],
+        "Thailand": [
+          0.0,
+          1.0
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.1219
+        ],
+        "United Kingdom": [
+          0.0,
+          0.1016
+        ],
+        "Usa": [
+          0.0,
+          0.0122
+        ],
+        "West Asia": [
+          0.0,
+          0.3116
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 6,
+        "Australia": 3,
+        "Austria": 6,
+        "Belgium": 1,
+        "Brazil": 229,
+        "Canada": 1,
+        "Chile": 25,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 36,
+        "Europe": 219,
+        "France": 1,
+        "Germany": 15,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 8,
+        "Netherlands": 26,
+        "New Zealand": 0,
+        "North America": 203,
+        "Norway": 14,
+        "Oceania": 3,
+        "Poland": 0,
+        "Portugal": 7,
+        "Romania": 13,
+        "Russia": 17,
+        "Singapore": 0,
+        "Slovenia": 5,
+        "South America": 260,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 26,
+        "Sweden": 10,
+        "Switzerland": 9,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 15,
+        "United Kingdom": 18,
+        "Usa": 202,
+        "West Asia": 8
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0004,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0001,
+        "France": 0.0062,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0528,
+        "Netherlands": 0.0,
+        "New Zealand": 0.0,
+        "North America": 0.0,
+        "Norway": 0.0001,
+        "Oceania": 0.0,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.0113,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.072,
+        "Spain": 0.0,
+        "Sweden": 0.0007,
+        "Switzerland": 0.0011,
+        "Thailand": 0.0969,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0001,
+        "Usa": 0.0,
+        "West Asia": 0.0595
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-01-12",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.3119
+        ],
+        "Australia": [
+          0.0,
+          1.0
+        ],
+        "Austria": [
+          0.0,
+          0.1651
+        ],
+        "Belgium": [
+          0.0,
+          0.3878
+        ],
+        "Brazil": [
+          0.0,
+          0.037
+        ],
+        "Canada": [
+          0.0,
+          0.4332
+        ],
+        "Chile": [
+          0.0,
+          0.1322
+        ],
+        "China": [
+          0.0,
+          1.0
+        ],
+        "China(PRC)": [
+          0.0,
+          1.0
+        ],
+        "Denmark": [
+          0.0,
+          0.0793
+        ],
+        "Europe": [
+          0.0,
+          0.0082
+        ],
+        "France": [
+          0.0,
+          0.4239
+        ],
+        "Germany": [
+          0.0,
+          0.1143
+        ],
+        "Italy": [
+          0.0,
+          0.2763
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.0519
+        ],
+        "New Zealand": [
+          0.0,
+          1.0
+        ],
+        "North America": [
+          0.0,
+          0.012
+        ],
+        "Norway": [
+          0.0,
+          0.0729
+        ],
+        "Oceania": [
+          0.0,
+          1.0
+        ],
+        "Poland": [
+          0.0,
+          0.4331
+        ],
+        "Portugal": [
+          0.0,
+          0.1405
+        ],
+        "Romania": [
+          0.0,
+          0.2763
+        ],
+        "Russia": [
+          0.0,
+          0.1143
+        ],
+        "Singapore": [
+          0.0,
+          0.5444
+        ],
+        "Slovenia": [
+          0.0,
+          0.3112
+        ],
+        "South America": [
+          0.0,
+          0.0223
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0,
+          0.505
+        ],
+        "Spain": [
+          0.0,
+          0.122
+        ],
+        "Sweden": [
+          0.0,
+          0.3502
+        ],
+        "Switzerland": [
+          0.0,
+          0.2472
+        ],
+        "Thailand": [
+          0.0,
+          0.7093
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.1519
+        ],
+        "United Kingdom": [
+          0.0,
+          0.122
+        ],
+        "Usa": [
+          0.0,
+          0.0169
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 5,
+        "Australia": 0,
+        "Austria": 11,
+        "Belgium": 3,
+        "Brazil": 60,
+        "Canada": 0,
+        "Chile": 14,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 23,
+        "Europe": 214,
+        "France": 2,
+        "Germany": 16,
+        "Italy": 6,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 35,
+        "New Zealand": 0,
+        "North America": 146,
+        "Norway": 25,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 13,
+        "Romania": 6,
+        "Russia": 16,
+        "Singapore": 5,
+        "Slovenia": 5,
+        "South America": 79,
+        "South Asia": 0,
+        "Southeast Asia": 5,
+        "Spain": 15,
+        "Sweden": 4,
+        "Switzerland": 7,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 12,
+        "United Kingdom": 15,
+        "Usa": 146,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0004,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0,
+        "France": 0.0062,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0543,
+        "Netherlands": 0.0,
+        "New Zealand": 0.0,
+        "North America": 0.0,
+        "Norway": 0.0,
+        "Oceania": 0.0,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.0111,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.0722,
+        "Spain": 0.0,
+        "Sweden": 0.0007,
+        "Switzerland": 0.0011,
+        "Thailand": 0.0972,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0,
+        "Usa": 0.0,
+        "West Asia": 0.0606
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-01-26",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.2332
+        ],
+        "Australia": [
+          0.0,
+          1.0
+        ],
+        "Austria": [
+          0.0,
+          0.1989
+        ],
+        "Belgium": [
+          0.0,
+          0.4335
+        ],
+        "Brazil": [
+          0.0,
+          0.2576
+        ],
+        "Canada": [
+          0.0,
+          0.4334
+        ],
+        "Chile": [
+          0.0,
+          0.2129
+        ],
+        "China": [
+          0.0,
+          1.0
+        ],
+        "China(PRC)": [
+          0.0,
+          1.0
+        ],
+        "Denmark": [
+          0.0,
+          0.0829
+        ],
+        "Europe": [
+          0.0,
+          0.0084
+        ],
+        "France": [
+          0.0,
+          0.3174
+        ],
+        "Germany": [
+          0.0,
+          0.0606
+        ],
+        "Italy": [
+          0.0,
+          0.4177
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.0405
+        ],
+        "New Zealand": [
+          0.0,
+          1.0
+        ],
+        "North America": [
+          0.0,
+          0.0176
+        ],
+        "Norway": [
+          0.0,
+          0.0674
+        ],
+        "Oceania": [
+          0.0,
+          1.0
+        ],
+        "Poland": [
+          0.0,
+          0.4331
+        ],
+        "Portugal": [
+          0.0,
+          0.1651
+        ],
+        "Romania": [
+          0.0,
+          0.3495
+        ],
+        "Russia": [
+          0.0,
+          0.4177
+        ],
+        "Singapore": [
+          0.0,
+          1.0
+        ],
+        "Slovenia": [
+          0.0,
+          0.3874
+        ],
+        "South America": [
+          0.0,
+          0.0765
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0,
+          1.0
+        ],
+        "Spain": [
+          0.0,
+          0.1519
+        ],
+        "Sweden": [
+          0.0,
+          0.4184
+        ],
+        "Switzerland": [
+          0.0,
+          0.1154
+        ],
+        "Thailand": [
+          0.0,
+          1.0
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.3874
+        ],
+        "United Kingdom": [
+          0.0,
+          0.1306
+        ],
+        "Usa": [
+          0.0,
+          0.0248
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 8,
+        "Australia": 0,
+        "Austria": 9,
+        "Belgium": 1,
+        "Brazil": 7,
+        "Canada": 0,
+        "Chile": 9,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 22,
+        "Europe": 208,
+        "France": 5,
+        "Germany": 30,
+        "Italy": 2,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 45,
+        "New Zealand": 0,
+        "North America": 100,
+        "Norway": 27,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 11,
+        "Romania": 4,
+        "Russia": 2,
+        "Singapore": 1,
+        "Slovenia": 3,
+        "South America": 24,
+        "South Asia": 0,
+        "Southeast Asia": 1,
+        "Spain": 12,
+        "Sweden": 2,
+        "Switzerland": 16,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 3,
+        "United Kingdom": 14,
+        "Usa": 100,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0004,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0,
+        "France": 0.0063,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0558,
+        "Netherlands": 0.0,
+        "New Zealand": 0.0,
+        "North America": 0.0,
+        "Norway": 0.0,
+        "Oceania": 0.0,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.0108,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.0723,
+        "Spain": 0.0,
+        "Sweden": 0.0008,
+        "Switzerland": 0.0011,
+        "Thailand": 0.0975,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0,
+        "Usa": 0.0,
+        "West Asia": 0.0617
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-02-09",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.2629
+        ],
+        "Australia": [
+          0.0,
+          0.6599
+        ],
+        "Austria": [
+          0.0,
+          0.2762
+        ],
+        "Belgium": [
+          0.0,
+          0.3115
+        ],
+        "Brazil": [
+          0.0,
+          0.2029
+        ],
+        "Canada": [
+          0.0,
+          0.4332
+        ],
+        "Chile": [
+          0.0,
+          0.3983
+        ],
+        "China": [
+          0.0,
+          1.0
+        ],
+        "China(PRC)": [
+          0.0,
+          1.0
+        ],
+        "Denmark": [
+          0.0,
+          0.0316
+        ],
+        "Europe": [
+          0.0,
+          0.0057
+        ],
+        "France": [
+          0.0,
+          0.2523
+        ],
+        "Germany": [
+          0.0,
+          0.096
+        ],
+        "Italy": [
+          0.0,
+          0.165
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.0419
+        ],
+        "New Zealand": [
+          0.0,
+          0.7078
+        ],
+        "North America": [
+          0.0,
+          0.0115
+        ],
+        "Norway": [
+          0.0,
+          0.3112
+        ],
+        "Oceania": [
+          0.0,
+          0.5599
+        ],
+        "Poland": [
+          0.0,
+          0.4331
+        ],
+        "Portugal": [
+          0.0,
+          0.0301
+        ],
+        "Romania": [
+          0.0,
+          0.1805
+        ],
+        "Russia": [
+          0.0,
+          0.4331
+        ],
+        "Singapore": [
+          0.0,
+          0.1138
+        ],
+        "Slovenia": [
+          0.0,
+          0.246
+        ],
+        "South America": [
+          0.0,
+          0.0929
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0,
+          0.1456
+        ],
+        "Spain": [
+          0.0,
+          0.0911
+        ],
+        "Sweden": [
+          0.0,
+          0.3881
+        ],
+        "Switzerland": [
+          0.0,
+          0.2215
+        ],
+        "Thailand": [
+          0.0,
+          0.5367
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.4331
+        ],
+        "United Kingdom": [
+          0.0,
+          0.0451
+        ],
+        "Usa": [
+          0.0,
+          0.0163
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 7,
+        "Australia": 4,
+        "Austria": 6,
+        "Belgium": 5,
+        "Brazil": 10,
+        "Canada": 1,
+        "Chile": 3,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 57,
+        "Europe": 304,
+        "France": 7,
+        "Germany": 19,
+        "Italy": 11,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 43,
+        "New Zealand": 0,
+        "North America": 152,
+        "Norway": 5,
+        "Oceania": 4,
+        "Poland": 1,
+        "Portugal": 60,
+        "Romania": 10,
+        "Russia": 1,
+        "Singapore": 25,
+        "Slovenia": 7,
+        "South America": 20,
+        "South Asia": 0,
+        "Southeast Asia": 25,
+        "Spain": 20,
+        "Sweden": 3,
+        "Switzerland": 8,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 1,
+        "United Kingdom": 40,
+        "Usa": 151,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0004,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0,
+        "France": 0.0063,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0573,
+        "Netherlands": 0.0,
+        "New Zealand": 0.0,
+        "North America": 0.0,
+        "Norway": 0.0,
+        "Oceania": 0.0,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.0153,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.0767,
+        "Spain": 0.0,
+        "Sweden": 0.0008,
+        "Switzerland": 0.0011,
+        "Thailand": 0.1021,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0,
+        "Usa": 0.0,
+        "West Asia": 0.0627
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-02-23",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.433
+        ],
+        "Argentina": [
+          0.0,
+          0.2174
+        ],
+        "Australia": [
+          0.0,
+          0.866
+        ],
+        "Austria": [
+          0.0,
+          0.1804
+        ],
+        "Belgium": [
+          0.0,
+          0.0869
+        ],
+        "Brazil": [
+          0.0,
+          0.4419
+        ],
+        "Canada": [
+          0.0,
+          0.4331
+        ],
+        "Chile": [
+          0.0,
+          0.187
+        ],
+        "China": [
+          0.0,
+          1.0
+        ],
+        "China(PRC)": [
+          0.0,
+          1.0
+        ],
+        "Denmark": [
+          0.0,
+          0.0134
+        ],
+        "Europe": [
+          0.0,
+          0.0024
+        ],
+        "France": [
+          0.0,
+          0.158
+        ],
+        "Germany": [
+          0.0,
+          0.1073
+        ],
+        "Italy": [
+          0.0,
+          0.1073
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.0111
+        ],
+        "New Zealand": [
+          0.0,
+          0.8874
+        ],
+        "North America": [
+          0.0,
+          0.0082
+        ],
+        "Norway": [
+          0.0,
+          0.0318
+        ],
+        "Oceania": [
+          0.0,
+          0.7746
+        ],
+        "Poland": [
+          0.0,
+          0.433
+        ],
+        "Portugal": [
+          0.0,
+          0.0246
+        ],
+        "Romania": [
+          0.0,
+          0.1217
+        ],
+        "Russia": [
+          0.0,
+          0.433
+        ],
+        "Singapore": [
+          0.0,
+          0.0839
+        ],
+        "Slovenia": [
+          0.0,
+          0.1217
+        ],
+        "South America": [
+          0.0,
+          0.0882
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0281,
+          0.1254
+        ],
+        "Spain": [
+          0.0,
+          0.0193
+        ],
+        "Sweden": [
+          0.0,
+          0.3502
+        ],
+        "Switzerland": [
+          0.0,
+          0.2773
+        ],
+        "Thailand": [
+          0.0,
+          0.5379
+        ],
+        "Togo": [
+          0.0,
+          0.5332
+        ],
+        "Ukraine": [
+          0.0,
+          0.433
+        ],
+        "United Kingdom": [
+          0.0,
+          0.0195
+        ],
+        "Usa": [
+          0.0,
+          0.0116
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 5,
+        "Argentina": 9,
+        "Australia": 3,
+        "Austria": 10,
+        "Belgium": 21,
+        "Brazil": 1,
+        "Canada": 1,
+        "Chile": 11,
+        "China": 1,
+        "China(PRC)": 1,
+        "Denmark": 133,
+        "Europe": 724,
+        "France": 12,
+        "Germany": 17,
+        "Italy": 17,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 162,
+        "New Zealand": 0,
+        "North America": 213,
+        "Norway": 56,
+        "Oceania": 3,
+        "Poland": 0,
+        "Portugal": 72,
+        "Romania": 15,
+        "Russia": 1,
+        "Singapore": 37,
+        "Slovenia": 15,
+        "South America": 21,
+        "South Asia": 0,
+        "Southeast Asia": 37,
+        "Spain": 92,
+        "Sweden": 4,
+        "Switzerland": 6,
+        "Thailand": 0,
+        "Togo": 5,
+        "Ukraine": 0,
+        "United Kingdom": 91,
+        "Usa": 212,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0004,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0,
+        "France": 0.0065,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0588,
+        "Netherlands": 0.0,
+        "New Zealand": 0.0,
+        "North America": 0.0,
+        "Norway": 0.0,
+        "Oceania": 0.0,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.0324,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.0921,
+        "Spain": 0.0,
+        "Sweden": 0.0009,
+        "Switzerland": 0.0012,
+        "Thailand": 0.1177,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0001,
+        "Usa": 0.0,
+        "West Asia": 0.0638
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-03-09",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.5599
+        ],
+        "Argentina": [
+          0.0,
+          0.0862
+        ],
+        "Australia": [
+          0.0,
+          0.13
+        ],
+        "Austria": [
+          0.0,
+          0.1073
+        ],
+        "Belgium": [
+          0.0,
+          0.0502
+        ],
+        "Brazil": [
+          0.0,
+          0.4197
+        ],
+        "Canada": [
+          0.0,
+          0.4177
+        ],
+        "Chile": [
+          0.0,
+          0.1151
+        ],
+        "China": [
+          0.0,
+          0.0585
+        ],
+        "China(PRC)": [
+          0.0,
+          0.0824
+        ],
+        "Denmark": [
+          0.0,
+          0.0127
+        ],
+        "Europe": [
+          0.0,
+          0.0017
+        ],
+        "France": [
+          0.0,
+          0.0975
+        ],
+        "Germany": [
+          0.0,
+          0.058
+        ],
+        "Italy": [
+          0.0,
+          0.0388
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.0079
+        ],
+        "New Zealand": [
+          0.0,
+          0.4429
+        ],
+        "North America": [
+          0.0,
+          0.006
+        ],
+        "Norway": [
+          0.0,
+          0.0336
+        ],
+        "Oceania": [
+          0.0,
+          0.0929
+        ],
+        "Poland": [
+          0.0,
+          0.3494
+        ],
+        "Portugal": [
+          0.0,
+          0.0221
+        ],
+        "Romania": [
+          0.0,
+          0.0459
+        ],
+        "Russia": [
+          0.0,
+          0.433
+        ],
+        "Singapore": [
+          0.0,
+          0.1051
+        ],
+        "Slovenia": [
+          0.0,
+          0.0958
+        ],
+        "South America": [
+          0.0,
+          0.0417
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0405,
+          0.1436
+        ],
+        "Spain": [
+          0.0,
+          0.01
+        ],
+        "Sweden": [
+          0.0,
+          0.3503
+        ],
+        "Switzerland": [
+          0.0,
+          0.0681
+        ],
+        "Thailand": [
+          0.0,
+          0.5538
+        ],
+        "Togo": [
+          0.0,
+          0.6599
+        ],
+        "Ukraine": [
+          0.0,
+          0.4176
+        ],
+        "United Kingdom": [
+          0.0,
+          0.0135
+        ],
+        "Usa": [
+          0.0,
+          0.0085
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 4,
+        "Argentina": 24,
+        "Australia": 20,
+        "Austria": 17,
+        "Belgium": 36,
+        "Brazil": 2,
+        "Canada": 2,
+        "Chile": 17,
+        "China": 31,
+        "China(PRC)": 31,
+        "Denmark": 139,
+        "Europe": 1051,
+        "France": 20,
+        "Germany": 31,
+        "Italy": 46,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 226,
+        "New Zealand": 0,
+        "North America": 289,
+        "Norway": 53,
+        "Oceania": 20,
+        "Poland": 4,
+        "Portugal": 80,
+        "Romania": 39,
+        "Russia": 0,
+        "Singapore": 35,
+        "Slovenia": 19,
+        "South America": 43,
+        "South Asia": 0,
+        "Southeast Asia": 35,
+        "Spain": 177,
+        "Sweden": 4,
+        "Switzerland": 27,
+        "Thailand": 0,
+        "Togo": 4,
+        "Ukraine": 2,
+        "United Kingdom": 131,
+        "Usa": 287,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0004,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0,
+        "France": 0.0069,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0603,
+        "Netherlands": 0.0,
+        "New Zealand": 0.0,
+        "North America": 0.0,
+        "Norway": 0.0001,
+        "Oceania": 0.0,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.0659,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.1205,
+        "Spain": 0.0,
+        "Sweden": 0.0009,
+        "Switzerland": 0.0013,
+        "Thailand": 0.1464,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0002,
+        "Usa": 0.0,
+        "West Asia": 0.0648
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-03-23",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.1972
+        ],
+        "Argentina": [
+          0.0,
+          0.0841
+        ],
+        "Australia": [
+          0.0,
+          0.0331
+        ],
+        "Austria": [
+          0.0,
+          0.0471
+        ],
+        "Belgium": [
+          0.0,
+          0.087
+        ],
+        "Brazil": [
+          0.0,
+          0.4356
+        ],
+        "Canada": [
+          0.0,
+          0.1013
+        ],
+        "Chile": [
+          0.0,
+          0.1589
+        ],
+        "China": [
+          0.0,
+          0.1039
+        ],
+        "China(PRC)": [
+          0.0,
+          0.1451
+        ],
+        "Denmark": [
+          0.0,
+          0.0296
+        ],
+        "Europe": [
+          0.0,
+          0.0019
+        ],
+        "France": [
+          0.0,
+          0.0765
+        ],
+        "Germany": [
+          0.0,
+          0.0562
+        ],
+        "Italy": [
+          0.0,
+          0.0498
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.0097
+        ],
+        "New Zealand": [
+          0.0,
+          0.4336
+        ],
+        "North America": [
+          0.0,
+          0.0043
+        ],
+        "Norway": [
+          0.0,
+          0.0231
+        ],
+        "Oceania": [
+          0.0,
+          0.0233
+        ],
+        "Poland": [
+          0.0,
+          0.0695
+        ],
+        "Portugal": [
+          0.0,
+          0.021
+        ],
+        "Romania": [
+          0.0,
+          0.0371
+        ],
+        "Russia": [
+          0.0,
+          0.433
+        ],
+        "Singapore": [
+          0.0,
+          0.23
+        ],
+        "Slovenia": [
+          0.0,
+          0.0755
+        ],
+        "South America": [
+          0.0,
+          0.0473
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0026,
+          0.2384
+        ],
+        "Spain": [
+          0.0,
+          0.0168
+        ],
+        "Sweden": [
+          0.0,
+          0.2469
+        ],
+        "Switzerland": [
+          0.0,
+          0.0511
+        ],
+        "Thailand": [
+          0.0,
+          0.5952
+        ],
+        "Togo": [
+          0.0,
+          0.2673
+        ],
+        "Ukraine": [
+          0.0,
+          0.433
+        ],
+        "United Kingdom": [
+          0.0,
+          0.0174
+        ],
+        "Usa": [
+          0.0,
+          0.0063
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 10,
+        "Argentina": 26,
+        "Australia": 75,
+        "Austria": 38,
+        "Belgium": 21,
+        "Brazil": 0,
+        "Canada": 18,
+        "Chile": 12,
+        "China": 18,
+        "China(PRC)": 18,
+        "Denmark": 60,
+        "Europe": 908,
+        "France": 26,
+        "Germany": 32,
+        "Italy": 36,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 185,
+        "New Zealand": 1,
+        "North America": 401,
+        "Norway": 77,
+        "Oceania": 76,
+        "Poland": 26,
+        "Portugal": 84,
+        "Romania": 48,
+        "Russia": 0,
+        "Singapore": 16,
+        "Slovenia": 24,
+        "South America": 38,
+        "South Asia": 0,
+        "Southeast Asia": 16,
+        "Spain": 105,
+        "Sweden": 7,
+        "Switzerland": 36,
+        "Thailand": 0,
+        "Togo": 10,
+        "Ukraine": 0,
+        "United Kingdom": 103,
+        "Usa": 383,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0005,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0,
+        "France": 0.0077,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0618,
+        "Netherlands": 0.0001,
+        "New Zealand": 0.0,
+        "North America": 0.0,
+        "Norway": 0.0001,
+        "Oceania": 0.0,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.1045,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.1527,
+        "Spain": 0.0,
+        "Sweden": 0.001,
+        "Switzerland": 0.0016,
+        "Thailand": 0.1789,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0006,
+        "Usa": 0.0,
+        "West Asia": 0.0659
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-04-06",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.3511
+        ],
+        "Argentina": [
+          0.0,
+          0.2049
+        ],
+        "Australia": [
+          0.0,
+          0.0391
+        ],
+        "Austria": [
+          0.0,
+          0.0695
+        ],
+        "Belgium": [
+          0.0,
+          0.2208
+        ],
+        "Brazil": [
+          0.0,
+          0.4206
+        ],
+        "Canada": [
+          0.0,
+          0.0514
+        ],
+        "Chile": [
+          0.0,
+          0.088
+        ],
+        "China": [
+          0.0,
+          0.0548
+        ],
+        "China(PRC)": [
+          0.0,
+          0.0772
+        ],
+        "Denmark": [
+          0.0,
+          0.0177
+        ],
+        "Europe": [
+          0.0,
+          0.002
+        ],
+        "France": [
+          0.0,
+          0.0987
+        ],
+        "Germany": [
+          0.0,
+          0.0909
+        ],
+        "Italy": [
+          0.0,
+          0.0379
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.0101
+        ],
+        "New Zealand": [
+          0.0,
+          0.4339
+        ],
+        "North America": [
+          0.0,
+          0.0037
+        ],
+        "Norway": [
+          0.0,
+          0.0196
+        ],
+        "Oceania": [
+          0.0,
+          0.0277
+        ],
+        "Poland": [
+          0.0,
+          0.1804
+        ],
+        "Portugal": [
+          0.0,
+          0.0301
+        ],
+        "Romania": [
+          0.0,
+          0.0562
+        ],
+        "Russia": [
+          0.0,
+          0.3494
+        ],
+        "Singapore": [
+          0.0,
+          0.803
+        ],
+        "Slovenia": [
+          0.0,
+          0.2459
+        ],
+        "South America": [
+          0.0,
+          0.0501
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0,
+          0.7125
+        ],
+        "Spain": [
+          0.0,
+          0.014
+        ],
+        "Sweden": [
+          0.0,
+          0.1997
+        ],
+        "Switzerland": [
+          0.0,
+          0.132
+        ],
+        "Thailand": [
+          0.0,
+          0.8774
+        ],
+        "Togo": [
+          0.0,
+          0.4467
+        ],
+        "Ukraine": [
+          0.0,
+          0.4176
+        ],
+        "United Kingdom": [
+          0.0,
+          0.0152
+        ],
+        "Usa": [
+          0.0,
+          0.0054
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 6,
+        "Argentina": 9,
+        "Australia": 64,
+        "Austria": 26,
+        "Belgium": 8,
+        "Brazil": 2,
+        "Canada": 35,
+        "Chile": 25,
+        "China": 33,
+        "China(PRC)": 33,
+        "Denmark": 100,
+        "Europe": 875,
+        "France": 20,
+        "Germany": 20,
+        "Italy": 47,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 179,
+        "New Zealand": 0,
+        "North America": 470,
+        "Norway": 91,
+        "Oceania": 64,
+        "Poland": 10,
+        "Portugal": 59,
+        "Romania": 32,
+        "Russia": 4,
+        "Singapore": 2,
+        "Slovenia": 7,
+        "South America": 36,
+        "South Asia": 0,
+        "Southeast Asia": 4,
+        "Spain": 126,
+        "Sweden": 9,
+        "Switzerland": 14,
+        "Thailand": 2,
+        "Togo": 6,
+        "Ukraine": 2,
+        "United Kingdom": 121,
+        "Usa": 435,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0006,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0,
+        "France": 0.0088,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0632,
+        "Netherlands": 0.0006,
+        "New Zealand": 0.0,
+        "North America": 0.0,
+        "Norway": 0.0003,
+        "Oceania": 0.0001,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.1432,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.185,
+        "Spain": 0.0,
+        "Sweden": 0.001,
+        "Switzerland": 0.0019,
+        "Thailand": 0.2116,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0018,
+        "Usa": 0.0,
+        "West Asia": 0.067
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-04-20",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.0929
+        ],
+        "Argentina": [
+          0.0,
+          0.2026
+        ],
+        "Australia": [
+          0.0,
+          0.0245
+        ],
+        "Austria": [
+          0.0,
+          0.1217
+        ],
+        "Belgium": [
+          0.0,
+          0.4336
+        ],
+        "Brazil": [
+          0.0,
+          0.2239
+        ],
+        "Canada": [
+          0.0,
+          0.0449
+        ],
+        "Chile": [
+          0.0,
+          0.0757
+        ],
+        "China": [
+          0.0,
+          0.1972
+        ],
+        "China(PRC)": [
+          0.0,
+          0.2673
+        ],
+        "Denmark": [
+          0.0,
+          0.0105
+        ],
+        "Europe": [
+          0.0,
+          0.0022
+        ],
+        "France": [
+          0.0,
+          0.2547
+        ],
+        "Germany": [
+          0.0,
+          0.0371
+        ],
+        "Italy": [
+          0.0,
+          0.0415
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.0151
+        ],
+        "New Zealand": [
+          0.0,
+          0.4334
+        ],
+        "North America": [
+          0.0,
+          0.0044
+        ],
+        "Norway": [
+          0.0,
+          0.0474
+        ],
+        "Oceania": [
+          0.0,
+          0.0173
+        ],
+        "Poland": [
+          0.0,
+          0.2762
+        ],
+        "Portugal": [
+          0.0,
+          0.0356
+        ],
+        "Romania": [
+          0.0,
+          0.114
+        ],
+        "Russia": [
+          0.0,
+          0.433
+        ],
+        "Singapore": [
+          0.0,
+          0.5268
+        ],
+        "Slovenia": [
+          0.0,
+          0.3494
+        ],
+        "South America": [
+          0.0,
+          0.0398
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0,
+          0.4795
+        ],
+        "Spain": [
+          0.0,
+          0.015
+        ],
+        "Sweden": [
+          0.0,
+          0.2772
+        ],
+        "Switzerland": [
+          0.0,
+          0.2781
+        ],
+        "Thailand": [
+          0.0,
+          0.7353
+        ],
+        "Togo": [
+          0.0,
+          0.13
+        ],
+        "Ukraine": [
+          0.0,
+          0.433
+        ],
+        "United Kingdom": [
+          0.0,
+          0.015
+        ],
+        "Usa": [
+          0.0,
+          0.0065
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 20,
+        "Argentina": 9,
+        "Australia": 101,
+        "Austria": 15,
+        "Belgium": 1,
+        "Brazil": 8,
+        "Canada": 40,
+        "Chile": 28,
+        "China": 10,
+        "China(PRC)": 10,
+        "Denmark": 171,
+        "Europe": 785,
+        "France": 7,
+        "Germany": 48,
+        "Italy": 43,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 122,
+        "New Zealand": 1,
+        "North America": 401,
+        "Norway": 38,
+        "Oceania": 102,
+        "Poland": 6,
+        "Portugal": 50,
+        "Romania": 16,
+        "Russia": 0,
+        "Singapore": 7,
+        "Slovenia": 4,
+        "South America": 45,
+        "South Asia": 0,
+        "Southeast Asia": 7,
+        "Spain": 118,
+        "Sweden": 6,
+        "Switzerland": 6,
+        "Thailand": 0,
+        "Togo": 20,
+        "Ukraine": 0,
+        "United Kingdom": 134,
+        "Usa": 361,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0,
+        "Austria": 0.0,
+        "Belgium": 0.0007,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0,
+        "France": 0.0099,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0647,
+        "Netherlands": 0.002,
+        "New Zealand": 0.0,
+        "North America": 0.0003,
+        "Norway": 0.0005,
+        "Oceania": 0.0001,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.1833,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.2184,
+        "Spain": 0.0,
+        "Sweden": 0.0011,
+        "Switzerland": 0.0023,
+        "Thailand": 0.2455,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.006,
+        "Usa": 0.0001,
+        "West Asia": 0.068
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-05-04",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.2531
+        ],
+        "Argentina": [
+          0.0,
+          0.0923
+        ],
+        "Australia": [
+          0.0,
+          0.0153
+        ],
+        "Austria": [
+          0.0,
+          0.1987
+        ],
+        "Belgium": [
+          0.0,
+          0.4337
+        ],
+        "Brazil": [
+          0.0,
+          0.2465
+        ],
+        "Canada": [
+          0.0,
+          0.091
+        ],
+        "Chile": [
+          0.0,
+          0.0268
+        ],
+        "China": [
+          0.0,
+          0.0765
+        ],
+        "China(PRC)": [
+          0.0,
+          0.1075
+        ],
+        "Denmark": [
+          0.0,
+          0.0499
+        ],
+        "Europe": [
+          0.0,
+          0.0038
+        ],
+        "France": [
+          0.0,
+          0.3594
+        ],
+        "Germany": [
+          0.0,
+          0.0325
+        ],
+        "Italy": [
+          0.0,
+          0.1517
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.023
+        ],
+        "New Zealand": [
+          0.0,
+          0.0831
+        ],
+        "North America": [
+          0.0,
+          0.0048
+        ],
+        "Norway": [
+          0.0,
+          0.0491
+        ],
+        "Oceania": [
+          0.0,
+          0.0102
+        ],
+        "Poland": [
+          0.0,
+          0.246
+        ],
+        "Portugal": [
+          0.0,
+          0.0724
+        ],
+        "Romania": [
+          0.0,
+          0.4177
+        ],
+        "Russia": [
+          0.0,
+          0.433
+        ],
+        "Singapore": [
+          0.0,
+          0.4789
+        ],
+        "Slovenia": [
+          0.0,
+          0.433
+        ],
+        "South America": [
+          0.0,
+          0.0161
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0212,
+          0.4156
+        ],
+        "Spain": [
+          0.0,
+          0.0147
+        ],
+        "Sweden": [
+          0.0,
+          0.3506
+        ],
+        "Switzerland": [
+          0.0,
+          0.4353
+        ],
+        "Thailand": [
+          0.0,
+          0.7073
+        ],
+        "Togo": [
+          0.0,
+          0.3356
+        ],
+        "Ukraine": [
+          0.0,
+          0.433
+        ],
+        "United Kingdom": [
+          0.0,
+          0.0348
+        ],
+        "Usa": [
+          0.0,
+          0.0067
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 8,
+        "Argentina": 20,
+        "Australia": 152,
+        "Austria": 9,
+        "Belgium": 0,
+        "Brazil": 7,
+        "Canada": 20,
+        "Chile": 82,
+        "China": 24,
+        "China(PRC)": 24,
+        "Denmark": 36,
+        "Europe": 462,
+        "France": 4,
+        "Germany": 55,
+        "Italy": 12,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 85,
+        "New Zealand": 22,
+        "North America": 383,
+        "Norway": 37,
+        "Oceania": 174,
+        "Poland": 7,
+        "Portugal": 25,
+        "Romania": 2,
+        "Russia": 0,
+        "Singapore": 8,
+        "Slovenia": 1,
+        "South America": 109,
+        "South Asia": 0,
+        "Southeast Asia": 10,
+        "Spain": 123,
+        "Sweden": 4,
+        "Switzerland": 0,
+        "Thailand": 2,
+        "Togo": 8,
+        "Ukraine": 0,
+        "United Kingdom": 62,
+        "Usa": 363,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0002,
+        "Austria": 0.0,
+        "Belgium": 0.0013,
+        "Brazil": 0.0,
+        "Canada": 0.0014,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0,
+        "Europe": 0.0006,
+        "France": 0.0116,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0662,
+        "Netherlands": 0.0051,
+        "New Zealand": 0.0,
+        "North America": 0.0061,
+        "Norway": 0.0013,
+        "Oceania": 0.0004,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0,
+        "Singapore": 0.2266,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.2542,
+        "Spain": 0.0,
+        "Sweden": 0.0017,
+        "Switzerland": 0.0031,
+        "Thailand": 0.2818,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0127,
+        "Usa": 0.0073,
+        "West Asia": 0.0691
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 1,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 1,
+        "West Asia": 0
+      },
+      "date": "2022-05-18",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.433
+        ],
+        "Argentina": [
+          0.0,
+          0.2787
+        ],
+        "Australia": [
+          0.0,
+          0.0157
+        ],
+        "Austria": [
+          0.0,
+          0.4331
+        ],
+        "Belgium": [
+          0.0,
+          0.4344
+        ],
+        "Brazil": [
+          0.0,
+          0.1451
+        ],
+        "Canada": [
+          0.0,
+          0.4348
+        ],
+        "Chile": [
+          0.0,
+          0.0724
+        ],
+        "China": [
+          0.0,
+          0.0323
+        ],
+        "China(PRC)": [
+          0.0,
+          0.0457
+        ],
+        "Denmark": [
+          0.0,
+          0.246
+        ],
+        "Europe": [
+          0.0,
+          0.0075
+        ],
+        "France": [
+          0.0,
+          0.4446
+        ],
+        "Germany": [
+          0.0,
+          0.0566
+        ],
+        "Italy": [
+          0.0,
+          0.246
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.1569
+        ],
+        "New Zealand": [
+          0.0,
+          0.0481
+        ],
+        "North America": [
+          0.0,
+          0.0248
+        ],
+        "Norway": [
+          0.0,
+          0.0225
+        ],
+        "Oceania": [
+          0.0,
+          0.01
+        ],
+        "Poland": [
+          0.0,
+          0.4331
+        ],
+        "Portugal": [
+          0.0,
+          0.1219
+        ],
+        "Romania": [
+          0.0,
+          0.4331
+        ],
+        "Russia": [
+          0.0,
+          0.4331
+        ],
+        "Singapore": [
+          0.0,
+          0.658
+        ],
+        "Slovenia": [
+          0.0,
+          0.4331
+        ],
+        "South America": [
+          0.0,
+          0.0372
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0011,
+          0.5074
+        ],
+        "Spain": [
+          0.0,
+          0.0308
+        ],
+        "Sweden": [
+          0.0,
+          0.3129
+        ],
+        "Switzerland": [
+          0.0,
+          0.4362
+        ],
+        "Thailand": [
+          0.0,
+          0.7132
+        ],
+        "Togo": [
+          0.0,
+          0.5332
+        ],
+        "Ukraine": [
+          0.0,
+          0.4331
+        ],
+        "United Kingdom": [
+          0.0,
+          0.0826
+        ],
+        "Usa": [
+          0.0,
+          0.0339
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 5,
+        "Argentina": 6,
+        "Australia": 143,
+        "Austria": 1,
+        "Belgium": 0,
+        "Brazil": 13,
+        "Canada": 1,
+        "Chile": 29,
+        "China": 55,
+        "China(PRC)": 55,
+        "Denmark": 7,
+        "Europe": 253,
+        "France": 1,
+        "Germany": 32,
+        "Italy": 7,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 12,
+        "New Zealand": 38,
+        "North America": 108,
+        "Norway": 88,
+        "Oceania": 181,
+        "Poland": 0,
+        "Portugal": 15,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 4,
+        "Slovenia": 0,
+        "South America": 48,
+        "South Asia": 0,
+        "Southeast Asia": 8,
+        "Spain": 59,
+        "Sweden": 5,
+        "Switzerland": 0,
+        "Thailand": 4,
+        "Togo": 5,
+        "Ukraine": 0,
+        "United Kingdom": 26,
+        "Usa": 107,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0015,
+        "Austria": 0.0,
+        "Belgium": 0.0049,
+        "Brazil": 0.0,
+        "Canada": 0.002,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0023,
+        "Europe": 0.0041,
+        "France": 0.0162,
+        "Germany": 0.0,
+        "Italy": 0.0,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0676,
+        "Netherlands": 0.0112,
+        "New Zealand": 0.0,
+        "North America": 0.0077,
+        "Norway": 0.006,
+        "Oceania": 0.0015,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0,
+        "Russia": 0.0024,
+        "Singapore": 0.2715,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.2916,
+        "Spain": 0.0,
+        "Sweden": 0.0053,
+        "Switzerland": 0.0069,
+        "Thailand": 0.3199,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0232,
+        "Usa": 0.0087,
+        "West Asia": 0.0702
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 1,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 1,
+        "West Asia": 0
+      },
+      "date": "2022-06-01",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.1426
+        ],
+        "Australia": [
+          0.0,
+          0.0169
+        ],
+        "Austria": [
+          0.0,
+          0.4333
+        ],
+        "Belgium": [
+          0.0,
+          0.4382
+        ],
+        "Brazil": [
+          0.0,
+          0.1328
+        ],
+        "Canada": [
+          0.0,
+          0.4355
+        ],
+        "Chile": [
+          0.0,
+          0.0496
+        ],
+        "China": [
+          0.0,
+          0.0296
+        ],
+        "China(PRC)": [
+          0.0,
+          0.0418
+        ],
+        "Denmark": [
+          0.0,
+          0.2231
+        ],
+        "Europe": [
+          0.0,
+          0.0196
+        ],
+        "France": [
+          0.0,
+          0.4495
+        ],
+        "Germany": [
+          0.0,
+          0.0879
+        ],
+        "Italy": [
+          0.0,
+          0.4333
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.2878
+        ],
+        "New Zealand": [
+          0.0,
+          0.0831
+        ],
+        "North America": [
+          0.0,
+          0.0281
+        ],
+        "Norway": [
+          0.0,
+          0.1871
+        ],
+        "Oceania": [
+          0.0,
+          0.0116
+        ],
+        "Poland": [
+          0.0,
+          0.4333
+        ],
+        "Portugal": [
+          0.0,
+          0.4333
+        ],
+        "Romania": [
+          0.0,
+          0.4333
+        ],
+        "Russia": [
+          0.0,
+          0.4357
+        ],
+        "Singapore": [
+          0.0,
+          0.829
+        ],
+        "Slovenia": [
+          0.0,
+          0.4333
+        ],
+        "South America": [
+          0.0,
+          0.0256
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0,
+          0.6427
+        ],
+        "Spain": [
+          0.0,
+          0.0369
+        ],
+        "Sweden": [
+          0.0,
+          0.3929
+        ],
+        "Switzerland": [
+          0.0,
+          0.4402
+        ],
+        "Thailand": [
+          0.0,
+          0.7666
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.4333
+        ],
+        "United Kingdom": [
+          0.0,
+          0.1889
+        ],
+        "Usa": [
+          0.0,
+          0.0376
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 1,
+        "Argentina": 13,
+        "Australia": 151,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 14,
+        "Canada": 0,
+        "Chile": 42,
+        "China": 60,
+        "China(PRC)": 60,
+        "Denmark": 8,
+        "Europe": 113,
+        "France": 1,
+        "Germany": 21,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 6,
+        "New Zealand": 22,
+        "North America": 99,
+        "Norway": 10,
+        "Oceania": 173,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 69,
+        "South Asia": 0,
+        "Southeast Asia": 6,
+        "Spain": 53,
+        "Sweden": 3,
+        "Switzerland": 0,
+        "Thailand": 6,
+        "Togo": 1,
+        "Ukraine": 0,
+        "United Kingdom": 11,
+        "Usa": 99,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0131,
+        "Austria": 0.0065,
+        "Belgium": 0.012,
+        "Brazil": 0.0,
+        "Canada": 0.0002,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0087,
+        "Europe": 0.0111,
+        "France": 0.0244,
+        "Germany": 0.0,
+        "Italy": 0.0006,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0691,
+        "Netherlands": 0.0209,
+        "New Zealand": 0.0044,
+        "North America": 0.0068,
+        "Norway": 0.0142,
+        "Oceania": 0.0097,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0015,
+        "Russia": 0.0092,
+        "Singapore": 0.3178,
+        "Slovenia": 0.0,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.3303,
+        "Spain": 0.0,
+        "Sweden": 0.0124,
+        "Switzerland": 0.0142,
+        "Thailand": 0.3601,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0374,
+        "Usa": 0.0067,
+        "West Asia": 0.0712
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 2,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 0,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 2,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 1,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 1,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-06-15",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.2793
+        ],
+        "Australia": [
+          0.0,
+          0.0405
+        ],
+        "Austria": [
+          0.0,
+          0.4403
+        ],
+        "Belgium": [
+          0.0,
+          0.4458
+        ],
+        "Brazil": [
+          0.0,
+          0.1095
+        ],
+        "Canada": [
+          0.0,
+          0.0423
+        ],
+        "Chile": [
+          0.0,
+          0.1045
+        ],
+        "China": [
+          0.0,
+          0.0585
+        ],
+        "China(PRC)": [
+          0.0,
+          0.0824
+        ],
+        "Denmark": [
+          0.0,
+          0.3969
+        ],
+        "Europe": [
+          0.0,
+          0.0383
+        ],
+        "France": [
+          0.0,
+          0.4429
+        ],
+        "Germany": [
+          0.0,
+          0.1247
+        ],
+        "Italy": [
+          0.0,
+          0.4345
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.2984
+        ],
+        "New Zealand": [
+          0.0,
+          0.1459
+        ],
+        "North America": [
+          0.0,
+          0.0253
+        ],
+        "Norway": [
+          0.0,
+          0.4481
+        ],
+        "Oceania": [
+          0.0,
+          0.028
+        ],
+        "Poland": [
+          0.0,
+          0.4339
+        ],
+        "Portugal": [
+          0.0,
+          0.4339
+        ],
+        "Romania": [
+          0.0,
+          0.42
+        ],
+        "Russia": [
+          0.0,
+          0.4431
+        ],
+        "Singapore": [
+          0.0,
+          0.8036
+        ],
+        "Slovenia": [
+          0.0,
+          0.4339
+        ],
+        "South America": [
+          0.0,
+          0.0417
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0851,
+          0.5755
+        ],
+        "Spain": [
+          0.0,
+          0.0678
+        ],
+        "Sweden": [
+          0.0,
+          0.4006
+        ],
+        "Switzerland": [
+          0.0,
+          0.4481
+        ],
+        "Thailand": [
+          0.0129,
+          0.7074
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.4339
+        ],
+        "United Kingdom": [
+          0.0,
+          0.3879
+        ],
+        "Usa": [
+          0.0,
+          0.0482
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 6,
+        "Australia": 110,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 18,
+        "Canada": 47,
+        "Chile": 19,
+        "China": 31,
+        "China(PRC)": 31,
+        "Denmark": 3,
+        "Europe": 65,
+        "France": 2,
+        "Germany": 15,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 6,
+        "New Zealand": 13,
+        "North America": 95,
+        "Norway": 1,
+        "Oceania": 123,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 2,
+        "Russia": 0,
+        "Singapore": 2,
+        "Slovenia": 0,
+        "South America": 43,
+        "South Asia": 0,
+        "Southeast Asia": 9,
+        "Spain": 29,
+        "Sweden": 3,
+        "Switzerland": 0,
+        "Thailand": 7,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 4,
+        "Usa": 48,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0124,
+        "Austria": 0.0169,
+        "Belgium": 0.023,
+        "Brazil": 0.0,
+        "Canada": 0.0052,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0191,
+        "Europe": 0.022,
+        "France": 0.0365,
+        "Germany": 0.0059,
+        "Italy": 0.0098,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0706,
+        "Netherlands": 0.0346,
+        "New Zealand": 0.0031,
+        "North America": 0.0128,
+        "Norway": 0.0264,
+        "Oceania": 0.0091,
+        "Poland": 0.0,
+        "Portugal": 0.0,
+        "Romania": 0.0111,
+        "Russia": 0.0201,
+        "Singapore": 0.3662,
+        "Slovenia": 0.009,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.3711,
+        "Spain": 0.0008,
+        "Sweden": 0.0234,
+        "Switzerland": 0.0255,
+        "Thailand": 0.4037,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0556,
+        "Usa": 0.013,
+        "West Asia": 0.0723
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 1,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 2,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 1,
+        "Norway": 1,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 12,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 12,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 1,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-06-29",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.3117
+        ],
+        "Australia": [
+          0.0,
+          0.0538
+        ],
+        "Austria": [
+          0.0,
+          0.4512
+        ],
+        "Belgium": [
+          0.0,
+          0.4574
+        ],
+        "Brazil": [
+          0.0,
+          0.0672
+        ],
+        "Canada": [
+          0.0,
+          0.1015
+        ],
+        "Chile": [
+          0.0,
+          0.0356
+        ],
+        "China": [
+          0.0,
+          0.0438
+        ],
+        "China(PRC)": [
+          0.0,
+          0.0617
+        ],
+        "Denmark": [
+          0.0,
+          0.4534
+        ],
+        "Europe": [
+          0.0,
+          0.0562
+        ],
+        "France": [
+          0.0,
+          0.2381
+        ],
+        "Germany": [
+          0.0,
+          0.2542
+        ],
+        "Italy": [
+          0.0,
+          0.4441
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.4234
+        ],
+        "New Zealand": [
+          0.0,
+          0.1457
+        ],
+        "North America": [
+          0.0,
+          0.0498
+        ],
+        "Norway": [
+          0.0,
+          0.1967
+        ],
+        "Oceania": [
+          0.0,
+          0.0351
+        ],
+        "Poland": [
+          0.0,
+          0.4344
+        ],
+        "Portugal": [
+          0.0,
+          0.4344
+        ],
+        "Romania": [
+          0.0,
+          0.4455
+        ],
+        "Russia": [
+          0.0,
+          0.4544
+        ],
+        "Singapore": [
+          0.0,
+          0.8199
+        ],
+        "Slovenia": [
+          0.0,
+          0.4434
+        ],
+        "South America": [
+          0.0,
+          0.0191
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.2358,
+          0.5065
+        ],
+        "Spain": [
+          0.0,
+          0.1076
+        ],
+        "Sweden": [
+          0.0,
+          0.4578
+        ],
+        "Switzerland": [
+          0.0,
+          0.4599
+        ],
+        "Thailand": [
+          0.2139,
+          0.5935
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.4344
+        ],
+        "United Kingdom": [
+          0.0,
+          0.1951
+        ],
+        "Usa": [
+          0.0,
+          0.0803
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 1,
+        "Argentina": 5,
+        "Australia": 55,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 28,
+        "Canada": 23,
+        "Chile": 59,
+        "China": 41,
+        "China(PRC)": 41,
+        "Denmark": 1,
+        "Europe": 66,
+        "France": 9,
+        "Germany": 7,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 3,
+        "New Zealand": 13,
+        "North America": 55,
+        "Norway": 12,
+        "Oceania": 68,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 1,
+        "Slovenia": 0,
+        "South America": 92,
+        "South Asia": 0,
+        "Southeast Asia": 22,
+        "Spain": 18,
+        "Sweden": 1,
+        "Switzerland": 0,
+        "Thailand": 21,
+        "Togo": 1,
+        "Ukraine": 0,
+        "United Kingdom": 15,
+        "Usa": 32,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0221,
+        "Austria": 0.0249,
+        "Belgium": 0.0317,
+        "Brazil": 0.0,
+        "Canada": 0.0078,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0271,
+        "Europe": 0.0306,
+        "France": 0.0465,
+        "Germany": 0.0113,
+        "Italy": 0.0166,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.072,
+        "Netherlands": 0.0459,
+        "New Zealand": 0.0088,
+        "North America": 0.0176,
+        "Norway": 0.0357,
+        "Oceania": 0.0155,
+        "Poland": 0.0073,
+        "Portugal": 0.0024,
+        "Romania": 0.0184,
+        "Russia": 0.0285,
+        "Singapore": 0.4096,
+        "Slovenia": 0.0167,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.4069,
+        "Spain": 0.0033,
+        "Sweden": 0.0321,
+        "Switzerland": 0.0344,
+        "Thailand": 0.4398,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.0713,
+        "Usa": 0.0192,
+        "West Asia": 0.0734
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 2,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 1,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 5,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 15,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 10,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 1,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-07-13",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.4194
+        ],
+        "Australia": [
+          0.0,
+          0.1496
+        ],
+        "Austria": [
+          0.0,
+          0.4587
+        ],
+        "Belgium": [
+          0.0,
+          0.4654
+        ],
+        "Brazil": [
+          0.0,
+          0.0715
+        ],
+        "Canada": [
+          0.0,
+          0.2706
+        ],
+        "Chile": [
+          0.0,
+          0.136
+        ],
+        "China": [
+          0.0,
+          0.2218
+        ],
+        "China(PRC)": [
+          0.0,
+          0.2977
+        ],
+        "Denmark": [
+          0.0,
+          0.2488
+        ],
+        "Europe": [
+          0.0056,
+          0.0556
+        ],
+        "France": [
+          0.0,
+          0.2937
+        ],
+        "Germany": [
+          0.0,
+          0.0646
+        ],
+        "Italy": [
+          0.0,
+          0.4503
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.2624
+        ],
+        "New Zealand": [
+          0.0,
+          0.0766
+        ],
+        "North America": [
+          0.0,
+          0.1104
+        ],
+        "Norway": [
+          0.0,
+          0.386
+        ],
+        "Oceania": [
+          0.0,
+          0.0536
+        ],
+        "Poland": [
+          0.0,
+          0.441
+        ],
+        "Portugal": [
+          0.0,
+          0.4361
+        ],
+        "Romania": [
+          0.0,
+          0.4521
+        ],
+        "Russia": [
+          0.0,
+          0.4622
+        ],
+        "Singapore": [
+          0.0715,
+          0.7476
+        ],
+        "Slovenia": [
+          0.0,
+          0.4504
+        ],
+        "South America": [
+          0.0,
+          0.0389
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.2747,
+          0.5392
+        ],
+        "Spain": [
+          0.0,
+          0.1134
+        ],
+        "Sweden": [
+          0.0,
+          0.4658
+        ],
+        "Switzerland": [
+          0.0,
+          0.4682
+        ],
+        "Thailand": [
+          0.2338,
+          0.6459
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.4337
+        ],
+        "United Kingdom": [
+          0.0,
+          0.3341
+        ],
+        "Usa": [
+          0.0,
+          0.1874
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 2,
+        "Argentina": 2,
+        "Australia": 15,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 30,
+        "Canada": 7,
+        "Chile": 14,
+        "China": 9,
+        "China(PRC)": 9,
+        "Denmark": 8,
+        "Europe": 90,
+        "France": 7,
+        "Germany": 38,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 9,
+        "New Zealand": 32,
+        "North America": 20,
+        "Norway": 4,
+        "Oceania": 47,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 5,
+        "Slovenia": 0,
+        "South America": 46,
+        "South Asia": 0,
+        "Southeast Asia": 21,
+        "Spain": 17,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 16,
+        "Togo": 2,
+        "Ukraine": 0,
+        "United Kingdom": 7,
+        "Usa": 13,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0364,
+        "Austria": 0.038,
+        "Belgium": 0.0454,
+        "Brazil": 0.0,
+        "Canada": 0.0111,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0403,
+        "Europe": 0.0443,
+        "France": 0.0617,
+        "Germany": 0.0231,
+        "Italy": 0.0284,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0735,
+        "Netherlands": 0.0621,
+        "New Zealand": 0.0195,
+        "North America": 0.0232,
+        "Norway": 0.0501,
+        "Oceania": 0.0262,
+        "Poland": 0.0195,
+        "Portugal": 0.0119,
+        "Romania": 0.0307,
+        "Russia": 0.042,
+        "Singapore": 0.4444,
+        "Slovenia": 0.0294,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.4351,
+        "Spain": 0.0108,
+        "Sweden": 0.0458,
+        "Switzerland": 0.0484,
+        "Thailand": 0.4666,
+        "Togo": 0.0,
+        "Ukraine": 0.0,
+        "United Kingdom": 0.092,
+        "Usa": 0.0264,
+        "West Asia": 0.0744
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 1,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 1,
+        "Europe": 2,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 1,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 1,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 14,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 25,
+        "Spain": 0,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 11,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-07-27",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.4621
+        ],
+        "Australia": [
+          0.0,
+          0.294
+        ],
+        "Austria": [
+          0.0,
+          0.4725
+        ],
+        "Belgium": [
+          0.0,
+          0.4799
+        ],
+        "Brazil": [
+          0.0,
+          0.2559
+        ],
+        "Canada": [
+          0.0,
+          0.4066
+        ],
+        "Chile": [
+          0.0,
+          0.4477
+        ],
+        "China": [
+          0.0,
+          0.1477
+        ],
+        "China(PRC)": [
+          0.0,
+          0.2037
+        ],
+        "Denmark": [
+          0.0,
+          0.2582
+        ],
+        "Europe": [
+          0.0085,
+          0.08
+        ],
+        "France": [
+          0.0,
+          0.3748
+        ],
+        "Germany": [
+          0.0,
+          0.1208
+        ],
+        "Italy": [
+          0.0,
+          0.4629
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.28
+        ],
+        "New Zealand": [
+          0.0,
+          0.33
+        ],
+        "North America": [
+          0.0,
+          0.1033
+        ],
+        "Norway": [
+          0.0,
+          0.4846
+        ],
+        "Oceania": [
+          0.0,
+          0.1681
+        ],
+        "Poland": [
+          0.0,
+          0.454
+        ],
+        "Portugal": [
+          0.0,
+          0.4464
+        ],
+        "Romania": [
+          0.0,
+          0.4652
+        ],
+        "Russia": [
+          0.0,
+          0.4765
+        ],
+        "Singapore": [
+          0.2799,
+          0.609
+        ],
+        "Slovenia": [
+          0.0,
+          0.4639
+        ],
+        "South America": [
+          0.0,
+          0.1612
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.344,
+          0.5262
+        ],
+        "Spain": [
+          0.0,
+          0.1303
+        ],
+        "Sweden": [
+          0.0,
+          0.4803
+        ],
+        "Switzerland": [
+          0.0,
+          0.4829
+        ],
+        "Thailand": [
+          0.28,
+          0.6532
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.4345
+        ],
+        "United Kingdom": [
+          0.0,
+          0.5112
+        ],
+        "Usa": [
+          0.0,
+          0.1476
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 1,
+        "Australia": 9,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 9,
+        "Canada": 3,
+        "Chile": 2,
+        "China": 13,
+        "China(PRC)": 13,
+        "Denmark": 9,
+        "Europe": 63,
+        "France": 5,
+        "Germany": 20,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 9,
+        "New Zealand": 6,
+        "North America": 23,
+        "Norway": 1,
+        "Oceania": 15,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 16,
+        "Slovenia": 0,
+        "South America": 12,
+        "South Asia": 0,
+        "Southeast Asia": 30,
+        "Spain": 16,
+        "Sweden": 1,
+        "Switzerland": 0,
+        "Thailand": 14,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 2,
+        "Usa": 20,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0495,
+        "Austria": 0.0544,
+        "Belgium": 0.0624,
+        "Brazil": 0.0,
+        "Canada": 0.0163,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0563,
+        "Europe": 0.0611,
+        "France": 0.0803,
+        "Germany": 0.0389,
+        "Italy": 0.0435,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0749,
+        "Netherlands": 0.0812,
+        "New Zealand": 0.0294,
+        "North America": 0.0307,
+        "Norway": 0.0678,
+        "Oceania": 0.036,
+        "Poland": 0.035,
+        "Portugal": 0.0246,
+        "Romania": 0.0463,
+        "Russia": 0.0587,
+        "Singapore": 0.4514,
+        "Slovenia": 0.0453,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.4411,
+        "Spain": 0.0218,
+        "Sweden": 0.0628,
+        "Switzerland": 0.0656,
+        "Thailand": 0.4683,
+        "Togo": 0.0,
+        "Ukraine": 0.0084,
+        "United Kingdom": 0.116,
+        "Usa": 0.0364,
+        "West Asia": 0.0755
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 1,
+        "Europe": 10,
+        "France": 2,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 1,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 7,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 16,
+        "Spain": 1,
+        "Sweden": 2,
+        "Switzerland": 0,
+        "Thailand": 9,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 3,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-08-10",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.433
+        ],
+        "Argentina": [
+          0.0,
+          0.4621
+        ],
+        "Australia": [
+          0.0,
+          0.4242
+        ],
+        "Austria": [
+          0.0,
+          0.4886
+        ],
+        "Belgium": [
+          0.0,
+          0.4967
+        ],
+        "Brazil": [
+          0.0,
+          0.2306
+        ],
+        "Canada": [
+          0.0,
+          0.3465
+        ],
+        "Chile": [
+          0.0,
+          0.4621
+        ],
+        "China": [
+          0.0,
+          0.5599
+        ],
+        "China(PRC)": [
+          0.0,
+          0.6599
+        ],
+        "Denmark": [
+          0.0,
+          0.3488
+        ],
+        "Europe": [
+          0.028,
+          0.0943
+        ],
+        "France": [
+          0.0,
+          0.2492
+        ],
+        "Germany": [
+          0.0,
+          0.3899
+        ],
+        "Italy": [
+          0.0,
+          0.1876
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.2514
+        ],
+        "New Zealand": [
+          0.0,
+          0.5178
+        ],
+        "North America": [
+          0.0,
+          0.1412
+        ],
+        "Norway": [
+          0.0,
+          0.5021
+        ],
+        "Oceania": [
+          0.0,
+          0.2891
+        ],
+        "Poland": [
+          0.0,
+          0.4693
+        ],
+        "Portugal": [
+          0.0,
+          0.4133
+        ],
+        "Romania": [
+          0.0,
+          0.4805
+        ],
+        "Russia": [
+          0.0,
+          0.493
+        ],
+        "Singapore": [
+          0.2886,
+          0.6142
+        ],
+        "Slovenia": [
+          0.0,
+          0.4796
+        ],
+        "South America": [
+          0.0,
+          0.1612
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.3499,
+          0.5324
+        ],
+        "Spain": [
+          0.0,
+          0.0796
+        ],
+        "Sweden": [
+          0.0,
+          0.4252
+        ],
+        "Switzerland": [
+          0.0,
+          0.4999
+        ],
+        "Thailand": [
+          0.2988,
+          0.6379
+        ],
+        "Togo": [
+          0.0,
+          0.5332
+        ],
+        "Ukraine": [
+          0.0,
+          0.4427
+        ],
+        "United Kingdom": [
+          0.0,
+          0.3928
+        ],
+        "Usa": [
+          0.0,
+          0.2241
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 5,
+        "Argentina": 1,
+        "Australia": 6,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 11,
+        "Canada": 5,
+        "Chile": 0,
+        "China": 4,
+        "China(PRC)": 4,
+        "Denmark": 6,
+        "Europe": 105,
+        "France": 13,
+        "Germany": 4,
+        "Italy": 13,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 12,
+        "New Zealand": 2,
+        "North America": 17,
+        "Norway": 0,
+        "Oceania": 8,
+        "Poland": 0,
+        "Portugal": 3,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 20,
+        "Slovenia": 0,
+        "South America": 12,
+        "South Asia": 0,
+        "Southeast Asia": 39,
+        "Spain": 43,
+        "Sweden": 4,
+        "Switzerland": 0,
+        "Thailand": 19,
+        "Togo": 5,
+        "Ukraine": 0,
+        "United Kingdom": 7,
+        "Usa": 12,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.063,
+        "Austria": 0.0605,
+        "Belgium": 0.0692,
+        "Brazil": 0.0,
+        "Canada": 0.0227,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0621,
+        "Europe": 0.0679,
+        "France": 0.0881,
+        "Germany": 0.0445,
+        "Italy": 0.0489,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0764,
+        "Netherlands": 0.0903,
+        "New Zealand": 0.0396,
+        "North America": 0.0393,
+        "Norway": 0.0753,
+        "Oceania": 0.046,
+        "Poland": 0.0403,
+        "Portugal": 0.0272,
+        "Romania": 0.0516,
+        "Russia": 0.0653,
+        "Singapore": 0.4621,
+        "Slovenia": 0.0511,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.4496,
+        "Spain": 0.0224,
+        "Sweden": 0.0693,
+        "Switzerland": 0.0727,
+        "Thailand": 0.4724,
+        "Togo": 0.0,
+        "Ukraine": 0.0131,
+        "United Kingdom": 0.1292,
+        "Usa": 0.0479,
+        "West Asia": 0.0766
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 1,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 13,
+        "France": 1,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 5,
+        "New Zealand": 0,
+        "North America": 1,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 5,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 21,
+        "Spain": 2,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 16,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 5,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2022-08-24",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.2531
+        ],
+        "Argentina": [
+          0.0,
+          0.401
+        ],
+        "Australia": [
+          0.0,
+          0.723
+        ],
+        "Austria": [
+          0.0,
+          0.4942
+        ],
+        "Belgium": [
+          0.0,
+          0.5029
+        ],
+        "Brazil": [
+          0.0,
+          0.16
+        ],
+        "Canada": [
+          0.0,
+          0.3863
+        ],
+        "Chile": [
+          0.0,
+          0.4453
+        ],
+        "China": [
+          0.0,
+          0.1477
+        ],
+        "China(PRC)": [
+          0.0,
+          0.2037
+        ],
+        "Denmark": [
+          0.0,
+          0.4501
+        ],
+        "Europe": [
+          0.044,
+          0.0918
+        ],
+        "France": [
+          0.0,
+          0.2448
+        ],
+        "Germany": [
+          0.0,
+          0.4782
+        ],
+        "Italy": [
+          0.0,
+          0.4826
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.2644
+        ],
+        "New Zealand": [
+          0.0,
+          0.7473
+        ],
+        "North America": [
+          0.0,
+          0.1017
+        ],
+        "Norway": [
+          0.0,
+          0.509
+        ],
+        "Oceania": [
+          0.0,
+          0.6059
+        ],
+        "Poland": [
+          0.0,
+          0.474
+        ],
+        "Portugal": [
+          0.0,
+          0.2273
+        ],
+        "Romania": [
+          0.0,
+          0.4853
+        ],
+        "Russia": [
+          0.0,
+          0.499
+        ],
+        "Singapore": [
+          0.177,
+          0.7472
+        ],
+        "Slovenia": [
+          0.0,
+          0.4848
+        ],
+        "South America": [
+          0.0,
+          0.1039
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.3601,
+          0.5391
+        ],
+        "Spain": [
+          0.0,
+          0.0543
+        ],
+        "Sweden": [
+          0.0,
+          0.503
+        ],
+        "Switzerland": [
+          0.0,
+          0.5064
+        ],
+        "Thailand": [
+          0.3395,
+          0.6054
+        ],
+        "Togo": [
+          0.0,
+          0.3356
+        ],
+        "Ukraine": [
+          0.0,
+          0.4467
+        ],
+        "United Kingdom": [
+          0.0,
+          0.2861
+        ],
+        "Usa": [
+          0.0,
+          0.136
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 8,
+        "Argentina": 3,
+        "Australia": 4,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 15,
+        "Canada": 4,
+        "Chile": 0,
+        "China": 13,
+        "China(PRC)": 13,
+        "Denmark": 3,
+        "Europe": 162,
+        "France": 13,
+        "Germany": 1,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 14,
+        "New Zealand": 0,
+        "North America": 33,
+        "Norway": 0,
+        "Oceania": 4,
+        "Poland": 0,
+        "Portugal": 9,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 7,
+        "Slovenia": 0,
+        "South America": 18,
+        "South Asia": 0,
+        "Southeast Asia": 41,
+        "Spain": 106,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 34,
+        "Togo": 8,
+        "Ukraine": 0,
+        "United Kingdom": 16,
+        "Usa": 29,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0767,
+        "Austria": 0.0591,
+        "Belgium": 0.0685,
+        "Brazil": 0.0,
+        "Canada": 0.0327,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0602,
+        "Europe": 0.067,
+        "France": 0.0885,
+        "Germany": 0.0425,
+        "Italy": 0.0467,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0778,
+        "Netherlands": 0.0896,
+        "New Zealand": 0.0498,
+        "North America": 0.0518,
+        "Norway": 0.0753,
+        "Oceania": 0.0561,
+        "Poland": 0.038,
+        "Portugal": 0.0222,
+        "Romania": 0.0494,
+        "Russia": 0.0643,
+        "Singapore": 0.4695,
+        "Slovenia": 0.0493,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.4552,
+        "Spain": 0.0176,
+        "Sweden": 0.0683,
+        "Switzerland": 0.0722,
+        "Thailand": 0.4739,
+        "Togo": 0.0,
+        "Ukraine": 0.0101,
+        "United Kingdom": 0.133,
+        "Usa": 0.0667,
+        "West Asia": 0.0776
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 10,
+        "France": 4,
+        "Germany": 1,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 7,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 7,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 26,
+        "Spain": 1,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 19,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 4,
+        "Usa": 7,
+        "West Asia": 0
+      },
+      "date": "2022-09-07",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.0801
+        ],
+        "Argentina": [
+          0.0,
+          0.4353
+        ],
+        "Australia": [
+          0.0,
+          0.5234
+        ],
+        "Austria": [
+          0.0,
+          0.4926
+        ],
+        "Belgium": [
+          0.0,
+          0.502
+        ],
+        "Brazil": [
+          0.0,
+          0.0633
+        ],
+        "Canada": [
+          0.0,
+          0.3502
+        ],
+        "Chile": [
+          0.0,
+          0.4353
+        ],
+        "China": [
+          0.0,
+          0.1774
+        ],
+        "China(PRC)": [
+          0.0,
+          0.2423
+        ],
+        "Denmark": [
+          0.0,
+          0.4481
+        ],
+        "Europe": [
+          0.0463,
+          0.0878
+        ],
+        "France": [
+          0.0,
+          0.2088
+        ],
+        "Germany": [
+          0.0,
+          0.2585
+        ],
+        "Italy": [
+          0.0,
+          0.4802
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.4014
+        ],
+        "New Zealand": [
+          0.0,
+          0.6073
+        ],
+        "North America": [
+          0.0,
+          0.1149
+        ],
+        "Norway": [
+          0.0,
+          0.4935
+        ],
+        "Oceania": [
+          0.0,
+          0.4073
+        ],
+        "Poland": [
+          0.0,
+          0.4715
+        ],
+        "Portugal": [
+          0.0,
+          0.2435
+        ],
+        "Romania": [
+          0.0,
+          0.4829
+        ],
+        "Russia": [
+          0.0,
+          0.4978
+        ],
+        "Singapore": [
+          0.2348,
+          0.7042
+        ],
+        "Slovenia": [
+          0.0,
+          0.4828
+        ],
+        "South America": [
+          0.0,
+          0.0449
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.3908,
+          0.5197
+        ],
+        "Spain": [
+          0.0,
+          0.0465
+        ],
+        "Sweden": [
+          0.0,
+          0.5018
+        ],
+        "Switzerland": [
+          0.0,
+          0.5058
+        ],
+        "Thailand": [
+          0.3809,
+          0.5669
+        ],
+        "Togo": [
+          0.0,
+          0.1123
+        ],
+        "Ukraine": [
+          0.0,
+          0.4436
+        ],
+        "United Kingdom": [
+          0.0074,
+          0.2586
+        ],
+        "Usa": [
+          0.0,
+          0.1603
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 23,
+        "Argentina": 0,
+        "Australia": 6,
+        "Austria": 1,
+        "Belgium": 0,
+        "Brazil": 40,
+        "Canada": 5,
+        "Chile": 0,
+        "China": 11,
+        "China(PRC)": 11,
+        "Denmark": 3,
+        "Europe": 170,
+        "France": 21,
+        "Germany": 9,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 5,
+        "New Zealand": 0,
+        "North America": 48,
+        "Norway": 2,
+        "Oceania": 6,
+        "Poland": 0,
+        "Portugal": 8,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 9,
+        "Slovenia": 0,
+        "South America": 40,
+        "South Asia": 0,
+        "Southeast Asia": 68,
+        "Spain": 100,
+        "Sweden": 1,
+        "Switzerland": 0,
+        "Thailand": 59,
+        "Togo": 23,
+        "Ukraine": 0,
+        "United Kingdom": 20,
+        "Usa": 43,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.0909,
+        "Austria": 0.0652,
+        "Belgium": 0.0752,
+        "Brazil": 0.0,
+        "Canada": 0.0307,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0659,
+        "Europe": 0.0737,
+        "France": 0.0944,
+        "Germany": 0.0476,
+        "Italy": 0.052,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0793,
+        "Netherlands": 0.0966,
+        "New Zealand": 0.0603,
+        "North America": 0.0522,
+        "Norway": 0.0828,
+        "Oceania": 0.0666,
+        "Poland": 0.0431,
+        "Portugal": 0.0248,
+        "Romania": 0.0546,
+        "Russia": 0.0708,
+        "Singapore": 0.4886,
+        "Slovenia": 0.0549,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.4738,
+        "Spain": 0.0253,
+        "Sweden": 0.0747,
+        "Switzerland": 0.0792,
+        "Thailand": 0.4974,
+        "Togo": 0.0,
+        "Ukraine": 0.0144,
+        "United Kingdom": 0.1433,
+        "Usa": 0.068,
+        "West Asia": 0.0787
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 21,
+        "France": 4,
+        "Germany": 2,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 8,
+        "Norway": 3,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 13,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 26,
+        "Spain": 4,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 13,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 8,
+        "Usa": 8,
+        "West Asia": 0
+      },
+      "date": "2022-09-21",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.0703
+        ],
+        "Argentina": [
+          0.0,
+          0.351
+        ],
+        "Australia": [
+          0.0,
+          0.5376
+        ],
+        "Austria": [
+          0.0,
+          0.4831
+        ],
+        "Belgium": [
+          0.0,
+          0.5085
+        ],
+        "Brazil": [
+          0.0,
+          0.0495
+        ],
+        "Canada": [
+          0.0,
+          0.1288
+        ],
+        "Chile": [
+          0.0,
+          0.4343
+        ],
+        "China": [
+          0.0,
+          0.1972
+        ],
+        "China(PRC)": [
+          0.0,
+          0.2673
+        ],
+        "Denmark": [
+          0.0,
+          0.4839
+        ],
+        "Europe": [
+          0.057,
+          0.0903
+        ],
+        "France": [
+          0.0,
+          0.2093
+        ],
+        "Germany": [
+          0.0,
+          0.1176
+        ],
+        "Italy": [
+          0.0,
+          0.47
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.4081
+        ],
+        "New Zealand": [
+          0.0,
+          0.6178
+        ],
+        "North America": [
+          0.0156,
+          0.0888
+        ],
+        "Norway": [
+          0.0117,
+          0.1539
+        ],
+        "Oceania": [
+          0.0,
+          0.4177
+        ],
+        "Poland": [
+          0.0,
+          0.4765
+        ],
+        "Portugal": [
+          0.0,
+          0.1905
+        ],
+        "Romania": [
+          0.0,
+          0.4879
+        ],
+        "Russia": [
+          0.0,
+          0.5041
+        ],
+        "Singapore": [
+          0.3507,
+          0.6264
+        ],
+        "Slovenia": [
+          0.0,
+          0.4882
+        ],
+        "South America": [
+          0.0,
+          0.0336
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.4049,
+          0.5427
+        ],
+        "Spain": [
+          0.0,
+          0.0519
+        ],
+        "Sweden": [
+          0.0,
+          0.3862
+        ],
+        "Switzerland": [
+          0.0,
+          0.5126
+        ],
+        "Thailand": [
+          0.3838,
+          0.6111
+        ],
+        "Togo": [
+          0.0,
+          0.0989
+        ],
+        "Ukraine": [
+          0.0,
+          0.4478
+        ],
+        "United Kingdom": [
+          0.0667,
+          0.2198
+        ],
+        "Usa": [
+          0.0087,
+          0.1273
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 26,
+        "Argentina": 4,
+        "Australia": 6,
+        "Austria": 2,
+        "Belgium": 0,
+        "Brazil": 49,
+        "Canada": 20,
+        "Chile": 0,
+        "China": 10,
+        "China(PRC)": 10,
+        "Denmark": 2,
+        "Europe": 285,
+        "France": 22,
+        "Germany": 33,
+        "Italy": 2,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 5,
+        "New Zealand": 0,
+        "North America": 88,
+        "Norway": 35,
+        "Oceania": 6,
+        "Poland": 0,
+        "Portugal": 11,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 25,
+        "Slovenia": 0,
+        "South America": 53,
+        "South Asia": 0,
+        "Southeast Asia": 62,
+        "Spain": 127,
+        "Sweden": 5,
+        "Switzerland": 0,
+        "Thailand": 37,
+        "Togo": 26,
+        "Ukraine": 0,
+        "United Kingdom": 41,
+        "Usa": 68,
+        "West Asia": 0
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.1057,
+        "Austria": 0.0624,
+        "Belgium": 0.0731,
+        "Brazil": 0.0,
+        "Canada": 0.0163,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0627,
+        "Europe": 0.0715,
+        "France": 0.0899,
+        "Germany": 0.0432,
+        "Italy": 0.0484,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0807,
+        "Netherlands": 0.095,
+        "New Zealand": 0.0712,
+        "North America": 0.0393,
+        "Norway": 0.0813,
+        "Oceania": 0.0774,
+        "Poland": 0.0394,
+        "Portugal": 0.0187,
+        "Romania": 0.051,
+        "Russia": 0.0684,
+        "Singapore": 0.5145,
+        "Slovenia": 0.0517,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.4998,
+        "Spain": 0.0201,
+        "Sweden": 0.0724,
+        "Switzerland": 0.0774,
+        "Thailand": 0.5333,
+        "Togo": 0.0,
+        "Ukraine": 0.0099,
+        "United Kingdom": 0.1423,
+        "Usa": 0.0496,
+        "West Asia": 0.0797
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 1,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 28,
+        "France": 0,
+        "Germany": 2,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 1,
+        "New Zealand": 0,
+        "North America": 8,
+        "Norway": 3,
+        "Oceania": 1,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 6,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 27,
+        "Spain": 4,
+        "Sweden": 1,
+        "Switzerland": 0,
+        "Thailand": 21,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 17,
+        "Usa": 8,
+        "West Asia": 0
+      },
+      "date": "2022-10-05",
+      "ranges": {
+        "Africa": [
+          0.0,
+          0.0449
+        ],
+        "Argentina": [
+          0.0,
+          0.4361
+        ],
+        "Australia": [
+          0.0,
+          0.3017
+        ],
+        "Austria": [
+          0.0,
+          0.4499
+        ],
+        "Belgium": [
+          0.0,
+          0.5063
+        ],
+        "Brazil": [
+          0.0,
+          0.0738
+        ],
+        "Canada": [
+          0.0,
+          0.0765
+        ],
+        "Chile": [
+          0.0,
+          0.4361
+        ],
+        "China": [
+          0.0,
+          0.0676
+        ],
+        "China(PRC)": [
+          0.0,
+          0.0951
+        ],
+        "Denmark": [
+          0.0,
+          0.4124
+        ],
+        "Europe": [
+          0.0585,
+          0.0845
+        ],
+        "France": [
+          0.0133,
+          0.1664
+        ],
+        "Germany": [
+          0.0098,
+          0.0766
+        ],
+        "Italy": [
+          0.0,
+          0.3981
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          0.7407
+        ],
+        "Netherlands": [
+          0.0,
+          0.2761
+        ],
+        "New Zealand": [
+          0.0,
+          0.5269
+        ],
+        "North America": [
+          0.0234,
+          0.0551
+        ],
+        "Norway": [
+          0.0,
+          0.1626
+        ],
+        "Oceania": [
+          0.0,
+          0.2193
+        ],
+        "Poland": [
+          0.0,
+          0.4726
+        ],
+        "Portugal": [
+          0.0,
+          0.1334
+        ],
+        "Romania": [
+          0.0,
+          0.4842
+        ],
+        "Russia": [
+          0.0,
+          0.5016
+        ],
+        "Singapore": [
+          0.2931,
+          0.7359
+        ],
+        "Slovenia": [
+          0.0,
+          0.4849
+        ],
+        "South America": [
+          0.0,
+          0.0516
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.4191,
+          0.5805
+        ],
+        "Spain": [
+          0.0009,
+          0.0393
+        ],
+        "Sweden": [
+          0.0,
+          0.4919
+        ],
+        "Switzerland": [
+          0.0,
+          0.5106
+        ],
+        "Thailand": [
+          0.4103,
+          0.6563
+        ],
+        "Togo": [
+          0.0,
+          0.0633
+        ],
+        "Ukraine": [
+          0.0,
+          0.4431
+        ],
+        "United Kingdom": [
+          0.0764,
+          0.2082
+        ],
+        "Usa": [
+          0.0252,
+          0.074
+        ],
+        "West Asia": [
+          0.0,
+          0.6396
+        ]
+      },
+      "totals": {
+        "Africa": 40,
+        "Argentina": 1,
+        "Australia": 15,
+        "Austria": 3,
+        "Belgium": 0,
+        "Brazil": 34,
+        "Canada": 31,
+        "Chile": 0,
+        "China": 27,
+        "China(PRC)": 27,
+        "Denmark": 4,
+        "Europe": 416,
+        "France": 24,
+        "Germany": 73,
+        "Italy": 4,
+        "Japan Korea": 0,
+        "Lebanon": 4,
+        "Netherlands": 11,
+        "New Zealand": 0,
+        "North America": 207,
+        "Norway": 30,
+        "Oceania": 15,
+        "Poland": 0,
+        "Portugal": 16,
+        "Romania": 0,
+        "Russia": 1,
+        "Singapore": 11,
+        "Slovenia": 1,
+        "South America": 35,
+        "South Asia": 0,
+        "Southeast Asia": 48,
+        "Spain": 186,
+        "Sweden": 2,
+        "Switzerland": 1,
+        "Thailand": 37,
+        "Togo": 40,
+        "Ukraine": 0,
+        "United Kingdom": 60,
+        "Usa": 176,
+        "West Asia": 4
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.1217,
+        "Austria": 0.0641,
+        "Belgium": 0.0754,
+        "Brazil": 0.0,
+        "Canada": 0.0086,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.064,
+        "Europe": 0.0737,
+        "France": 0.094,
+        "Germany": 0.0477,
+        "Italy": 0.0493,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0824,
+        "Netherlands": 0.0978,
+        "New Zealand": 0.0827,
+        "North America": 0.0317,
+        "Norway": 0.0834,
+        "Oceania": 0.0889,
+        "Poland": 0.04,
+        "Portugal": 0.0172,
+        "Romania": 0.0517,
+        "Russia": 0.0705,
+        "Singapore": 0.5364,
+        "Slovenia": 0.0528,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.5218,
+        "Spain": 0.0173,
+        "Sweden": 0.0745,
+        "Switzerland": 0.08,
+        "Thailand": 0.5642,
+        "Togo": 0.0,
+        "Ukraine": 0.0097,
+        "United Kingdom": 0.1366,
+        "Usa": 0.04,
+        "West Asia": 0.081
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 4,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 3,
+        "Europe": 31,
+        "France": 1,
+        "Germany": 5,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 1,
+        "New Zealand": 0,
+        "North America": 12,
+        "Norway": 4,
+        "Oceania": 4,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 3,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 15,
+        "Spain": 0,
+        "Sweden": 2,
+        "Switzerland": 0,
+        "Thailand": 12,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 15,
+        "Usa": 12,
+        "West Asia": 0
+      },
+      "date": "2022-10-19",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.4206
+        ],
+        "Australia": [
+          0.0,
+          0.4848
+        ],
+        "Austria": [
+          0.0,
+          0.3406
+        ],
+        "Belgium": [
+          0.0,
+          0.5087
+        ],
+        "Brazil": [
+          0.0,
+          0.0727
+        ],
+        "Canada": [
+          0.0,
+          0.0582
+        ],
+        "Chile": [
+          0.0,
+          0.4359
+        ],
+        "China": [
+          0.0,
+          0.0516
+        ],
+        "China(PRC)": [
+          0.0,
+          0.0727
+        ],
+        "Denmark": [
+          0.0,
+          0.3393
+        ],
+        "Europe": [
+          0.0591,
+          0.0884
+        ],
+        "France": [
+          0.0,
+          0.2392
+        ],
+        "Germany": [
+          0.0,
+          0.1017
+        ],
+        "Italy": [
+          0.0,
+          0.4672
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          0.7423
+        ],
+        "Netherlands": [
+          0.0,
+          0.279
+        ],
+        "New Zealand": [
+          0.0,
+          0.5965
+        ],
+        "North America": [
+          0.0209,
+          0.0425
+        ],
+        "Norway": [
+          0.0186,
+          0.1482
+        ],
+        "Oceania": [
+          0.0,
+          0.3654
+        ],
+        "Poland": [
+          0.0,
+          0.4733
+        ],
+        "Portugal": [
+          0.0,
+          0.0811
+        ],
+        "Romania": [
+          0.0,
+          0.485
+        ],
+        "Russia": [
+          0.0,
+          0.5037
+        ],
+        "Singapore": [
+          0.1561,
+          0.9167
+        ],
+        "Slovenia": [
+          0.0,
+          0.4861
+        ],
+        "South America": [
+          0.0,
+          0.0501
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.3943,
+          0.6494
+        ],
+        "Spain": [
+          0.0,
+          0.0399
+        ],
+        "Sweden": [
+          0.0,
+          0.467
+        ],
+        "Switzerland": [
+          0.0,
+          0.4979
+        ],
+        "Thailand": [
+          0.3745,
+          0.7539
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.443
+        ],
+        "United Kingdom": [
+          0.098,
+          0.1751
+        ],
+        "Usa": [
+          0.0238,
+          0.0563
+        ],
+        "West Asia": [
+          0.0,
+          0.6408
+        ]
+      },
+      "totals": {
+        "Africa": 1,
+        "Argentina": 2,
+        "Australia": 9,
+        "Austria": 6,
+        "Belgium": 0,
+        "Brazil": 34,
+        "Canada": 37,
+        "Chile": 0,
+        "China": 35,
+        "China(PRC)": 35,
+        "Denmark": 7,
+        "Europe": 383,
+        "France": 14,
+        "Germany": 53,
+        "Italy": 2,
+        "Japan Korea": 0,
+        "Lebanon": 4,
+        "Netherlands": 11,
+        "New Zealand": 0,
+        "North America": 353,
+        "Norway": 41,
+        "Oceania": 9,
+        "Poland": 0,
+        "Portugal": 29,
+        "Romania": 0,
+        "Russia": 1,
+        "Singapore": 4,
+        "Slovenia": 0,
+        "South America": 36,
+        "South Asia": 0,
+        "Southeast Asia": 23,
+        "Spain": 102,
+        "Sweden": 3,
+        "Switzerland": 2,
+        "Thailand": 19,
+        "Togo": 1,
+        "Ukraine": 0,
+        "United Kingdom": 112,
+        "Usa": 316,
+        "West Asia": 4
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.1341,
+        "Austria": 0.0683,
+        "Belgium": 0.0802,
+        "Brazil": 0.0,
+        "Canada": 0.0014,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0669,
+        "Europe": 0.0784,
+        "France": 0.1009,
+        "Germany": 0.0498,
+        "Italy": 0.0525,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0842,
+        "Netherlands": 0.1031,
+        "New Zealand": 0.0918,
+        "North America": 0.0236,
+        "Norway": 0.087,
+        "Oceania": 0.0979,
+        "Poland": 0.043,
+        "Portugal": 0.0194,
+        "Romania": 0.0548,
+        "Russia": 0.0749,
+        "Singapore": 0.5549,
+        "Slovenia": 0.0564,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.5407,
+        "Spain": 0.0332,
+        "Sweden": 0.0787,
+        "Switzerland": 0.0851,
+        "Thailand": 0.591,
+        "Togo": 0.0,
+        "Ukraine": 0.0119,
+        "United Kingdom": 0.1339,
+        "Usa": 0.0339,
+        "West Asia": 0.0823
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 2,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 1,
+        "Europe": 42,
+        "France": 3,
+        "Germany": 8,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 2,
+        "Netherlands": 1,
+        "New Zealand": 0,
+        "North America": 14,
+        "Norway": 2,
+        "Oceania": 2,
+        "Poland": 0,
+        "Portugal": 1,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 3,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 21,
+        "Spain": 7,
+        "Sweden": 1,
+        "Switzerland": 3,
+        "Thailand": 18,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 15,
+        "Usa": 14,
+        "West Asia": 2
+      },
+      "date": "2022-11-02",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.4392
+        ],
+        "Australia": [
+          0.0,
+          0.6516
+        ],
+        "Austria": [
+          0.0,
+          0.2673
+        ],
+        "Belgium": [
+          0.0,
+          0.5133
+        ],
+        "Brazil": [
+          0.0,
+          0.1052
+        ],
+        "Canada": [
+          0.0,
+          0.0123
+        ],
+        "Chile": [
+          0.0,
+          0.4392
+        ],
+        "China": [
+          0.0,
+          0.0801
+        ],
+        "China(PRC)": [
+          0.0,
+          0.1123
+        ],
+        "Denmark": [
+          0.0,
+          0.1945
+        ],
+        "Europe": [
+          0.0667,
+          0.09
+        ],
+        "France": [
+          0.0,
+          0.2316
+        ],
+        "Germany": [
+          0.0149,
+          0.0847
+        ],
+        "Italy": [
+          0.0,
+          0.329
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          0.3971
+        ],
+        "Netherlands": [
+          0.0003,
+          0.2058
+        ],
+        "New Zealand": [
+          0.0,
+          0.6811
+        ],
+        "North America": [
+          0.0167,
+          0.0305
+        ],
+        "Norway": [
+          0.0,
+          0.2948
+        ],
+        "Oceania": [
+          0.0,
+          0.4976
+        ],
+        "Poland": [
+          0.0,
+          0.4762
+        ],
+        "Portugal": [
+          0.0,
+          0.0581
+        ],
+        "Romania": [
+          0.0,
+          0.4423
+        ],
+        "Russia": [
+          0.0,
+          0.5081
+        ],
+        "Singapore": [
+          0.2125,
+          0.8972
+        ],
+        "Slovenia": [
+          0.0,
+          0.4895
+        ],
+        "South America": [
+          0.0,
+          0.0733
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.4444,
+          0.6369
+        ],
+        "Spain": [
+          0.0134,
+          0.053
+        ],
+        "Sweden": [
+          0.0,
+          0.2756
+        ],
+        "Switzerland": [
+          0.0,
+          0.4725
+        ],
+        "Thailand": [
+          0.4498,
+          0.7322
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.2109
+        ],
+        "United Kingdom": [
+          0.0926,
+          0.1752
+        ],
+        "Usa": [
+          0.0214,
+          0.0464
+        ],
+        "West Asia": [
+          0.0,
+          0.3165
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 1,
+        "Australia": 5,
+        "Austria": 9,
+        "Belgium": 0,
+        "Brazil": 24,
+        "Canada": 205,
+        "Chile": 0,
+        "China": 23,
+        "China(PRC)": 23,
+        "Denmark": 16,
+        "Europe": 554,
+        "France": 18,
+        "Germany": 98,
+        "Italy": 6,
+        "Japan Korea": 0,
+        "Lebanon": 10,
+        "Netherlands": 20,
+        "New Zealand": 1,
+        "North America": 595,
+        "Norway": 10,
+        "Oceania": 6,
+        "Poland": 0,
+        "Portugal": 55,
+        "Romania": 3,
+        "Russia": 1,
+        "Singapore": 5,
+        "Slovenia": 0,
+        "South America": 25,
+        "South Asia": 0,
+        "Southeast Asia": 36,
+        "Spain": 196,
+        "Sweden": 10,
+        "Switzerland": 3,
+        "Thailand": 31,
+        "Togo": 0,
+        "Ukraine": 9,
+        "United Kingdom": 100,
+        "Usa": 390,
+        "West Asia": 10
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.1456,
+        "Austria": 0.0644,
+        "Belgium": 0.0765,
+        "Brazil": 0.0,
+        "Canada": 0.0,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0614,
+        "Europe": 0.0746,
+        "France": 0.0984,
+        "Germany": 0.0353,
+        "Italy": 0.0475,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0843,
+        "Netherlands": 0.1014,
+        "New Zealand": 0.1001,
+        "North America": 0.0161,
+        "Norway": 0.0816,
+        "Oceania": 0.1062,
+        "Poland": 0.0376,
+        "Portugal": 0.0133,
+        "Romania": 0.0496,
+        "Russia": 0.071,
+        "Singapore": 0.5722,
+        "Slovenia": 0.0515,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.5584,
+        "Spain": 0.0379,
+        "Sweden": 0.0745,
+        "Switzerland": 0.0814,
+        "Thailand": 0.6171,
+        "Togo": 0.0,
+        "Ukraine": 0.0056,
+        "United Kingdom": 0.1201,
+        "Usa": 0.0232,
+        "West Asia": 0.0824
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 1,
+        "Austria": 2,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 1,
+        "Europe": 53,
+        "France": 4,
+        "Germany": 3,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 1,
+        "Netherlands": 3,
+        "New Zealand": 0,
+        "North America": 10,
+        "Norway": 0,
+        "Oceania": 1,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 1,
+        "Singapore": 1,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 20,
+        "Spain": 6,
+        "Sweden": 1,
+        "Switzerland": 0,
+        "Thailand": 19,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 32,
+        "Usa": 10,
+        "West Asia": 1
+      },
+      "date": "2022-11-16",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.4575
+        ],
+        "Australia": [
+          0.0,
+          0.5609
+        ],
+        "Austria": [
+          0.0,
+          0.1293
+        ],
+        "Belgium": [
+          0.0,
+          0.5097
+        ],
+        "Brazil": [
+          0.0,
+          0.2037
+        ],
+        "Canada": [
+          0.0,
+          0.0087
+        ],
+        "Chile": [
+          0.0,
+          0.4575
+        ],
+        "China": [
+          0.0,
+          0.0627
+        ],
+        "China(PRC)": [
+          0.0,
+          0.0883
+        ],
+        "Denmark": [
+          0.0,
+          0.1692
+        ],
+        "Europe": [
+          0.065,
+          0.0842
+        ],
+        "France": [
+          0.0545,
+          0.1423
+        ],
+        "Germany": [
+          0.0018,
+          0.0689
+        ],
+        "Italy": [
+          0.0,
+          0.1552
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          0.2473
+        ],
+        "Netherlands": [
+          0.0254,
+          0.1775
+        ],
+        "New Zealand": [
+          0.0,
+          0.6401
+        ],
+        "North America": [
+          0.0108,
+          0.0213
+        ],
+        "Norway": [
+          0.0,
+          0.5147
+        ],
+        "Oceania": [
+          0.0,
+          0.4287
+        ],
+        "Poland": [
+          0.0,
+          0.425
+        ],
+        "Portugal": [
+          0.0,
+          0.0524
+        ],
+        "Romania": [
+          0.0,
+          0.4673
+        ],
+        "Russia": [
+          0.0,
+          0.2862
+        ],
+        "Singapore": [
+          0.1402,
+          1.0
+        ],
+        "Slovenia": [
+          0.0,
+          0.401
+        ],
+        "South America": [
+          0.0,
+          0.1477
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.4545,
+          0.6623
+        ],
+        "Spain": [
+          0.0191,
+          0.0568
+        ],
+        "Sweden": [
+          0.0,
+          0.3652
+        ],
+        "Switzerland": [
+          0.0,
+          0.4309
+        ],
+        "Thailand": [
+          0.4714,
+          0.7628
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.393
+        ],
+        "United Kingdom": [
+          0.0962,
+          0.144
+        ],
+        "Usa": [
+          0.0134,
+          0.0329
+        ],
+        "West Asia": [
+          0.0,
+          0.1995
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 7,
+        "Austria": 35,
+        "Belgium": 0,
+        "Brazil": 13,
+        "Canada": 249,
+        "Chile": 0,
+        "China": 29,
+        "China(PRC)": 29,
+        "Denmark": 19,
+        "Europe": 755,
+        "France": 61,
+        "Germany": 76,
+        "Italy": 17,
+        "Japan Korea": 0,
+        "Lebanon": 18,
+        "Netherlands": 32,
+        "New Zealand": 0,
+        "North America": 683,
+        "Norway": 0,
+        "Oceania": 7,
+        "Poland": 3,
+        "Portugal": 47,
+        "Romania": 2,
+        "Russia": 9,
+        "Singapore": 2,
+        "Slovenia": 4,
+        "South America": 13,
+        "South Asia": 0,
+        "Southeast Asia": 22,
+        "Spain": 183,
+        "Sweden": 6,
+        "Switzerland": 4,
+        "Thailand": 20,
+        "Togo": 0,
+        "Ukraine": 3,
+        "United Kingdom": 254,
+        "Usa": 434,
+        "West Asia": 18
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.157,
+        "Austria": 0.0849,
+        "Belgium": 0.0967,
+        "Brazil": 0.0,
+        "Canada": 0.0113,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0799,
+        "Europe": 0.0947,
+        "France": 0.1248,
+        "Germany": 0.0435,
+        "Italy": 0.0673,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0862,
+        "Netherlands": 0.124,
+        "New Zealand": 0.1084,
+        "North America": 0.0225,
+        "Norway": 0.1001,
+        "Oceania": 0.1144,
+        "Poland": 0.0559,
+        "Portugal": 0.0336,
+        "Romania": 0.0681,
+        "Russia": 0.0907,
+        "Singapore": 0.572,
+        "Slovenia": 0.0705,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.5585,
+        "Spain": 0.0718,
+        "Sweden": 0.0939,
+        "Switzerland": 0.1015,
+        "Thailand": 0.6172,
+        "Togo": 0.0,
+        "Ukraine": 0.0231,
+        "United Kingdom": 0.1267,
+        "Usa": 0.0269,
+        "West Asia": 0.0837
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 2,
+        "Austria": 9,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 3,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 1,
+        "Europe": 99,
+        "France": 18,
+        "Germany": 2,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 1,
+        "Netherlands": 5,
+        "New Zealand": 0,
+        "North America": 21,
+        "Norway": 0,
+        "Oceania": 2,
+        "Poland": 1,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 1,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 7,
+        "Spain": 14,
+        "Sweden": 2,
+        "Switzerland": 3,
+        "Thailand": 7,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 43,
+        "Usa": 18,
+        "West Asia": 1
+      },
+      "date": "2022-11-30",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.4539
+        ],
+        "Australia": [
+          0.0,
+          0.42
+        ],
+        "Austria": [
+          0.0532,
+          0.1167
+        ],
+        "Belgium": [
+          0.0,
+          0.5298
+        ],
+        "Brazil": [
+          0.0,
+          0.1886
+        ],
+        "Canada": [
+          0.0,
+          0.0231
+        ],
+        "Chile": [
+          0.0,
+          0.4539
+        ],
+        "China": [
+          0.0,
+          0.0765
+        ],
+        "China(PRC)": [
+          0.0,
+          0.1075
+        ],
+        "Denmark": [
+          0.0,
+          0.1825
+        ],
+        "Europe": [
+          0.0851,
+          0.1043
+        ],
+        "France": [
+          0.085,
+          0.1645
+        ],
+        "Germany": [
+          0.0022,
+          0.0847
+        ],
+        "Italy": [
+          0.0,
+          0.2878
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          0.2325
+        ],
+        "Netherlands": [
+          0.0597,
+          0.1882
+        ],
+        "New Zealand": [
+          0.0,
+          0.5828
+        ],
+        "North America": [
+          0.0171,
+          0.0278
+        ],
+        "Norway": [
+          0.0,
+          0.5332
+        ],
+        "Oceania": [
+          0.0,
+          0.3081
+        ],
+        "Poland": [
+          0.0,
+          0.1166
+        ],
+        "Portugal": [
+          0.0,
+          0.1012
+        ],
+        "Romania": [
+          0.0,
+          0.4859
+        ],
+        "Russia": [
+          0.0,
+          0.3059
+        ],
+        "Singapore": [
+          0.114,
+          1.0
+        ],
+        "Slovenia": [
+          0.0,
+          0.3468
+        ],
+        "South America": [
+          0.0,
+          0.1363
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.314,
+          0.8031
+        ],
+        "Spain": [
+          0.0495,
+          0.0942
+        ],
+        "Sweden": [
+          0.0,
+          0.2491
+        ],
+        "Switzerland": [
+          0.0,
+          0.2258
+        ],
+        "Thailand": [
+          0.2704,
+          0.9641
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.1061
+        ],
+        "United Kingdom": [
+          0.105,
+          0.1484
+        ],
+        "Usa": [
+          0.0183,
+          0.0355
+        ],
+        "West Asia": [
+          0.0,
+          0.1886
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 12,
+        "Austria": 111,
+        "Belgium": 0,
+        "Brazil": 14,
+        "Canada": 233,
+        "Chile": 0,
+        "China": 24,
+        "China(PRC)": 24,
+        "Denmark": 20,
+        "Europe": 1005,
+        "France": 110,
+        "Germany": 56,
+        "Italy": 8,
+        "Japan Korea": 0,
+        "Lebanon": 20,
+        "Netherlands": 43,
+        "New Zealand": 0,
+        "North America": 906,
+        "Norway": 0,
+        "Oceania": 12,
+        "Poland": 34,
+        "Portugal": 27,
+        "Romania": 2,
+        "Russia": 9,
+        "Singapore": 3,
+        "Slovenia": 6,
+        "South America": 14,
+        "South Asia": 0,
+        "Southeast Asia": 10,
+        "Spain": 198,
+        "Sweden": 14,
+        "Switzerland": 19,
+        "Thailand": 7,
+        "Togo": 0,
+        "Ukraine": 22,
+        "United Kingdom": 326,
+        "Usa": 673,
+        "West Asia": 20
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.168,
+        "Austria": 0.0923,
+        "Belgium": 0.1026,
+        "Brazil": 0.0,
+        "Canada": 0.0087,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0849,
+        "Europe": 0.1005,
+        "France": 0.1296,
+        "Germany": 0.0387,
+        "Italy": 0.0731,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0907,
+        "Netherlands": 0.1328,
+        "New Zealand": 0.1162,
+        "North America": 0.0187,
+        "Norway": 0.1043,
+        "Oceania": 0.1221,
+        "Poland": 0.062,
+        "Portugal": 0.0416,
+        "Romania": 0.0724,
+        "Russia": 0.0961,
+        "Singapore": 0.5705,
+        "Slovenia": 0.0753,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.5571,
+        "Spain": 0.0922,
+        "Sweden": 0.0985,
+        "Switzerland": 0.1065,
+        "Thailand": 0.6145,
+        "Togo": 0.0,
+        "Ukraine": 0.0271,
+        "United Kingdom": 0.1153,
+        "Usa": 0.0212,
+        "West Asia": 0.0868
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 4,
+        "Austria": 5,
+        "Belgium": 1,
+        "Brazil": 0,
+        "Canada": 1,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 2,
+        "Europe": 120,
+        "France": 39,
+        "Germany": 1,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 1,
+        "Netherlands": 10,
+        "New Zealand": 0,
+        "North America": 6,
+        "Norway": 0,
+        "Oceania": 4,
+        "Poland": 1,
+        "Portugal": 4,
+        "Romania": 4,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 4,
+        "Spain": 13,
+        "Sweden": 0,
+        "Switzerland": 2,
+        "Thailand": 4,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 38,
+        "Usa": 5,
+        "West Asia": 1
+      },
+      "date": "2022-12-14",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          0.8874
+        ],
+        "Australia": [
+          0.0,
+          0.5311
+        ],
+        "Austria": [
+          0.0294,
+          0.1552
+        ],
+        "Belgium": [
+          0.0,
+          0.3934
+        ],
+        "Brazil": [
+          0.0,
+          0.866
+        ],
+        "Canada": [
+          0.0,
+          0.0309
+        ],
+        "Chile": [
+          0.0,
+          0.8874
+        ],
+        "China": [
+          0.0,
+          0.2531
+        ],
+        "China(PRC)": [
+          0.0,
+          0.3356
+        ],
+        "Denmark": [
+          0.012,
+          0.1578
+        ],
+        "Europe": [
+          0.0913,
+          0.1098
+        ],
+        "France": [
+          0.1044,
+          0.1549
+        ],
+        "Germany": [
+          0.0111,
+          0.0662
+        ],
+        "Italy": [
+          0.0,
+          0.3494
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          0.2743
+        ],
+        "Netherlands": [
+          0.0846,
+          0.181
+        ],
+        "New Zealand": [
+          0.0,
+          0.63
+        ],
+        "North America": [
+          0.0106,
+          0.0269
+        ],
+        "Norway": [
+          0.0,
+          0.5374
+        ],
+        "Oceania": [
+          0.0,
+          0.3987
+        ],
+        "Poland": [
+          0.0,
+          0.1975
+        ],
+        "Portugal": [
+          0.0,
+          0.2326
+        ],
+        "Romania": [
+          0.0249,
+          0.1198
+        ],
+        "Russia": [
+          0.0,
+          0.3165
+        ],
+        "Singapore": [
+          0.0388,
+          1.0
+        ],
+        "Slovenia": [
+          0.0,
+          0.2742
+        ],
+        "South America": [
+          0.0,
+          0.7746
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.2486,
+          0.8655
+        ],
+        "Spain": [
+          0.0647,
+          0.1197
+        ],
+        "Sweden": [
+          0.0,
+          0.2974
+        ],
+        "Switzerland": [
+          0.0131,
+          0.2
+        ],
+        "Thailand": [
+          0.215,
+          1.0
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.0858
+        ],
+        "United Kingdom": [
+          0.0947,
+          0.1358
+        ],
+        "Usa": [
+          0.0078,
+          0.0345
+        ],
+        "West Asia": [
+          0.0,
+          0.2193
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 9,
+        "Austria": 44,
+        "Belgium": 6,
+        "Brazil": 3,
+        "Canada": 98,
+        "Chile": 0,
+        "China": 8,
+        "China(PRC)": 8,
+        "Denmark": 31,
+        "Europe": 1136,
+        "France": 255,
+        "Germany": 78,
+        "Italy": 6,
+        "Japan Korea": 0,
+        "Lebanon": 16,
+        "Netherlands": 72,
+        "New Zealand": 0,
+        "North America": 365,
+        "Norway": 1,
+        "Oceania": 9,
+        "Poland": 15,
+        "Portugal": 12,
+        "Romania": 56,
+        "Russia": 8,
+        "Singapore": 0,
+        "Slovenia": 9,
+        "South America": 3,
+        "South Asia": 0,
+        "Southeast Asia": 8,
+        "Spain": 149,
+        "Sweden": 9,
+        "Switzerland": 24,
+        "Thailand": 8,
+        "Togo": 0,
+        "Ukraine": 31,
+        "United Kingdom": 330,
+        "Usa": 267,
+        "West Asia": 16
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.1758,
+        "Austria": 0.0839,
+        "Belgium": 0.0942,
+        "Brazil": 0.0,
+        "Canada": 0.0199,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0767,
+        "Europe": 0.0921,
+        "France": 0.1085,
+        "Germany": 0.0302,
+        "Italy": 0.0648,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0965,
+        "Netherlands": 0.1267,
+        "New Zealand": 0.1217,
+        "North America": 0.0298,
+        "Norway": 0.0943,
+        "Oceania": 0.1277,
+        "Poland": 0.0536,
+        "Portugal": 0.0334,
+        "Romania": 0.0624,
+        "Russia": 0.0876,
+        "Singapore": 0.5694,
+        "Slovenia": 0.0662,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.5561,
+        "Spain": 0.1004,
+        "Sweden": 0.0894,
+        "Switzerland": 0.098,
+        "Thailand": 0.6128,
+        "Togo": 0.0,
+        "Ukraine": 0.0189,
+        "United Kingdom": 0.0897,
+        "Usa": 0.0365,
+        "West Asia": 0.0907
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 6,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 1,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 1,
+        "Europe": 43,
+        "France": 14,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 5,
+        "Netherlands": 7,
+        "New Zealand": 0,
+        "North America": 6,
+        "Norway": 1,
+        "Oceania": 6,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 1,
+        "Spain": 18,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 1,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 2,
+        "Usa": 5,
+        "West Asia": 5
+      },
+      "date": "2022-12-28",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          1.0
+        ],
+        "Australia": [
+          0.0,
+          0.3957
+        ],
+        "Austria": [
+          0.0,
+          0.5171
+        ],
+        "Belgium": [
+          0.0,
+          0.5274
+        ],
+        "Brazil": [
+          0.0,
+          1.0
+        ],
+        "Canada": [
+          0.0,
+          0.0656
+        ],
+        "Chile": [
+          0.0,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.7746
+        ],
+        "China(PRC)": [
+          0.0,
+          0.866
+        ],
+        "Denmark": [
+          0.0,
+          0.3676
+        ],
+        "Europe": [
+          0.0781,
+          0.106
+        ],
+        "France": [
+          0.0807,
+          0.1364
+        ],
+        "Germany": [
+          0.0,
+          0.1957
+        ],
+        "Italy": [
+          0.0,
+          0.498
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          0.3859
+        ],
+        "Netherlands": [
+          0.0561,
+          0.1972
+        ],
+        "New Zealand": [
+          0.0,
+          0.5834
+        ],
+        "North America": [
+          0.0106,
+          0.049
+        ],
+        "Norway": [
+          0.0,
+          0.2026
+        ],
+        "Oceania": [
+          0.0,
+          0.2878
+        ],
+        "Poland": [
+          0.0,
+          0.4033
+        ],
+        "Portugal": [
+          0.0,
+          0.4666
+        ],
+        "Romania": [
+          0.0,
+          0.1646
+        ],
+        "Russia": [
+          0.0,
+          0.4751
+        ],
+        "Singapore": [
+          0.0,
+          1.0
+        ],
+        "Slovenia": [
+          0.0,
+          0.2185
+        ],
+        "South America": [
+          0.0,
+          1.0
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0,
+          1.0
+        ],
+        "Spain": [
+          0.055,
+          0.1459
+        ],
+        "Sweden": [
+          0.0,
+          0.2704
+        ],
+        "Switzerland": [
+          0.0,
+          0.4477
+        ],
+        "Thailand": [
+          0.0,
+          1.0
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.4368
+        ],
+        "United Kingdom": [
+          0.0551,
+          0.1243
+        ],
+        "Usa": [
+          0.0039,
+          0.0691
+        ],
+        "West Asia": [
+          0.0,
+          0.3057
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 17,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 49,
+        "Chile": 0,
+        "China": 3,
+        "China(PRC)": 3,
+        "Denmark": 6,
+        "Europe": 465,
+        "France": 165,
+        "Germany": 11,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 12,
+        "Netherlands": 43,
+        "New Zealand": 0,
+        "North America": 155,
+        "Norway": 19,
+        "Oceania": 17,
+        "Poland": 4,
+        "Portugal": 0,
+        "Romania": 18,
+        "Russia": 3,
+        "Singapore": 0,
+        "Slovenia": 12,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 2,
+        "Spain": 97,
+        "Sweden": 10,
+        "Switzerland": 4,
+        "Thailand": 2,
+        "Togo": 0,
+        "Ukraine": 2,
+        "United Kingdom": 71,
+        "Usa": 106,
+        "West Asia": 12
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.1774,
+        "Austria": 0.0929,
+        "Belgium": 0.1032,
+        "Brazil": 0.0,
+        "Canada": 0.0198,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0858,
+        "Europe": 0.1011,
+        "France": 0.1162,
+        "Germany": 0.0394,
+        "Italy": 0.0738,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0965,
+        "Netherlands": 0.1359,
+        "New Zealand": 0.1229,
+        "North America": 0.0297,
+        "Norway": 0.1026,
+        "Oceania": 0.1288,
+        "Poland": 0.0627,
+        "Portugal": 0.0425,
+        "Romania": 0.0715,
+        "Russia": 0.0965,
+        "Singapore": 0.5684,
+        "Slovenia": 0.0753,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.5551,
+        "Spain": 0.1134,
+        "Sweden": 0.0984,
+        "Switzerland": 0.1069,
+        "Thailand": 0.6112,
+        "Togo": 0.0,
+        "Ukraine": 0.0281,
+        "United Kingdom": 0.0987,
+        "Usa": 0.0364,
+        "West Asia": 0.0907
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 3,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 13,
+        "France": 1,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 4,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 1,
+        "Oceania": 3,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 1,
+        "Spain": 7,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 1,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2023-01-11",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          1.0
+        ],
+        "Australia": [
+          0.0,
+          0.682
+        ],
+        "Austria": [
+          0.0,
+          0.5274
+        ],
+        "Belgium": [
+          0.0,
+          0.5377
+        ],
+        "Brazil": [
+          0.0,
+          1.0
+        ],
+        "Canada": [
+          0.0,
+          0.5152
+        ],
+        "Chile": [
+          0.0,
+          1.0
+        ],
+        "China": [
+          0.0,
+          1.0
+        ],
+        "China(PRC)": [
+          0.0,
+          1.0
+        ],
+        "Denmark": [
+          0.0,
+          0.5203
+        ],
+        "Europe": [
+          0.0648,
+          0.1373
+        ],
+        "France": [
+          0.0,
+          0.2351
+        ],
+        "Germany": [
+          0.0,
+          0.4739
+        ],
+        "Italy": [
+          0.0,
+          0.5084
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.021,
+          0.2509
+        ],
+        "New Zealand": [
+          0.0,
+          0.7161
+        ],
+        "North America": [
+          0.0,
+          0.3808
+        ],
+        "Norway": [
+          0.0,
+          0.2347
+        ],
+        "Oceania": [
+          0.0,
+          0.5343
+        ],
+        "Poland": [
+          0.0,
+          0.4972
+        ],
+        "Portugal": [
+          0.0,
+          0.4771
+        ],
+        "Romania": [
+          0.0,
+          0.506
+        ],
+        "Russia": [
+          0.0,
+          0.4855
+        ],
+        "Singapore": [
+          0.0,
+          1.0
+        ],
+        "Slovenia": [
+          0.0,
+          0.5098
+        ],
+        "South America": [
+          0.0,
+          1.0
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0874,
+          1.0
+        ],
+        "Spain": [
+          0.0379,
+          0.189
+        ],
+        "Sweden": [
+          0.0,
+          0.5329
+        ],
+        "Switzerland": [
+          0.0,
+          0.5415
+        ],
+        "Thailand": [
+          0.0426,
+          1.0
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.4626
+        ],
+        "United Kingdom": [
+          0.0,
+          0.5332
+        ],
+        "Usa": [
+          0.0,
+          0.582
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 6,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 4,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 105,
+        "France": 18,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 1,
+        "Netherlands": 23,
+        "New Zealand": 0,
+        "North America": 6,
+        "Norway": 16,
+        "Oceania": 6,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 3,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 5,
+        "Spain": 45,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 5,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 2,
+        "West Asia": 1
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.0,
+        "Argentina": 0.0,
+        "Australia": 0.1773,
+        "Austria": 0.0955,
+        "Belgium": 0.1058,
+        "Brazil": 0.0,
+        "Canada": 0.0198,
+        "Chile": 0.0,
+        "China": 0.0,
+        "China(PRC)": 0.0,
+        "Denmark": 0.0884,
+        "Europe": 0.1036,
+        "France": 0.1188,
+        "Germany": 0.042,
+        "Italy": 0.0764,
+        "Japan Korea": 1.0,
+        "Lebanon": 0.0965,
+        "Netherlands": 0.138,
+        "New Zealand": 0.1229,
+        "North America": 0.0297,
+        "Norway": 0.1052,
+        "Oceania": 0.1288,
+        "Poland": 0.0654,
+        "Portugal": 0.0452,
+        "Romania": 0.0741,
+        "Russia": 0.0991,
+        "Singapore": 0.5684,
+        "Slovenia": 0.0779,
+        "South America": 0.0,
+        "South Asia": 1.0,
+        "Southeast Asia": 0.5551,
+        "Spain": 0.1174,
+        "Sweden": 0.101,
+        "Switzerland": 0.1095,
+        "Thailand": 0.6111,
+        "Togo": 0.0,
+        "Ukraine": 0.0308,
+        "United Kingdom": 0.1013,
+        "Usa": 0.0364,
+        "West Asia": 0.0907
+      },
+      "counts": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 0,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 4,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 0,
+        "New Zealand": 0,
+        "North America": 0,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 4,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      },
+      "date": "2023-01-25",
+      "ranges": {
+        "Africa": [
+          0.0,
+          1.0
+        ],
+        "Argentina": [
+          0.0,
+          1.0
+        ],
+        "Australia": [
+          0.0,
+          1.0
+        ],
+        "Austria": [
+          0.0,
+          0.5442
+        ],
+        "Belgium": [
+          0.0,
+          0.5544
+        ],
+        "Brazil": [
+          0.0,
+          1.0
+        ],
+        "Canada": [
+          0.0,
+          1.0
+        ],
+        "Chile": [
+          0.0,
+          1.0
+        ],
+        "China": [
+          0.0,
+          1.0
+        ],
+        "China(PRC)": [
+          0.0,
+          1.0
+        ],
+        "Denmark": [
+          0.0,
+          0.537
+        ],
+        "Europe": [
+          0.0,
+          0.2211
+        ],
+        "France": [
+          0.0,
+          0.5674
+        ],
+        "Germany": [
+          0.0,
+          0.4907
+        ],
+        "Italy": [
+          0.0,
+          0.5251
+        ],
+        "Japan Korea": [
+          1.0,
+          1.0
+        ],
+        "Lebanon": [
+          0.0,
+          1.0
+        ],
+        "Netherlands": [
+          0.0,
+          0.4106
+        ],
+        "New Zealand": [
+          0.0,
+          1.0
+        ],
+        "North America": [
+          0.0,
+          1.0
+        ],
+        "Norway": [
+          0.0,
+          0.5538
+        ],
+        "Oceania": [
+          0.0,
+          1.0
+        ],
+        "Poland": [
+          0.0,
+          0.514
+        ],
+        "Portugal": [
+          0.0,
+          0.4939
+        ],
+        "Romania": [
+          0.0,
+          0.5228
+        ],
+        "Russia": [
+          0.0,
+          0.5478
+        ],
+        "Singapore": [
+          0.0,
+          1.0
+        ],
+        "Slovenia": [
+          0.0,
+          0.5266
+        ],
+        "South America": [
+          0.0,
+          1.0
+        ],
+        "South Asia": [
+          1.0,
+          1.0
+        ],
+        "Southeast Asia": [
+          0.0,
+          1.0
+        ],
+        "Spain": [
+          0.0,
+          0.3153
+        ],
+        "Sweden": [
+          0.0,
+          0.5497
+        ],
+        "Switzerland": [
+          0.0,
+          0.5582
+        ],
+        "Thailand": [
+          0.0,
+          1.0
+        ],
+        "Togo": [
+          0.0,
+          1.0
+        ],
+        "Ukraine": [
+          0.0,
+          0.4795
+        ],
+        "United Kingdom": [
+          0.0,
+          0.5499
+        ],
+        "Usa": [
+          0.0,
+          1.0
+        ],
+        "West Asia": [
+          0.0,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "Argentina": 0,
+        "Australia": 0,
+        "Austria": 0,
+        "Belgium": 0,
+        "Brazil": 0,
+        "Canada": 1,
+        "Chile": 0,
+        "China": 0,
+        "China(PRC)": 0,
+        "Denmark": 0,
+        "Europe": 22,
+        "France": 0,
+        "Germany": 0,
+        "Italy": 0,
+        "Japan Korea": 0,
+        "Lebanon": 0,
+        "Netherlands": 7,
+        "New Zealand": 0,
+        "North America": 1,
+        "Norway": 0,
+        "Oceania": 0,
+        "Poland": 0,
+        "Portugal": 0,
+        "Romania": 0,
+        "Russia": 0,
+        "Singapore": 0,
+        "Slovenia": 0,
+        "South America": 0,
+        "South Asia": 0,
+        "Southeast Asia": 0,
+        "Spain": 15,
+        "Sweden": 0,
+        "Switzerland": 0,
+        "Thailand": 0,
+        "Togo": 0,
+        "Ukraine": 0,
+        "United Kingdom": 0,
+        "Usa": 0,
+        "West Asia": 0
+      }
+    }
+  ],
+  "variant": "2a.3a.1"
+}
