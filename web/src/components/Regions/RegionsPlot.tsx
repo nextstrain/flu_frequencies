@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState, FunctionComponent } from 'react'
 import { get, isArray, max, min } from 'lodash-es'
 import { DateTime } from 'luxon'
 import { useRecoilValue } from 'recoil'
@@ -37,7 +37,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
   const theme = useTheme()
   const locale = useRecoilValue(localeAtom)
   const shouldShowRanges = useRecoilValue(shouldShowRangesOnRegionsPlotAtom)
-  const variants = useRecoilValue(variantsAtom(pathogen.name))
+  const variants = useRecoilValue(variantsAtom(pathogen.name))  // name, color and lineStyle
   const {
     variantsData: { variantsStyles },
   } = useRegionDataQuery(pathogen.name, countryName)
@@ -48,25 +48,35 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
   )
 
   const { lines, ranges } = useMemo(() => {
+    // line plots
+    const CustomizedDot: FunctionComponent<any> = (props: any) => {
+      console.log(props);
+      const { cx, cy, stroke, fill, name, payload } = props;
+      return(
+        <circle cx={cx} cy={cy} stroke={stroke} strokeWidth={2} fill={fill} r={Math.sqrt(payload.counts[name])}></circle>
+      )
+    };
+
     const lines = variants
       .map(
         ({ name, enabled }) =>
           enabled && (
             <Line
               key={`line-${name}`}
-              type="monotone"
-              name={name}
+              type="linear"
+              name={name}  // variant name
               dataKey={(d) => get(d.avgs, name)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
               stroke={getCountryColor(variantsStyles, name)}
               strokeWidth={theme.plot.line.strokeWidth}
               strokeDasharray={getCountryStrokeDashArray(variantsStyles, name)}
-              dot={false}
+              dot={<CustomizedDot />}
               isAnimationActive={false}
             />
           ),
       )
       .filter(Boolean)
 
+      // confidence intervals as shaded polygons
     const ranges = variants
       .map(
         ({ name, enabled }) =>
@@ -86,7 +96,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
       .filter(Boolean)
 
     return { lines, ranges }
-  }, [shouldShowRanges, theme.plot.line.strokeWidth, variants, variantsStyles])
+  }, [shouldShowRanges, theme.plot.line.strokeWidth, variants, variantsStyles])  // dependencies
 
   const metadata = useMemo(() => ({ pathogenName: pathogen.name, countryName }), [countryName, pathogen.name])
 
@@ -155,6 +165,7 @@ export function RegionsPlot({ pathogen, countryName }: RegionsPlotProps) {
   }, [])
 
   const { data, minDate, maxDate } = useMemo(() => {
+    // subset data (avgs, counts, date, ranges, totals) to date range
     const data = regionData.values
       .filter(({ date }) => {
         const ts = ymdToTimestamp(date)
