@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState, FunctionComponent } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { get, isArray, max, min } from 'lodash-es'
 import { DateTime } from 'luxon'
 import { useRecoilValue } from 'recoil'
@@ -17,6 +17,7 @@ import { getCountryColor, getCountryStrokeDashArray, Pathogen, useRegionDataQuer
 import { shouldShowRangesOnRegionsPlotAtom } from 'src/state/settings.state'
 import { variantsAtom } from 'src/state/variants.state'
 import { RegionsPlotTooltip } from 'src/components/Regions/RegionsPlotTooltip'
+import { CustomizedDot, CustomizedActiveDot } from 'src/components/Regions/RegionPlotDots'
 import { DateSlider } from 'src/components/Common/DateSlider'
 import { localeAtom } from 'src/state/locale.state'
 
@@ -37,7 +38,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
   const theme = useTheme()
   const locale = useRecoilValue(localeAtom)
   const shouldShowRanges = useRecoilValue(shouldShowRangesOnRegionsPlotAtom)
-  const variants = useRecoilValue(variantsAtom(pathogen.name))  // name, color and lineStyle
+  const variants = useRecoilValue(variantsAtom(pathogen.name)) // name, color and lineStyle
   const {
     variantsData: { variantsStyles },
   } = useRegionDataQuery(pathogen.name, countryName)
@@ -48,49 +49,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
   )
 
   const { lines, ranges } = useMemo(() => {
-    // add points with area in proportion to variant count
-    const CustomizedDot: FunctionComponent<any> = (props: any) => {
-      //console.log(props);
-      const { cx, cy, stroke, fill, name, payload, value } = props;
-      let ev = payload.counts[name] / payload.totals[name],  // empirical value (freq)
-          y0 = 32,  // vertical offset (top margin) 
-          cy2 = (cy-y0)*(1-ev)/(1-value) + y0,  // empirical val mapped to plot region
-          rad = 1 + 0.6 * Math.sqrt(payload.counts[name])
-      return(
-        <>
-          <circle cx={cx} cy={cy2} stroke={stroke} strokeWidth={2} 
-                  fill="#ffffff88" r={rad}
-          />
-          <line x1={cx} y1={cy} x2={cx} y2={(cy<cy2) ? (cy2-rad) : (cy2+rad)}
-                stroke={stroke} strokeWidth={1}
-          />
-        </>
-      )
-    };
-
-    const CustomizedActiveDot: FunctionComponent<any> = (props: any) => {
-      //console.log(props);
-      const { cx, cy, fill, name, payload, value } = props;
-      if (shouldShowRanges) {
-        return(
-          <circle cx={cx} cy={cy} stroke={fill} strokeWidth={2} fill={fill} 
-                  r={1 + 0.6 * Math.sqrt(payload.counts[name])}
-          />
-        );
-      } 
-      else {
-        let r1 = payload.ranges[name][0],
-            r2 = payload.ranges[name][1],
-            y0 = 32;  // FIXME: top margin - need to pass from parent
-        return(
-          <line x1={cx} y1={(cy-y0)*(1-r2)/(1-value) + y0}
-                x2={cx} y2={(cy-y0)*(1-r1)/(1-value) + y0}
-                stroke={fill} strokeWidth={5}
-          /> 
-        );
-      }
-    };
-
+    // draw trendlines
     const lines = variants
       .map(
         ({ name, enabled }) =>
@@ -98,21 +57,20 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
             <Line
               key={`line-${name}`}
               type="linear"
-              name={name}  // variant name
+              name={name} // variant name
               dataKey={(d) => get(d.avgs, name)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
               stroke={getCountryColor(variantsStyles, name)}
               strokeWidth={theme.plot.line.strokeWidth}
               strokeDasharray={getCountryStrokeDashArray(variantsStyles, name)}
-              dot={<CustomizedDot />}
-              activeDot={<CustomizedActiveDot name={name} />}
+              dot={<CustomizedDot />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
+              activeDot={<CustomizedActiveDot name={name} shouldShowRanges={shouldShowRanges} />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
               isAnimationActive={false}
-              animationDuration={300}
             />
           ),
       )
       .filter(Boolean)
 
-      // confidence intervals as shaded polygons
+    // confidence intervals as shaded polygons
     const ranges = variants
       .map(
         ({ name, enabled }) =>
@@ -125,7 +83,6 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
               fill={getCountryColor(variantsStyles, name)}
               fillOpacity={0.1}
               isAnimationActive={false}
-              animationDuration={300}
               activeDot={false}
               display={!shouldShowRanges ? 'none' : undefined}
             />
@@ -134,7 +91,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
       .filter(Boolean)
 
     return { lines, ranges }
-  }, [shouldShowRanges, theme.plot.line.strokeWidth, variants, variantsStyles])  // dependencies
+  }, [shouldShowRanges, theme.plot.line.strokeWidth, variants, variantsStyles])
 
   const metadata = useMemo(() => ({ pathogenName: pathogen.name, countryName }), [countryName, pathogen.name])
 
