@@ -1,12 +1,21 @@
 import React from 'react'
 import { useTheme } from 'styled-components'
+import type { Props as DotProps } from 'recharts/types/shape/Dot'
 
 const AREA_FACTOR = 0.6
 const CIRCLE_LINEWIDTH = 2
 
-// Line plot dot component which displays a bubble in proportion to frequency
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function CustomizedDot(props: any) {
+export interface CustomizedDotProps extends DotProps {
+  value: number
+  payload: {
+    counts: Record<string, number>
+    ranges: Record<string, [number, number]>
+    totals: Record<string, number>
+  }
+}
+
+/** Line plot dot component which displays a bubble in proportion to frequency */
+export function CustomizedDot(props: CustomizedDotProps) {
   const theme = useTheme()
   const y0 = theme.plot.margin.top
 
@@ -19,8 +28,7 @@ export function CustomizedDot(props: any) {
     height,
   } = props
 
-  if (totals[name] === 0) {
-    // variant has not been observed in this region
+  if (!name || typeof height != 'number' || !cy || totals[name] === 0) {
     return null
   }
 
@@ -38,9 +46,11 @@ export function CustomizedDot(props: any) {
   )
 }
 
-// Line plot active (on mouse hover) dot component which displays either a bubble in proportion to frequency or a confidence line
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function CustomizedActiveDot(props: any) {
+/**
+ * Line plot active (on mouse hover) dot component which displays either a filled bubble in proportion to frequency
+ * or a confidence line
+ */
+export function CustomizedActiveDot(props: CustomizedDotProps & { shouldShowRanges: boolean }) {
   const theme = useTheme()
   const y0 = theme.plot.margin.top
 
@@ -54,12 +64,12 @@ export function CustomizedActiveDot(props: any) {
     shouldShowRanges,
   } = props
 
+  if (!name || !cy || totals[name] === 0) {
+    return null
+  }
+
   if (shouldShowRanges) {
     // confidence intervals already displayed as shaded areas, fill circles instead
-    if (totals[name] === 0) {
-      // no counts, no meaningful empirical frequencies can be displayed
-      return null
-    }
 
     const freq = counts[name] / totals[name]
     // map freq from (0,1) to plot region

@@ -62,7 +62,12 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
               stroke={getCountryColor(variantsStyles, name)}
               strokeWidth={theme.plot.line.strokeWidth}
               strokeDasharray={getCountryStrokeDashArray(variantsStyles, name)}
+              // HACK: this is not type safe. These components rely on props, which are not included in Recharts typings
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               dot={<CustomizedDot />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               activeDot={<CustomizedActiveDot name={name} shouldShowRanges={shouldShowRanges} />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
               isAnimationActive={false}
             />
