@@ -13,6 +13,18 @@ export const shouldShowRangesOnRegionsPlotAtom = atom({
   effects: [persistAtom],
 })
 
+export const shouldShowConfidenceBarsOnRegionsPlotAtom = atom({
+  key: 'shouldShowConfidenceBarsOnRegionsPlotAtom',
+  default: false,
+  effects: [persistAtom],
+})
+
+export const shouldShowBubblesOnRegionsPlotAtom = atom({
+  key: 'shouldShowBubblesOnRegionsPlotAtom',
+  default: false,
+  effects: [persistAtom],
+})
+
 export const isSidebarSettingsCollapsedAtom = atom({
   key: 'isSidebarSettingsCollapsedAtom',
   default: false,

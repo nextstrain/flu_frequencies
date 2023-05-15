@@ -1,6 +1,8 @@
 import React from 'react'
 import { useTheme } from 'styled-components'
 import type { Props as DotProps } from 'recharts/types/shape/Dot'
+import { useRecoilValue } from 'recoil'
+import { shouldShowBubblesOnRegionsPlotAtom, shouldShowConfidenceBarsOnRegionsPlotAtom } from 'src/state/settings.state'
 
 const AREA_FACTOR = 0.6
 const CIRCLE_LINEWIDTH = 2
@@ -16,6 +18,9 @@ export interface CustomizedDotProps extends DotProps {
 
 /** Line plot dot component which displays a bubble in proportion to frequency */
 export function CustomizedDot(props: CustomizedDotProps) {
+  const shouldShowBubbles = useRecoilValue(shouldShowBubblesOnRegionsPlotAtom)
+  const shouldShowConfidenceBars = useRecoilValue(shouldShowConfidenceBarsOnRegionsPlotAtom)
+
   const theme = useTheme()
   const y0 = theme.plot.margin.top
 
@@ -28,7 +33,7 @@ export function CustomizedDot(props: CustomizedDotProps) {
     height,
   } = props
 
-  if (!name || typeof height != 'number' || !cy || totals[name] === 0) {
+  if (!shouldShowBubbles || !name || typeof height != 'number' || !cy || totals[name] === 0) {
     return null
   }
 
