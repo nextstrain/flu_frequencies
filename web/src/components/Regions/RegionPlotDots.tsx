@@ -26,8 +26,6 @@ export function CustomizedDot(props: any) {
 
   const freq = counts[name] / totals[name]
 
-  // FIXME: fails if value = 1
-  // const cy2 = (cy-y0)*(1-freq)/(1-value) + y0;  // empirical val mapped to plot region
   const cy2 = height * (1 - freq) + y0
 
   const rad = 1 + AREA_FACTOR * Math.sqrt(counts[name])
