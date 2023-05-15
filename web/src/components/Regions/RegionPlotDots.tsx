@@ -1,7 +1,7 @@
 import React from 'react'
 
-const area_factor = 0.6
-const circle_linewidth = 2
+const AREA_FACTOR = 0.6
+const CIRCLE_LINEWIDTH = 2
 
 // Line plot dot component which displays a bubble in proportion to frequency
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,11 +19,11 @@ export function CustomizedDot(props: any) {
   // const cy2 = (cy-y0)*(1-ev)/(1-value) + y0;  // empirical val mapped to plot region
   const cy2 = height * (1 - ev) + y0
 
-  const rad = 1 + area_factor * Math.sqrt(payload.counts[name])
+  const rad = 1 + AREA_FACTOR * Math.sqrt(payload.counts[name])
 
   return (
     <>
-      <circle cx={cx} cy={cy2} stroke={stroke} strokeWidth={circle_linewidth} fill="#ffffff88" r={rad} />
+      <circle cx={cx} cy={cy2} stroke={stroke} strokeWidth={CIRCLE_LINEWIDTH} fill="#ffffff88" r={rad} />
       <line x1={cx} y1={cy} x2={cx} y2={cy < cy2 ? cy2 - rad : cy2 + rad} stroke={stroke} strokeWidth={1} />
     </>
   )
@@ -51,9 +51,9 @@ export function CustomizedActiveDot(props: any) {
         cx={cx}
         cy={cy2}
         stroke={fill}
-        strokeWidth={circle_linewidth}
+        strokeWidth={CIRCLE_LINEWIDTH}
         fill={fill}
-        r={1 + area_factor * Math.sqrt(payload.counts[name])}
+        r={1 + AREA_FACTOR * Math.sqrt(payload.counts[name])}
       />
     )
   }
