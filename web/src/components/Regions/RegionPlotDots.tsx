@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTheme } from 'styled-components'
 
 const AREA_FACTOR = 0.6
 const CIRCLE_LINEWIDTH = 2
@@ -6,6 +7,9 @@ const CIRCLE_LINEWIDTH = 2
 // Line plot dot component which displays a bubble in proportion to frequency
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function CustomizedDot(props: any) {
+  const theme = useTheme()
+  const y0 = theme.plot.margin.top
+
   const { cx, cy, stroke, name, payload, height } = props
   if (payload.totals[name] === 0) {
     // variant has not been observed in this region
@@ -13,7 +17,6 @@ export function CustomizedDot(props: any) {
   }
 
   const ev = payload.counts[name] / payload.totals[name] // empirical value (freq)
-  const y0 = 32 // FIXME: top margin - need to pass from parent
 
   // FIXME: fails if value = 1
   // const cy2 = (cy-y0)*(1-ev)/(1-value) + y0;  // empirical val mapped to plot region
@@ -32,8 +35,10 @@ export function CustomizedDot(props: any) {
 // Line plot active (on mouse hover) dot component which displays either a bubble in proportion to frequency or a confidence line
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function CustomizedActiveDot(props: any) {
+  const theme = useTheme()
+  const y0 = theme.plot.margin.top
+
   const { cx, cy, fill, name, payload, value, shouldShowRanges } = props
-  const y0 = 32 // FIXME: top margin - need to pass from parent
 
   if (shouldShowRanges) {
     // confidence intervals already displayed as shaded areas, fill circles instead
