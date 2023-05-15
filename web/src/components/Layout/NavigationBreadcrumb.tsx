@@ -4,12 +4,14 @@ import { NavItem as NavItemBase, NavLink as NavLinkBase } from 'reactstrap'
 import Route from 'route-parser'
 import { head, isNil } from 'lodash-es'
 import { useRouter } from 'next/router'
-import Select, { SingleValue, StylesConfig } from 'react-select'
+import Select, { StylesConfig } from 'react-select'
+import type { OnChangeValue } from 'react-select/dist/declarations/src/types'
 import urljoin from 'url-join'
 import { BsCaretRightFill as ArrowRight } from 'react-icons/bs'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Link } from 'src/components/Link/Link'
 import { usePathogen, useRegionsDataQuery, useVariantsDataQuery } from 'src/io/getData'
+import type { DropdownOption } from 'src/components/Common/DropdownWithSearch'
 
 const paths = [
   '/pathogen/:pathogenName',
@@ -164,10 +166,10 @@ export function BreadcrumbVariantSelector({ pathogenName, variant }: BreadcrumbV
   const options = useMemo(() => variants.map((variant) => ({ label: variant, value: variant })), [variants])
   const option = useMemo(() => ({ label: value, value }), [value])
   const onChange = useCallback(
-    (option: SingleValue<{ label: string; value: string }>) => {
-      if (option) {
-        void push(urljoin('pathogen', pathogenName, 'variants', option.value)) // eslint-disable-line no-void
-        setValue(option.value)
+    (newValue: OnChangeValue<DropdownOption<string>, false>) => {
+      if (newValue) {
+        void push(urljoin('pathogen', pathogenName, 'variants', newValue.value)) // eslint-disable-line no-void
+        setValue(newValue.value)
       }
     },
     [pathogenName, push],
@@ -175,7 +177,7 @@ export function BreadcrumbVariantSelector({ pathogenName, variant }: BreadcrumbV
 
   return (
     <span className="d-inline-flex">
-      <Select
+      <Select<DropdownOption<string>, false>
         options={options}
         value={option}
         onChange={onChange}
@@ -215,10 +217,10 @@ export function BreadcrumbRegionSelector({ pathogenName, region }: BreadcrumbReg
   )
   const option = useMemo(() => ({ label: t(value), value }), [t, value])
   const onChange = useCallback(
-    (option: SingleValue<{ value: string; label: string }>) => {
-      if (option) {
-        void push(urljoin('pathogen', pathogenName, 'regions', option.value)) // eslint-disable-line no-void
-        setValue(option.value)
+    (newValue: OnChangeValue<DropdownOption<string>, false>) => {
+      if (newValue) {
+        void push(urljoin('pathogen', pathogenName, 'regions', newValue.value)) // eslint-disable-line no-void
+        setValue(newValue.value)
       }
     },
     [pathogenName, push],
@@ -226,7 +228,7 @@ export function BreadcrumbRegionSelector({ pathogenName, region }: BreadcrumbReg
 
   return (
     <span className="d-inline-flex">
-      <Select
+      <Select<DropdownOption<string>, false>
         options={options}
         value={option}
         onChange={onChange}
