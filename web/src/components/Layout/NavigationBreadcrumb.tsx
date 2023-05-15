@@ -9,7 +9,6 @@ import urljoin from 'url-join'
 import { BsCaretRightFill as ArrowRight } from 'react-icons/bs'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Link } from 'src/components/Link/Link'
-import { DropdownOption } from 'src/components/Common/DropdownWithSearch'
 import { usePathogen, useRegionsDataQuery, useVariantsDataQuery } from 'src/io/getData'
 
 const paths = [
@@ -216,7 +215,7 @@ export function BreadcrumbRegionSelector({ pathogenName, region }: BreadcrumbReg
   )
   const option = useMemo(() => ({ label: t(value), value }), [t, value])
   const onChange = useCallback(
-    (option: DropdownOption<string> | null) => {
+    (option: SingleValue<{ value: string; label: string }>) => {
       if (option) {
         void push(urljoin('pathogen', pathogenName, 'regions', option.value)) // eslint-disable-line no-void
         setValue(option.value)
