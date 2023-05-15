@@ -10,19 +10,27 @@ export function CustomizedDot(props: any) {
   const theme = useTheme()
   const y0 = theme.plot.margin.top
 
-  const { cx, cy, stroke, name, payload, height } = props
-  if (payload.totals[name] === 0) {
+  const {
+    cx,
+    cy,
+    stroke,
+    name,
+    payload: { counts, totals },
+    height,
+  } = props
+
+  if (totals[name] === 0) {
     // variant has not been observed in this region
     return null
   }
 
-  const ev = payload.counts[name] / payload.totals[name] // empirical value (freq)
+  const ev = counts[name] / totals[name] // empirical value (freq)
 
   // FIXME: fails if value = 1
   // const cy2 = (cy-y0)*(1-ev)/(1-value) + y0;  // empirical val mapped to plot region
   const cy2 = height * (1 - ev) + y0
 
-  const rad = 1 + AREA_FACTOR * Math.sqrt(payload.counts[name])
+  const rad = 1 + AREA_FACTOR * Math.sqrt(counts[name])
 
   return (
     <>
@@ -38,16 +46,24 @@ export function CustomizedActiveDot(props: any) {
   const theme = useTheme()
   const y0 = theme.plot.margin.top
 
-  const { cx, cy, fill, name, payload, value, shouldShowRanges } = props
+  const {
+    cx,
+    cy,
+    fill,
+    name,
+    payload: { counts, ranges, totals },
+    value,
+    shouldShowRanges,
+  } = props
 
   if (shouldShowRanges) {
     // confidence intervals already displayed as shaded areas, fill circles instead
-    if (payload.totals[name] === 0) {
+    if (totals[name] === 0) {
       // no counts, no meaningful empirical frequencies can be displayed
       return null
     }
 
-    const ev = payload.counts[name] / payload.totals[name] // empirical value
+    const ev = counts[name] / totals[name] // empirical value
     // map ev from (0,1) to plot region
     const cy2 = value === 1 ? y0 : ((cy - y0) * (1 - ev)) / (1 - value) + y0
 
@@ -58,14 +74,14 @@ export function CustomizedActiveDot(props: any) {
         stroke={fill}
         strokeWidth={CIRCLE_LINEWIDTH}
         fill={fill}
-        r={1 + AREA_FACTOR * Math.sqrt(payload.counts[name])}
+        r={1 + AREA_FACTOR * Math.sqrt(counts[name])}
       />
     )
   }
 
   // display confidence interval as vertical line segment
-  const r1 = payload.ranges[name][0]
-  const r2 = payload.ranges[name][1]
+  const r1 = ranges[name][0]
+  const r2 = ranges[name][1]
 
   return (
     <line
