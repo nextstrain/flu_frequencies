@@ -1,12 +1,11 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
 const area_factor = 0.6
 const circle_linewidth = 2
 
-// add points with area in proportion to variant count
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, react/function-component-definition
-export const CustomizedDot: FunctionComponent<any> = (props: any) => {
-  // console.log(props);
+// Line plot dot component which displays a bubble in proportion to frequency
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function CustomizedDot(props: any) {
   const { cx, cy, stroke, name, payload, height } = props
   if (payload.totals[name] === 0) {
     // variant has not been observed in this region
@@ -30,10 +29,9 @@ export const CustomizedDot: FunctionComponent<any> = (props: any) => {
   )
 }
 
-// bind mouseover event to display confidence interval or highlight dot
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, react/function-component-definition
-export const CustomizedActiveDot: FunctionComponent<any> = (props: any) => {
-  // console.log(props);
+// Line plot active (on mouse hover) dot component which displays either a bubble in proportion to frequency or a confidence line
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function CustomizedActiveDot(props: any) {
   const { cx, cy, fill, name, payload, value, shouldShowRanges } = props
   const y0 = 32 // FIXME: top margin - need to pass from parent
 
