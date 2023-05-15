@@ -14,7 +14,7 @@ import {
 } from 'src/helpers/format'
 import { calculateTicks } from 'src/helpers/adjustTicks'
 import { getCountryColor, getCountryStrokeDashArray, Pathogen, useRegionDataQuery } from 'src/io/getData'
-import { shouldShowRangesOnRegionsPlotAtom } from 'src/state/settings.state'
+import { shouldShowDotsOnRegionsPlotAtom, shouldShowRangesOnRegionsPlotAtom } from 'src/state/settings.state'
 import { variantsAtom } from 'src/state/variants.state'
 import { RegionsPlotTooltip } from 'src/components/Regions/RegionsPlotTooltip'
 import { CustomizedDot, CustomizedActiveDot } from 'src/components/Regions/RegionPlotDots'
@@ -38,6 +38,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
   const theme = useTheme()
   const locale = useRecoilValue(localeAtom)
   const shouldShowRanges = useRecoilValue(shouldShowRangesOnRegionsPlotAtom)
+  const shouldShowDots = useRecoilValue(shouldShowDotsOnRegionsPlotAtom)
   const variants = useRecoilValue(variantsAtom(pathogen.name)) // name, color and lineStyle
   const {
     variantsData: { variantsStyles },
@@ -62,8 +63,8 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
               stroke={getCountryColor(variantsStyles, name)}
               strokeWidth={theme.plot.line.strokeWidth}
               strokeDasharray={getCountryStrokeDashArray(variantsStyles, name)}
-              dot={<CustomizedDot />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
-              activeDot={<CustomizedActiveDot name={name} shouldShowRanges={shouldShowRanges} />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
+              dot={shouldShowDots ? <CustomizedDot /> : false} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
+              activeDot={<CustomizedActiveDot name={name} shouldShowDots={shouldShowDots} />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
               isAnimationActive={false}
             />
           ),
@@ -91,7 +92,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
       .filter(Boolean)
 
     return { lines, ranges }
-  }, [shouldShowRanges, theme.plot.line.strokeWidth, variants, variantsStyles])
+  }, [shouldShowRanges, shouldShowDots, theme.plot.line.strokeWidth, variants, variantsStyles])
 
   const metadata = useMemo(() => ({ pathogenName: pathogen.name, countryName }), [countryName, pathogen.name])
 
