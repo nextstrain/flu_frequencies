@@ -7,6 +7,12 @@ export const shouldShowRangesOnVariantsPlotAtom = atom({
   effects: [persistAtom],
 })
 
+export const shouldShowDotsOnVariantsPlotAtom = atom({
+  key: 'shouldShowDotsOnVariantsPlotAtom',
+  default: true,
+  effects: [persistAtom],
+})
+
 export const shouldShowRangesOnRegionsPlotAtom = atom({
   key: 'shouldShowRangesOnRegionsPlotAtom',
   default: false,

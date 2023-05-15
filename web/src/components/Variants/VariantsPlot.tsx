@@ -15,8 +15,9 @@ import {
 import { calculateTicks } from 'src/helpers/adjustTicks'
 import { getCountryColor, getCountryStrokeDashArray, Pathogen, useVariantDataQuery } from 'src/io/getData'
 import { continentsAtom, countriesAtom } from 'src/state/geography.state'
-import { shouldShowRangesOnVariantsPlotAtom } from 'src/state/settings.state'
+import { shouldShowDotsOnVariantsPlotAtom, shouldShowRangesOnVariantsPlotAtom } from 'src/state/settings.state'
 import { VariantsPlotTooltip } from 'src/components/Variants/VariantsPlotTooltip'
+import { CustomizedDot, CustomizedActiveDot } from 'src/components/Common/CustomPlotDots'
 import { DateSlider } from 'src/components/Common/DateSlider'
 import { localeAtom } from 'src/state/locale.state'
 
@@ -37,6 +38,7 @@ function LinePlot<T>({ width, height, data, minDate, maxDate, pathogen, variantN
   const theme = useTheme()
   const locale = useRecoilValue(localeAtom)
   const shouldShowRanges = useRecoilValue(shouldShowRangesOnVariantsPlotAtom)
+  const shouldShowDots = useRecoilValue(shouldShowDotsOnVariantsPlotAtom)
   const regions = useRecoilValue(continentsAtom(pathogen.name))
   const countries = useRecoilValue(countriesAtom(pathogen.name))
   const {
@@ -57,13 +59,19 @@ function LinePlot<T>({ width, height, data, minDate, maxDate, pathogen, variantN
           enabled && (
             <Line
               key={`line-${name}`}
-              type="monotone"
+              type="linear"
               name={name}
               dataKey={(d) => get(d.avgs, name)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
               stroke={getCountryColor(geographyStyles, name)}
               strokeWidth={theme.plot.line.strokeWidth}
               strokeDasharray={getCountryStrokeDashArray(geographyStyles, name)}
-              dot={false}
+              // HACK: this is not type safe.  These components rely on props, which are not included in Recharts typings
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              dot={shouldShowDots ? <CustomizedDot /> : false} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              activeDot={<CustomizedActiveDot name={name} shouldShowDots={shouldShowDots} />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
               isAnimationActive={false}
             />
           ),
@@ -82,6 +90,7 @@ function LinePlot<T>({ width, height, data, minDate, maxDate, pathogen, variantN
               fill={getCountryColor(geographyStyles, name)}
               fillOpacity={0.1}
               isAnimationActive={false}
+              activeDot={false}
               display={!shouldShowRanges ? 'none' : undefined}
             />
           ),
@@ -89,7 +98,7 @@ function LinePlot<T>({ width, height, data, minDate, maxDate, pathogen, variantN
       .filter(Boolean)
 
     return { lines, ranges }
-  }, [regions, countries, geographyStyles, theme.plot.line.strokeWidth, shouldShowRanges])
+  }, [regions, countries, geographyStyles, theme.plot.line.strokeWidth, shouldShowRanges, shouldShowDots])
 
   const metadata = useMemo(() => ({ pathogenName: pathogen.name, variantName }), [pathogen.name, variantName])
 

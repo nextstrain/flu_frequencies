@@ -17,7 +17,7 @@ import { getCountryColor, getCountryStrokeDashArray, Pathogen, useRegionDataQuer
 import { shouldShowDotsOnRegionsPlotAtom, shouldShowRangesOnRegionsPlotAtom } from 'src/state/settings.state'
 import { variantsAtom } from 'src/state/variants.state'
 import { RegionsPlotTooltip } from 'src/components/Regions/RegionsPlotTooltip'
-import { CustomizedDot, CustomizedActiveDot } from 'src/components/Regions/RegionPlotDots'
+import { CustomizedDot, CustomizedActiveDot } from 'src/components/Common/CustomPlotDots'
 import { DateSlider } from 'src/components/Common/DateSlider'
 import { localeAtom } from 'src/state/locale.state'
 
@@ -69,7 +69,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
               dot={shouldShowDots ? <CustomizedDot /> : false} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
-              activeDot={<CustomizedActiveDot name={name} />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
+              activeDot={<CustomizedActiveDot name={name} shouldShowDots={shouldShowDots} />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
               isAnimationActive={false}
             />
           ),
