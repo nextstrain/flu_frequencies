@@ -24,11 +24,11 @@ export function CustomizedDot(props: any) {
     return null
   }
 
-  const ev = counts[name] / totals[name] // empirical value (freq)
+  const freq = counts[name] / totals[name]
 
   // FIXME: fails if value = 1
-  // const cy2 = (cy-y0)*(1-ev)/(1-value) + y0;  // empirical val mapped to plot region
-  const cy2 = height * (1 - ev) + y0
+  // const cy2 = (cy-y0)*(1-freq)/(1-value) + y0;  // empirical val mapped to plot region
+  const cy2 = height * (1 - freq) + y0
 
   const rad = 1 + AREA_FACTOR * Math.sqrt(counts[name])
 
@@ -63,9 +63,9 @@ export function CustomizedActiveDot(props: any) {
       return null
     }
 
-    const ev = counts[name] / totals[name] // empirical value
-    // map ev from (0,1) to plot region
-    const cy2 = value === 1 ? y0 : ((cy - y0) * (1 - ev)) / (1 - value) + y0
+    const freq = counts[name] / totals[name]
+    // map freq from (0,1) to plot region
+    const cy2 = value === 1 ? y0 : ((cy - y0) * (1 - freq)) / (1 - value) + y0
 
     return (
       <circle
