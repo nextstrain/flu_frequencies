@@ -1,67 +1,96 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
+import { useTheme } from 'styled-components'
+import type { Props as DotProps } from 'recharts/types/shape/Dot'
 
-const area_factor = 0.6
-const circle_linewidth = 2
+const AREA_FACTOR = 0.6
+const CIRCLE_LINEWIDTH = 2
 
-// add points with area in proportion to variant count
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, react/function-component-definition
-export const CustomizedDot: FunctionComponent<any> = (props: any) => {
-  const { cx, cy, stroke, name, payload, height } = props
-  if (payload.totals[name] === 0) {
+export interface CustomizedDotProps extends DotProps {
+  value: number
+  payload: {
+    counts: Record<string, number>
+    ranges: Record<string, [number, number]>
+    totals: Record<string, number>
+  }
+}
+
+/** Line plot dot component which displays a bubble in proportion to frequency */
+export function CustomizedDot(props: CustomizedDotProps) {
+  const theme = useTheme()
+  const y0 = theme.plot.margin.top
+
+  const {
+    cx,
+    cy,
+    stroke,
+    name,
+    payload: { counts, totals },
+    height,
+  } = props
+
+  if (!name || typeof height != 'number' || !cy || totals[name] === 0) {
     // variant has not been observed in this region
     return null
   }
 
-  const ev = payload.counts[name] / payload.totals[name] // empirical value (freq)
-  const y0 = 32 // FIXME: top margin - need to pass from parent
-  const cy2 = height * (1 - ev) + y0  // observed frequency
-  const rad = 1 + area_factor * Math.sqrt(payload.counts[name])  // scale area to observed count
+  const freq = counts[name] / totals[name] // observed frequency
+  const cy2 = height * (1 - freq) + y0 // map obs. freq. to plot region
+  const rad = 1 + AREA_FACTOR * Math.sqrt(counts[name]) // scale area to obs. count
 
   return (
     <>
-      <circle cx={cx} cy={cy2} stroke={stroke} strokeWidth={circle_linewidth} fill="#ffffff88" r={rad} />
+      <circle cx={cx} cy={cy2} stroke={stroke} strokeWidth={CIRCLE_LINEWIDTH} fill="#ffffff88" r={rad} />
       <line x1={cx} y1={cy} x2={cx} y2={cy < cy2 ? cy2 - rad : cy2 + rad} stroke={stroke} strokeWidth={1} />
     </>
     // the line segment connects each dot to the linear trend as a color-accessible visual cue of variant id
   )
 }
 
-// bind mouseover event to display confidence interval or highlight dot
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, react/function-component-definition
-export const CustomizedActiveDot: FunctionComponent<any> = (props: any) => {
-  // console.log(props);
-  const { cx, cy, fill, name, payload, value, shouldShowDots } = props
-  const y0 = 32 // FIXME: top margin - need to pass from parent
+/**
+ * Line plot active (on mouse hover) dot component which displays either a filled bubble in proportion to frequency
+ * or a confidence line
+ */
+export function CustomizedActiveDot(props: CustomizedDotProps & { shouldShowDots: boolean }) {
+  const theme = useTheme()
+  const y0 = theme.plot.margin.top
 
-  if (payload.totals[name] === 0) {
-    // no counts, no meaningful empirical frequencies can be displayed
-    return null
+  const {
+    cx,
+    cy,
+    fill,
+    name,
+    payload: { counts, ranges, totals },
+    value,
+    shouldShowDots,
+  } = props
+
+  if (!name || !cy || totals[name] === 0) {
+    return null // no variants observed in this region
   }
 
-  const ev = payload.counts[name] / payload.totals[name] // empirical value
-  // map ev from (0,1) to plot region
-  const cy2 = value === 1 ? y0 : ((cy - y0) * (1 - ev)) / (1 - value) + y0
+  const freq = counts[name] / totals[name] // observed frequency
+  // map freq from (0,1) to plot region
+  const cy2 = value === 1 ? y0 : ((cy - y0) * (1 - freq)) / (1 - value) + y0
   // display confidence interval as vertical line segment
-  const r1 = payload.ranges[name][0]
-  const r2 = payload.ranges[name][1]
+  const [r1, r2] = ranges[name]
 
   return (
     <>
-      {shouldShowDots && 
-            <circle
-            cx={cx}
-            cy={cy2}
-            stroke={fill}
-            strokeWidth={1.5*circle_linewidth}
-            fill="#ffffff00"
-            r={1 + area_factor * Math.sqrt(payload.counts[name])}
-          />
-      }
+      {shouldShowDots && (
+        <circle
+          cx={cx}
+          cy={cy2}
+          stroke={fill}
+          strokeWidth={1.5 * CIRCLE_LINEWIDTH}
+          fill="#ffffff00"
+          r={1 + AREA_FACTOR * Math.sqrt(counts[name])}
+        />
+      )}
       <line
         x1={cx}
-        y1={((cy - y0) * (1 - r2)) / (1 - value) + y0}
+        y1={value === 1 ? y0 : ((cy - y0) * (1 - r2)) / (1 - value) + y0}
         x2={cx}
-        y2={((cy - y0) * (1 - r1)) / (1 - value) + y0}
+        y2={value === 1 ? y0 : ((cy - y0) * (1 - r1)) / (1 - value) + y0}
         stroke={fill}
         strokeWidth={5}
       />

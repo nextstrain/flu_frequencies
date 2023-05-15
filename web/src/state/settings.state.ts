@@ -16,7 +16,7 @@ export const shouldShowRangesOnRegionsPlotAtom = atom({
 export const shouldShowDotsOnRegionsPlotAtom = atom({
   key: 'shouldShowDotsOnRegionsPlotAtom',
   default: true,
-  effects: [persistAtom]
+  effects: [persistAtom],
 })
 
 export const isSidebarSettingsCollapsedAtom = atom({
