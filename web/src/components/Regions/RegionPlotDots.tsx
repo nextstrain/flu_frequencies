@@ -80,8 +80,7 @@ export function CustomizedActiveDot(props: any) {
   }
 
   // display confidence interval as vertical line segment
-  const r1 = ranges[name][0]
-  const r2 = ranges[name][1]
+  const [r1, r2] = ranges[name]
 
   return (
     <line
