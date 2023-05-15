@@ -69,7 +69,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
               dot={shouldShowDots ? <CustomizedDot /> : false} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
-              activeDot={<CustomizedActiveDot name={name} shouldShowDots={shouldShowDots} />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
+              activeDot={<CustomizedActiveDot name={name} />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
               isAnimationActive={false}
             />
           ),
