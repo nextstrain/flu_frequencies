@@ -14,9 +14,10 @@ import {
 } from 'src/helpers/format'
 import { calculateTicks } from 'src/helpers/adjustTicks'
 import { getCountryColor, getCountryStrokeDashArray, Pathogen, useRegionDataQuery } from 'src/io/getData'
-import { shouldShowRangesOnRegionsPlotAtom } from 'src/state/settings.state'
+import { shouldShowDotsOnRegionsPlotAtom, shouldShowRangesOnRegionsPlotAtom } from 'src/state/settings.state'
 import { variantsAtom } from 'src/state/variants.state'
 import { RegionsPlotTooltip } from 'src/components/Regions/RegionsPlotTooltip'
+import { CustomizedDot, CustomizedActiveDot } from 'src/components/Common/CustomPlotDots'
 import { DateSlider } from 'src/components/Common/DateSlider'
 import { localeAtom } from 'src/state/locale.state'
 
@@ -37,7 +38,8 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
   const theme = useTheme()
   const locale = useRecoilValue(localeAtom)
   const shouldShowRanges = useRecoilValue(shouldShowRangesOnRegionsPlotAtom)
-  const variants = useRecoilValue(variantsAtom(pathogen.name))
+  const shouldShowDots = useRecoilValue(shouldShowDotsOnRegionsPlotAtom)
+  const variants = useRecoilValue(variantsAtom(pathogen.name)) // name, color and lineStyle
   const {
     variantsData: { variantsStyles },
   } = useRegionDataQuery(pathogen.name, countryName)
@@ -48,25 +50,33 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
   )
 
   const { lines, ranges } = useMemo(() => {
+    // draw trendlines
     const lines = variants
       .map(
         ({ name, enabled }) =>
           enabled && (
             <Line
               key={`line-${name}`}
-              type="monotone"
-              name={name}
+              type="linear"
+              name={name} // variant name
               dataKey={(d) => get(d.avgs, name)} // eslint-disable-line react-perf/jsx-no-new-function-as-prop
               stroke={getCountryColor(variantsStyles, name)}
               strokeWidth={theme.plot.line.strokeWidth}
               strokeDasharray={getCountryStrokeDashArray(variantsStyles, name)}
-              dot={false}
+              // HACK: this is not type safe. These components rely on props, which are not included in Recharts typings
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              dot={shouldShowDots ? <CustomizedDot /> : false} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              activeDot={<CustomizedActiveDot name={name} shouldShowDots={shouldShowDots} />} // eslint-disable-line react-perf/jsx-no-jsx-as-prop
               isAnimationActive={false}
             />
           ),
       )
       .filter(Boolean)
 
+    // confidence intervals as shaded polygons
     const ranges = variants
       .map(
         ({ name, enabled }) =>
@@ -79,6 +89,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
               fill={getCountryColor(variantsStyles, name)}
               fillOpacity={0.1}
               isAnimationActive={false}
+              activeDot={false}
               display={!shouldShowRanges ? 'none' : undefined}
             />
           ),
@@ -86,7 +97,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
       .filter(Boolean)
 
     return { lines, ranges }
-  }, [shouldShowRanges, theme.plot.line.strokeWidth, variants, variantsStyles])
+  }, [shouldShowRanges, shouldShowDots, theme.plot.line.strokeWidth, variants, variantsStyles])
 
   const metadata = useMemo(() => ({ pathogenName: pathogen.name, countryName }), [countryName, pathogen.name])
 
@@ -155,6 +166,7 @@ export function RegionsPlot({ pathogen, countryName }: RegionsPlotProps) {
   }, [])
 
   const { data, minDate, maxDate } = useMemo(() => {
+    // subset data (avgs, counts, date, ranges, totals) to date range
     const data = regionData.values
       .filter(({ date }) => {
         const ts = ymdToTimestamp(date)
