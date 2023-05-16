@@ -158,7 +158,7 @@ def extract_geography_hierarchy(df: pl.DataFrame):
     geo_items = df \
         .select(["region", "country"]) \
         .unique(subset=['country'], maintain_order=True) \
-        .partition_by(groups=["region"], as_dict=True, maintain_order=True) \
+        .partition_by(by=["region"], as_dict=True, maintain_order=True) \
         .items()
 
     geography = {region: list(set(region_df["country"]) - {region}) for region, region_df in geo_items}
@@ -198,7 +198,7 @@ def partition_by(df: pl.DataFrame, column_names: List[str]):
     Splits rows of the dataframe `df` by different values of the column `column_name`, into an iterator of pairs `(k, v)`,
     where `k` is one value in that column and `v` is a dataframe consisting from all rows with that value in that column.
     """
-    for k, v in df.partition_by(groups=column_names, as_dict=True, maintain_order=True).items():
+    for k, v in df.partition_by(by=column_names, as_dict=True, maintain_order=True).items():
         # We drop the target column, because its values are the same (and the same as `k`)
         v = v.drop(column_names)
         yield k, v
