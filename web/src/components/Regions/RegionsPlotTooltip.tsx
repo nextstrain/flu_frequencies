@@ -16,29 +16,23 @@ const Tooltip = styled.div`
   display: flex;
   flex-direction: column;
   padding: 5px 10px;
-  background-color: ${(props) => props.theme.plot.tooltip.background};
+  background-color: #ffffff99;
   box-shadow: ${(props) => props.theme.shadows.blurredMedium};
   border-radius: 3px;
   outline: none;
 `
 
 const TooltipTitle = styled.h3`
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   margin: 5px auto;
 `
 
 const TooltipTable = styled.table`
   padding: 30px 35px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   border: none;
   min-width: 250px;
-
-  background-color: ${(props) => props.theme.plot.tooltip.table.backgroundEven};
-
-  & > tbody > tr:nth-child(odd) {
-    background-color: ${(props) => props.theme.plot.tooltip.table.backgroundOdd};
-  }
 `
 
 export interface RegionsPlotTooltipProps extends DefaultTooltipContentProps<number, string> {
@@ -63,7 +57,7 @@ export function RegionsPlotTooltip({ payload, metadata }: RegionsPlotTooltipProp
       const range = get(payload.ranges, variant)
       const value = get(payload.avgs, variant)
       const count = get(payload.counts, variant)
-      const total = get(payload.totals, variant)
+      //const total = get(payload.totals, variant)
 
       return (
         <RegionsPlotTooltipRow
@@ -73,7 +67,7 @@ export function RegionsPlotTooltip({ payload, metadata }: RegionsPlotTooltipProp
           value={value}
           range={range}
           count={count}
-          total={total}
+          //total={total}
         />
       )
     })
@@ -94,10 +88,9 @@ export function RegionsPlotTooltip({ payload, metadata }: RegionsPlotTooltipProp
         <thead>
           <tr className="w-100">
             <th className="px-2 text-left">{t('Variant')}</th>
-            <th className="px-2 text-right">{t('Frequency')}</th>
+            <th className="px-2 text-right">{t('Freq.')}</th>
             <th className="px-2 text-right">{t('Interval')}</th>
             <th className="px-2 text-right">{t('Count')}</th>
-            <th className="px-2 text-right">{t('Total')}</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>
@@ -112,10 +105,9 @@ interface RegionsPlotTooltipRowProps {
   value: number | undefined
   range: [number, number] | undefined
   count: number | undefined
-  total: number | undefined
 }
 
-function RegionsPlotTooltipRow({ pathogenName, variant, value, range, count, total }: RegionsPlotTooltipRowProps) {
+function RegionsPlotTooltipRow({ pathogenName, variant, value, range, count }: RegionsPlotTooltipRowProps) {
   const locale = useRecoilValue(localeAtom)
   const { color } = useVariantStyle(pathogenName, variant)
 
@@ -137,7 +129,6 @@ function RegionsPlotTooltipRow({ pathogenName, variant, value, range, count, tot
   }, [locale, range])
 
   const countDisplay = useMemo(() => maybe(formatInteger(locale), count), [count, locale])
-  const totalDisplay = useMemo(() => maybe(formatInteger(locale), total), [total, locale])
 
   return (
     <tr key={variant}>
@@ -148,7 +139,6 @@ function RegionsPlotTooltipRow({ pathogenName, variant, value, range, count, tot
       <td className="px-2 text-right">{valueDisplay}</td>
       <td className="px-2 text-right">{rangeDisplay}</td>
       <td className="px-2 text-right">{countDisplay}</td>
-      <td className="px-2 text-right">{totalDisplay}</td>
     </tr>
   )
 }
