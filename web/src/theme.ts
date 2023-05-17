@@ -137,7 +137,7 @@ export const plot = {
   tickStyle: { fontSize: 12 },
   tickWidthMin: 100,
   tooltip: {
-    background: white,
+    background: '#ffffff99',
     table: {
       backgroundEven: gray100,
       backgroundOdd: gray200,

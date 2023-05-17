@@ -16,7 +16,7 @@ const Tooltip = styled.div`
   display: flex;
   flex-direction: column;
   padding: 5px 10px;
-  background-color: #ffffff99;
+  background-color: ${(props) => props.theme.plot.tooltip.background};
   box-shadow: ${(props) => props.theme.shadows.blurredMedium};
   border-radius: 3px;
   outline: none;
