@@ -129,7 +129,7 @@ function LinePlot<T>({ width, height, data, minDate, maxDate, pathogen, variantN
         // @ts-ignore
         content={VariantsPlotTooltip}
         metadata={metadata}
-        isAnimationActive={true}
+        isAnimationActive
         allowEscapeViewBox={allowEscapeViewBox}
         offset={50}
         wrapperStyle={tooltipStyle}

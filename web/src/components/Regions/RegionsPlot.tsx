@@ -128,7 +128,7 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
         // @ts-ignore
         content={RegionsPlotTooltip}
         metadata={metadata}
-        isAnimationActive={true}
+        isAnimationActive
         allowEscapeViewBox={allowEscapeViewBox}
         offset={50}
         wrapperStyle={tooltipStyle}

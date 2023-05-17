@@ -57,7 +57,6 @@ export function RegionsPlotTooltip({ payload, metadata }: RegionsPlotTooltipProp
       const range = get(payload.ranges, variant)
       const value = get(payload.avgs, variant)
       const count = get(payload.counts, variant)
-      //const total = get(payload.totals, variant)
 
       return (
         <RegionsPlotTooltipRow
@@ -67,7 +66,6 @@ export function RegionsPlotTooltip({ payload, metadata }: RegionsPlotTooltipProp
           value={value}
           range={range}
           count={count}
-          //total={total}
         />
       )
     })

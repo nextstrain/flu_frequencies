@@ -13,7 +13,6 @@ export const formatProportion = (locale: string) => (value: number) => {
 }
 
 export const formatRange = (locale: string) => (begin: number, end: number) => {
-  //return `[${formatProportion(locale)(begin)}; ${formatProportion(locale)(end)}]`
   return `${formatProportion(locale)(begin)}-${formatProportion(locale)(end)}`
 }
 
