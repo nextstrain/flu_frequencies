@@ -49,6 +49,7 @@ export function RegionsPlotTooltip({ payload, metadata }: RegionsPlotTooltipProp
     }
 
     const date = formatDateWeekly(payload[0]?.payload?.timestamp)
+    const total = String(Object.values(payload[0]?.payload?.totals)[0])
 
     const data = reverse(sortBy(uniqBy(payload, 'name'), 'value'))
 
@@ -70,17 +71,19 @@ export function RegionsPlotTooltip({ payload, metadata }: RegionsPlotTooltipProp
       )
     })
 
-    return { date, rows }
+    return { date, total, rows }
   }, [metadata.pathogenName, payload])
 
   if (!result) {
     return result
   }
-  const { date, rows } = result
+  const { date, total, rows } = result
 
   return (
     <Tooltip>
-      <TooltipTitle>{date}</TooltipTitle>
+      <TooltipTitle>
+        {date} (Total: {total})
+      </TooltipTitle>
 
       <TooltipTable>
         <thead>
