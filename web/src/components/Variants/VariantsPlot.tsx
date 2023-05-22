@@ -21,7 +21,7 @@ import { CustomizedDot, CustomizedActiveDot } from 'src/components/Common/Custom
 import { DateSlider } from 'src/components/Common/DateSlider'
 import { localeAtom } from 'src/state/locale.state'
 
-const allowEscapeViewBox = { x: false, y: true }
+const allowEscapeViewBox = { x: false, y: false }
 const tooltipStyle = { zIndex: 1000, outline: 'none' }
 
 interface LinePlotProps<T> {
@@ -129,7 +129,7 @@ function LinePlot<T>({ width, height, data, minDate, maxDate, pathogen, variantN
         // @ts-ignore
         content={VariantsPlotTooltip}
         metadata={metadata}
-        isAnimationActive={false}
+        isAnimationActive
         allowEscapeViewBox={allowEscapeViewBox}
         offset={50}
         wrapperStyle={tooltipStyle}
