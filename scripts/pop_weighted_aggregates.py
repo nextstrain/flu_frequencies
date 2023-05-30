@@ -48,7 +48,7 @@ def weighted_average(df: pl.DataFrame):
         )
     )
 
-    print(df)
+    # print(df)
 
     return df
 
@@ -71,20 +71,26 @@ def main(
     df = df_fit_results.join(df_pop_size, on="country", how="left")
 
     # Print out the first few rows of the data
-    print(df)
+    # print(df)
 
     weighted = weighted_average(df)
 
-    # Subset weighted to "date", "region", "variant", "freqMi_weighted", "freqLo_weighted", "freqUp_weighted"
+    # Subset weighted to "date", "region", "variant", "freqMi", "freqLo", "freqUp"
     weighted = weighted[
-        ["date", "country", "variant", "freqMi", "freqLo", "freqUp"]
+        ["date", "region", "variant", "freqMi", "freqLo", "freqUp"]
     ]
 
     # Join the weighted average back to the original data
-    df = df.join(weighted, on=["date", "country", "variant"], how="left")
-    # Replace the freqMi column for rows where region == country with the population weighted average from weighted
+    df = weighted.join(df, on=["date", "region", "variant"], how="left", suffix="_unweighted")
+
+    # Keep only rows where region=country and remove country column
+    df = df.filter(pl.col("region") == pl.col("country"))
 
     print(df)
+
+    # Write out the data
+    df.write_csv(output_csv, float_precision=5)
+
     
 
     # For each region, calculate the population weighted average
