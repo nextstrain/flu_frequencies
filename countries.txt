@@ -1,0 +1,93 @@
+country
+New Caledonia
+Costa Rica
+North America
+Portugal
+Greece
+El Salvador
+South Korea
+Ukraine
+United Kingdom
+Ghana
+Bahrain
+Albania
+Chile
+Serbia
+Canada
+India
+Luxembourg
+West Asia
+Norway
+Brunei
+South Asia
+Lithuania
+Africa
+Usa
+Argentina
+Singapore
+Bhutan
+Qatar
+Netherlands
+Brazil
+Finland
+Lebanon
+Mexico
+Poland
+Japan
+East Timor
+China(PRC)
+Belgium
+Romania
+Japan Korea
+Cote D Ivoire
+Europe
+Puerto Rico
+Togo
+South Africa
+Israel
+Kosovo
+Bolivia
+Macedonia
+Southeast Asia
+Austria
+Honduras
+Russia
+Guatemala
+United Arab Emirates
+Croatia
+South America
+Czech Republic
+Thailand
+Tunisia
+Laos
+Spain
+New Zealand
+Slovakia
+Denmark
+Oman
+Trinidad And Tobago
+Peru
+Sweden
+China
+Switzerland
+Slovenia
+Ecuador
+Fiji
+Oceania
+Estonia
+Senegal
+Niger
+Germany
+Bulgaria
+French Guiana
+Colombia
+Italy
+Philippines
+Madagascar
+Uruguay
+Bangladesh
+Ireland
+Iceland
+Montenegro
+Australia
+France
