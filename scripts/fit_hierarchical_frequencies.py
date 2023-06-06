@@ -154,6 +154,9 @@ if __name__=='__main__':
             data_totals[minor_geo_cat] = sum(tmp.values())
             if data_totals[minor_geo_cat]>20:
                 sub_totals[minor_geo_cat] = tmp
+        # Add dummy entry for "other" minor_geo_cat
+        sub_totals["other"] = dict()
+
         sub_counts = {}
         frequencies = {}
         for fcat in counts.keys():
