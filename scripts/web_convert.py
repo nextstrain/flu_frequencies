@@ -216,7 +216,7 @@ def json_write(obj: Union[dict, list], filepath: str):
 
 
 def csv_read(filepath: str):
-    return pl.read_csv(filepath).sort("date")
+    return pl.read_csv(filepath, infer_schema_length=1_000_000).sort("date")
 
 
 def csv_write(df: pl.DataFrame, filepath: str):
