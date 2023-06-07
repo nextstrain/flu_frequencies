@@ -43,7 +43,7 @@ rule parse:
         sequences="data/{lineage}/raw_ha.fasta",
     output:
         sequences="data/{lineage}/ha.fasta",
-        metadata="data/{lineage}/metadata.tsv",
+        metadata="data/{lineage}/metadata_raw.tsv",
     params:
         fasta_fields=config["fasta_fields"],
         prettify_fields=config["prettify_fields"],
@@ -55,6 +55,30 @@ rule parse:
             --output-metadata {output.metadata} \
             --fields {params.fasta_fields} \
             --prettify-fields {params.prettify_fields}
+        """
+
+
+rule add_iso3:
+    input:
+        metadata="data/{lineage}/metadata_raw.tsv",
+        country_to_iso3="profiles/flu/country_to_iso3.tsv",
+        iso3_to_region="profiles/flu/iso3_to_region.tsv",
+    output:
+        metadata="data/{lineage}/metadata.tsv",
+    shell:
+        """
+        tsv-join -H \
+            --filter-file {input.country_to_iso3} \
+            --key-fields country \
+            --append-fields iso3 \
+            --write-all="''" \
+            {input.metadata} \
+        | tsv-join -H \
+            --filter-file {input.iso3_to_region} \
+            --key-fields iso3 \
+            --append-fields continent \
+            --write-all="''" \
+            > {output.metadata}
         """
 
 
