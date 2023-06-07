@@ -28,6 +28,20 @@ df.select(["region", "country"]).unique().sort(
 response = requests.get("https://restcountries.com/v3.1/all")
 data = response.json()
 
+# %%
+iso3_to_pop = sorted(
+    [(country["cca3"],country["population"],country["name"]["common"]) for country in data],
+    key=lambda item: item[0],
+)
+print(iso3_to_pop)
+# %%
+# write to defaults/iso3_to_pop.tsv
+with open("defaults/iso3_to_pop.tsv", "w") as f:
+    f.write("iso3\tpopulation\tcountry\n")
+    for iso3, pop, country in iso3_to_pop:
+        f.write(f"{iso3}\t{pop}\t{country}\n")
+
+# %%
 # Parse data into a dictionary {country_name: population}
 all_countries = {
     country["name"]["common"]: country["population"] for country in data
