@@ -1,0 +1,3 @@
+# Everything here is available through the `config` dict in the Snakefile
+
+min_date: "2020-02-01"

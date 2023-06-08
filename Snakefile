@@ -6,21 +6,24 @@ rule europe:
     input:
         [
             "plots/h3n2/Region_Europe.png",
-            "plots/h1n1pdm/Region_Europe.png",
-            "plots/h3n2/Country_Europe_Spain.png",
-            "plots/h3n2/Country_Europe_Netherlands.png",
-            "plots/h3n2/Country_Europe_United-Kingdom.png",
-            "plots/h3n2/Country_Europe_France.png",
-            "plots/h1n1pdm/Country_Europe_Spain.png",
-            "plots/h1n1pdm/Country_Europe_Netherlands.png",
-            "plots/h1n1pdm/Country_Europe_United-Kingdom.png",
-            "plots/h1n1pdm/Country_Europe_France.png",
-            "plots/h3n2/region_mut-HA1:E50.png",
-            "plots/h3n2/region_mut-HA1:I140.png",
-            "plots/h3n2/region-clades.png",
-            "plots/h1n1pdm/region-clades.png",
-            "plots/vic/region-clades.png",
+            "plots/h3n2/Region_Europe_weighted.png",
         ],
+        # "plots/h3n2/Region_Europe.png",
+        # "plots/h1n1pdm/Region_Europe.png",
+        # # "plots/h3n2/Country_Europe_Spain.png",
+        # # "plots/h3n2/Country_Europe_Spain.png",
+        # "plots/h3n2/Country_Europe_Netherlands.png",
+        # "plots/h3n2/Country_Europe_United-Kingdom.png",
+        # "plots/h3n2/Country_Europe_France.png",
+        # "plots/h1n1pdm/Country_Europe_Spain.png",
+        # "plots/h1n1pdm/Country_Europe_Netherlands.png",
+        # "plots/h1n1pdm/Country_Europe_United-Kingdom.png",
+        # "plots/h1n1pdm/Country_Europe_France.png",
+        # "plots/h3n2/region_mut-HA1:E50.png",
+        # "plots/h3n2/region_mut-HA1:I140.png",
+        # "plots/h3n2/region-clades.png",
+        # "plots/h1n1pdm/region-clades.png",
+        # "plots/vic/region-clades.png",
 
 
 rule download_sequences:
@@ -71,13 +74,13 @@ rule add_iso3:
             --filter-file {input.country_to_iso3} \
             --key-fields country \
             --append-fields iso3 \
-            --write-all="''" \
+            --write-all="?" \
             {input.metadata} \
         | tsv-join -H \
             --filter-file {input.iso3_to_region} \
             --key-fields iso3 \
             --append-fields continent \
-            --write-all="''" \
+            --write-all="?" \
             > {output.metadata}
         """
 
@@ -137,8 +140,13 @@ rule estimate_region_frequencies:
         min_date=min_date,
     shell:
         """
-        python scripts/fit_single_frequencies.py --metadata {input} --geo-categories region --frequency-category clade \
-                --min-date {params.min_date} --days 14 --output-csv {output.output_csv}
+        python scripts/fit_single_frequencies.py \
+            --metadata {input} \
+            --geo-categories continent \
+            --frequency-category clade \
+            --min-date {params.min_date} \
+            --days 14 \
+            --output-csv {output.output_csv}
         """
 
 
@@ -151,8 +159,13 @@ rule estimate_region_mutation_frequencies:
         min_date=min_date,
     shell:
         """
-        python scripts/fit_single_frequencies.py --metadata {input} --geo-categories region --frequency-category mutation-{wildcards.mutation} \
-                --min-date {params.min_date} --days 14 --output-csv {output.output_csv}
+        python scripts/fit_single_frequencies.py \
+            --metadata {input} \
+            --geo-categories continent \
+            --frequency-category mutation-{wildcards.mutation} \
+            --min-date {params.min_date} \
+            --days 14 \
+            --output-csv {output.output_csv}
         """
 
 
@@ -165,9 +178,30 @@ rule estimate_region_country_frequencies:
         min_date=min_date,
     shell:
         """
-        python scripts/fit_hierarchical_frequencies.py --metadata {input} \
-                --geo-categories region country --frequency-category clade \
-                --min-date {params.min_date} --days 14 --output-csv {output.output_csv}
+        python scripts/fit_hierarchical_frequencies.py \
+            --metadata {input} \
+            --geo-categories continent iso3 \
+            --frequency-category clade \
+            --min-date {params.min_date} \
+            --days 14 \
+            --output-csv {output.output_csv}
+        """
+
+
+rule population_weighted_region_frequencies:
+    input:
+        fit_results="results/{lineage}/region-country-frequencies.csv",
+        iso3_to_pop="defaults/iso3_to_pop.tsv",
+        iso3_to_region="profiles/flu/iso3_to_region.tsv",
+    output:
+        output_csv="results/{lineage}/weighted-region-frequencies.csv",
+    shell:
+        """
+        python scripts/pop_weighted_aggregates.py \
+            --fit-results {input.fit_results} \
+            --population {input.iso3_to_pop} \
+            --region-map {input.iso3_to_region} \
+            --output-csv {output.output_csv}
         """
 
 
@@ -175,13 +209,33 @@ rule plot_regions:
     input:
         freqs="results/{lineage}/region-frequencies.csv",
     output:
-        plot="plots/{lineage}/Region_{region}.png",
+        plot="plots/{lineage}/Region_{region,[^_]+}.png",
     params:
         max_freq=0.1,
     shell:
         """
-        python scripts/plot_region.py --frequencies {input.freqs} --region {wildcards.region:q} \
-                --max-freq {params.max_freq} --output {output.plot}
+        python scripts/plot_region.py \
+            --frequencies {input.freqs} \
+            --region {wildcards.region:q} \
+            --max-freq {params.max_freq} \
+            --output {output.plot}
+        """
+
+
+rule plot_weighted_regions:
+    input:
+        freqs="results/{lineage}/weighted-region-frequencies.csv",
+    output:
+        plot="plots/{lineage}/Region_{region}_weighted.png",
+    params:
+        max_freq=0.1,
+    shell:
+        """
+        python scripts/plot_region.py \
+            --frequencies {input.freqs} \
+            --region {wildcards.region:q} \
+            --max-freq {params.max_freq} \
+            --output {output.plot}
         """
 
 
@@ -194,8 +248,11 @@ rule plot_mutations:
         max_freq=0.05,
     shell:
         """
-        python scripts/plot_region.py --frequencies {input.freqs} --region {wildcards.region:q} \
-                --max-freq {params.max_freq} --output {output.plot}
+        python scripts/plot_region.py \
+            --frequencies {input.freqs} \
+            --region {wildcards.region:q} \
+            --max-freq {params.max_freq} \
+            --output {output.plot}
         """
 
 
@@ -208,8 +265,12 @@ rule plot_country:
         max_freq=0.1,
     shell:
         """
-        python scripts/plot_country.py --frequencies {input.freqs} --region {wildcards.region:q} --country {wildcards.country:q} \
-                --max-freq {params.max_freq} --output {output.plot}
+        python scripts/plot_country.py \
+            --frequencies {input.freqs} \
+            --region {wildcards.region:q} \
+            --country {wildcards.country:q} \
+            --max-freq {params.max_freq} \
+            --output {output.plot}
         """
 
 
