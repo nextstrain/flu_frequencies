@@ -7,6 +7,7 @@ rule europe:
         [
             "plots/h3n2/Region_Europe.png",
             "plots/h3n2/Region_Europe_weighted.png",
+            "plots/h3n2/Region_global_weighted.png",
         ],
         # "plots/h3n2/Region_Europe.png",
         # "plots/h1n1pdm/Region_Europe.png",
@@ -101,7 +102,7 @@ rule run_nextclade:
         reference="nextclade/{lineage}/reference.fasta",
     output:
         "data/{lineage}/nextclade.tsv",
-    threads: 4
+    threads: workflow.cores
     shell:
         """
         nextclade run -j {threads} -D nextclade/{wildcards.lineage} {input.sequences} --quiet --output-tsv {output}
@@ -146,6 +147,7 @@ rule estimate_region_frequencies:
             --frequency-category clade \
             --min-date {params.min_date} \
             --days 14 \
+            --inclusive-clades flu \
             --output-csv {output.output_csv}
         """
 
@@ -184,6 +186,7 @@ rule estimate_region_country_frequencies:
             --frequency-category clade \
             --min-date {params.min_date} \
             --days 14 \
+            --inclusive-clades flu \
             --output-csv {output.output_csv}
         """
 
@@ -199,8 +202,8 @@ rule population_weighted_region_frequencies:
         """
         python scripts/pop_weighted_aggregates.py \
             --fit-results {input.fit_results} \
-            --population {input.iso3_to_pop} \
-            --region-map {input.iso3_to_region} \
+            --country-to-population {input.iso3_to_pop} \
+            --country-to-region {input.iso3_to_region} \
             --output-csv {output.output_csv}
         """
 

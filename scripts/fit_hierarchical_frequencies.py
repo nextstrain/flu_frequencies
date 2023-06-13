@@ -127,6 +127,7 @@ if __name__=='__main__':
     parser.add_argument("--days", default=7, type=int, help="number of days in one time bin")
     parser.add_argument("--min-date", type=str, help="date to start frequency calculation")
     parser.add_argument("--output-csv", type=str, help="output csv file")
+    parser.add_argument("--inclusive-clades", type=str, help="whether or not to generate inclusive clade/lineage categories")
 
     args = parser.parse_args()
 
@@ -136,7 +137,7 @@ if __name__=='__main__':
     d = d.with_columns(pl.col("date").str.strptime(pl.Date, format="%Y-%m-%d", strict=False))
 
     data, totals, counts, time_bins = load_and_aggregate(d, args.geo_categories, freq_cat,
-                                                         bin_size=args.days, min_date=args.min_date)
+                                                         bin_size=args.days, min_date=args.min_date, inclusive_clades=args.inclusive_clades)
 
     dates = [time_bins[k] for k in time_bins]
 
