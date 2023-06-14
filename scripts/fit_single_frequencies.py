@@ -76,6 +76,8 @@ def load_and_aggregate(data, geo_categories, freq_category, min_date="2021-01-01
 
     timebins = {int(x): day_count_to_date(x*bin_size, start_date) for x in sorted(d["time_bin"].unique())}
 
+    import ipdb; ipdb.set_trace()
+
     return d, totals, counts, timebins
 
 def fit_single_category(totals, counts, time_bins, stiffness=0.3, pc=3, nstd = 2):

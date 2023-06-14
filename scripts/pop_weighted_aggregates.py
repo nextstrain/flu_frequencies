@@ -148,25 +148,63 @@ def weighted_average(df: pl.DataFrame):
         .agg(
             freqMi=c("freqMi_pop_product").sum(),
             freqErr=c("freqErr_pop_product").sum().sqrt(),
+            region_population=c("region_population").first(),
         )
         .select(
-            ["date", "region", "variant", "freqMi"],
+            ["date", "region", "variant", "freqMi", "region_population"],
             freqLo=pl.max([c("freqMi") - c("freqErr"), 0]),
             freqUp=pl.min([c("freqMi") + c("freqErr"), 1]),
+            global_population=(
+                df.unique("region").get_column("region_population").sum()
+            ),
         )
     )
+
+    global_df = (
+        df.with_columns(
+            weight=c("region_population") / c("global_population"),
+        )
+        .with_columns(
+            freqMi_pop_product=c("freqMi") * c("weight"),
+            freqErr_pop_product=(
+                pl.max([c("freqMi") - c("freqLo"), c("freqUp") - c("freqMi")])
+                ** 2
+            )
+            * c("weight"),
+        )
+        .groupby(["date", "variant"])
+        .agg(
+            freqMi=c("freqMi_pop_product").sum(),
+            freqErr=c("freqErr_pop_product").sum().sqrt(),
+        )
+        .select(
+            ["date", "variant", "freqMi"],
+            freqLo=pl.max([c("freqMi") - c("freqErr"), 0]),
+            freqUp=pl.min([c("freqMi") + c("freqErr"), 1]),
+            region=pl.lit("global"),
+        )
+    )
+
+    df = pl.concat(
+        [
+            df.select(pl.exclude(["region_population", "global_population"])),
+            global_df,
+        ],
+        how="diagonal",
+    )
+
     return df
 
 
 def main(
     _fit_results: Annotated[
-        str, Option()
+        str, Option("--fit-results")
     ] = "results/h3n2/region-country-frequencies.csv",
     _country_to_population: Annotated[
-        str, Option()
+        str, Option("--country-to-population")
     ] = "defaults/iso3_to_pop.tsv",
     _country_to_region: Annotated[
-        str, Option()
+        str, Option("--country-to-region")
     ] = "profiles/flu/iso3_to_region.tsv",
     output_csv: Annotated[
         str, Option()
@@ -199,6 +237,7 @@ def main(
         fit_results, country_to_population, country_to_region
     )
 
+
     # Calculate weighted average
     weighted = weighted_average(prepped_data).select(
         ["region", c("region").alias("country")], pl.exclude("region")
@@ -206,11 +245,33 @@ def main(
 
     pl.Config.set_tbl_cols(12)
 
+    # Add global rows to fit_results with count/total
+    global_fit_results = (
+        fit_results.filter(c("country") == c("region"))
+        .select(
+            ["date", "variant", "count", "total"],
+        )
+        .groupby(["date", "variant"])
+        .agg(
+            count=c("count").sum(),
+            total=c("total").sum(),
+            region=pl.lit("global"),
+        )
+    )
+
     # Join count and total from original data
     df = weighted.join(
-        fit_results.select(["date", "region", "variant", "count", "total"]),
-        how="left",
+        pl.concat(
+            [
+                fit_results.filter(c("country") == c("region")).select(
+                    ["date", "region", "variant", "count", "total"]
+                ),
+                global_fit_results,
+            ],
+            how="diagonal",
+        ),
         on=["region", "variant", "date"],
+        how="left",
     )
 
     # Write out the data

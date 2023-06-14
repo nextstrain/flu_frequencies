@@ -21,6 +21,13 @@ def geo_label_map(x):
 def fit_hierarchical_frequencies(totals, counts, time_bins, stiffness=0.5, stiffness_minor=0.1,
                                  mu=0.3, use_inverse_for_confidence=True):
 
+    # Create copy but with "other" counts set to zero
+    # Just for purpose of fitting, as if there was no data for "other"
+    counts = counts.copy()
+    counts['other'] = {}
+    totals = totals.copy()
+    totals['other'] = {}
+
     minor_cats = list(totals.keys())
     n_tp = len(time_bins)
     pc=3
@@ -150,36 +157,34 @@ if __name__=='__main__':
         minor_geo_cats = set([k[-2] for k in totals if k[:-2]==geo_cat])
         sub_totals = {}
         data_totals = {}
+        sub_totals["other"] = {}
         for minor_geo_cat  in minor_geo_cats:
             tmp = {k[-1]:v for k,v in totals.items() if k[:-2]==geo_cat and k[-2]==minor_geo_cat}
             data_totals[minor_geo_cat] = sum(tmp.values())
             if data_totals[minor_geo_cat]>20:
                 sub_totals[minor_geo_cat] = tmp
-        # Add dummy entry for "other" minor_geo_cat
-        sub_totals["other"] = dict()
+            else:
+                # Put all minor categories with less than 20 sequences into one special category
+                sub_totals["other"] = {k: tmp.get(k, 0) + sub_totals["other"].get(k, 0) for k in set(tmp) | set(sub_totals["other"])}
 
         sub_counts = {}
         frequencies = {}
         for fcat in counts.keys():
             sub_counts[fcat] = {}
-            for minor_geo_cat in sub_totals:
-                sub_counts[fcat][minor_geo_cat] = {k[-1]:v for k,v in counts[fcat].items()
-                    if k[:-2]==geo_cat and k[-2]==minor_geo_cat}
+            for minor_geo_cat in minor_geo_cats:
+                tmp = {k[-1]:v for k,v in counts[fcat].items() if k[:-2]==geo_cat and k[-2]==minor_geo_cat}
+                if minor_geo_cat in sub_totals:
+                    sub_counts[fcat][minor_geo_cat] = tmp
+                else:
+                    sub_counts[fcat]["other"] = {k: tmp.get(k, 0) + sub_counts[fcat].get("other",{}).get(k, 0) for k in set(tmp) | set(sub_counts[fcat].get("other",{}))}
             frequencies[fcat] = fit_hierarchical_frequencies(sub_totals, sub_counts[fcat],
                                     sorted(time_bins.keys()), stiffness=stiffness,
                                     stiffness_minor=stiffness, mu=5.0)
 
-            ## append entries for region frequencies
-            for k, date in time_bins.items():
-                output_data.append({"date": date.strftime('%Y-%m-%d'), "region": geo_label,
-                                    "country": geo_label, "variant":fcat,
-                                    "count": 0, "total": 0,
-                                    "freqMi":frequencies[fcat]["major_frequencies"][k]['val'],
-                                    "freqLo":frequencies[fcat]["major_frequencies"][k]['lower'],
-                                    "freqUp":frequencies[fcat]["major_frequencies"][k]['upper']})
-
+            region_counts = {}
+            region_totals = {}
             ## append entries for individual countries.
-            for minor_geo_cat in sub_totals:
+            for minor_geo_cat in sub_totals | {"other": None}:
                 for k, date in time_bins.items():
                     output_data.append({"date": date.strftime('%Y-%m-%d'), "region": geo_label, "country": geo_label_map(minor_geo_cat),
                                         "variant":fcat, "count": sub_counts[fcat][minor_geo_cat].get(k,0),
@@ -187,24 +192,36 @@ if __name__=='__main__':
                                         "freqMi":frequencies[fcat][minor_geo_cat][k]['val'],
                                         "freqLo":frequencies[fcat][minor_geo_cat][k]['lower'],
                                         "freqUp":frequencies[fcat][minor_geo_cat][k]['upper']})
+                    region_counts[k] = region_counts.get(k, 0) + sub_counts[fcat][minor_geo_cat].get(k,0)
+                    region_totals[k] = region_totals.get(k, 0) + sub_totals[minor_geo_cat].get(k,0)
+
+            ## append entries for region frequencies
+            for k, date in time_bins.items():
+                output_data.append({"date": date.strftime('%Y-%m-%d'), "region": geo_label,
+                                    "country": geo_label, "variant":fcat,
+                                    "count": region_counts[k], "total": region_totals[k],
+                                    "freqMi":frequencies[fcat]["major_frequencies"][k]['val'],
+                                    "freqLo":frequencies[fcat]["major_frequencies"][k]['lower'],
+                                    "freqUp":frequencies[fcat]["major_frequencies"][k]['upper']})
 
 
     df = pl.DataFrame(output_data, schema={'date':str, 'region':str, 'country':str, 'variant':str,
                                            'count':int, 'total':int, 'freqMi':float, 'freqLo':float, 'freqUp':float})
-    region_totals = {(r[0], r[1]): r[2] for r in df.select(['date', 'region', 'count'])
-                            .groupby(['date', 'region']).sum().iter_rows()}
-    region_counts = {(r[0], r[1], r[2]): r[3] for r in df.select(['date', 'region', 'variant', 'count'])
-                            .groupby(['date', 'region', 'variant']).sum().iter_rows()}
 
-    df = df.with_columns([
-          pl.struct(['date','region', 'country', 'total']).apply(
-                        lambda x:region_totals.get((x['date'], x['region']),0)
-                                 if x['region']==x['country'] else x['total'])
-            .alias('total'),
-          pl.struct(['date','region', 'country', 'variant', 'count']).apply(
-                        lambda x:region_counts.get((x['date'], x['region'], x['variant']), 0)
-                                  if x['region']==x['country'] else x['count'])
-            .alias('count')
-    ])
+    # region_totals = {(r[0], r[1]): r[2] for r in df.select(['date', 'region', 'count'])
+    #                         .groupby(['date', 'region']).sum().iter_rows()}
+    # region_counts = {(r[0], r[1], r[2]): r[3] for r in df.select(['date', 'region', 'variant', 'count'])
+    #                         .groupby(['date', 'region', 'variant']).sum().iter_rows()}
+
+    # df = df.with_columns([
+    #       pl.struct(['date','region', 'country', 'total']).apply(
+    #                     lambda x:region_totals.get((x['date'], x['region']),0)
+    #                              if x['region']==x['country'] else x['total'])
+    #         .alias('total'),
+    #       pl.struct(['date','region', 'country', 'variant', 'count']).apply(
+    #                     lambda x:region_counts.get((x['date'], x['region'], x['variant']), 0)
+    #                               if x['region']==x['country'] else x['count'])
+    #         .alias('count')
+    # ])
 
     df.write_csv(args.output_csv, float_precision=4)
