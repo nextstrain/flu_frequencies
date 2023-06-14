@@ -6,6 +6,7 @@ Script to estimate binomial probabilities
 - information is shared across time bins using Gaussian penalty
 """
 
+from collections import defaultdict
 from datetime import datetime
 
 import numpy as np
@@ -32,7 +33,7 @@ def to_day_count(x, start_date):
 def day_count_to_date(x, start_date):
     return datetime.fromordinal(start_date + x)
 
-def load_and_aggregate(data, geo_categories, freq_category, min_date="2021-01-01", bin_size=7):
+def load_and_aggregate(data, geo_categories, freq_category, min_date="2021-01-01", bin_size=7, inclusive_clades=""):
     if type(data)==str:
         d = pl.read_csv(data, separator='\t', try_parse_dates=True, columns = geo_categories + [freq_category, 'date'])
     else:
@@ -55,6 +56,23 @@ def load_and_aggregate(data, geo_categories, freq_category, min_date="2021-01-01
         for row in d.filter(pl.col(freq_category)==fcat).groupby(by=geo_categories + ["time_bin"]).count().iter_rows():
             tmp[row[:-1]] = row[-1]
         counts[fcat] = tmp
+
+    # For each cat in fcats, add a new category that also includes all children clades
+    children = defaultdict(list)
+    for fcat in fcats:
+        for fcat2 in fcats:
+            if fcat2.startswith(fcat):
+                children[fcat].append(fcat2)
+
+    if inclusive_clades == "flu":
+        for lineage, children in children.items():
+            if len(children)<=1: continue
+            tmp = {}
+            for child in children:
+                # tmp is a dict where values are integers
+                # I want to add dicts so that values are summed
+                tmp = {k: tmp.get(k, 0) + counts[child].get(k, 0) for k in set(tmp) | set(counts[child])}
+            counts[lineage + "*"] = tmp
 
     timebins = {int(x): day_count_to_date(x*bin_size, start_date) for x in sorted(d["time_bin"].unique())}
 
@@ -120,6 +138,7 @@ if __name__=='__main__':
     parser.add_argument("--days", default=7, type=int, help="number of days in one time bin")
     parser.add_argument("--min-date", type=str, help="date to start frequency calculation")
     parser.add_argument("--output-csv", type=str, help="file for csv output")
+    parser.add_argument("--inclusive-clades", type=str, help="whether or not to generate inclusive clade/lineage categories")
 
     args = parser.parse_args()
     stiffness = 5000/args.days
@@ -142,7 +161,7 @@ if __name__=='__main__':
         freq_cat = args.frequency_category
     d = d.with_columns(pl.col("date").str.strptime(pl.Date, format="%Y-%m-%d", strict=False))
     data, totals, counts, time_bins = load_and_aggregate(d, args.geo_categories, freq_cat,
-                                                         bin_size=args.days, min_date=args.min_date)
+                                                         bin_size=args.days, min_date=args.min_date, inclusive_clades=args.inclusive_clades)
 
 
     dates = [time_bins[k] for k in time_bins]

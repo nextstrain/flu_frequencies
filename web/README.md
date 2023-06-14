@@ -1,6 +1,26 @@
+# Web Front End
+
+## Installation
+
+### Requirements
+
+- nodejs >= ?
+- yarn
+
+### Setup
+
+```bash
+cp .env.example .env
+yarn install
+yarn dev
+```
+
+You can now access the web interface at http://localhost:3000
+
+### Instructions for installing recent node/nvm/yarn
+
 This document provides some instructions for setting up a development environment for working on the front end of this module.  These steps assume that you are on a Debian/Ubuntu system (I was running Ubuntu 20.04) without any additional Node-related packages installed.  It should not require super-user privileges.
 
-# Installation
 1. Clone this repository and enter the package root with `cd flu_frequencies/web`.
 2. The version of NodeJS provided with Ubuntu 20 is too old (v10.19.0).  To install a newer version that co-exists with the system version, I used [Node Version Manager](https://github.com/nvm-sh/nvm).  Use one of the [installation script](https://github.com/nvm-sh/nvm#install--update-script) provided by the developers.  This creates a hidden directory `.nvm` under `$HOME`.
    ```console

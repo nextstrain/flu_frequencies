@@ -1,5 +1,7 @@
 # Estimating flu clade and mutation frequencies
 
+This README is for the data analysis pipeline. For the web interface, see [web/README.md](web/README.md).
+
 ## Development
 
 ### Setup
@@ -30,7 +32,6 @@ nextstrain build . --profile profiles/flu
 
 #### Using custom conda or Python environment
 
-
 You will have to have at least the following packages/binaries installed:
 
 - `Python`
@@ -43,6 +44,20 @@ Then run using:
 
 ```bash
 snakemake --profile profiles/flu
+```
+
+### Viewing results in web app
+
+Copy snakemake workflow results to `data_web/inputs`, ensuring that correct filenames are used, e.g.:
+
+```bash
+cp results/h3n2/region-country-frequencies.csv data_web/inputs/flu-h3n2.csv
+```
+
+Then process the csv files into json:
+
+```bash
+python scripts/web_convert.py --input-pathogens-json data_web/inputs/pathogens.json --output-dir web/public/data
 ```
 
 ### TODO
