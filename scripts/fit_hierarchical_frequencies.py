@@ -155,9 +155,8 @@ if __name__=='__main__':
     for geo_cat in major_geo_cats:
         geo_label = ','.join(geo_cat)
         minor_geo_cats = set([k[-2] for k in totals if k[:-2]==geo_cat])
-        sub_totals = {}
+        sub_totals = {"other": {}}
         data_totals = {}
-        sub_totals["other"] = {}
         for minor_geo_cat  in minor_geo_cats:
             tmp = {k[-1]:v for k,v in totals.items() if k[:-2]==geo_cat and k[-2]==minor_geo_cat}
             data_totals[minor_geo_cat] = sum(tmp.values())
@@ -170,7 +169,7 @@ if __name__=='__main__':
         sub_counts = {}
         frequencies = {}
         for fcat in counts.keys():
-            sub_counts[fcat] = {}
+            sub_counts[fcat] = {"other": {}}
             for minor_geo_cat in minor_geo_cats:
                 tmp = {k[-1]:v for k,v in counts[fcat].items() if k[:-2]==geo_cat and k[-2]==minor_geo_cat}
                 if minor_geo_cat in sub_totals:
@@ -184,7 +183,7 @@ if __name__=='__main__':
             region_counts = {}
             region_totals = {}
             ## append entries for individual countries.
-            for minor_geo_cat in sub_totals | {"other": None}:
+            for minor_geo_cat in sub_totals:
                 for k, date in time_bins.items():
                     output_data.append({"date": date.strftime('%Y-%m-%d'), "region": geo_label, "country": geo_label_map(minor_geo_cat),
                                         "variant":fcat, "count": sub_counts[fcat][minor_geo_cat].get(k,0),

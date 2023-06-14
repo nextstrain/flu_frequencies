@@ -1,0 +1,3437 @@
+{
+  "values": [
+    {
+      "avgs": {
+        "Africa": 0.83286,
+        "China": 0.0207,
+        "Eastern Asia": 1.0,
+        "Europe": 0.98105,
+        "North America": 0.99997,
+        "Oceania": 0.99806,
+        "South America": 1.0,
+        "South-eastern Asia": 0.86692,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.98804,
+        "global": 0.78033
+      },
+      "counts": {
+        "Africa": 42,
+        "China": 0,
+        "Eastern Asia": 2,
+        "Europe": 371,
+        "North America": 434,
+        "Oceania": 7,
+        "South America": 326,
+        "South-eastern Asia": 2,
+        "Southern Asia": 12,
+        "Western Asia": 24,
+        "global": 1220
+      },
+      "date": "2021-12-01",
+      "ranges": {
+        "Africa": [
+          0.6672,
+          0.99852
+        ],
+        "China": [
+          0.0,
+          0.2104
+        ],
+        "Eastern Asia": [
+          0.71712,
+          1.0
+        ],
+        "Europe": [
+          0.88716,
+          1.0
+        ],
+        "North America": [
+          0.90905,
+          1.0
+        ],
+        "Oceania": [
+          0.8284,
+          1.0
+        ],
+        "South America": [
+          0.91167,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.67468,
+          1.0
+        ],
+        "Southern Asia": [
+          0.82459,
+          1.0
+        ],
+        "Western Asia": [
+          0.8175,
+          1.0
+        ],
+        "global": [
+          0.613,
+          0.94766
+        ]
+      },
+      "totals": {
+        "Africa": 56,
+        "China": 4,
+        "Eastern Asia": 2,
+        "Europe": 378,
+        "North America": 434,
+        "Oceania": 7,
+        "South America": 326,
+        "South-eastern Asia": 2,
+        "Southern Asia": 12,
+        "Western Asia": 24,
+        "global": 1245
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.85284,
+        "China": 0.0211,
+        "Eastern Asia": 1.0,
+        "Europe": 0.97407,
+        "North America": 0.99709,
+        "Oceania": 0.9979,
+        "South America": 1.0,
+        "South-eastern Asia": 0.86668,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.98764,
+        "global": 0.78297
+      },
+      "counts": {
+        "Africa": 24,
+        "China": 0,
+        "Eastern Asia": 2,
+        "Europe": 389,
+        "North America": 338,
+        "Oceania": 7,
+        "South America": 230,
+        "South-eastern Asia": 1,
+        "Southern Asia": 22,
+        "Western Asia": 47,
+        "global": 1060
+      },
+      "date": "2021-12-15",
+      "ranges": {
+        "Africa": [
+          0.6919,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.1984
+        ],
+        "Eastern Asia": [
+          0.72567,
+          1.0
+        ],
+        "Europe": [
+          0.88773,
+          1.0
+        ],
+        "North America": [
+          0.9117,
+          1.0
+        ],
+        "Oceania": [
+          0.84002,
+          1.0
+        ],
+        "South America": [
+          0.91837,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.6878,
+          1.0
+        ],
+        "Southern Asia": [
+          0.83955,
+          1.0
+        ],
+        "Western Asia": [
+          0.83063,
+          1.0
+        ],
+        "global": [
+          0.62616,
+          0.93979
+        ]
+      },
+      "totals": {
+        "Africa": 28,
+        "China": 1,
+        "Eastern Asia": 2,
+        "Europe": 398,
+        "North America": 339,
+        "Oceania": 7,
+        "South America": 230,
+        "South-eastern Asia": 1,
+        "Southern Asia": 22,
+        "Western Asia": 47,
+        "global": 1075
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.87118,
+        "China": 0.0216,
+        "Eastern Asia": 1.0,
+        "Europe": 0.98378,
+        "North America": 0.99982,
+        "Oceania": 0.99768,
+        "South America": 1.0,
+        "South-eastern Asia": 0.86636,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.98462,
+        "global": 0.78725
+      },
+      "counts": {
+        "Africa": 11,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 249,
+        "North America": 243,
+        "Oceania": 3,
+        "South America": 311,
+        "South-eastern Asia": 6,
+        "Southern Asia": 15,
+        "Western Asia": 16,
+        "global": 854
+      },
+      "date": "2021-12-29",
+      "ranges": {
+        "Africa": [
+          0.71491,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.1862
+        ],
+        "Eastern Asia": [
+          0.73332,
+          1.0
+        ],
+        "Europe": [
+          0.90052,
+          1.0
+        ],
+        "North America": [
+          0.91772,
+          1.0
+        ],
+        "Oceania": [
+          0.84961,
+          1.0
+        ],
+        "South America": [
+          0.92366,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.70055,
+          1.0
+        ],
+        "Southern Asia": [
+          0.84548,
+          1.0
+        ],
+        "Western Asia": [
+          0.8309,
+          1.0
+        ],
+        "global": [
+          0.63769,
+          0.9368
+        ]
+      },
+      "totals": {
+        "Africa": 13,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 252,
+        "North America": 243,
+        "Oceania": 3,
+        "South America": 311,
+        "South-eastern Asia": 7,
+        "Southern Asia": 15,
+        "Western Asia": 17,
+        "global": 861
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.89002,
+        "China": 0.0222,
+        "Eastern Asia": 1.0,
+        "Europe": 0.9908,
+        "North America": 0.99426,
+        "Oceania": 0.99743,
+        "South America": 1.0,
+        "South-eastern Asia": 0.86625,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.98028,
+        "global": 0.7907
+      },
+      "counts": {
+        "Africa": 12,
+        "China": 1,
+        "Eastern Asia": 1,
+        "Europe": 238,
+        "North America": 152,
+        "Oceania": 0,
+        "South America": 95,
+        "South-eastern Asia": 9,
+        "Southern Asia": 3,
+        "Western Asia": 6,
+        "global": 517
+      },
+      "date": "2022-01-12",
+      "ranges": {
+        "Africa": [
+          0.73855,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.1732
+        ],
+        "Eastern Asia": [
+          0.74049,
+          1.0
+        ],
+        "Europe": [
+          0.9109,
+          1.0
+        ],
+        "North America": [
+          0.91361,
+          1.0
+        ],
+        "Oceania": [
+          0.85998,
+          1.0
+        ],
+        "South America": [
+          0.92195,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.71352,
+          1.0
+        ],
+        "Southern Asia": [
+          0.84466,
+          1.0
+        ],
+        "Western Asia": [
+          0.82548,
+          1.0
+        ],
+        "global": [
+          0.64624,
+          0.93515
+        ]
+      },
+      "totals": {
+        "Africa": 13,
+        "China": 1,
+        "Eastern Asia": 1,
+        "Europe": 238,
+        "North America": 153,
+        "Oceania": 0,
+        "South America": 95,
+        "South-eastern Asia": 13,
+        "Southern Asia": 3,
+        "Western Asia": 6,
+        "global": 523
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.90712,
+        "China": 0.0223,
+        "Eastern Asia": 1.0,
+        "Europe": 0.98236,
+        "North America": 0.99961,
+        "Oceania": 0.99713,
+        "South America": 1.0,
+        "South-eastern Asia": 0.87332,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.97594,
+        "global": 0.79372
+      },
+      "counts": {
+        "Africa": 11,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 215,
+        "North America": 107,
+        "Oceania": 1,
+        "South America": 42,
+        "South-eastern Asia": 7,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 383
+      },
+      "date": "2022-01-26",
+      "ranges": {
+        "Africa": [
+          0.76011,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.1584
+        ],
+        "Eastern Asia": [
+          0.74739,
+          1.0
+        ],
+        "Europe": [
+          0.90353,
+          1.0
+        ],
+        "North America": [
+          0.92014,
+          1.0
+        ],
+        "Oceania": [
+          0.87229,
+          1.0
+        ],
+        "South America": [
+          0.91123,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.73267,
+          1.0
+        ],
+        "Southern Asia": [
+          0.84416,
+          1.0
+        ],
+        "Western Asia": [
+          0.82053,
+          1.0
+        ],
+        "global": [
+          0.65391,
+          0.93353
+        ]
+      },
+      "totals": {
+        "Africa": 12,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 220,
+        "North America": 107,
+        "Oceania": 1,
+        "South America": 42,
+        "South-eastern Asia": 16,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 398
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.92544,
+        "China": 0.0225,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99017,
+        "North America": 0.99994,
+        "Oceania": 0.99684,
+        "South America": 1.0,
+        "South-eastern Asia": 0.92589,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.97151,
+        "global": 0.80205
+      },
+      "counts": {
+        "Africa": 10,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 312,
+        "North America": 157,
+        "Oceania": 24,
+        "South America": 31,
+        "South-eastern Asia": 27,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 561
+      },
+      "date": "2022-02-09",
+      "ranges": {
+        "Africa": [
+          0.78222,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.1414
+        ],
+        "Eastern Asia": [
+          0.75401,
+          1.0
+        ],
+        "Europe": [
+          0.91482,
+          1.0
+        ],
+        "North America": [
+          0.92341,
+          1.0
+        ],
+        "Oceania": [
+          0.88753,
+          1.0
+        ],
+        "South America": [
+          0.90705,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.79663,
+          1.0
+        ],
+        "Southern Asia": [
+          0.84414,
+          1.0
+        ],
+        "Western Asia": [
+          0.81614,
+          1.0
+        ],
+        "global": [
+          0.66738,
+          0.93671
+        ]
+      },
+      "totals": {
+        "Africa": 11,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 315,
+        "North America": 157,
+        "Oceania": 24,
+        "South America": 31,
+        "South-eastern Asia": 29,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 567
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.94134,
+        "China": 0.0228,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99229,
+        "North America": 0.99994,
+        "Oceania": 0.99612,
+        "South America": 1.0,
+        "South-eastern Asia": 0.96534,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.96717,
+        "global": 0.80828
+      },
+      "counts": {
+        "Africa": 11,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 764,
+        "North America": 218,
+        "Oceania": 17,
+        "South America": 46,
+        "South-eastern Asia": 44,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 1100
+      },
+      "date": "2022-02-23",
+      "ranges": {
+        "Africa": [
+          0.80217,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.1204
+        ],
+        "Eastern Asia": [
+          0.76058,
+          1.0
+        ],
+        "Europe": [
+          0.92088,
+          1.0
+        ],
+        "North America": [
+          0.92555,
+          1.0
+        ],
+        "Oceania": [
+          0.89551,
+          1.0
+        ],
+        "South America": [
+          0.90758,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.84265,
+          1.0
+        ],
+        "Southern Asia": [
+          0.8448,
+          1.0
+        ],
+        "Western Asia": [
+          0.8126,
+          1.0
+        ],
+        "global": [
+          0.67904,
+          0.93752
+        ]
+      },
+      "totals": {
+        "Africa": 11,
+        "China": 1,
+        "Eastern Asia": 0,
+        "Europe": 768,
+        "North America": 218,
+        "Oceania": 17,
+        "South America": 46,
+        "South-eastern Asia": 44,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 1105
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.95482,
+        "China": 0.0231,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99519,
+        "North America": 0.99683,
+        "Oceania": 0.99504,
+        "South America": 1.0,
+        "South-eastern Asia": 0.988,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.96275,
+        "global": 0.81248
+      },
+      "counts": {
+        "Africa": 14,
+        "China": 1,
+        "Eastern Asia": 1,
+        "Europe": 1121,
+        "North America": 297,
+        "Oceania": 32,
+        "South America": 52,
+        "South-eastern Asia": 55,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 1573
+      },
+      "date": "2022-03-09",
+      "ranges": {
+        "Africa": [
+          0.82036,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.091
+        ],
+        "Eastern Asia": [
+          0.76708,
+          1.0
+        ],
+        "Europe": [
+          0.92681,
+          1.0
+        ],
+        "North America": [
+          0.92432,
+          1.0
+        ],
+        "Oceania": [
+          0.90728,
+          1.0
+        ],
+        "South America": [
+          0.90962,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.86808,
+          1.0
+        ],
+        "Southern Asia": [
+          0.84624,
+          1.0
+        ],
+        "Western Asia": [
+          0.80989,
+          1.0
+        ],
+        "global": [
+          0.68915,
+          0.93581
+        ]
+      },
+      "totals": {
+        "Africa": 16,
+        "China": 31,
+        "Eastern Asia": 1,
+        "Europe": 1123,
+        "North America": 298,
+        "Oceania": 32,
+        "South America": 52,
+        "South-eastern Asia": 55,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 1608
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.96557,
+        "China": 0.0101,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99614,
+        "North America": 0.99997,
+        "Oceania": 0.99029,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99468,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.95841,
+        "global": 0.81269
+      },
+      "counts": {
+        "Africa": 18,
+        "China": 0,
+        "Eastern Asia": 1,
+        "Europe": 958,
+        "North America": 437,
+        "Oceania": 104,
+        "South America": 55,
+        "South-eastern Asia": 32,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 1605
+      },
+      "date": "2022-03-23",
+      "ranges": {
+        "Africa": [
+          0.83617,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0755
+        ],
+        "Eastern Asia": [
+          0.77356,
+          1.0
+        ],
+        "Europe": [
+          0.92816,
+          1.0
+        ],
+        "North America": [
+          0.92944,
+          1.0
+        ],
+        "Oceania": [
+          0.91764,
+          1.0
+        ],
+        "South America": [
+          0.91014,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.87263,
+          1.0
+        ],
+        "Southern Asia": [
+          0.84876,
+          1.0
+        ],
+        "Western Asia": [
+          0.80814,
+          1.0
+        ],
+        "global": [
+          0.69188,
+          0.93351
+        ]
+      },
+      "totals": {
+        "Africa": 19,
+        "China": 18,
+        "Eastern Asia": 1,
+        "Europe": 960,
+        "North America": 437,
+        "Oceania": 105,
+        "South America": 55,
+        "South-eastern Asia": 32,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 1627
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.97805,
+        "China": 0.0027,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99419,
+        "North America": 0.99799,
+        "Oceania": 0.99887,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99508,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.95398,
+        "global": 0.81309
+      },
+      "counts": {
+        "Africa": 21,
+        "China": 0,
+        "Eastern Asia": 2,
+        "Europe": 965,
+        "North America": 493,
+        "Oceania": 65,
+        "South America": 53,
+        "South-eastern Asia": 4,
+        "Southern Asia": 0,
+        "Western Asia": 4,
+        "global": 1607
+      },
+      "date": "2022-04-06",
+      "ranges": {
+        "Africa": [
+          0.85317,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0579
+        ],
+        "Eastern Asia": [
+          0.78005,
+          1.0
+        ],
+        "Europe": [
+          0.92409,
+          1.0
+        ],
+        "North America": [
+          0.92878,
+          1.0
+        ],
+        "Oceania": [
+          0.92752,
+          1.0
+        ],
+        "South America": [
+          0.91071,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.86771,
+          1.0
+        ],
+        "Southern Asia": [
+          0.85236,
+          1.0
+        ],
+        "Western Asia": [
+          0.80761,
+          1.0
+        ],
+        "global": [
+          0.69526,
+          0.93092
+        ]
+      },
+      "totals": {
+        "Africa": 21,
+        "China": 33,
+        "Eastern Asia": 2,
+        "Europe": 969,
+        "North America": 494,
+        "Oceania": 65,
+        "South America": 53,
+        "South-eastern Asia": 4,
+        "Southern Asia": 0,
+        "Western Asia": 7,
+        "global": 1648
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.98689,
+        "China": 0.0014,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99399,
+        "North America": 0.99997,
+        "Oceania": 0.99992,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99553,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.95841,
+        "global": 0.81478
+      },
+      "counts": {
+        "Africa": 33,
+        "China": 0,
+        "Eastern Asia": 3,
+        "Europe": 838,
+        "North America": 461,
+        "Oceania": 102,
+        "South America": 62,
+        "South-eastern Asia": 7,
+        "Southern Asia": 0,
+        "Western Asia": 5,
+        "global": 1511
+      },
+      "date": "2022-04-20",
+      "ranges": {
+        "Africa": [
+          0.86656,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0685
+        ],
+        "Eastern Asia": [
+          0.78676,
+          1.0
+        ],
+        "Europe": [
+          0.92146,
+          1.0
+        ],
+        "North America": [
+          0.9316,
+          1.0
+        ],
+        "Oceania": [
+          0.93317,
+          1.0
+        ],
+        "South America": [
+          0.91409,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.86599,
+          1.0
+        ],
+        "Southern Asia": [
+          0.85731,
+          1.0
+        ],
+        "Western Asia": [
+          0.81576,
+          1.0
+        ],
+        "global": [
+          0.69864,
+          0.93093
+        ]
+      },
+      "totals": {
+        "Africa": 33,
+        "China": 10,
+        "Eastern Asia": 3,
+        "Europe": 842,
+        "North America": 461,
+        "Oceania": 102,
+        "South America": 62,
+        "South-eastern Asia": 7,
+        "Southern Asia": 0,
+        "Western Asia": 6,
+        "global": 1526
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99201,
+        "China": 0.0004,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99542,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99606,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.96444,
+        "global": 0.81596
+      },
+      "counts": {
+        "Africa": 34,
+        "China": 0,
+        "Eastern Asia": 2,
+        "Europe": 474,
+        "North America": 468,
+        "Oceania": 174,
+        "South America": 120,
+        "South-eastern Asia": 10,
+        "Southern Asia": 3,
+        "Western Asia": 13,
+        "global": 1298
+      },
+      "date": "2022-05-04",
+      "ranges": {
+        "Africa": [
+          0.87215,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0574
+        ],
+        "Eastern Asia": [
+          0.79358,
+          1.0
+        ],
+        "Europe": [
+          0.91917,
+          1.0
+        ],
+        "North America": [
+          0.93179,
+          1.0
+        ],
+        "Oceania": [
+          0.9369,
+          1.0
+        ],
+        "South America": [
+          0.92002,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.86621,
+          1.0
+        ],
+        "Southern Asia": [
+          0.86395,
+          1.0
+        ],
+        "Western Asia": [
+          0.82656,
+          1.0
+        ],
+        "global": [
+          0.70356,
+          0.92836
+        ]
+      },
+      "totals": {
+        "Africa": 37,
+        "China": 24,
+        "Eastern Asia": 2,
+        "Europe": 476,
+        "North America": 468,
+        "Oceania": 174,
+        "South America": 120,
+        "South-eastern Asia": 10,
+        "Southern Asia": 3,
+        "Western Asia": 14,
+        "global": 1328
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99542,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99527,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99684,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.97199,
+        "global": 0.81688
+      },
+      "counts": {
+        "Africa": 35,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 253,
+        "North America": 165,
+        "Oceania": 181,
+        "South America": 57,
+        "South-eastern Asia": 8,
+        "Southern Asia": 14,
+        "Western Asia": 7,
+        "global": 720
+      },
+      "date": "2022-05-18",
+      "ranges": {
+        "Africa": [
+          0.87736,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0364
+        ],
+        "Eastern Asia": [
+          0.80063,
+          1.0
+        ],
+        "Europe": [
+          0.91428,
+          1.0
+        ],
+        "North America": [
+          0.93075,
+          1.0
+        ],
+        "Oceania": [
+          0.93808,
+          1.0
+        ],
+        "South America": [
+          0.91831,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.86741,
+          1.0
+        ],
+        "Southern Asia": [
+          0.87244,
+          1.0
+        ],
+        "Western Asia": [
+          0.83657,
+          1.0
+        ],
+        "global": [
+          0.70908,
+          0.92469
+        ]
+      },
+      "totals": {
+        "Africa": 35,
+        "China": 55,
+        "Eastern Asia": 0,
+        "Europe": 254,
+        "North America": 165,
+        "Oceania": 181,
+        "South America": 57,
+        "South-eastern Asia": 8,
+        "Southern Asia": 14,
+        "Western Asia": 7,
+        "global": 776
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99751,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.98241,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99755,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.97843,
+        "global": 0.81637
+      },
+      "counts": {
+        "Africa": 51,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 109,
+        "North America": 129,
+        "Oceania": 173,
+        "South America": 84,
+        "South-eastern Asia": 9,
+        "Southern Asia": 1,
+        "Western Asia": 16,
+        "global": 572
+      },
+      "date": "2022-06-01",
+      "ranges": {
+        "Africa": [
+          0.88109,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0338
+        ],
+        "Eastern Asia": [
+          0.80795,
+          1.0
+        ],
+        "Europe": [
+          0.89583,
+          1.0
+        ],
+        "North America": [
+          0.93045,
+          1.0
+        ],
+        "Oceania": [
+          0.93767,
+          1.0
+        ],
+        "South America": [
+          0.92119,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.87057,
+          1.0
+        ],
+        "Southern Asia": [
+          0.87135,
+          1.0
+        ],
+        "Western Asia": [
+          0.84662,
+          1.0
+        ],
+        "global": [
+          0.70926,
+          0.92348
+        ]
+      },
+      "totals": {
+        "Africa": 51,
+        "China": 60,
+        "Eastern Asia": 3,
+        "Europe": 114,
+        "North America": 129,
+        "Oceania": 173,
+        "South America": 84,
+        "South-eastern Asia": 9,
+        "Southern Asia": 1,
+        "Western Asia": 16,
+        "global": 640
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99791,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.9895,
+        "North America": 0.99939,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99823,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.98315,
+        "global": 0.81735
+      },
+      "counts": {
+        "Africa": 15,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 64,
+        "North America": 114,
+        "Oceania": 124,
+        "South America": 62,
+        "South-eastern Asia": 9,
+        "Southern Asia": 7,
+        "Western Asia": 16,
+        "global": 411
+      },
+      "date": "2022-06-15",
+      "ranges": {
+        "Africa": [
+          0.87513,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0485
+        ],
+        "Eastern Asia": [
+          0.81572,
+          1.0
+        ],
+        "Europe": [
+          0.8983,
+          1.0
+        ],
+        "North America": [
+          0.92797,
+          1.0
+        ],
+        "Oceania": [
+          0.93609,
+          1.0
+        ],
+        "South America": [
+          0.92001,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.87545,
+          1.0
+        ],
+        "Southern Asia": [
+          0.87303,
+          1.0
+        ],
+        "Western Asia": [
+          0.85362,
+          1.0
+        ],
+        "global": [
+          0.70893,
+          0.92576
+        ]
+      },
+      "totals": {
+        "Africa": 15,
+        "China": 31,
+        "Eastern Asia": 5,
+        "Europe": 65,
+        "North America": 114,
+        "Oceania": 124,
+        "South America": 62,
+        "South-eastern Asia": 9,
+        "Southern Asia": 7,
+        "Western Asia": 16,
+        "global": 448
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99821,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.9963,
+        "North America": 0.99529,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99883,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.98614,
+        "global": 0.81793
+      },
+      "counts": {
+        "Africa": 21,
+        "China": 0,
+        "Eastern Asia": 4,
+        "Europe": 67,
+        "North America": 58,
+        "Oceania": 79,
+        "South America": 110,
+        "South-eastern Asia": 26,
+        "Southern Asia": 12,
+        "Western Asia": 8,
+        "global": 385
+      },
+      "date": "2022-06-29",
+      "ranges": {
+        "Africa": [
+          0.87198,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0463
+        ],
+        "Eastern Asia": [
+          0.82392,
+          1.0
+        ],
+        "Europe": [
+          0.90419,
+          1.0
+        ],
+        "North America": [
+          0.91764,
+          1.0
+        ],
+        "Oceania": [
+          0.93124,
+          1.0
+        ],
+        "South America": [
+          0.9251,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.8828,
+          1.0
+        ],
+        "Southern Asia": [
+          0.87607,
+          1.0
+        ],
+        "Western Asia": [
+          0.8555,
+          1.0
+        ],
+        "global": [
+          0.71066,
+          0.92519
+        ]
+      },
+      "totals": {
+        "Africa": 21,
+        "China": 42,
+        "Eastern Asia": 5,
+        "Europe": 67,
+        "North America": 58,
+        "Oceania": 79,
+        "South America": 110,
+        "South-eastern Asia": 26,
+        "Southern Asia": 12,
+        "Western Asia": 8,
+        "global": 428
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99841,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99837,
+        "North America": 0.98016,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99912,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.98883,
+        "global": 0.81716
+      },
+      "counts": {
+        "Africa": 11,
+        "China": 0,
+        "Eastern Asia": 1,
+        "Europe": 90,
+        "North America": 26,
+        "Oceania": 48,
+        "South America": 53,
+        "South-eastern Asia": 29,
+        "Southern Asia": 10,
+        "Western Asia": 14,
+        "global": 282
+      },
+      "date": "2022-07-13",
+      "ranges": {
+        "Africa": [
+          0.86907,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0709
+        ],
+        "Eastern Asia": [
+          0.83125,
+          1.0
+        ],
+        "Europe": [
+          0.90843,
+          1.0
+        ],
+        "North America": [
+          0.89336,
+          1.0
+        ],
+        "Oceania": [
+          0.92141,
+          1.0
+        ],
+        "South America": [
+          0.91959,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.88499,
+          1.0
+        ],
+        "Southern Asia": [
+          0.87735,
+          1.0
+        ],
+        "Western Asia": [
+          0.85881,
+          1.0
+        ],
+        "global": [
+          0.70718,
+          0.92714
+        ]
+      },
+      "totals": {
+        "Africa": 11,
+        "China": 10,
+        "Eastern Asia": 1,
+        "Europe": 90,
+        "North America": 26,
+        "Oceania": 48,
+        "South America": 53,
+        "South-eastern Asia": 29,
+        "Southern Asia": 10,
+        "Western Asia": 14,
+        "global": 292
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99851,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99895,
+        "North America": 0.95522,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99931,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99092,
+        "global": 0.81545
+      },
+      "counts": {
+        "Africa": 2,
+        "China": 0,
+        "Eastern Asia": 6,
+        "Europe": 63,
+        "North America": 26,
+        "Oceania": 15,
+        "South America": 33,
+        "South-eastern Asia": 42,
+        "Southern Asia": 16,
+        "Western Asia": 0,
+        "global": 203
+      },
+      "date": "2022-07-27",
+      "ranges": {
+        "Africa": [
+          0.86835,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0776
+        ],
+        "Eastern Asia": [
+          0.83928,
+          1.0
+        ],
+        "Europe": [
+          0.90728,
+          1.0
+        ],
+        "North America": [
+          0.86562,
+          1.0
+        ],
+        "Oceania": [
+          0.9055,
+          1.0
+        ],
+        "South America": [
+          0.91162,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.88811,
+          1.0
+        ],
+        "Southern Asia": [
+          0.87839,
+          1.0
+        ],
+        "Western Asia": [
+          0.86083,
+          1.0
+        ],
+        "global": [
+          0.70468,
+          0.92622
+        ]
+      },
+      "totals": {
+        "Africa": 2,
+        "China": 16,
+        "Eastern Asia": 6,
+        "Europe": 63,
+        "North America": 29,
+        "Oceania": 15,
+        "South America": 33,
+        "South-eastern Asia": 42,
+        "Southern Asia": 16,
+        "Western Asia": 0,
+        "global": 222
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99871,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99932,
+        "North America": 0.96343,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99957,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99301,
+        "global": 0.81626
+      },
+      "counts": {
+        "Africa": 9,
+        "China": 0,
+        "Eastern Asia": 1,
+        "Europe": 107,
+        "North America": 25,
+        "Oceania": 8,
+        "South America": 29,
+        "South-eastern Asia": 63,
+        "Southern Asia": 7,
+        "Western Asia": 3,
+        "global": 252
+      },
+      "date": "2022-08-10",
+      "ranges": {
+        "Africa": [
+          0.87061,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.086
+        ],
+        "Eastern Asia": [
+          0.84497,
+          1.0
+        ],
+        "Europe": [
+          0.91134,
+          1.0
+        ],
+        "North America": [
+          0.87468,
+          1.0
+        ],
+        "Oceania": [
+          0.89467,
+          1.0
+        ],
+        "South America": [
+          0.90931,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.89133,
+          1.0
+        ],
+        "Southern Asia": [
+          0.8765,
+          1.0
+        ],
+        "Western Asia": [
+          0.86586,
+          1.0
+        ],
+        "global": [
+          0.70512,
+          0.92741
+        ]
+      },
+      "totals": {
+        "Africa": 9,
+        "China": 6,
+        "Eastern Asia": 1,
+        "Europe": 107,
+        "North America": 25,
+        "Oceania": 8,
+        "South America": 29,
+        "South-eastern Asia": 63,
+        "Southern Asia": 7,
+        "Western Asia": 3,
+        "global": 258
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99882,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99956,
+        "North America": 0.95911,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99975,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99509,
+        "global": 0.81609
+      },
+      "counts": {
+        "Africa": 15,
+        "China": 0,
+        "Eastern Asia": 9,
+        "Europe": 168,
+        "North America": 47,
+        "Oceania": 4,
+        "South America": 28,
+        "South-eastern Asia": 45,
+        "Southern Asia": 27,
+        "Western Asia": 23,
+        "global": 366
+      },
+      "date": "2022-08-24",
+      "ranges": {
+        "Africa": [
+          0.87517,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0846
+        ],
+        "Eastern Asia": [
+          0.85168,
+          1.0
+        ],
+        "Europe": [
+          0.91496,
+          1.0
+        ],
+        "North America": [
+          0.87749,
+          1.0
+        ],
+        "Oceania": [
+          0.88841,
+          1.0
+        ],
+        "South America": [
+          0.91172,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.89235,
+          1.0
+        ],
+        "Southern Asia": [
+          0.87792,
+          1.0
+        ],
+        "Western Asia": [
+          0.87401,
+          1.0
+        ],
+        "global": [
+          0.70784,
+          0.92433
+        ]
+      },
+      "totals": {
+        "Africa": 15,
+        "China": 13,
+        "Eastern Asia": 9,
+        "Europe": 168,
+        "North America": 50,
+        "Oceania": 4,
+        "South America": 28,
+        "South-eastern Asia": 45,
+        "Southern Asia": 27,
+        "Western Asia": 23,
+        "global": 382
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99901,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99964,
+        "North America": 0.99323,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99984,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99647,
+        "global": 0.81879
+      },
+      "counts": {
+        "Africa": 34,
+        "China": 0,
+        "Eastern Asia": 7,
+        "Europe": 181,
+        "North America": 67,
+        "Oceania": 6,
+        "South America": 56,
+        "South-eastern Asia": 88,
+        "Southern Asia": 11,
+        "Western Asia": 24,
+        "global": 474
+      },
+      "date": "2022-09-07",
+      "ranges": {
+        "Africa": [
+          0.8815,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0832
+        ],
+        "Eastern Asia": [
+          0.8589,
+          1.0
+        ],
+        "Europe": [
+          0.91753,
+          1.0
+        ],
+        "North America": [
+          0.92176,
+          1.0
+        ],
+        "Oceania": [
+          0.88661,
+          1.0
+        ],
+        "South America": [
+          0.92003,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.89478,
+          1.0
+        ],
+        "Southern Asia": [
+          0.87687,
+          1.0
+        ],
+        "Western Asia": [
+          0.87776,
+          1.0
+        ],
+        "global": [
+          0.71337,
+          0.92421
+        ]
+      },
+      "totals": {
+        "Africa": 34,
+        "China": 11,
+        "Eastern Asia": 7,
+        "Europe": 181,
+        "North America": 67,
+        "Oceania": 6,
+        "South America": 56,
+        "South-eastern Asia": 88,
+        "Southern Asia": 11,
+        "Western Asia": 24,
+        "global": 485
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99921,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99544,
+        "North America": 0.99901,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99991,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99745,
+        "global": 0.81891
+      },
+      "counts": {
+        "Africa": 39,
+        "China": 0,
+        "Eastern Asia": 7,
+        "Europe": 304,
+        "North America": 105,
+        "Oceania": 6,
+        "South America": 61,
+        "South-eastern Asia": 86,
+        "Southern Asia": 16,
+        "Western Asia": 33,
+        "global": 657
+      },
+      "date": "2022-09-21",
+      "ranges": {
+        "Africa": [
+          0.88416,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.077
+        ],
+        "Eastern Asia": [
+          0.86704,
+          1.0
+        ],
+        "Europe": [
+          0.91709,
+          1.0
+        ],
+        "North America": [
+          0.9341,
+          1.0
+        ],
+        "Oceania": [
+          0.88784,
+          1.0
+        ],
+        "South America": [
+          0.92119,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.89375,
+          1.0
+        ],
+        "Southern Asia": [
+          0.87875,
+          1.0
+        ],
+        "Western Asia": [
+          0.88005,
+          1.0
+        ],
+        "global": [
+          0.71634,
+          0.92148
+        ]
+      },
+      "totals": {
+        "Africa": 39,
+        "China": 10,
+        "Eastern Asia": 7,
+        "Europe": 306,
+        "North America": 105,
+        "Oceania": 6,
+        "South America": 61,
+        "South-eastern Asia": 86,
+        "Southern Asia": 16,
+        "Western Asia": 33,
+        "global": 669
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9994,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99722,
+        "North America": 0.9959,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99992,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99804,
+        "global": 0.81891
+      },
+      "counts": {
+        "Africa": 52,
+        "China": 0,
+        "Eastern Asia": 7,
+        "Europe": 452,
+        "North America": 257,
+        "Oceania": 15,
+        "South America": 48,
+        "South-eastern Asia": 60,
+        "Southern Asia": 27,
+        "Western Asia": 21,
+        "global": 939
+      },
+      "date": "2022-10-05",
+      "ranges": {
+        "Africa": [
+          0.88572,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0595
+        ],
+        "Eastern Asia": [
+          0.8764,
+          1.0
+        ],
+        "Europe": [
+          0.92246,
+          1.0
+        ],
+        "North America": [
+          0.93731,
+          1.0
+        ],
+        "Oceania": [
+          0.89244,
+          1.0
+        ],
+        "South America": [
+          0.91867,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.89216,
+          1.0
+        ],
+        "Southern Asia": [
+          0.8796,
+          1.0
+        ],
+        "Western Asia": [
+          0.87701,
+          1.0
+        ],
+        "global": [
+          0.71949,
+          0.91832
+        ]
+      },
+      "totals": {
+        "Africa": 52,
+        "China": 27,
+        "Eastern Asia": 7,
+        "Europe": 454,
+        "North America": 258,
+        "Oceania": 15,
+        "South America": 48,
+        "South-eastern Asia": 60,
+        "Southern Asia": 27,
+        "Western Asia": 21,
+        "global": 969
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99949,
+        "China": 0.0,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99961,
+        "North America": 0.99997,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99992,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99853,
+        "global": 0.81948
+      },
+      "counts": {
+        "Africa": 10,
+        "China": 0,
+        "Eastern Asia": 16,
+        "Europe": 418,
+        "North America": 406,
+        "Oceania": 9,
+        "South America": 69,
+        "South-eastern Asia": 25,
+        "Southern Asia": 15,
+        "Western Asia": 14,
+        "global": 982
+      },
+      "date": "2022-10-19",
+      "ranges": {
+        "Africa": [
+          0.87642,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0508
+        ],
+        "Eastern Asia": [
+          0.88838,
+          1.0
+        ],
+        "Europe": [
+          0.92812,
+          1.0
+        ],
+        "North America": [
+          0.94491,
+          1.0
+        ],
+        "Oceania": [
+          0.89004,
+          1.0
+        ],
+        "South America": [
+          0.91965,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.88826,
+          1.0
+        ],
+        "Southern Asia": [
+          0.87476,
+          1.0
+        ],
+        "Western Asia": [
+          0.87624,
+          1.0
+        ],
+        "global": [
+          0.71792,
+          0.92105
+        ]
+      },
+      "totals": {
+        "Africa": 10,
+        "China": 35,
+        "Eastern Asia": 16,
+        "Europe": 418,
+        "North America": 406,
+        "Oceania": 9,
+        "South America": 69,
+        "South-eastern Asia": 25,
+        "Southern Asia": 15,
+        "Western Asia": 14,
+        "global": 1017
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9995,
+        "China": 0.0032,
+        "Eastern Asia": 1.0,
+        "Europe": 0.9905,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99992,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99892,
+        "global": 0.81921
+      },
+      "counts": {
+        "Africa": 15,
+        "China": 0,
+        "Eastern Asia": 36,
+        "Europe": 618,
+        "North America": 736,
+        "Oceania": 6,
+        "South America": 58,
+        "South-eastern Asia": 45,
+        "Southern Asia": 10,
+        "Western Asia": 19,
+        "global": 1543
+      },
+      "date": "2022-11-02",
+      "ranges": {
+        "Africa": [
+          0.87009,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0606
+        ],
+        "Eastern Asia": [
+          0.89936,
+          1.0
+        ],
+        "Europe": [
+          0.92412,
+          1.0
+        ],
+        "North America": [
+          0.94882,
+          1.0
+        ],
+        "Oceania": [
+          0.88901,
+          1.0
+        ],
+        "South America": [
+          0.91824,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.88923,
+          1.0
+        ],
+        "Southern Asia": [
+          0.86799,
+          1.0
+        ],
+        "Western Asia": [
+          0.87784,
+          1.0
+        ],
+        "global": [
+          0.71446,
+          0.92396
+        ]
+      },
+      "totals": {
+        "Africa": 15,
+        "China": 24,
+        "Eastern Asia": 36,
+        "Europe": 626,
+        "North America": 736,
+        "Oceania": 6,
+        "South America": 58,
+        "South-eastern Asia": 45,
+        "Southern Asia": 10,
+        "Western Asia": 19,
+        "global": 1575
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99959,
+        "China": 0.0139,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99752,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99992,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.9993,
+        "global": 0.82184
+      },
+      "counts": {
+        "Africa": 10,
+        "China": 0,
+        "Eastern Asia": 19,
+        "Europe": 967,
+        "North America": 851,
+        "Oceania": 8,
+        "South America": 80,
+        "South-eastern Asia": 28,
+        "Southern Asia": 6,
+        "Western Asia": 40,
+        "global": 2009
+      },
+      "date": "2022-11-16",
+      "ranges": {
+        "Africa": [
+          0.86469,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.0701
+        ],
+        "Eastern Asia": [
+          0.89977,
+          1.0
+        ],
+        "Europe": [
+          0.93786,
+          1.0
+        ],
+        "North America": [
+          0.94488,
+          1.0
+        ],
+        "Oceania": [
+          0.89239,
+          1.0
+        ],
+        "South America": [
+          0.91795,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.88459,
+          1.0
+        ],
+        "Southern Asia": [
+          0.86133,
+          1.0
+        ],
+        "Western Asia": [
+          0.88108,
+          1.0
+        ],
+        "global": [
+          0.71388,
+          0.92981
+        ]
+      },
+      "totals": {
+        "Africa": 10,
+        "China": 29,
+        "Eastern Asia": 19,
+        "Europe": 970,
+        "North America": 851,
+        "Oceania": 8,
+        "South America": 80,
+        "South-eastern Asia": 28,
+        "Southern Asia": 6,
+        "Western Asia": 40,
+        "global": 2041
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9996,
+        "China": 0.0518,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99886,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99999,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99941,
+        "global": 0.82882
+      },
+      "counts": {
+        "Africa": 19,
+        "China": 0,
+        "Eastern Asia": 16,
+        "Europe": 1433,
+        "North America": 1264,
+        "Oceania": 17,
+        "South America": 53,
+        "South-eastern Asia": 12,
+        "Southern Asia": 4,
+        "Western Asia": 39,
+        "global": 2857
+      },
+      "date": "2022-11-30",
+      "ranges": {
+        "Africa": [
+          0.86103,
+          1.0
+        ],
+        "China": [
+          0.0,
+          0.1153
+        ],
+        "Eastern Asia": [
+          0.90086,
+          1.0
+        ],
+        "Europe": [
+          0.944,
+          1.0
+        ],
+        "North America": [
+          0.94184,
+          1.0
+        ],
+        "Oceania": [
+          0.89903,
+          1.0
+        ],
+        "South America": [
+          0.91358,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.87843,
+          1.0
+        ],
+        "Southern Asia": [
+          0.85527,
+          1.0
+        ],
+        "Western Asia": [
+          0.88069,
+          1.0
+        ],
+        "global": [
+          0.71679,
+          0.94086
+        ]
+      },
+      "totals": {
+        "Africa": 19,
+        "China": 26,
+        "Eastern Asia": 16,
+        "Europe": 1435,
+        "North America": 1264,
+        "Oceania": 17,
+        "South America": 53,
+        "South-eastern Asia": 12,
+        "Southern Asia": 4,
+        "Western Asia": 39,
+        "global": 2885
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.99961,
+        "China": 0.158,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99969,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99999,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.9995,
+        "global": 0.84805
+      },
+      "counts": {
+        "Africa": 11,
+        "China": 0,
+        "Eastern Asia": 12,
+        "Europe": 1809,
+        "North America": 796,
+        "Oceania": 17,
+        "South America": 24,
+        "South-eastern Asia": 9,
+        "Southern Asia": 6,
+        "Western Asia": 23,
+        "global": 2707
+      },
+      "date": "2022-12-14",
+      "ranges": {
+        "Africa": [
+          0.85374,
+          1.0
+        ],
+        "China": [
+          0.0734,
+          0.2426
+        ],
+        "Eastern Asia": [
+          0.90587,
+          1.0
+        ],
+        "Europe": [
+          0.94566,
+          1.0
+        ],
+        "North America": [
+          0.93923,
+          1.0
+        ],
+        "Oceania": [
+          0.90015,
+          1.0
+        ],
+        "South America": [
+          0.89928,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.87481,
+          1.0
+        ],
+        "Southern Asia": [
+          0.85037,
+          1.0
+        ],
+        "Western Asia": [
+          0.87557,
+          1.0
+        ],
+        "global": [
+          0.72928,
+          0.96683
+        ]
+      },
+      "totals": {
+        "Africa": 11,
+        "China": 9,
+        "Eastern Asia": 12,
+        "Europe": 1809,
+        "North America": 796,
+        "Oceania": 17,
+        "South America": 24,
+        "South-eastern Asia": 9,
+        "Southern Asia": 6,
+        "Western Asia": 23,
+        "global": 2716
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9997,
+        "China": 0.2839,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99929,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99999,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99951,
+        "global": 0.87073
+      },
+      "counts": {
+        "Africa": 11,
+        "China": 0,
+        "Eastern Asia": 37,
+        "Europe": 909,
+        "North America": 376,
+        "Oceania": 20,
+        "South America": 7,
+        "South-eastern Asia": 2,
+        "Southern Asia": 10,
+        "Western Asia": 18,
+        "global": 1390
+      },
+      "date": "2022-12-28",
+      "ranges": {
+        "Africa": [
+          0.84588,
+          1.0
+        ],
+        "China": [
+          0.1858,
+          0.382
+        ],
+        "Eastern Asia": [
+          0.91552,
+          1.0
+        ],
+        "Europe": [
+          0.9411,
+          1.0
+        ],
+        "North America": [
+          0.93666,
+          1.0
+        ],
+        "Oceania": [
+          0.89917,
+          1.0
+        ],
+        "South America": [
+          0.88227,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.87287,
+          1.0
+        ],
+        "Southern Asia": [
+          0.84616,
+          1.0
+        ],
+        "Western Asia": [
+          0.86824,
+          1.0
+        ],
+        "global": [
+          0.74568,
+          0.99578
+        ]
+      },
+      "totals": {
+        "Africa": 11,
+        "China": 5,
+        "Eastern Asia": 37,
+        "Europe": 910,
+        "North America": 376,
+        "Oceania": 20,
+        "South America": 7,
+        "South-eastern Asia": 2,
+        "Southern Asia": 10,
+        "Western Asia": 18,
+        "global": 1396
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9997,
+        "China": 0.4193,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99968,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99999,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.9995,
+        "global": 0.89519
+      },
+      "counts": {
+        "Africa": 0,
+        "China": 2,
+        "Eastern Asia": 29,
+        "Europe": 355,
+        "North America": 173,
+        "Oceania": 10,
+        "South America": 4,
+        "South-eastern Asia": 13,
+        "Southern Asia": 7,
+        "Western Asia": 2,
+        "global": 595
+      },
+      "date": "2023-01-11",
+      "ranges": {
+        "Africa": [
+          0.8366,
+          1.0
+        ],
+        "China": [
+          0.314,
+          0.5246
+        ],
+        "Eastern Asia": [
+          0.91709,
+          1.0
+        ],
+        "Europe": [
+          0.93398,
+          1.0
+        ],
+        "North America": [
+          0.93286,
+          1.0
+        ],
+        "Oceania": [
+          0.88762,
+          1.0
+        ],
+        "South America": [
+          0.86741,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.87453,
+          1.0
+        ],
+        "Southern Asia": [
+          0.83827,
+          1.0
+        ],
+        "Western Asia": [
+          0.85689,
+          1.0
+        ],
+        "global": [
+          0.76296,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "China": 3,
+        "Eastern Asia": 29,
+        "Europe": 355,
+        "North America": 173,
+        "Oceania": 10,
+        "South America": 4,
+        "South-eastern Asia": 13,
+        "Southern Asia": 7,
+        "Western Asia": 2,
+        "global": 596
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9997,
+        "China": 0.5537,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99972,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 0.99999,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99951,
+        "global": 0.91942
+      },
+      "counts": {
+        "Africa": 0,
+        "China": 2,
+        "Eastern Asia": 46,
+        "Europe": 348,
+        "North America": 90,
+        "Oceania": 3,
+        "South America": 0,
+        "South-eastern Asia": 14,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 503
+      },
+      "date": "2023-01-25",
+      "ranges": {
+        "Africa": [
+          0.82773,
+          1.0
+        ],
+        "China": [
+          0.4469,
+          0.6605
+        ],
+        "Eastern Asia": [
+          0.92093,
+          1.0
+        ],
+        "Europe": [
+          0.92894,
+          1.0
+        ],
+        "North America": [
+          0.92793,
+          1.0
+        ],
+        "Oceania": [
+          0.87562,
+          1.0
+        ],
+        "South America": [
+          0.85432,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.87543,
+          1.0
+        ],
+        "Southern Asia": [
+          0.82969,
+          1.0
+        ],
+        "Western Asia": [
+          0.84612,
+          1.0
+        ],
+        "global": [
+          0.7808,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "China": 6,
+        "Eastern Asia": 46,
+        "Europe": 348,
+        "North America": 90,
+        "Oceania": 3,
+        "South America": 0,
+        "South-eastern Asia": 14,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 507
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9997,
+        "China": 0.6979,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99974,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 1.0,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99951,
+        "global": 0.94543
+      },
+      "counts": {
+        "Africa": 1,
+        "China": 16,
+        "Eastern Asia": 35,
+        "Europe": 169,
+        "North America": 56,
+        "Oceania": 4,
+        "South America": 2,
+        "South-eastern Asia": 24,
+        "Southern Asia": 3,
+        "Western Asia": 0,
+        "global": 310
+      },
+      "date": "2023-02-08",
+      "ranges": {
+        "Africa": [
+          0.81909,
+          1.0
+        ],
+        "China": [
+          0.5932,
+          0.8026
+        ],
+        "Eastern Asia": [
+          0.91664,
+          1.0
+        ],
+        "Europe": [
+          0.91893,
+          1.0
+        ],
+        "North America": [
+          0.92122,
+          1.0
+        ],
+        "Oceania": [
+          0.86643,
+          1.0
+        ],
+        "South America": [
+          0.84256,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.87596,
+          1.0
+        ],
+        "Southern Asia": [
+          0.82166,
+          1.0
+        ],
+        "Western Asia": [
+          0.83589,
+          1.0
+        ],
+        "global": [
+          0.80065,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 1,
+        "China": 16,
+        "Eastern Asia": 35,
+        "Europe": 169,
+        "North America": 56,
+        "Oceania": 4,
+        "South America": 2,
+        "South-eastern Asia": 24,
+        "Southern Asia": 3,
+        "Western Asia": 0,
+        "global": 310
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9997,
+        "China": 0.7036,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99976,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 1.0,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99951,
+        "global": 0.94646
+      },
+      "counts": {
+        "Africa": 0,
+        "China": 7,
+        "Eastern Asia": 32,
+        "Europe": 94,
+        "North America": 55,
+        "Oceania": 7,
+        "South America": 1,
+        "South-eastern Asia": 12,
+        "Southern Asia": 2,
+        "Western Asia": 0,
+        "global": 210
+      },
+      "date": "2023-02-22",
+      "ranges": {
+        "Africa": [
+          0.81057,
+          1.0
+        ],
+        "China": [
+          0.5834,
+          0.8238
+        ],
+        "Eastern Asia": [
+          0.91186,
+          1.0
+        ],
+        "Europe": [
+          0.90787,
+          1.0
+        ],
+        "North America": [
+          0.91771,
+          1.0
+        ],
+        "Oceania": [
+          0.85866,
+          1.0
+        ],
+        "South America": [
+          0.83149,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.86671,
+          1.0
+        ],
+        "Southern Asia": [
+          0.81396,
+          1.0
+        ],
+        "Western Asia": [
+          0.82599,
+          1.0
+        ],
+        "global": [
+          0.79264,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "China": 8,
+        "Eastern Asia": 32,
+        "Europe": 94,
+        "North America": 55,
+        "Oceania": 7,
+        "South America": 1,
+        "South-eastern Asia": 12,
+        "Southern Asia": 2,
+        "Western Asia": 0,
+        "global": 211
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9997,
+        "China": 0.6969,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99978,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 1.0,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99951,
+        "global": 0.94525
+      },
+      "counts": {
+        "Africa": 0,
+        "China": 0,
+        "Eastern Asia": 21,
+        "Europe": 43,
+        "North America": 30,
+        "Oceania": 7,
+        "South America": 1,
+        "South-eastern Asia": 6,
+        "Southern Asia": 7,
+        "Western Asia": 0,
+        "global": 115
+      },
+      "date": "2023-03-08",
+      "ranges": {
+        "Africa": [
+          0.80223,
+          1.0
+        ],
+        "China": [
+          0.5601,
+          0.8337
+        ],
+        "Eastern Asia": [
+          0.90354,
+          1.0
+        ],
+        "Europe": [
+          0.89368,
+          1.0
+        ],
+        "North America": [
+          0.90663,
+          1.0
+        ],
+        "Oceania": [
+          0.84905,
+          1.0
+        ],
+        "South America": [
+          0.82092,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.85488,
+          1.0
+        ],
+        "Southern Asia": [
+          0.80659,
+          1.0
+        ],
+        "Western Asia": [
+          0.81613,
+          1.0
+        ],
+        "global": [
+          0.78148,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "China": 0,
+        "Eastern Asia": 21,
+        "Europe": 43,
+        "North America": 30,
+        "Oceania": 7,
+        "South America": 1,
+        "South-eastern Asia": 6,
+        "Southern Asia": 7,
+        "Western Asia": 0,
+        "global": 115
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9997,
+        "China": 0.6926,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99979,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 1.0,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99951,
+        "global": 0.94448
+      },
+      "counts": {
+        "Africa": 0,
+        "China": 0,
+        "Eastern Asia": 24,
+        "Europe": 17,
+        "North America": 8,
+        "Oceania": 3,
+        "South America": 2,
+        "South-eastern Asia": 0,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 54
+      },
+      "date": "2023-03-22",
+      "ranges": {
+        "Africa": [
+          0.79382,
+          1.0
+        ],
+        "China": [
+          0.5415,
+          0.8437
+        ],
+        "Eastern Asia": [
+          0.89519,
+          1.0
+        ],
+        "Europe": [
+          0.87747,
+          1.0
+        ],
+        "North America": [
+          0.88633,
+          1.0
+        ],
+        "Oceania": [
+          0.83657,
+          1.0
+        ],
+        "South America": [
+          0.81071,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.84247,
+          1.0
+        ],
+        "Southern Asia": [
+          0.79711,
+          1.0
+        ],
+        "Western Asia": [
+          0.80638,
+          1.0
+        ],
+        "global": [
+          0.76972,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "China": 0,
+        "Eastern Asia": 24,
+        "Europe": 17,
+        "North America": 8,
+        "Oceania": 3,
+        "South America": 2,
+        "South-eastern Asia": 0,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 54
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9997,
+        "China": 0.6904,
+        "Eastern Asia": 1.0,
+        "Europe": 0.9998,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 1.0,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99951,
+        "global": 0.94408
+      },
+      "counts": {
+        "Africa": 3,
+        "China": 0,
+        "Eastern Asia": 14,
+        "Europe": 8,
+        "North America": 6,
+        "Oceania": 0,
+        "South America": 1,
+        "South-eastern Asia": 0,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 32
+      },
+      "date": "2023-04-05",
+      "ranges": {
+        "Africa": [
+          0.78522,
+          1.0
+        ],
+        "China": [
+          0.5264,
+          0.8544
+        ],
+        "Eastern Asia": [
+          0.88079,
+          1.0
+        ],
+        "Europe": [
+          0.86148,
+          1.0
+        ],
+        "North America": [
+          0.86874,
+          1.0
+        ],
+        "Oceania": [
+          0.8241,
+          1.0
+        ],
+        "South America": [
+          0.80033,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.83032,
+          1.0
+        ],
+        "Southern Asia": [
+          0.78758,
+          1.0
+        ],
+        "Western Asia": [
+          0.79654,
+          1.0
+        ],
+        "global": [
+          0.75838,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 3,
+        "China": 0,
+        "Eastern Asia": 14,
+        "Europe": 8,
+        "North America": 6,
+        "Oceania": 0,
+        "South America": 1,
+        "South-eastern Asia": 0,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 32
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9997,
+        "China": 0.6903,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99981,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 1.0,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99951,
+        "global": 0.94406
+      },
+      "counts": {
+        "Africa": 1,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 0,
+        "North America": 1,
+        "Oceania": 0,
+        "South America": 1,
+        "South-eastern Asia": 0,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 3
+      },
+      "date": "2023-04-19",
+      "ranges": {
+        "Africa": [
+          0.77579,
+          1.0
+        ],
+        "China": [
+          0.5143,
+          0.8663
+        ],
+        "Eastern Asia": [
+          0.86226,
+          1.0
+        ],
+        "Europe": [
+          0.846,
+          1.0
+        ],
+        "North America": [
+          0.85196,
+          1.0
+        ],
+        "Oceania": [
+          0.81199,
+          1.0
+        ],
+        "South America": [
+          0.78989,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.81823,
+          1.0
+        ],
+        "Southern Asia": [
+          0.77786,
+          1.0
+        ],
+        "Western Asia": [
+          0.78651,
+          1.0
+        ],
+        "global": [
+          0.74721,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 1,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 0,
+        "North America": 1,
+        "Oceania": 0,
+        "South America": 1,
+        "South-eastern Asia": 0,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 3
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9997,
+        "China": 0.6923,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99981,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 1.0,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99951,
+        "global": 0.94442
+      },
+      "counts": {
+        "Africa": 0,
+        "China": 4,
+        "Eastern Asia": 0,
+        "Europe": 1,
+        "North America": 0,
+        "Oceania": 0,
+        "South America": 0,
+        "South-eastern Asia": 0,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 5
+      },
+      "date": "2023-05-03",
+      "ranges": {
+        "Africa": [
+          0.76579,
+          1.0
+        ],
+        "China": [
+          0.5047,
+          0.8799
+        ],
+        "Eastern Asia": [
+          0.84546,
+          1.0
+        ],
+        "Europe": [
+          0.83126,
+          1.0
+        ],
+        "North America": [
+          0.83637,
+          1.0
+        ],
+        "Oceania": [
+          0.79988,
+          1.0
+        ],
+        "South America": [
+          0.77915,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.80602,
+          1.0
+        ],
+        "Southern Asia": [
+          0.76779,
+          1.0
+        ],
+        "Western Asia": [
+          0.77609,
+          1.0
+        ],
+        "global": [
+          0.7363,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "China": 4,
+        "Eastern Asia": 0,
+        "Europe": 1,
+        "North America": 0,
+        "Oceania": 0,
+        "South America": 0,
+        "South-eastern Asia": 0,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 5
+      }
+    },
+    {
+      "avgs": {
+        "Africa": 0.9997,
+        "China": 0.6903,
+        "Eastern Asia": 1.0,
+        "Europe": 0.99982,
+        "North America": 1.0,
+        "Oceania": 1.0,
+        "South America": 1.0,
+        "South-eastern Asia": 1.0,
+        "Southern Asia": 1.0,
+        "Western Asia": 0.99951,
+        "global": 0.94406
+      },
+      "counts": {
+        "Africa": 0,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 1,
+        "North America": 0,
+        "Oceania": 0,
+        "South America": 0,
+        "South-eastern Asia": 0,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 1
+      },
+      "date": "2023-05-17",
+      "ranges": {
+        "Africa": [
+          0.75538,
+          1.0
+        ],
+        "China": [
+          0.4894,
+          0.8912
+        ],
+        "Eastern Asia": [
+          0.82949,
+          1.0
+        ],
+        "Europe": [
+          0.81673,
+          1.0
+        ],
+        "North America": [
+          0.82129,
+          1.0
+        ],
+        "Oceania": [
+          0.78755,
+          1.0
+        ],
+        "South America": [
+          0.76802,
+          1.0
+        ],
+        "South-eastern Asia": [
+          0.79348,
+          1.0
+        ],
+        "Southern Asia": [
+          0.75722,
+          1.0
+        ],
+        "Western Asia": [
+          0.76517,
+          1.0
+        ],
+        "global": [
+          0.72411,
+          1.0
+        ]
+      },
+      "totals": {
+        "Africa": 0,
+        "China": 0,
+        "Eastern Asia": 0,
+        "Europe": 1,
+        "North America": 0,
+        "Oceania": 0,
+        "South America": 0,
+        "South-eastern Asia": 0,
+        "Southern Asia": 0,
+        "Western Asia": 0,
+        "global": 1
+      }
+    }
+  ],
+  "variant": "2*"
+}

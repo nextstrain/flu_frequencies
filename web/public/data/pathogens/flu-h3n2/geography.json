@@ -1,258 +1,75 @@
 {
-  "countries": [
-    "Slovenia",
-    "Portugal",
-    "Denmark",
-    "Sweden",
-    "Chile",
-    "New Zealand",
-    "Russia",
-    "Norway",
-    "Lebanon",
-    "Poland",
-    "China(PRC)",
-    "United Kingdom",
-    "France",
-    "Belgium",
-    "Singapore",
-    "Ukraine",
-    "Usa",
-    "Germany",
-    "Thailand",
-    "Austria",
-    "Switzerland",
-    "Italy",
-    "Canada",
-    "Brazil",
-    "Netherlands",
-    "Argentina",
-    "Romania",
-    "Australia",
-    "Togo",
-    "Spain"
-  ],
+  "countries": [],
   "geography": {
-    "Africa": [
-      "Togo"
-    ],
-    "China": [
-      "China(PRC)"
-    ],
-    "Europe": [
-      "Slovenia",
-      "Portugal",
-      "Denmark",
-      "Ukraine",
-      "Sweden",
-      "Germany",
-      "Russia",
-      "Austria",
-      "Switzerland",
-      "Italy",
-      "Norway",
-      "Netherlands",
-      "Poland",
-      "Romania",
-      "United Kingdom",
-      "France",
-      "Spain",
-      "Belgium"
-    ],
-    "Japan Korea": [],
-    "North America": [
-      "Usa",
-      "Canada"
-    ],
-    "Oceania": [
-      "Australia",
-      "New Zealand"
-    ],
-    "South America": [
-      "Brazil",
-      "Argentina",
-      "Chile"
-    ],
-    "South Asia": [],
-    "Southeast Asia": [
-      "Thailand",
-      "Singapore"
-    ],
-    "West Asia": [
-      "Lebanon"
-    ]
+    "Africa": [],
+    "China": [],
+    "Eastern Asia": [],
+    "Europe": [],
+    "North America": [],
+    "Oceania": [],
+    "South America": [],
+    "South-eastern Asia": [],
+    "Southern Asia": [],
+    "Western Asia": [],
+    "global": []
   },
   "geographyStyles": {
     "Africa": {
       "color": "#6d931f",
       "lineStyle": "normal"
     },
-    "Argentina": {
-      "color": "#a479d2",
-      "lineStyle": "normal"
-    },
-    "Australia": {
-      "color": "#83862d",
-      "lineStyle": "normal"
-    },
-    "Austria": {
-      "color": "#6ce0a4",
-      "lineStyle": "normal"
-    },
-    "Belgium": {
-      "color": "#d2b12d",
-      "lineStyle": "normal"
-    },
-    "Brazil": {
-      "color": "#6ce0c5",
-      "lineStyle": "normal"
-    },
-    "Canada": {
-      "color": "#d279be",
-      "lineStyle": "normal"
-    },
-    "Chile": {
-      "color": "#862d3a",
-      "lineStyle": "normal"
-    },
     "China": {
       "color": "#79d2a0",
       "lineStyle": "normal"
     },
-    "China(PRC)": {
-      "color": "#783a44",
-      "lineStyle": "normal"
-    },
-    "Denmark": {
-      "color": "#5354ac",
+    "Eastern Asia": {
+      "color": "#78483a",
       "lineStyle": "normal"
     },
     "Europe": {
       "color": "#d279b3",
       "lineStyle": "normal"
     },
-    "France": {
-      "color": "#a640bf",
-      "lineStyle": "normal"
-    },
-    "Germany": {
-      "color": "#862d4f",
-      "lineStyle": "normal"
-    },
-    "Italy": {
-      "color": "#a6d279",
-      "lineStyle": "normal"
-    },
-    "Japan Korea": {
-      "color": "#bf7b40",
-      "lineStyle": "normal"
-    },
-    "Lebanon": {
-      "color": "#37862d",
-      "lineStyle": "normal"
-    },
-    "Netherlands": {
-      "color": "#3a7853",
-      "lineStyle": "normal"
-    },
-    "New Zealand": {
-      "color": "#ac53ac",
-      "lineStyle": "normal"
-    },
     "North America": {
       "color": "#4048bf",
-      "lineStyle": "normal"
-    },
-    "Norway": {
-      "color": "#1f5793",
       "lineStyle": "normal"
     },
     "Oceania": {
       "color": "#723a78",
       "lineStyle": "normal"
     },
-    "Poland": {
-      "color": "#48d22d",
-      "lineStyle": "normal"
-    },
-    "Portugal": {
-      "color": "#93ac53",
-      "lineStyle": "normal"
-    },
-    "Romania": {
-      "color": "#ac5394",
-      "lineStyle": "normal"
-    },
-    "Russia": {
-      "color": "#6ce0bb",
-      "lineStyle": "normal"
-    },
-    "Singapore": {
-      "color": "#ac79d2",
-      "lineStyle": "normal"
-    },
-    "Slovenia": {
-      "color": "#2da1d2",
-      "lineStyle": "normal"
-    },
     "South America": {
       "color": "#612dd2",
       "lineStyle": "normal"
     },
-    "South Asia": {
-      "color": "#ac5371",
+    "South-eastern Asia": {
+      "color": "#a6e06c",
       "lineStyle": "normal"
     },
-    "Southeast Asia": {
-      "color": "#6cbfe0",
+    "Southern Asia": {
+      "color": "#7987d2",
       "lineStyle": "normal"
     },
-    "Spain": {
-      "color": "#934e1f",
+    "Western Asia": {
+      "color": "#a66ce0",
       "lineStyle": "normal"
     },
-    "Sweden": {
-      "color": "#89e06c",
-      "lineStyle": "normal"
-    },
-    "Switzerland": {
-      "color": "#5353ac",
-      "lineStyle": "normal"
-    },
-    "Thailand": {
-      "color": "#53aca9",
-      "lineStyle": "normal"
-    },
-    "Togo": {
-      "color": "#87aac5",
-      "lineStyle": "normal"
-    },
-    "Ukraine": {
-      "color": "#bfaa40",
-      "lineStyle": "normal"
-    },
-    "United Kingdom": {
-      "color": "#3a6d78",
-      "lineStyle": "normal"
-    },
-    "Usa": {
-      "color": "#ac536c",
-      "lineStyle": "normal"
-    },
-    "West Asia": {
-      "color": "#e06cb5",
+    "global": {
+      "color": "#c487c5",
       "lineStyle": "normal"
     }
   },
   "regions": [
     "South America",
-    "Japan Korea",
-    "Southeast Asia",
-    "China",
-    "South Asia",
-    "North America",
-    "West Asia",
     "Oceania",
+    "Western Asia",
     "Africa",
-    "Europe"
+    "North America",
+    "Eastern Asia",
+    "Southern Asia",
+    "South-eastern Asia",
+    "China",
+    "Europe",
+    "global"
   ]
 }

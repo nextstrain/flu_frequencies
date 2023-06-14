@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2023-02-22T18:50:33Z",
+  "lastUpdate": "2023-06-14T15:18:31Z",
   "pathogens": [
     {
       "color": "#33931f",
@@ -10,11 +10,11 @@
       },
       "isEnabled": true,
       "isVisible": true,
-      "maxDate": "2023-01-25",
+      "maxDate": "2023-05-17",
       "minDate": "2021-12-01",
-      "nCountries": 30,
-      "nRegions": 10,
-      "nVariants": 17,
+      "nCountries": 0,
+      "nRegions": 11,
+      "nVariants": 24,
       "name": "flu-h3n2",
       "nameFriendly": "Influenza H3N2"
     },
@@ -42,13 +42,13 @@
         "file": "pathogens/sars-cov-2/image.png",
         "source": "https://www.cdc.gov/media/subtopic/images.htm"
       },
-      "isEnabled": false,
+      "isEnabled": true,
       "isVisible": true,
-      "maxDate": "",
-      "minDate": "",
+      "maxDate": "2023-05-20",
+      "minDate": "2020-02-01",
       "nCountries": 0,
-      "nRegions": 0,
-      "nVariants": 0,
+      "nRegions": 10,
+      "nVariants": 34,
       "name": "sars-cov-2",
       "nameFriendly": "SARS-CoV-2"
     },

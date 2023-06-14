@@ -11,7 +11,7 @@ if __name__=='__main__':
     parser.add_argument("--output", type=str, help="mask containing `{cat}` to plot")
 
     args = parser.parse_args()
-    d = pl.read_csv(args.frequencies, try_parse_dates=True)
+    d = pl.read_csv(args.frequencies, try_parse_dates=True, infer_schema_length=1_000_000)
     clades = sorted(d['variant'].unique())
     region = args.region.replace('_', ' ')
     d = d.filter(pl.col('region')==region)
