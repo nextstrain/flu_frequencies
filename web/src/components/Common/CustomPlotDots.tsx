@@ -83,7 +83,7 @@ export function CustomizedActiveDot(props: CustomizedDotProps & { shouldShowDots
           stroke={fill}
           strokeWidth={1.5 * CIRCLE_LINEWIDTH}
           fill="#ffffff00"
-          r={1 + AREA_FACTOR * Math.sqrt(counts[name])}
+          r={AREA_FACTOR * Math.sqrt(totals[name])}
         />
       )}
       <line
