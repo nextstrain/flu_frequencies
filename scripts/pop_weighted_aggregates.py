@@ -224,7 +224,12 @@ def main(
     """
 
     # Filter out unknown regions
-    fit_results = pl.read_csv(_fit_results).filter(c("region") != "?")
+    fit_results = pl.read_csv(
+        _fit_results,
+        dtypes={
+            "variant": pl.Utf8,
+        }
+    ).filter(c("region") != "?")
     country_to_population = read_tsv(_country_to_population).select(
         country=c("iso3"), population=c("population")
     )
