@@ -1,16 +1,16 @@
 # Everything here is available through the `config` dict in the Snakefile
 
-min_date: "2015-12-01"
+min_date: "2022-07-01"
 regions:
   - "North America"
   - "Europe"
   - "Japan Korea"
   - "Africa"
-  - "West Asia"
+  - "Western Asia"
   - "Oceania"
   - "South America"
-  - "South Asia"
-  - "Southeast Asia"
+  - "Southern Asia"
+  - "South-eastern Asia"
 
 # For parse
 fasta_fields:
