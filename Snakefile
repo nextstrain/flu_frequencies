@@ -17,6 +17,8 @@ rule europe:
             "plots/h1n1pdm_ha/region-clades.png",
             "plots/h1n1pdm_na/region-clades.png",
             "plots/vic_ha/region-clades.png",
+            "plots/vic_ha/region_mut-HA1:E183.png",
+            "plots/vic_ha/region_mut-HA1:N197.png",
             "plots/vic_na/region-clades.png",
         ],
         # "plots/h3n2/Region_Europe.png",
@@ -298,17 +300,20 @@ rule multi_region_plot_clades:
             "Europe",
             "North_America",
             "South_America",
+            "Oceania",
+            "Western_Asia",
             "Southern_Asia",
             "South-eastern_Asia",
-            "Western_Asia",
-            "Oceania",
+            "Eastern_Asia",
+            "China",
         ],
-        max_freq=0.2,
-        title = "{lineage}-{segment}"
+        max_freq=0.1,
+        title = "{lineage}-{segment}",
+        auspice_config = "/home/richard/Projects/influenza/seasonal-flu/profiles/nextflu-private/{lineage}/{segment}/auspice_config.json"
     shell:
         """
         python3 scripts/plot_multi-region.py --title {params.title} --frequencies {input.freqs}  \
-                --regions {params.regions}  --max-freq {params.max_freq} \
+                --regions {params.regions}  --max-freq {params.max_freq} --auspice-config {params.auspice_config} \
                 --output {output.plot}
         """
 
@@ -324,10 +329,12 @@ rule multi_region_plot_mutation:
             "Europe",
             "North_America",
             "South_America",
+            "Oceania",
+            "Western_Asia",
             "Southern_Asia",
             "South-eastern_Asia",
-            "Western_Asia",
-            "Oceania",
+            "Eastern_Asia",
+            "China",
         ],
         max_freq=0.2,
         title = "{lineage}-{segment}"

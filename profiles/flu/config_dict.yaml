@@ -1,6 +1,6 @@
 # Everything here is available through the `config` dict in the Snakefile
 
-min_date: "2022-07-01"
+min_date: "2022-01-01"
 regions:
   - "North America"
   - "Europe"

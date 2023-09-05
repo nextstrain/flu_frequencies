@@ -23,7 +23,7 @@ if __name__=='__main__':
 
         if "colorings" in auspice_config:
             for coloring in auspice_config["colorings"]:
-                if coloring["key"] == "clade_membership":
+                if coloring["key"] == "subclade":
                     if "scale" in coloring:
                         print(f"Using color map defined in {args.auspice_config}")
                         color_map = {
@@ -72,10 +72,13 @@ if __name__=='__main__':
                                 subset["freqUp"], color=clade_color, alpha=0.2)
             else:
                 ax.plot(all_dates[:2], [0,0],m, label=clade, c=clade_color)
+            if ri==len(regions)-1 and len(regions)%2:
+                axs[-1,-1].plot(all_dates[:2], [0,0], '-'+m, label=clade, c=clade_color)
+
         ax.plot(all_dates, np.ones(len(all_dates)), c='k', alpha=0.5)
         ax.text(all_dates[len(all_dates)//2], 1.1, region)
         ax.set_ylim(0,1.2)
     fig.autofmt_xdate()
-    axs[0,0].legend(loc=3, ncol=2)
+    axs[-1,-1].legend(loc=3, ncol=2)
     plt.tight_layout()
     plt.savefig(args.output)
