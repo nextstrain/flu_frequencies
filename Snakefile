@@ -1,5 +1,6 @@
 regions = config["regions"]
 min_date = config["min_date"]
+flu_repo = config.get("flu_repo", "/home/richard/Projects/influenza/seasonal-flu")
 
 wildcard_constraints:
     segment="ha|na"
@@ -309,7 +310,7 @@ rule multi_region_plot_clades:
         ],
         max_freq=0.1,
         title = "{lineage}-{segment}",
-        auspice_config = "/home/richard/Projects/influenza/seasonal-flu/profiles/nextflu-private/{lineage}/{segment}/auspice_config.json"
+        auspice_config = "{flu_repo}/profiles/nextflu-private/{lineage}/{segment}/auspice_config.json"
     shell:
         """
         python3 scripts/plot_multi-region.py --title {params.title} --frequencies {input.freqs}  \
