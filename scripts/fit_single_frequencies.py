@@ -152,7 +152,7 @@ if __name__=='__main__':
                 return a[0] if len(a) else 'WT'
             else:
                 return 'WT'
-        d = d.with_columns([d["aaSubstitutions",:].apply(extract_mut).alias("mutation")])
+        d = d.with_columns([d["aaSubstitutions",:].map_elements(extract_mut).alias("mutation")])
 
         print(d["mutation"].value_counts())
         freq_cat = "mutation"
@@ -187,6 +187,3 @@ if __name__=='__main__':
                                     'count':int, 'total':int,
                                     'freqMi':float, 'freqLo':float, 'freqUp':float})
     df.write_csv(args.output_csv, float_precision=4)
-
-
-
