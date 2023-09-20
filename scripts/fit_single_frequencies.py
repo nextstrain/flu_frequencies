@@ -41,19 +41,19 @@ def load_and_aggregate(data, geo_categories, freq_category, min_date="2021-01-01
 
     start_date = datetime.strptime(min_date, "%Y-%m-%d").toordinal()
     d = d.filter((~pl.col('date').is_null())&(~pl.col(freq_category).is_null()))
-    d = d.with_columns([pl.col('date').apply(lambda x: to_day_count(x, start_date)).alias("day_count")])
+    d = d.with_columns([pl.col('date').map_elements(lambda x: to_day_count(x, start_date)).alias("day_count")])
     d = d.filter(pl.col("day_count")>=0)
     d = d.with_columns([(pl.col('day_count')//bin_size).alias("time_bin")])
 
     totals = dict()
-    for row in d.groupby(by=geo_categories + ["time_bin"]).count().iter_rows():
+    for row in d.group_by(by=geo_categories + ["time_bin"]).count().iter_rows():
         totals[row[:-1]] = row[-1]
 
     fcats = d[freq_category].unique()
     counts = {}
     for fcat in fcats:
         tmp = {}
-        for row in d.filter(pl.col(freq_category)==fcat).groupby(by=geo_categories + ["time_bin"]).count().iter_rows():
+        for row in d.filter(pl.col(freq_category)==fcat).group_by(by=geo_categories + ["time_bin"]).count().iter_rows():
             tmp[row[:-1]] = row[-1]
         counts[fcat] = tmp
 
