@@ -264,12 +264,18 @@ rule multi_region_plot_clades:
     output:
         plot="plots/{lineage}/region-clades.png",
     params:
+        clades_argument=lambda wildcards: f"--clades {' '.join(config['clades_to_plot'][wildcards.lineage])}" if config.get("clades_to_plot", {}).get(wildcards.lineage) else "",
+        auspice_config_argument=lambda wildcards: f"--auspice-config {config['auspice_config'][wildcards.lineage]}" if config.get("auspice_config", {}).get(wildcards.lineage) else "",
+        coloring_field_argument=lambda wildcards: f"--coloring-field {config['coloring_field']}" if config.get("coloring_field") else "",
         regions=regions,
         max_freq=0.2,
     shell:
         """
         python3 scripts/plot_multi-region.py --frequencies {input.freqs}  \
                 --regions {params.regions:q}  --max-freq {params.max_freq} \
+                {params.clades_argument} \
+                {params.auspice_config_argument} \
+                {params.coloring_field_argument} \
                 --output {output.plot}
         """
 
