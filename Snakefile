@@ -29,36 +29,23 @@ rule europe:
 
 rule download_sequences:
     output:
-        sequences="data/{lineage}/raw_ha.fasta",
+        sequences="data/{lineage}/ha.fasta",
     params:
-        s3_path="s3://nextstrain-data-private/files/workflows/seasonal-flu/{lineage}/ha/raw_sequences.fasta.xz",
+        s3_path="s3://nextstrain-data-private/files/workflows/seasonal-flu/{lineage}/ha/sequences.fasta.xz",
     shell:
         """
         aws s3 cp {params.s3_path} - | xz -c -d > {output.sequences}
         """
 
 
-rule parse:
-    """
-    Parsing fasta into sequences and metadata
-    TODO: Download results directly once https://github.com/nextstrain/seasonal-flu/issues/107 is resolved
-    """
-    input:
-        sequences="data/{lineage}/raw_ha.fasta",
+rule download_metadata:
     output:
-        sequences="data/{lineage}/ha.fasta",
         metadata="data/{lineage}/metadata_raw.tsv",
     params:
-        fasta_fields=config["fasta_fields"],
-        prettify_fields=config["prettify_fields"],
+        s3_path="s3://nextstrain-data-private/files/workflows/seasonal-flu/{lineage}/metadata.tsv.xz",
     shell:
         """
-        augur parse \
-            --sequences {input.sequences} \
-            --output-sequences {output.sequences} \
-            --output-metadata {output.metadata} \
-            --fields {params.fasta_fields} \
-            --prettify-fields {params.prettify_fields}
+        aws s3 cp {params.s3_path} - | xz -c -d > {output.metadata}
         """
 
 
