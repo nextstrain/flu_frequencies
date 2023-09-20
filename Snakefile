@@ -140,11 +140,12 @@ rule estimate_region_mutation_frequencies:
         output_csv="results/{lineage}/mutation_{mutation}-frequencies.csv",
     params:
         min_date=min_date,
+        geo_categories=config.get("geo_categories", "continent"),
     shell:
         """
         python scripts/fit_single_frequencies.py \
             --metadata {input} \
-            --geo-categories continent \
+            --geo-categories {params.geo_categories} \
             --frequency-category mutation-{wildcards.mutation} \
             --min-date {params.min_date} \
             --days 14 \
