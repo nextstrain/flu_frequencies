@@ -270,21 +270,12 @@ rule multi_region_plot_clades:
     output:
         plot="plots/{lineage}/region-clades.png",
     params:
-        regions=[
-            "Africa",
-            "Europe",
-            "North_America",
-            "South_America",
-            "South_Asia",
-            "Southeast_Asia",
-            "West_Asia",
-            "Oceania",
-        ],
+        regions=regions,
         max_freq=0.2,
     shell:
         """
         python3 scripts/plot_multi-region.py --frequencies {input.freqs}  \
-                --regions {params.regions}  --max-freq {params.max_freq} \
+                --regions {params.regions:q}  --max-freq {params.max_freq} \
                 --output {output.plot}
         """
 
@@ -295,20 +286,11 @@ rule multi_region_plot_mutation:
     output:
         plot="plots/{lineage}/region_mut-{mutation}.png",
     params:
-        regions=[
-            "Africa",
-            "Europe",
-            "North_America",
-            "South_America",
-            "South_Asia",
-            "Southeast_Asia",
-            "West_Asia",
-            "Oceania",
-        ],
+        regions=regions,
         max_freq=0.2,
     shell:
         """
-        python3 scripts/plot_multi-region.py --frequencies {input.freqs} --regions {params.regions}  --max-freq {params.max_freq} --output {output.plot}
+        python3 scripts/plot_multi-region.py --frequencies {input.freqs} --regions {params.regions:q}  --max-freq {params.max_freq} --output {output.plot}
         """
 
 
