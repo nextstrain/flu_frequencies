@@ -1,38 +1,24 @@
 # Everything here is available through the `config` dict in the Snakefile
 
-min_date: "2015-12-01"
+min_date: "2022-07-01"
+geo_categories: region
+frequency_category: subclade
+
+nextclade_columns:
+  - "seqName"
+  - "clade"
+  - "subclade"
+  - "short_clade"
+  - "aaSubstitutions"
+
 regions:
-  - "North America"
+  - "Africa"
+  - "China"
   - "Europe"
   - "Japan Korea"
-  - "Africa"
-  - "West Asia"
+  - "North America"
   - "Oceania"
   - "South America"
   - "South Asia"
   - "Southeast Asia"
-
-# For parse
-fasta_fields:
-  - strain
-  - virus
-  - segment
-  - accession
-  - date
-  - date_submitted
-  - region
-  - country
-  - division
-  - location
-  - passage_category
-  - originating_lab
-  - submitting_lab
-  - age
-  - gender
-prettify_fields:
-  - region
-  - country
-  - division
-  - location
-  - originating_lab
-  - submitting_lab
+  - "West Asia"
