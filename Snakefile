@@ -126,12 +126,14 @@ rule estimate_region_frequencies:
         output_csv="results/{lineage}/region-frequencies.csv",
     params:
         min_date=min_date,
+        geo_categories=config.get("geo_categories", "continent"),
+        frequency_category=config.get("frequency_category", "clade"),
     shell:
         """
         python scripts/fit_single_frequencies.py \
             --metadata {input} \
-            --geo-categories continent \
-            --frequency-category clade \
+            --geo-categories {params.geo_categories} \
+            --frequency-category {params.frequency_category} \
             --min-date {params.min_date} \
             --days 14 \
             --inclusive-clades flu \
