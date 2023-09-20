@@ -8,6 +8,7 @@ if __name__=='__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--frequencies", type=str, help="json")
     parser.add_argument("--regions", nargs='+', type=str, help="regions to plot")
+    parser.add_argument("--clades", nargs="+", type=str, help="clades to plot")
     parser.add_argument("--max-freq", type=float, help="plot clades above this frequencies")
     parser.add_argument("--auspice-config", help="Auspice config JSON with custom colorings for clades defined in a scale")
     parser.add_argument("--output", type=str, help="mask containing `{cat}` to plot")
@@ -33,7 +34,12 @@ if __name__=='__main__':
 
 
     d = pl.read_csv(args.frequencies, try_parse_dates=True)
-    clades = sorted(d['variant'].unique())
+
+    if args.clades:
+        clades = args.clades
+    else:
+        clades = sorted(d['variant'].unique())
+
     all_dates = sorted(d['date'].unique())
 
     regions = [x.replace('_', ' ') for x in args.regions]
