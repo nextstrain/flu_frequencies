@@ -8,7 +8,6 @@ nextclade_columns:
   - "seqName"
   - "clade"
   - "subclade"
-  - "short_clade"
   - "aaSubstitutions"
 
 regions:
