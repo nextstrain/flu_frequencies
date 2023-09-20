@@ -101,22 +101,14 @@ rule combined_with_metadata:
         nextclade="data/{lineage}/nextclade.tsv",
         metadata="data/{lineage}/metadata.tsv",
     output:
-        "data/{lineage}/combined.tsv",
+        metadata="data/{lineage}/combined.tsv",
     params:
-        col=lambda w: "clade" if w.lineage == "vic" else "short_clade",
-    run:
-        import pandas as pd
-
-        clades = pd.read_csv(input[0], sep="\t", index_col="seqName")[params.col]
-        aaSubstitutions = pd.read_csv(input[0], sep="\t", index_col="seqName")[
-            "aaSubstitutions"
-        ]
-
-        metadata = pd.read_csv(input[1], sep="\t", index_col="strain")
-        metadata["clade"] = clades
-        metadata["aaSubstitutions"] = aaSubstitutions
-
-        metadata.to_csv(output[0], sep="\t", index=False)
+        nextclade_columns=lambda wildcards: ",".join(config.get("nextclade_columns", ["seqName", "clade", "short_clade", "aaSubstitutions"])),
+    shell:
+        """
+        tsv-select -H -f {params.nextclade_columns} {input.nextclade} \
+            | csvtk join -t --fields "seqName;strain" /dev/stdin {input.metadata} > {output.metadata}
+        """
 
 
 rule estimate_region_frequencies:
