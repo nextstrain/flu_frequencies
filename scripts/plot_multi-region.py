@@ -11,6 +11,7 @@ if __name__=='__main__':
     parser.add_argument("--clades", nargs="+", type=str, help="clades to plot")
     parser.add_argument("--max-freq", type=float, help="plot clades above this frequencies")
     parser.add_argument("--auspice-config", help="Auspice config JSON with custom colorings for clades defined in a scale")
+    parser.add_argument("--coloring-field", default="clade_membership", help="name of the coloring field in the given Auspice config JSON to use for the color scale")
     parser.add_argument("--output", type=str, help="mask containing `{cat}` to plot")
 
     args = parser.parse_args()
@@ -22,7 +23,7 @@ if __name__=='__main__':
 
         if "colorings" in auspice_config:
             for coloring in auspice_config["colorings"]:
-                if coloring["key"] == "clade_membership":
+                if coloring["key"] == args.coloring_field:
                     if "scale" in coloring:
                         print(f"Using color map defined in {args.auspice_config}")
                         color_map = {
