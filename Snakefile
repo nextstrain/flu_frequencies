@@ -324,7 +324,7 @@ rule copy_web:
     input:
         "results/{lineage}_{segment}/continent-country-frequencies.csv"
     output:
-        "data_web/inputs/flu-{lineage}_{segment}.csv"
+        "data_web/inputs/flu-{lineage}-{segment}.csv"
     shell:
         """
         cp {input} {output}
@@ -332,7 +332,7 @@ rule copy_web:
 
 rule prep_web:
     input:
-        expand("data_web/inputs/flu-{lineage}_{segment}.csv",
+        expand("data_web/inputs/flu-{lineage}-{segment}.csv",
              lineage=['h3n2', "h1n1pdm", "vic"], segment=["ha", "na"])
 
 rule clean:
