@@ -35,7 +35,7 @@ export function CustomizedDot(props: CustomizedDotProps) {
 
   const freq = counts[name] / totals[name] // observed frequency
   const cy2 = height * (1 - freq) + y0 // map obs. freq. to plot region
-  const rad = 1 + AREA_FACTOR * Math.sqrt(counts[name]) // scale area to obs. count
+  const rad = AREA_FACTOR * Math.sqrt(totals[name]) // scale area to total counts in time window
 
   return (
     <>
@@ -83,7 +83,7 @@ export function CustomizedActiveDot(props: CustomizedDotProps & { shouldShowDots
           stroke={fill}
           strokeWidth={1.5 * CIRCLE_LINEWIDTH}
           fill="#ffffff00"
-          r={1 + AREA_FACTOR * Math.sqrt(counts[name])}
+          r={AREA_FACTOR * Math.sqrt(totals[name])}
         />
       )}
       <line
