@@ -139,7 +139,7 @@ def weighted_average(df: pl.DataFrame):
         .with_columns(
             freqMi_pop_product=c("freqMi") * c("weight"),
             freqErr_pop_product=(
-                pl.max([c("freqMi") - c("freqLo"), c("freqUp") - c("freqMi")])
+                pl.max_horizontal([c("freqMi") - c("freqLo"), c("freqUp") - c("freqMi")])
                 ** 2
             )
             * c("weight"),
@@ -152,8 +152,8 @@ def weighted_average(df: pl.DataFrame):
         )
         .select(
             ["date", "region", "variant", "freqMi", "region_population"],
-            freqLo=pl.max([c("freqMi") - c("freqErr"), 0]),
-            freqUp=pl.min([c("freqMi") + c("freqErr"), 1]),
+            freqLo=pl.max_horizontal([c("freqMi") - c("freqErr"), 0]),
+            freqUp=pl.min_horizontal([c("freqMi") + c("freqErr"), 1]),
             global_population=(
                 df.unique("region").get_column("region_population").sum()
             ),
@@ -167,7 +167,7 @@ def weighted_average(df: pl.DataFrame):
         .with_columns(
             freqMi_pop_product=c("freqMi") * c("weight"),
             freqErr_pop_product=(
-                pl.max([c("freqMi") - c("freqLo"), c("freqUp") - c("freqMi")])
+                pl.max_horizontal([c("freqMi") - c("freqLo"), c("freqUp") - c("freqMi")])
                 ** 2
             )
             * c("weight"),
@@ -179,8 +179,8 @@ def weighted_average(df: pl.DataFrame):
         )
         .select(
             ["date", "variant", "freqMi"],
-            freqLo=pl.max([c("freqMi") - c("freqErr"), 0]),
-            freqUp=pl.min([c("freqMi") + c("freqErr"), 1]),
+            freqLo=pl.max_horizontal([c("freqMi") - c("freqErr"), 0]),
+            freqUp=pl.min_horizontal([c("freqMi") + c("freqErr"), 1]),
             region=pl.lit("global"),
         )
     )
@@ -224,7 +224,7 @@ def main(
     """
 
     # Filter out unknown regions
-    fit_results = pl.read_csv(_fit_results).filter(c("region") != "?")
+    fit_results = pl.read_csv(_fit_results).filter(c("region") != "?").filter(c("region") != "Unknown")
     country_to_population = read_tsv(_country_to_population).select(
         country=c("iso3"), population=c("population")
     )
@@ -239,8 +239,8 @@ def main(
 
 
     # Calculate weighted average
-    weighted = weighted_average(prepped_data).select(
-        ["region", c("region").alias("country")], pl.exclude("region")
+    weighted = weighted_average(prepped_data).with_columns(
+        c("region").alias("country")
     )
 
     pl.Config.set_tbl_cols(12)
@@ -251,14 +251,13 @@ def main(
         .select(
             ["date", "variant", "count", "total"],
         )
-        .groupby(["date", "variant"])
+        .group_by(["date", "variant"])
         .agg(
             count=c("count").sum(),
             total=c("total").sum(),
             region=pl.lit("global"),
         )
     )
-
     # Join count and total from original data
     df = weighted.join(
         pl.concat(

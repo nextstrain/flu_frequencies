@@ -157,7 +157,7 @@ rule estimate_region_country_frequencies:
     input:
         "data/{lineage}/combined.tsv",
     output:
-        output_csv="results/{lineage}/region-country-frequencies.csv",
+        output_csv="results/{lineage}/continent-country-frequencies.csv",
     params:
         min_date=min_date,
     shell:
@@ -165,7 +165,7 @@ rule estimate_region_country_frequencies:
         python scripts/fit_hierarchical_frequencies.py \
             --metadata {input} \
             --geo-categories continent iso3 \
-            --frequency-category clade \
+            --frequency-category subclade \
             --min-date {params.min_date} \
             --days 14 \
             --inclusive-clades flu \
@@ -175,7 +175,7 @@ rule estimate_region_country_frequencies:
 
 rule population_weighted_region_frequencies:
     input:
-        fit_results="results/{lineage}/region-country-frequencies.csv",
+        fit_results="results/{lineage}/continent-country-frequencies.csv",
         iso3_to_pop="defaults/iso3_to_pop.tsv",
         iso3_to_region="profiles/flu/iso3_to_region.tsv",
     output:
