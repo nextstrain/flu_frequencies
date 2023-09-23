@@ -241,7 +241,7 @@ def main(
     # Calculate weighted average
     weighted = weighted_average(prepped_data).with_columns(
         c("region").alias("country")
-    ).select(pl.exclude('region'))
+    )
 
     pl.Config.set_tbl_cols(12)
 
