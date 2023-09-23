@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2023-09-23T11:45:12Z",
+  "lastUpdate": "2023-09-23T19:59:38Z",
   "pathogens": [
     {
       "color": "#8a931f",
@@ -10,30 +10,13 @@
       },
       "isEnabled": true,
       "isVisible": true,
-      "maxDate": "2023-09-08",
-      "minDate": "2022-07-01",
-      "nCountries": 64,
+      "maxDate": "2023-09-09",
+      "minDate": "2022-01-01",
+      "nCountries": 85,
       "nRegions": 10,
-      "nVariants": 23,
+      "nVariants": 26,
       "name": "flu-h3n2-ha",
       "nameFriendly": "Influenza H3N2 HA"
-    },
-    {
-      "color": "#40bf8a",
-      "image": {
-        "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
-        "file": "pathogens/flu-h1n1pdm-ha/image.png",
-        "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
-      },
-      "isEnabled": true,
-      "isVisible": true,
-      "maxDate": "2023-09-08",
-      "minDate": "2022-07-01",
-      "nCountries": 75,
-      "nRegions": 11,
-      "nVariants": 15,
-      "name": "flu-h1n1pdm-ha",
-      "nameFriendly": "Influenza H1N1pdm HA"
     },
     {
       "color": "#cc79d2",
@@ -44,13 +27,30 @@
       },
       "isEnabled": true,
       "isVisible": true,
-      "maxDate": "2023-09-08",
-      "minDate": "2022-07-01",
-      "nCountries": 61,
+      "maxDate": "2023-09-09",
+      "minDate": "2022-01-01",
+      "nCountries": 81,
       "nRegions": 10,
-      "nVariants": 15,
+      "nVariants": 16,
       "name": "flu-h3n2-na",
       "nameFriendly": "Influenza H3N2 NA"
+    },
+    {
+      "color": "#40bf8a",
+      "image": {
+        "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
+        "file": "pathogens/flu-h1n1pdm-ha/image.png",
+        "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
+      },
+      "isEnabled": true,
+      "isVisible": true,
+      "maxDate": "2023-09-09",
+      "minDate": "2022-01-01",
+      "nCountries": 77,
+      "nRegions": 11,
+      "nVariants": 15,
+      "name": "flu-h1n1pdm-ha",
+      "nameFriendly": "Influenza H1N1pdm HA"
     },
     {
       "color": "#783a4c",
@@ -61,9 +61,9 @@
       },
       "isEnabled": true,
       "isVisible": true,
-      "maxDate": "2023-09-08",
-      "minDate": "2022-07-01",
-      "nCountries": 72,
+      "maxDate": "2023-09-09",
+      "minDate": "2022-01-01",
+      "nCountries": 76,
       "nRegions": 11,
       "nVariants": 28,
       "name": "flu-h1n1pdm-na",
