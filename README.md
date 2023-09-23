@@ -51,7 +51,7 @@ snakemake --profile profiles/flu
 Copy snakemake workflow results to `data_web/inputs`, ensuring that correct filenames are used, e.g.:
 
 ```bash
-cp results/h3n2/region-country-frequencies.csv data_web/inputs/flu-h3n2.csv
+cp results/h3n2/continent-country-frequencies.csv data_web/inputs/flu-h3n2.csv
 ```
 
 Then process the csv files into json:
