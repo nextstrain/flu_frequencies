@@ -1,7 +1,7 @@
 [
   {
-    "name": "flu-h3n2",
-    "nameFriendly": "Influenza H3N2",
+    "name": "flu-h3n2-ha",
+    "nameFriendly": "Influenza H3N2 HA",
     "image": {
       "file": "images/flu.png",
       "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
@@ -11,14 +11,36 @@
     "isVisible": true
   },
   {
-    "name": "flu-h1n1pdm",
-    "nameFriendly": "Influenza H1N1pdm",
+    "name": "flu-h3n2-na",
+    "nameFriendly": "Influenza H3N2 NA",
     "image": {
       "file": "images/flu.png",
       "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
       "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
     },
-    "isEnabled": false,
+    "isEnabled": true,
+    "isVisible": true
+  },
+  {
+    "name": "flu-h1n1pdm-ha",
+    "nameFriendly": "Influenza H1N1pdm HA",
+    "image": {
+      "file": "images/flu.png",
+      "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
+      "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
+    },
+    "isEnabled": true,
+    "isVisible": true
+  },
+  {
+    "name": "flu-h1n1pdm-na",
+    "nameFriendly": "Influenza H1N1pdm NA",
+    "image": {
+      "file": "images/flu.png",
+      "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
+      "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
+    },
+    "isEnabled": true,
     "isVisible": true
   },
   {
@@ -29,7 +51,7 @@
       "credit": "Centers for Disease Control and Prevention Newsroom, Image Library",
       "source": "https://www.cdc.gov/media/subtopic/images.htm"
     },
-    "isEnabled": true,
+    "isEnabled": false,
     "isVisible": true
   },
   {
