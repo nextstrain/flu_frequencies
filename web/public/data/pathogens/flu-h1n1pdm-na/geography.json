@@ -1,0 +1,542 @@
+{
+  "countries": [
+    "IND",
+    "BFA",
+    "QAT",
+    "LUX",
+    "KGZ",
+    "SWE",
+    "BGR",
+    "NOR",
+    "KHM",
+    "KOR",
+    "ETH",
+    "SGP",
+    "BOL",
+    "POL",
+    "NCL",
+    "PHL",
+    "ZMB",
+    "RUS",
+    "BRA",
+    "KEN",
+    "GTM",
+    "UKR",
+    "ITA",
+    "CHN",
+    "DNK",
+    "JPN",
+    "DEU",
+    "CHE",
+    "THA",
+    "MDG",
+    "PAN",
+    "BHR",
+    "FRA",
+    "XKX",
+    "VEN",
+    "LBN",
+    "FIN",
+    "CZE",
+    "ISR",
+    "AUT",
+    "SVN",
+    "GUF",
+    "SEN",
+    "PRT",
+    "IRL",
+    "ARG",
+    "ARE",
+    "ZAF",
+    "PRY",
+    "ESP",
+    "other",
+    "PAK",
+    "NLD",
+    "AUS",
+    "EST",
+    "ALB",
+    "SRB",
+    "ROU",
+    "BEL",
+    "CIV",
+    "MUS",
+    "MOZ",
+    "OMN",
+    "ISL",
+    "PER",
+    "CAN",
+    "GHA",
+    "LAO",
+    "USA",
+    "HTI",
+    "CRI",
+    "FJI",
+    "CHL",
+    "GBR",
+    "NZL",
+    "TGO"
+  ],
+  "geography": {
+    "?": [],
+    "Africa": [
+      "ETH",
+      "ZAF",
+      "MDG",
+      "CIV",
+      "ZMB",
+      "MUS",
+      "BFA",
+      "KEN",
+      "MOZ",
+      "SEN",
+      "TGO",
+      "GHA"
+    ],
+    "China": [
+      "CHN"
+    ],
+    "Eastern Asia": [
+      "KOR",
+      "JPN",
+      "other"
+    ],
+    "Europe": [
+      "CHE",
+      "BEL",
+      "DNK",
+      "LUX",
+      "SWE",
+      "BGR",
+      "ISL",
+      "NLD",
+      "PRT",
+      "IRL",
+      "NOR",
+      "FRA",
+      "POL",
+      "XKX",
+      "FIN",
+      "RUS",
+      "ESP",
+      "CZE",
+      "UKR",
+      "DEU",
+      "GBR",
+      "ITA",
+      "EST",
+      "ALB",
+      "AUT",
+      "SVN",
+      "SRB",
+      "ROU"
+    ],
+    "North America": [
+      "HTI",
+      "CRI",
+      "GTM",
+      "PAN",
+      "CAN",
+      "USA"
+    ],
+    "Oceania": [
+      "AUS",
+      "NCL",
+      "FJI",
+      "NZL"
+    ],
+    "South America": [
+      "BOL",
+      "VEN",
+      "PRY",
+      "CHL",
+      "BRA",
+      "PER",
+      "GUF",
+      "ARG"
+    ],
+    "South-eastern Asia": [
+      "KHM",
+      "THA",
+      "SGP",
+      "PHL",
+      "LAO"
+    ],
+    "Southern Asia": [
+      "IND",
+      "PAK"
+    ],
+    "Western Asia": [
+      "ARE",
+      "LBN",
+      "QAT",
+      "OMN",
+      "ISR",
+      "BHR",
+      "KGZ"
+    ]
+  },
+  "geographyStyles": {
+    "?": {
+      "color": "#99ac53",
+      "lineStyle": "normal"
+    },
+    "ALB": {
+      "color": "#351f93",
+      "lineStyle": "normal"
+    },
+    "ARE": {
+      "color": "#b3e06c",
+      "lineStyle": "normal"
+    },
+    "ARG": {
+      "color": "#931f67",
+      "lineStyle": "normal"
+    },
+    "AUS": {
+      "color": "#86502d",
+      "lineStyle": "normal"
+    },
+    "AUT": {
+      "color": "#c5878f",
+      "lineStyle": "normal"
+    },
+    "Africa": {
+      "color": "#6d931f",
+      "lineStyle": "normal"
+    },
+    "BEL": {
+      "color": "#6ce0c5",
+      "lineStyle": "normal"
+    },
+    "BFA": {
+      "color": "#40bf51",
+      "lineStyle": "normal"
+    },
+    "BGR": {
+      "color": "#2dd282",
+      "lineStyle": "normal"
+    },
+    "BHR": {
+      "color": "#c5a487",
+      "lineStyle": "normal"
+    },
+    "BOL": {
+      "color": "#dce06c",
+      "lineStyle": "normal"
+    },
+    "BRA": {
+      "color": "#866e2d",
+      "lineStyle": "normal"
+    },
+    "CAN": {
+      "color": "#5353ac",
+      "lineStyle": "normal"
+    },
+    "CHE": {
+      "color": "#3a862d",
+      "lineStyle": "normal"
+    },
+    "CHL": {
+      "color": "#8eac53",
+      "lineStyle": "normal"
+    },
+    "CHN": {
+      "color": "#763a78",
+      "lineStyle": "normal"
+    },
+    "CIV": {
+      "color": "#e0ac6c",
+      "lineStyle": "normal"
+    },
+    "CRI": {
+      "color": "#87c5a5",
+      "lineStyle": "normal"
+    },
+    "CZE": {
+      "color": "#ac9953",
+      "lineStyle": "normal"
+    },
+    "China": {
+      "color": "#79d2a0",
+      "lineStyle": "normal"
+    },
+    "DEU": {
+      "color": "#c58796",
+      "lineStyle": "normal"
+    },
+    "DNK": {
+      "color": "#932d1f",
+      "lineStyle": "normal"
+    },
+    "ESP": {
+      "color": "#53ac75",
+      "lineStyle": "normal"
+    },
+    "EST": {
+      "color": "#79d281",
+      "lineStyle": "normal"
+    },
+    "ETH": {
+      "color": "#2dd26c",
+      "lineStyle": "normal"
+    },
+    "Eastern Asia": {
+      "color": "#78483a",
+      "lineStyle": "normal"
+    },
+    "Europe": {
+      "color": "#d279b3",
+      "lineStyle": "normal"
+    },
+    "FIN": {
+      "color": "#862d56",
+      "lineStyle": "normal"
+    },
+    "FJI": {
+      "color": "#c5879d",
+      "lineStyle": "normal"
+    },
+    "FRA": {
+      "color": "#5372ac",
+      "lineStyle": "normal"
+    },
+    "GBR": {
+      "color": "#783a4b",
+      "lineStyle": "normal"
+    },
+    "GHA": {
+      "color": "#862d65",
+      "lineStyle": "normal"
+    },
+    "GTM": {
+      "color": "#d279b3",
+      "lineStyle": "normal"
+    },
+    "GUF": {
+      "color": "#d2ac79",
+      "lineStyle": "normal"
+    },
+    "HTI": {
+      "color": "#7e2d86",
+      "lineStyle": "normal"
+    },
+    "IND": {
+      "color": "#7981d2",
+      "lineStyle": "normal"
+    },
+    "IRL": {
+      "color": "#ac6653",
+      "lineStyle": "normal"
+    },
+    "ISL": {
+      "color": "#93861f",
+      "lineStyle": "normal"
+    },
+    "ISR": {
+      "color": "#2d7dd2",
+      "lineStyle": "normal"
+    },
+    "ITA": {
+      "color": "#bfb540",
+      "lineStyle": "normal"
+    },
+    "JPN": {
+      "color": "#783a75",
+      "lineStyle": "normal"
+    },
+    "KEN": {
+      "color": "#c58797",
+      "lineStyle": "normal"
+    },
+    "KGZ": {
+      "color": "#78653a",
+      "lineStyle": "normal"
+    },
+    "KHM": {
+      "color": "#d2e06c",
+      "lineStyle": "normal"
+    },
+    "KOR": {
+      "color": "#2dd240",
+      "lineStyle": "normal"
+    },
+    "LAO": {
+      "color": "#e06cc5",
+      "lineStyle": "normal"
+    },
+    "LBN": {
+      "color": "#7d40bf",
+      "lineStyle": "normal"
+    },
+    "LUX": {
+      "color": "#e07b6c",
+      "lineStyle": "normal"
+    },
+    "MDG": {
+      "color": "#6f3a78",
+      "lineStyle": "normal"
+    },
+    "MOZ": {
+      "color": "#78931f",
+      "lineStyle": "normal"
+    },
+    "MUS": {
+      "color": "#2b1f93",
+      "lineStyle": "normal"
+    },
+    "NCL": {
+      "color": "#7c1f93",
+      "lineStyle": "normal"
+    },
+    "NLD": {
+      "color": "#ac9353",
+      "lineStyle": "normal"
+    },
+    "NOR": {
+      "color": "#2d865b",
+      "lineStyle": "normal"
+    },
+    "NZL": {
+      "color": "#a287c5",
+      "lineStyle": "normal"
+    },
+    "North America": {
+      "color": "#4048bf",
+      "lineStyle": "normal"
+    },
+    "OMN": {
+      "color": "#821f93",
+      "lineStyle": "normal"
+    },
+    "Oceania": {
+      "color": "#723a78",
+      "lineStyle": "normal"
+    },
+    "PAK": {
+      "color": "#3a5678",
+      "lineStyle": "normal"
+    },
+    "PAN": {
+      "color": "#6d862d",
+      "lineStyle": "normal"
+    },
+    "PER": {
+      "color": "#d2962d",
+      "lineStyle": "normal"
+    },
+    "PHL": {
+      "color": "#e0966c",
+      "lineStyle": "normal"
+    },
+    "POL": {
+      "color": "#e06c81",
+      "lineStyle": "normal"
+    },
+    "PRT": {
+      "color": "#6253ac",
+      "lineStyle": "normal"
+    },
+    "PRY": {
+      "color": "#866b2d",
+      "lineStyle": "normal"
+    },
+    "QAT": {
+      "color": "#bf407d",
+      "lineStyle": "normal"
+    },
+    "ROU": {
+      "color": "#864a2d",
+      "lineStyle": "normal"
+    },
+    "RUS": {
+      "color": "#78633a",
+      "lineStyle": "normal"
+    },
+    "SEN": {
+      "color": "#d2cd2d",
+      "lineStyle": "normal"
+    },
+    "SGP": {
+      "color": "#2dd27d",
+      "lineStyle": "normal"
+    },
+    "SRB": {
+      "color": "#74ac53",
+      "lineStyle": "normal"
+    },
+    "SVN": {
+      "color": "#e0b36c",
+      "lineStyle": "normal"
+    },
+    "SWE": {
+      "color": "#4068bf",
+      "lineStyle": "normal"
+    },
+    "South America": {
+      "color": "#612dd2",
+      "lineStyle": "normal"
+    },
+    "South-eastern Asia": {
+      "color": "#a6e06c",
+      "lineStyle": "normal"
+    },
+    "Southern Asia": {
+      "color": "#7987d2",
+      "lineStyle": "normal"
+    },
+    "TGO": {
+      "color": "#ac538a",
+      "lineStyle": "normal"
+    },
+    "THA": {
+      "color": "#d2432d",
+      "lineStyle": "normal"
+    },
+    "UKR": {
+      "color": "#bf9040",
+      "lineStyle": "normal"
+    },
+    "USA": {
+      "color": "#d0d22d",
+      "lineStyle": "normal"
+    },
+    "VEN": {
+      "color": "#9bbf40",
+      "lineStyle": "normal"
+    },
+    "Western Asia": {
+      "color": "#a66ce0",
+      "lineStyle": "normal"
+    },
+    "XKX": {
+      "color": "#521f93",
+      "lineStyle": "normal"
+    },
+    "ZAF": {
+      "color": "#40bf5e",
+      "lineStyle": "normal"
+    },
+    "ZMB": {
+      "color": "#ac6e53",
+      "lineStyle": "normal"
+    },
+    "other": {
+      "color": "#ac9653",
+      "lineStyle": "normal"
+    }
+  },
+  "regions": [
+    "Eastern Asia",
+    "North America",
+    "Oceania",
+    "Africa",
+    "Western Asia",
+    "South America",
+    "Europe",
+    "?",
+    "South-eastern Asia",
+    "Southern Asia",
+    "China"
+  ]
+}

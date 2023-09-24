@@ -144,7 +144,7 @@ def weighted_average(df: pl.DataFrame):
             )
             * c("weight"),
         )
-        .groupby(["date", "region", "variant"])
+        .group_by(["date", "region", "variant"])
         .agg(
             freqMi=c("freqMi_pop_product").sum(),
             freqErr=c("freqErr_pop_product").sum().sqrt(),
@@ -172,7 +172,7 @@ def weighted_average(df: pl.DataFrame):
             )
             * c("weight"),
         )
-        .groupby(["date", "variant"])
+        .group_by(["date", "variant"])
         .agg(
             freqMi=c("freqMi_pop_product").sum(),
             freqErr=c("freqErr_pop_product").sum().sqrt(),

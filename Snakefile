@@ -1,13 +1,23 @@
 regions = config["regions"]
 min_date = config["min_date"]
 
+wildcard_constraints:
+    segment="ha|na"
 
 rule europe:
     input:
         [
-            "plots/h3n2/Region_Europe.png",
-            "plots/h3n2/Region_Europe_weighted.png",
-            "plots/h3n2/Region_global_weighted.png",
+            "plots/h3n2_ha/region-clades.png",
+            "plots/h3n2_na/region-clades.png",
+            "plots/h3n2_ha/region_mut-HA1:E50.png",
+            "plots/h3n2_ha/region_mut-HA1:I140.png",
+            "plots/h1n1pdm_ha/region-clades.png",
+            "plots/h1n1pdm_na/region-clades.png",
+            "plots/vic_ha/region-clades.png",
+            "plots/vic_na/region-clades.png",
+            "plots/h3n2_ha/Region_Europe.png",
+            "plots/h3n2_ha/Region_Europe_weighted.png",
+            "plots/h3n2_ha/Region_global_weighted.png",
         ],
         # "plots/h3n2/Region_Europe.png",
         # "plots/h1n1pdm/Region_Europe.png",
@@ -29,33 +39,45 @@ rule europe:
 
 rule download_sequences:
     output:
-        sequences="data/{lineage}/ha.fasta",
+        sequences="data/{lineage}/raw_{segment}.fasta",
     params:
-        s3_path="s3://nextstrain-data-private/files/workflows/seasonal-flu/{lineage}/ha/sequences.fasta.xz",
+        s3_path="s3://nextstrain-data-private/files/workflows/seasonal-flu/{lineage}/{segment}/raw_sequences.fasta.xz",
     shell:
         """
         aws s3 cp {params.s3_path} - | xz -c -d > {output.sequences}
         """
 
 
-rule download_metadata:
+rule parse:
+    """
+    Parsing fasta into sequences and metadata
+    TODO: Download results directly once https://github.com/nextstrain/seasonal-flu/issues/107 is resolved
+    """
+    input:
+        sequences="data/{lineage}/raw_{segment}.fasta",
     output:
-        metadata="data/{lineage}/metadata_raw.tsv",
+        sequences="data/{lineage}/{segment}.fasta",
+        metadata="data/{lineage}/metadata_raw_{segment}.tsv",
     params:
-        s3_path="s3://nextstrain-data-private/files/workflows/seasonal-flu/{lineage}/metadata.tsv.xz",
+        fasta_fields=config["fasta_fields"],
+        prettify_fields=config["prettify_fields"],
     shell:
         """
-        aws s3 cp {params.s3_path} - | xz -c -d > {output.metadata}
+        augur parse \
+            --sequences {input.sequences} \
+            --output-sequences {output.sequences} \
+            --output-metadata {output.metadata} \
+            --fields {params.fasta_fields} \
+            --prettify-fields {params.prettify_fields}
         """
-
 
 rule add_iso3:
     input:
-        metadata="data/{lineage}/metadata_raw.tsv",
+        metadata="data/{lineage}/metadata_raw_{segment}.tsv",
         country_to_iso3="profiles/flu/country_to_iso3.tsv",
         iso3_to_region="profiles/flu/iso3_to_region.tsv",
     output:
-        metadata="data/{lineage}/metadata.tsv",
+        metadata="data/{lineage}/metadata_{segment}.tsv",
     shell:
         """
         tsv-join -H \
@@ -75,33 +97,34 @@ rule add_iso3:
 
 rule get_nextclade_dataset:
     output:
-        "nextclade/{lineage}/reference.fasta",
+        "nextclade/{lineage}_{segment}/reference.fasta",
     threads: 4
     shell:
         """
-        nextclade dataset get -n flu_{wildcards.lineage}_ha --output-dir nextclade/{wildcards.lineage}
+        nextclade dataset get -n flu_{wildcards.lineage}_{wildcards.segment} --output-dir nextclade/{wildcards.lineage}_{wildcards.segment}
         """
 
 
 rule run_nextclade:
     input:
-        sequences="data/{lineage}/ha.fasta",
-        reference="nextclade/{lineage}/reference.fasta",
+        sequences="data/{lineage}/{segment}.fasta",
+        reference="nextclade/{lineage}_{segment}/reference.fasta",
     output:
-        "data/{lineage}/nextclade.tsv",
+        "data/{lineage}/nextclade_{segment}.tsv",
     threads: workflow.cores
     shell:
         """
-        nextclade run -j {threads} -D nextclade/{wildcards.lineage} {input.sequences} --quiet --output-tsv {output}
+        nextclade run -j {threads} -D nextclade/{wildcards.lineage}_{wildcards.segment} \
+                  {input.sequences} --quiet --output-tsv {output}
         """
 
 
 rule combined_with_metadata:
     input:
-        nextclade="data/{lineage}/nextclade.tsv",
-        metadata="data/{lineage}/metadata.tsv",
+        nextclade="data/{lineage}/nextclade_{segment}.tsv",
+        metadata="data/{lineage}/metadata_{segment}.tsv",
     output:
-        metadata="data/{lineage}/combined.tsv",
+        metadata="data/{lineage}/combined_{segment}.tsv",
     params:
         nextclade_columns=lambda wildcards: ",".join(config.get("nextclade_columns", ["seqName", "clade", "short_clade", "aaSubstitutions"])),
     shell:
@@ -113,9 +136,9 @@ rule combined_with_metadata:
 
 rule estimate_region_frequencies:
     input:
-        "data/{lineage}/combined.tsv",
+        "data/{lineage}/combined_{segment}.tsv",
     output:
-        output_csv="results/{lineage}/region-frequencies.csv",
+        output_csv="results/{lineage}_{segment}/region-frequencies.csv",
     params:
         min_date=min_date,
         geo_categories=config.get("geo_categories", "continent"),
@@ -135,9 +158,9 @@ rule estimate_region_frequencies:
 
 rule estimate_region_mutation_frequencies:
     input:
-        "data/{lineage}/combined.tsv",
+        "data/{lineage}/combined_{segment}.tsv",
     output:
-        output_csv="results/{lineage}/mutation_{mutation}-frequencies.csv",
+        output_csv="results/{lineage}_{segment}/mutation_{mutation}-frequencies.csv",
     params:
         min_date=min_date,
         geo_categories=config.get("geo_categories", "continent"),
@@ -155,9 +178,9 @@ rule estimate_region_mutation_frequencies:
 
 rule estimate_region_country_frequencies:
     input:
-        "data/{lineage}/combined.tsv",
+        "data/{lineage}/combined_{segment}.tsv",
     output:
-        output_csv="results/{lineage}/continent-country-frequencies.csv",
+        output_csv="results/{lineage}_{segment}/continent-country-frequencies.csv",
     params:
         min_date=min_date,
     shell:
@@ -175,11 +198,11 @@ rule estimate_region_country_frequencies:
 
 rule population_weighted_region_frequencies:
     input:
-        fit_results="results/{lineage}/continent-country-frequencies.csv",
+        fit_results="results/{lineage}_{segment}/continent-country-frequencies.csv",
         iso3_to_pop="defaults/iso3_to_pop.tsv",
         iso3_to_region="profiles/flu/iso3_to_region.tsv",
     output:
-        output_csv="results/{lineage}/weighted-region-frequencies.csv",
+        output_csv="results/{lineage}_{segment}/weighted-region-frequencies.csv",
     shell:
         """
         python scripts/pop_weighted_aggregates.py \
@@ -192,9 +215,9 @@ rule population_weighted_region_frequencies:
 
 rule plot_regions:
     input:
-        freqs="results/{lineage}/region-frequencies.csv",
+        freqs="results/{lineage}_{segment}/region-frequencies.csv",
     output:
-        plot="plots/{lineage}/Region_{region,[^_]+}.png",
+        plot="plots/{lineage}_{segment}/Region_{region,[^_]+}.png",
     params:
         max_freq=0.1,
     shell:
@@ -209,9 +232,9 @@ rule plot_regions:
 
 rule plot_weighted_regions:
     input:
-        freqs="results/{lineage}/weighted-region-frequencies.csv",
+        freqs="results/{lineage}_{segment}/weighted-region-frequencies.csv",
     output:
-        plot="plots/{lineage}/Region_{region}_weighted.png",
+        plot="plots/{lineage}_{segment}/Region_{region}_weighted.png",
     params:
         max_freq=0.1,
     shell:
@@ -226,9 +249,9 @@ rule plot_weighted_regions:
 
 rule plot_mutations:
     input:
-        freqs="results/{lineage}/mutation_{mutation}-frequencies.csv",
+        freqs="results/{lineage}_{segment}/mutation_{mutation}-frequencies.csv",
     output:
-        plot="plots/{lineage}/mutation_{region}-{mutation}.png",
+        plot="plots/{lineage}_{segment}/mutation_{region}-{mutation}.png",
     params:
         max_freq=0.05,
     shell:
@@ -243,9 +266,9 @@ rule plot_mutations:
 
 rule plot_country:
     input:
-        freqs="results/{lineage}/region-country-frequencies.csv",
+        freqs="results/{lineage}_{segment}/region-country-frequencies.csv",
     output:
-        plot="plots/{lineage}/Country_{region}_{country}.png",
+        plot="plots/{lineage}_{segment}/Country_{region}_{country}.png",
     params:
         max_freq=0.1,
     shell:
@@ -261,11 +284,11 @@ rule plot_country:
 
 rule multi_region_plot_clades:
     input:
-        freqs="results/{lineage}/region-frequencies.csv",
+        freqs="results/{lineage}_{segment}/region-frequencies.csv",
     output:
-        plot="plots/{lineage}/region-clades.png",
+        plot="plots/{lineage}_{segment}/region-clades.png",
     params:
-        clades_argument=lambda wildcards: f"--clades {' '.join(config['clades_to_plot'][wildcards.lineage])}" if config.get("clades_to_plot", {}).get(wildcards.lineage) else "",
+        clades_argument=lambda wildcards: f"--clades {' '.join(config['clades_to_plot'][wildcards.lineage][wildcards.segment])}" if config.get("clades_to_plot", {}).get(wildcards.lineage, {}).get(wildcards.segment) else "",
         auspice_config_argument=lambda wildcards: f"--auspice-config {config['auspice_config'][wildcards.lineage]}" if config.get("auspice_config", {}).get(wildcards.lineage) else "",
         coloring_field_argument=lambda wildcards: f"--coloring-field {config['coloring_field']}" if config.get("coloring_field") else "",
         regions=regions,
@@ -283,9 +306,9 @@ rule multi_region_plot_clades:
 
 rule multi_region_plot_mutation:
     input:
-        freqs="results/{lineage}/mutation_{mutation}-frequencies.csv",
+        freqs="results/{lineage}_{segment}/mutation_{mutation}-frequencies.csv",
     output:
-        plot="plots/{lineage}/region_mut-{mutation}.png",
+        plot="plots/{lineage}_{segment}/region_mut-{mutation}.png",
     params:
         regions=regions,
         max_freq=0.2,
@@ -297,6 +320,20 @@ rule multi_region_plot_mutation:
 
 #        clades = ['1a.1', '2a.1', '2a.1a', '2a.1b', '2a.3a',  '2a.3a.1','2a.3b', '2b'],
 
+rule copy_web:
+    input:
+        "results/{lineage}_{segment}/continent-country-frequencies.csv"
+    output:
+        "data_web/inputs/flu-{lineage}-{segment}.csv"
+    shell:
+        """
+        cp {input} {output}
+        """
+
+rule prep_web:
+    input:
+        expand("data_web/inputs/flu-{lineage}-{segment}.csv",
+             lineage=['h3n2', "h1n1pdm", "vic"], segment=["ha", "na"])
 
 rule clean:
     shell:

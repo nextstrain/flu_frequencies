@@ -1,0 +1,146 @@
+{
+  "variants": [
+    "C.5.3",
+    "C.5.1.1",
+    "B.3.1.2",
+    "C.1",
+    "B.1",
+    "C.5.1",
+    "B.2",
+    "A",
+    "C.3",
+    "A.1",
+    "C.5.2",
+    "C",
+    "B.3.1.1",
+    "C.4",
+    "B.3",
+    "A.1.1",
+    "C.2",
+    "C.5",
+    "B",
+    "B.3.1",
+    "C.5.1*",
+    "A*",
+    "A.1*",
+    "C*",
+    "B.3*",
+    "C.5*",
+    "B*",
+    "B.3.1*"
+  ],
+  "variantsStyles": {
+    "A": {
+      "color": "#43862d",
+      "lineStyle": "normal"
+    },
+    "A*": {
+      "color": "#c5a087",
+      "lineStyle": "normal"
+    },
+    "A.1": {
+      "color": "#40a4bf",
+      "lineStyle": "normal"
+    },
+    "A.1*": {
+      "color": "#c5ab87",
+      "lineStyle": "normal"
+    },
+    "A.1.1": {
+      "color": "#6cd0e0",
+      "lineStyle": "normal"
+    },
+    "B": {
+      "color": "#796ce0",
+      "lineStyle": "normal"
+    },
+    "B*": {
+      "color": "#2d3d86",
+      "lineStyle": "normal"
+    },
+    "B.1": {
+      "color": "#6b783a",
+      "lineStyle": "normal"
+    },
+    "B.2": {
+      "color": "#d2a92d",
+      "lineStyle": "normal"
+    },
+    "B.3": {
+      "color": "#79a7d2",
+      "lineStyle": "normal"
+    },
+    "B.3*": {
+      "color": "#1f5d93",
+      "lineStyle": "normal"
+    },
+    "B.3.1": {
+      "color": "#3e1f93",
+      "lineStyle": "normal"
+    },
+    "B.3.1*": {
+      "color": "#e06cd2",
+      "lineStyle": "normal"
+    },
+    "B.3.1.1": {
+      "color": "#93ac53",
+      "lineStyle": "normal"
+    },
+    "B.3.1.2": {
+      "color": "#938d1f",
+      "lineStyle": "normal"
+    },
+    "C": {
+      "color": "#5374ac",
+      "lineStyle": "normal"
+    },
+    "C*": {
+      "color": "#783a74",
+      "lineStyle": "normal"
+    },
+    "C.1": {
+      "color": "#ac9c53",
+      "lineStyle": "normal"
+    },
+    "C.2": {
+      "color": "#40bfbd",
+      "lineStyle": "normal"
+    },
+    "C.3": {
+      "color": "#d2798e",
+      "lineStyle": "normal"
+    },
+    "C.4": {
+      "color": "#d279a6",
+      "lineStyle": "normal"
+    },
+    "C.5": {
+      "color": "#651f93",
+      "lineStyle": "normal"
+    },
+    "C.5*": {
+      "color": "#862d7d",
+      "lineStyle": "normal"
+    },
+    "C.5.1": {
+      "color": "#93801f",
+      "lineStyle": "normal"
+    },
+    "C.5.1*": {
+      "color": "#3a6478",
+      "lineStyle": "normal"
+    },
+    "C.5.1.1": {
+      "color": "#d22d93",
+      "lineStyle": "normal"
+    },
+    "C.5.2": {
+      "color": "#643a78",
+      "lineStyle": "normal"
+    },
+    "C.5.3": {
+      "color": "#e0bb6c",
+      "lineStyle": "normal"
+    }
+  }
+}

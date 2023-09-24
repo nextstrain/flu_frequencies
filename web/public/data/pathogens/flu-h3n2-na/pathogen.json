@@ -1,0 +1,17 @@
+{
+  "color": "#cc79d2",
+  "image": {
+    "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
+    "file": "pathogens/flu-h3n2-na/image.png",
+    "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
+  },
+  "isEnabled": true,
+  "isVisible": true,
+  "maxDate": "2023-09-09",
+  "minDate": "2022-01-01",
+  "nCountries": 81,
+  "nRegions": 10,
+  "nVariants": 16,
+  "name": "flu-h3n2-na",
+  "nameFriendly": "Influenza H3N2 NA"
+}

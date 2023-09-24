@@ -1,39 +1,73 @@
 {
-  "lastUpdate": "2023-06-14T15:18:31Z",
+  "lastUpdate": "2023-09-23T19:59:38Z",
   "pathogens": [
     {
-      "color": "#33931f",
+      "color": "#8a931f",
       "image": {
         "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
-        "file": "pathogens/flu-h3n2/image.png",
+        "file": "pathogens/flu-h3n2-ha/image.png",
         "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
       },
       "isEnabled": true,
       "isVisible": true,
-      "maxDate": "2023-05-17",
-      "minDate": "2021-12-01",
-      "nCountries": 0,
-      "nRegions": 11,
-      "nVariants": 24,
-      "name": "flu-h3n2",
-      "nameFriendly": "Influenza H3N2"
+      "maxDate": "2023-09-09",
+      "minDate": "2022-01-01",
+      "nCountries": 85,
+      "nRegions": 10,
+      "nVariants": 26,
+      "name": "flu-h3n2-ha",
+      "nameFriendly": "Influenza H3N2 HA"
     },
     {
-      "color": "#87c5b1",
+      "color": "#cc79d2",
       "image": {
         "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
-        "file": "pathogens/flu-h1n1pdm/image.png",
+        "file": "pathogens/flu-h3n2-na/image.png",
         "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
       },
-      "isEnabled": false,
+      "isEnabled": true,
       "isVisible": true,
-      "maxDate": "",
-      "minDate": "",
-      "nCountries": 0,
-      "nRegions": 0,
-      "nVariants": 0,
-      "name": "flu-h1n1pdm",
-      "nameFriendly": "Influenza H1N1pdm"
+      "maxDate": "2023-09-09",
+      "minDate": "2022-01-01",
+      "nCountries": 81,
+      "nRegions": 10,
+      "nVariants": 16,
+      "name": "flu-h3n2-na",
+      "nameFriendly": "Influenza H3N2 NA"
+    },
+    {
+      "color": "#40bf8a",
+      "image": {
+        "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
+        "file": "pathogens/flu-h1n1pdm-ha/image.png",
+        "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
+      },
+      "isEnabled": true,
+      "isVisible": true,
+      "maxDate": "2023-09-09",
+      "minDate": "2022-01-01",
+      "nCountries": 77,
+      "nRegions": 11,
+      "nVariants": 15,
+      "name": "flu-h1n1pdm-ha",
+      "nameFriendly": "Influenza H1N1pdm HA"
+    },
+    {
+      "color": "#783a4c",
+      "image": {
+        "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
+        "file": "pathogens/flu-h1n1pdm-na/image.png",
+        "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
+      },
+      "isEnabled": true,
+      "isVisible": true,
+      "maxDate": "2023-09-09",
+      "minDate": "2022-01-01",
+      "nCountries": 76,
+      "nRegions": 11,
+      "nVariants": 28,
+      "name": "flu-h1n1pdm-na",
+      "nameFriendly": "Influenza H1N1pdm NA"
     },
     {
       "color": "#bf40bb",
@@ -42,13 +76,13 @@
         "file": "pathogens/sars-cov-2/image.png",
         "source": "https://www.cdc.gov/media/subtopic/images.htm"
       },
-      "isEnabled": true,
+      "isEnabled": false,
       "isVisible": true,
-      "maxDate": "2023-05-20",
-      "minDate": "2020-02-01",
+      "maxDate": "",
+      "minDate": "",
       "nCountries": 0,
-      "nRegions": 10,
-      "nVariants": 34,
+      "nRegions": 0,
+      "nVariants": 0,
       "name": "sars-cov-2",
       "nameFriendly": "SARS-CoV-2"
     },
