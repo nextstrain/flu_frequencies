@@ -1,8 +1,10 @@
-import { get } from 'lodash-es'
+import { get, sortBy } from 'lodash-es'
 import urljoin from 'url-join'
 import { useAxiosQueries, useAxiosQuery } from 'src/hooks/useAxiosQuery'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { transliterate } from 'transliteration'
 
 export interface Pathogen {
   isEnabled: boolean
@@ -86,6 +88,34 @@ export function useRegionDataQuery(
 
 export function useRegionsDataQuery(pathogenName: string): GeographyData {
   return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'geography.json'))
+}
+
+export function useRegions(pathogenName: string) {
+  const { t } = useTranslationSafe()
+  const { regions } = useRegionsDataQuery(pathogenName)
+  return useMemo(() => {
+    const regionsTranslated = regions.map((name) => {
+      const translated = t(name)
+      const transliterated = transliterate(translated)
+      return { code: name, name, translated, transliterated }
+    })
+    return sortBy(regionsTranslated, (x) => x.translated)
+  }, [regions, t])
+}
+
+export function useCountries(pathogenName: string) {
+  const { t } = useTranslationSafe()
+  const { countries } = useRegionsDataQuery(pathogenName)
+  const getCountryName = useCountryName()
+  return useMemo(() => {
+    const countriesTranslated = countries.map((code) => {
+      const name = getCountryName(code)
+      const translated = t(name)
+      const transliterated = transliterate(translated)
+      return { code, name, translated, transliterated }
+    })
+    return sortBy(countriesTranslated, (x) => (x.code === 'other' ? undefined : x.translated))
+  }, [countries, getCountryName, t])
 }
 
 export interface GlobalGeographyData {
