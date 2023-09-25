@@ -40,7 +40,7 @@ export function RegionPage({ pathogenName, location }: RegionsPageProps) {
               <span className="d-flex w-100 mt-2">
                 <span className="ml-2 mr-auto">{prev}</span>
                 <h4 className="text-center">
-                  {t('{{pathogen}} in {{region}}', {
+                  {t('{{pathogen}}, {{region}}', {
                     pathogen: t(pathogen.nameFriendly),
                     region: t(location),
                   })}
