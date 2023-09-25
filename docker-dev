@@ -11,11 +11,29 @@ DOCKER_CONTAINER_NAME="${DOCKER_IMAGE_NAME_SAFE}-$(date +%s)"
 USER="user"
 GROUP="group"
 
-DEFAULT_COMMAND="cd web && yarn install && yarn dev"
+DOCKER_TARGET="base"
+case "${1:-}" in
+"py" | "p")
+  shift
+  DOCKER_TARGET="py"
+  COMMAND=${*:-nextstrain build . --profile profiles/flu}
+  ;;
+"web" | "a")
+  shift
+  COMMAND=${*:-cd web && yarn install && yarn dev}
+  ;;
+*)
+  COMMAND=${*:-bash}
+esac
+
+if [ -z "${COMMAND}" ]; then
+  COMMAND="bash"
+fi
 
 ${NICE} docker build -q \
   --file="docker/docker-dev.dockerfile" \
-  --tag="${DOCKER_REPO}" \
+  --target="${DOCKER_TARGET}" \
+  --tag="${DOCKER_REPO}:${DOCKER_TARGET}" \
   --network=host \
   --build-arg="UID=$(id -u)" \
   --build-arg="GID=$(id -g)" \
@@ -37,5 +55,5 @@ ${NICE} docker run -it --rm \
   --env="GROUP=${GROUP}" \
   --env="PS1=\${USER}@\${HOST}" \
   --ulimit core=0 \
-  "${DOCKER_REPO}" \
-  bash -c "set -euo pipefail; ${*:-${DEFAULT_COMMAND}}"
+  "${DOCKER_REPO}:${DOCKER_TARGET}" \
+  bash -c "set -euo pipefail; ${COMMAND}"

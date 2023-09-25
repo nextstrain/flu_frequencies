@@ -1,7 +1,7 @@
 # Freeze base image version to
 # ubuntu:20.04 (pushed 2022-06-06T22:39:15.718739Z)
 # https://hub.docker.com/layers/ubuntu/library/ubuntu/20.04/images/sha256-b2339eee806d44d6a8adc0a790f824fb71f03366dd754d400316ae5a7e3ece3e
-FROM ubuntu@sha256:b2339eee806d44d6a8adc0a790f824fb71f03366dd754d400316ae5a7e3ece3e
+FROM ubuntu@sha256:b2339eee806d44d6a8adc0a790f824fb71f03366dd754d400316ae5a7e3ece3e as base
 
 SHELL ["bash", "-euxo", "pipefail", "-c"]
 
@@ -95,3 +95,38 @@ RUN set -euxo pipefail >/dev/null \
 && chown -R ${UID}:${GID} "${HOME}"
 
 USER ${USER}
+
+
+FROM base as py
+
+ARG PYTHON_VERSION="3.10"
+ARG CONDA_DIR="${HOME}/conda"
+ENV PATH="${HOME}/bin:${CONDA_DIR}/bin:${PATH}"
+ENV XDG_CACHE_HOME="${HOME}/.cache/"
+ENV MPLBACKEND="Agg"
+
+RUN set -euxo pipefail >/dev/null \
+&& export CONDA_DIR="${CONDA_DIR}" \
+&& export PYTHON_VERSION="${PYTHON_VERSION}" \
+&& mkdir -p "${CONDA_DIR}/bin" "${HOME}/.config/conda" \
+&& curl -fsSL -o "/tmp/Mambaforge.sh" "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh" \
+&& bash "/tmp/Mambaforge.sh" -b -u -p "${CONDA_DIR}" \
+&& rm -rf "/tmp/Mambaforge.sh" \
+&& mamba init bash
+
+RUN set -euxo pipefail >/dev/null \
+&& mamba install --quiet --yes -c nextstrain -c conda-forge -c bioconda \
+  'awscli' \
+  'csvtk' \
+  'nextclade' \
+  'nextstrain-base' \
+  'polars' \
+  'snakemake' \
+  'tsv-utils' \
+  'typer' \
+&& mamba clean --all -f -y
+
+RUN curl -fsSL --proto '=https' https://nextstrain.org/cli/installer/linux | bash \
+&& printf '\n%s\n' 'eval "$("${HOME}/.nextstrain/cli-standalone/nextstrain" init-shell bash)"' >> ~/.bashrc \
+&& eval "$("${HOME}/.nextstrain/cli-standalone/nextstrain" init-shell bash)" \
+&& nextstrain setup --set-default ambient
