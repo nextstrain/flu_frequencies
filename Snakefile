@@ -1,8 +1,11 @@
 regions = config["regions"]
 min_date = config["min_date"]
 
+
 wildcard_constraints:
-    segment="ha|na"
+    segment="ha|na",
+
+
 
 rule europe:
     input:
@@ -71,6 +74,7 @@ rule parse:
             --prettify-fields {params.prettify_fields}
         """
 
+
 rule add_iso3:
     input:
         metadata="data/{lineage}/metadata_raw_{segment}.tsv",
@@ -126,7 +130,12 @@ rule combined_with_metadata:
     output:
         metadata="data/{lineage}/combined_{segment}.tsv",
     params:
-        nextclade_columns=lambda wildcards: ",".join(config.get("nextclade_columns", ["seqName", "clade", "short_clade", "aaSubstitutions"])),
+        nextclade_columns=lambda wildcards: ",".join(
+            config.get(
+                "nextclade_columns",
+                ["seqName", "clade", "short_clade", "aaSubstitutions"],
+            )
+        ),
     shell:
         """
         tsv-select -H -f {params.nextclade_columns} {input.nextclade} \
@@ -288,9 +297,17 @@ rule multi_region_plot_clades:
     output:
         plot="plots/{lineage}_{segment}/region-clades.png",
     params:
-        clades_argument=lambda wildcards: f"--clades {' '.join(config['clades_to_plot'][wildcards.lineage][wildcards.segment])}" if config.get("clades_to_plot", {}).get(wildcards.lineage, {}).get(wildcards.segment) else "",
-        auspice_config_argument=lambda wildcards: f"--auspice-config {config['auspice_config'][wildcards.lineage]}" if config.get("auspice_config", {}).get(wildcards.lineage) else "",
-        coloring_field_argument=lambda wildcards: f"--coloring-field {config['coloring_field']}" if config.get("coloring_field") else "",
+        clades_argument=lambda wildcards: f"--clades {' '.join(config['clades_to_plot'][wildcards.lineage][wildcards.segment])}"
+        if config.get("clades_to_plot", {})
+        .get(wildcards.lineage, {})
+        .get(wildcards.segment)
+        else "",
+        auspice_config_argument=lambda wildcards: f"--auspice-config {config['auspice_config'][wildcards.lineage]}"
+        if config.get("auspice_config", {}).get(wildcards.lineage)
+        else "",
+        coloring_field_argument=lambda wildcards: f"--coloring-field {config['coloring_field']}"
+        if config.get("coloring_field")
+        else "",
         regions=regions,
         max_freq=0.2,
     shell:
@@ -320,20 +337,26 @@ rule multi_region_plot_mutation:
 
 #        clades = ['1a.1', '2a.1', '2a.1a', '2a.1b', '2a.3a',  '2a.3a.1','2a.3b', '2b'],
 
+
 rule copy_web:
     input:
-        "results/{lineage}_{segment}/continent-country-frequencies.csv"
+        "results/{lineage}_{segment}/continent-country-frequencies.csv",
     output:
-        "data_web/inputs/flu-{lineage}-{segment}.csv"
+        "data_web/inputs/flu-{lineage}-{segment}.csv",
     shell:
         """
         cp {input} {output}
         """
 
+
 rule prep_web:
     input:
-        expand("data_web/inputs/flu-{lineage}-{segment}.csv",
-             lineage=['h3n2', "h1n1pdm", "vic"], segment=["ha", "na"])
+        expand(
+            "data_web/inputs/flu-{lineage}-{segment}.csv",
+            lineage=["h3n2", "h1n1pdm", "vic"],
+            segment=["ha", "na"],
+        ),
+
 
 rule clean:
     shell:
