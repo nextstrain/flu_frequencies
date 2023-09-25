@@ -1,0 +1,8 @@
+name: flu_frequencies
+channels:
+  - nextstrain
+  - conda-forge
+dependencies:
+  - nextstrain-base
+  - polars
+  - typer
