@@ -2,6 +2,7 @@
   {
     "name": "flu-h3n2-ha",
     "nameFriendly": "Influenza H3N2 HA",
+    "path": "../../results/h3n2_ha/region-frequencies.csv",
     "image": {
       "file": "images/flu.png",
       "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
@@ -13,6 +14,7 @@
   {
     "name": "flu-h3n2-na",
     "nameFriendly": "Influenza H3N2 NA",
+    "path": "../../results/h3n2_na/region-frequencies.csv",
     "image": {
       "file": "images/flu.png",
       "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
@@ -24,6 +26,7 @@
   {
     "name": "flu-h1n1pdm-ha",
     "nameFriendly": "Influenza H1N1pdm HA",
+    "path": "../../results/h1n1pdm_ha/region-frequencies.csv",
     "image": {
       "file": "images/flu.png",
       "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
@@ -35,6 +38,7 @@
   {
     "name": "flu-h1n1pdm-na",
     "nameFriendly": "Influenza H1N1pdm NA",
+    "path": "../../results/h1n1pdm_na/region-frequencies.csv",
     "image": {
       "file": "images/flu.png",
       "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",

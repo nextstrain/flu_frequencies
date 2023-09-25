@@ -51,8 +51,8 @@ def process_one_pathogen(pathogen: dict, input_dir: str, output_dir: str):
     n_regions = 0
     n_countries = 0
     n_variants = 0
-    if pathogen["isEnabled"]:
-        df = csv_read(join(input_dir, f'{pathogen["name"]}.csv'))
+    if pathogen["isEnabled"] and pathogen["path"] is not None:
+        df = csv_read(join(input_dir, pathogen["path"]))
 
         min_date = df["date"].min()
         max_date = df["date"].max()
@@ -118,7 +118,7 @@ def process_geography(df: pl.DataFrame, pathogen: dict, output_dir: str):
                 "values": values
             }
 
-            filepath_base = join(output_dir, "pathogens", pathogen["name"], "geography", country_name)
+            filepath_base = join(output_dir, "pathogens", pathogen["name"], "geography", country_name or region_name)
             csv_write(country_df, f"{filepath_base}.csv")
             json_write(country_json, f"{filepath_base}.json")
 

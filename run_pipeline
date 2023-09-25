@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+
+# This is a very lazy way of running the whole pipeline. This script tries to follow the README.md: it cleans up any
+# previous outputs, installs everything from scratch and runs the pipeline from start to finish. This works well in
+# throw-away environments like docker and is the cleanest and most reproducible setup. However, in real circumstances
+# you probably want to skip most of these steps once the initial setup is done.
+
+curl -fsSL --proto '=https' https://nextstrain.org/cli/installer/linux | bash
+eval "$("/home/user/.nextstrain/cli-standalone/nextstrain" init-shell bash)"
+nextstrain setup --set-default conda
+nextstrain shell . < <(echo 'pip3 install polars typer')
+
+rm -rf plots results nextclade .snakemake
+
+nextstrain build . --profile profiles/flu -R copy_web
