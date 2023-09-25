@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2023-09-25T12:53:24Z",
+  "lastUpdate": "2023-09-25T13:26:57Z",
   "pathogens": [
     {
       "color": "#8a931f",
@@ -47,7 +47,7 @@
       "maxDate": "2023-09-09",
       "minDate": "2022-01-01",
       "nCountries": 77,
-      "nRegions": 11,
+      "nRegions": 10,
       "nVariants": 15,
       "name": "flu-h1n1pdm-ha",
       "nameFriendly": "Influenza H1N1pdm HA"
@@ -64,7 +64,7 @@
       "maxDate": "2023-09-09",
       "minDate": "2022-01-01",
       "nCountries": 76,
-      "nRegions": 11,
+      "nRegions": 10,
       "nVariants": 28,
       "name": "flu-h1n1pdm-na",
       "nameFriendly": "Influenza H1N1pdm NA"

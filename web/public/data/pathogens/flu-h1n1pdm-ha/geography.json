@@ -79,20 +79,19 @@
     "other"
   ],
   "geography": {
-    "?": [],
     "Africa": [
-      "KEN",
+      "TGO",
+      "SEN",
       "ZMB",
       "BFA",
+      "MOZ",
       "MDG",
       "ZAF",
-      "MOZ",
-      "GHA",
       "MUS",
-      "TGO",
+      "GHA",
       "CIV",
-      "ETH",
-      "SEN"
+      "KEN",
+      "ETH"
     ],
     "China": [
       "CHN"
@@ -102,87 +101,83 @@
       "KOR"
     ],
     "Europe": [
-      "LUX",
+      "BGR",
+      "PRT",
+      "NOR",
+      "BEL",
       "DEU",
       "POL",
-      "SVN",
-      "BGR",
-      "EST",
-      "DNK",
       "SWE",
-      "XKX",
-      "SRB",
       "ITA",
-      "AUT",
-      "PRT",
-      "FRA",
-      "FIN",
-      "CHE",
-      "RUS",
-      "ESP",
-      "ISL",
-      "BEL",
-      "CZE",
-      "NLD",
       "GBR",
+      "AUT",
+      "EST",
+      "RUS",
+      "SRB",
+      "IRL",
+      "CHE",
+      "DNK",
+      "ISL",
+      "SVN",
+      "CZE",
+      "FRA",
+      "LUX",
+      "FIN",
       "UKR",
-      "NOR",
       "ROU",
+      "NLD",
+      "XKX",
       "ALB",
-      "IRL"
+      "ESP"
     ],
     "North America": [
+      "CAN",
+      "GTM",
       "USA",
       "PAN",
       "HTI",
-      "CAN",
-      "GTM",
       "CRI"
     ],
     "Oceania": [
-      "AUS",
-      "NZL",
+      "FJI",
       "NCL",
-      "FJI"
+      "AUS",
+      "NZL"
     ],
     "South America": [
-      "BOL",
-      "BRA",
+      "VEN",
+      "CHL",
       "PER",
+      "BRA",
       "ARG",
       "URY",
-      "PRY",
       "GUF",
-      "VEN",
-      "CHL"
+      "BOL",
+      "PRY"
     ],
     "South-eastern Asia": [
-      "THA",
-      "PHL",
-      "SGP",
       "LAO",
-      "KHM"
+      "KHM",
+      "THA",
+      "SGP",
+      "PHL"
     ],
     "Southern Asia": [
-      "IND",
-      "PAK"
+      "PAK",
+      "IND"
     ],
     "Western Asia": [
-      "KGZ",
-      "other",
-      "OMN",
-      "LBN",
-      "QAT",
       "ISR",
+      "ARE",
+      "LBN",
+      "other",
+      "QAT",
+      "OMN",
       "BHR",
-      "ARE"
+      "KGZ"
     ]
   },
   "geographyStyles": {
-    "?": {
-      "color": "#99ac53",
-      "lineStyle": "normal"
-    },
     "ALB": {
       "color": "#351f93",
       "lineStyle": "normal"
@@ -533,7 +528,6 @@
     }
   },
   "regions": [
-    "?",
     "Africa",
     "China",
     "Eastern Asia",

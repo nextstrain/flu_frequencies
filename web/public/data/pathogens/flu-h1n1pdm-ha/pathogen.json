@@ -10,7 +10,7 @@
   "maxDate": "2023-09-09",
   "minDate": "2022-01-01",
   "nCountries": 77,
-  "nRegions": 11,
+  "nRegions": 10,
   "nVariants": 15,
   "name": "flu-h1n1pdm-ha",
   "nameFriendly": "Influenza H1N1pdm HA"
