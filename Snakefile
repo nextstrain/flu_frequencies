@@ -6,7 +6,6 @@ wildcard_constraints:
     segment="ha|na",
 
 
-
 rule europe:
     input:
         [
@@ -339,6 +338,10 @@ rule multi_region_plot_mutation:
 
 
 rule copy_web:
+    """
+    Copy results to web directory
+    Use like so:  snakemake --profile profiles/flu data_web/inputs/flu-h3n2-ha.csv
+    """
     input:
         "results/{lineage}_{segment}/continent-country-frequencies.csv",
     output:
