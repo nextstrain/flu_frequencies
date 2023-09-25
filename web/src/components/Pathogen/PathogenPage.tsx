@@ -170,13 +170,20 @@ export function ListOfRegions({ pathogenName, ...restProps }: ListOfRegionsProps
       ),
       ...fuzzySearchObj(countriesTranslated, ['countryName', 'translated', 'transliterated'], searchTerm).map(
         ({ item: { countryName, countryCode }, score }) => ({
-          component: <CountryItem key={countryCode} pathogenName={pathogenName} country={countryName} />,
+          component: (
+            <CountryItem
+              key={countryCode}
+              pathogenName={pathogenName}
+              countryCode={countryCode}
+              countryName={countryName}
+            />
+          ),
           score,
         }),
       ),
     ]
     return sortBy(scored, ({ score }) => score).map(({ component }) => component)
-  }, [countries, pathogenName, regions, searchTerm, t])
+  }, [countries, getCountryName, pathogenName, regions, searchTerm, t])
 
   return (
     <Card {...restProps}>
@@ -234,14 +241,15 @@ export function ListOfVariants({ pathogenName, ...restProps }: ListOfVariantsPro
 
 interface CountryItemProps {
   pathogenName: string
-  country: string
+  countryCode: string
+  countryName: string
 }
 
-function CountryItem({ pathogenName, country }: CountryItemProps) {
+function CountryItem({ pathogenName, countryName, countryCode }: CountryItemProps) {
   const { t } = useTranslationSafe()
-  const Icon = useMemo(() => <GeoIconCountry country={country} size={25} />, [country])
-  const text = useMemo(() => t(country), [country, t])
-  const href = useMemo(() => urljoin('/pathogen', pathogenName, 'regions', country), [country, pathogenName])
+  const Icon = useMemo(() => <GeoIconCountry country={countryName} size={25} />, [countryName])
+  const text = useMemo(() => t(countryName), [countryName, t])
+  const href = useMemo(() => urljoin('/pathogen', pathogenName, 'regions', countryCode), [countryCode, pathogenName])
   return (
     <Li>
       <Link href={href} title={text} className="text-decoration-none d-flex align-middle">
