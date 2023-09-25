@@ -8,21 +8,41 @@ This README is for the data analysis pipeline. For the web interface, see [web/R
 
 #### Using Nextstrain CLI
 
+<details>
+
+<summary>Currently not working due to lack of polars in Nextstrain managed environments (conda/docker)</summary>
+
+##### Install Nextstrain CLI
+
+On Linux:
+
 ```bash
-# Linux
 curl -fsSL --proto '=https' https://nextstrain.org/cli/installer/linux | bash
-# Mac
+```
+
+On macOS:
+
+```zsh
 curl -fsSL --proto '=https' https://nextstrain.org/cli/installer/mac | bash
 ```
 
+##### Setup Nextstrain CLI
+
 You can set it up to use Docker or a Nextstrain managed conda environment (completely independent of any other conda environments you may have).
 
+Using docker:
+
 ```bash
-# Managed conda
-nextstrain setup --set-default conda
-# Docker
 nextstrain setup --set-default docker
 ```
+
+Using managed conda environment:
+
+```bash
+nextstrain setup --set-default conda
+```
+
+##### Run analysis
 
 Run analysis:
 
@@ -30,20 +50,32 @@ Run analysis:
 nextstrain build . --profile profiles/flu
 ```
 
-#### Using custom conda or Python environment
+</details>
 
-You will have to have at least the following packages/binaries installed:
+#### Using custom conda environment
 
-- `Python`
-  - `snakemake`
-  - `augur`
-  - `polars`
-- `nextclade`
+Install conda environment:
 
-Then run using:
+```bash
+mamba env create -f environment.yml
+```
+
+Activate the environment:
+
+```bash
+conda activate flu_frequencies
+```
+
+Run for flu using:
 
 ```bash
 snakemake --profile profiles/flu
+```
+
+Run for SARS-CoV-2 using:
+
+```bash
+snakemake --profile profiles/SC2
 ```
 
 ### Viewing results in web app
