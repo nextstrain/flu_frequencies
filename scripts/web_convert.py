@@ -152,8 +152,8 @@ def process_variants(df: pl.DataFrame, pathogen: dict, output_dir: str):
 
 
 def extract_geography_hierarchy(df: pl.DataFrame):
-    regions = list(df["region"].unique(maintain_order=True))
-    countries = list(set(df["country"].unique(maintain_order=True).drop_nulls()) - set(regions))
+    regions = list(sorted(df["region"].unique(maintain_order=True)))
+    countries = list(sorted(set(df["country"].unique(maintain_order=True).drop_nulls()) - set(regions)))
 
     geo_items = df \
         .select(["region", "country"]) \
@@ -169,7 +169,7 @@ def extract_geography_hierarchy(df: pl.DataFrame):
 
 
 def extract_list_of_variants(df: pl.DataFrame):
-    variants = list(df["variant"].unique(maintain_order=True))
+    variants = list(sorted(df["variant"].unique(maintain_order=True)))
     styles = {variant: {"color": colorhash(variant), "lineStyle": "normal"} for variant in variants}
     return {"variants": variants, "variantsStyles": styles}
 
