@@ -1,3 +1,4 @@
+/* eslint-disable only-ascii/only-ascii */
 import { get } from 'lodash-es'
 import React, { useMemo } from 'react'
 import iso3311a2 from 'iso-3166-1-alpha-2'
@@ -22,11 +23,19 @@ export function GeoIconCountry({ country, size = 18 }: GeoIconCountryProps) {
 }
 
 function getCountryCode(country: string) {
-  return MISSING_COUNTRY_CODES[country] ?? iso3311a2.getCode(country) ?? '?'
+  const code = MISSING_COUNTRY_CODES[country] ?? iso3311a2.getCode(country)
+  if (code) {
+    return code
+  }
+  if (country !== 'Other') {
+    console.info(`Unable to find country code for '${country}'`)
+  }
+  return '??'
 }
 
 const MISSING_COUNTRY_CODES: Record<string, string> = {
-  'Laos': 'LA',
+  "Cote d'Ivoire": 'CI',
+  "Côte d'Ivoire": 'CI',
   'Bolivia': 'BO',
   'Bonaire': 'BQ',
   'Brunei': 'BN',
@@ -36,6 +45,8 @@ const MISSING_COUNTRY_CODES: Record<string, string> = {
   'Eswatini': 'SZ',
   'Iran': 'IR',
   'Kosovo': 'XK',
+  'Kyrgyz Republic': 'KG',
+  'Laos': 'LA',
   'Moldova': 'MD',
   'North Macedonia': 'MK',
   'Republic of the Congo': 'CD',
