@@ -4,18 +4,23 @@
 """
 Converts data from intermediate format into a format suitable for consumption by the web app
 """
+import argparse
+import json
+import logging
 import posixpath
 import shutil
 from datetime import datetime
 from os import makedirs
-from os.path import join, dirname
-import argparse
-import json
-from typing import Union, List
-from PIL import ImageOps, Image, ImageColor
+from os.path import dirname, join
+from typing import List, Union
+
 import polars as pl
+from PIL import Image, ImageOps
 
 from colorhash import colorhash
+
+logging.basicConfig(level=logging.INFO)
+l = logging.getLogger(" ")
 
 
 def main():
@@ -46,6 +51,8 @@ def process_one_pathogen(pathogen: dict, input_dir: str, output_dir: str):
     color = colorhash(pathogen["name"], reverse=True, prefix="321")
     image_url = process_image(pathogen, color, input_dir, output_dir)
 
+    l.info(f"Processing {pathogen['name']}")
+
     min_date = ''
     max_date = ''
     n_regions = 0
@@ -53,6 +60,11 @@ def process_one_pathogen(pathogen: dict, input_dir: str, output_dir: str):
     n_variants = 0
     if pathogen["isEnabled"]:
         df = csv_read(join(input_dir, f'{pathogen["name"]}.csv'))
+
+        condition = (pl.col('country') == '?') | (pl.col('region') == '?')
+        if len(df.filter(condition)) > 0:
+            l.warning("there are rows with 'country' or 'region' coloumns having value '?'. Dropping these rows.")
+            df = df.filter(~condition)
 
         min_date = df["date"].min()
         max_date = df["date"].max()
