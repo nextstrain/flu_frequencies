@@ -18,6 +18,7 @@ import polars as pl
 from PIL import Image, ImageOps
 
 from colorhash import colorhash
+from country_lookup_from_file import CountryLookupFromFile
 
 logging.basicConfig(level=logging.INFO)
 l = logging.getLogger(" ")
@@ -32,19 +33,47 @@ def main():
 
     input_dir = dirname(args.input_pathogens_json)
 
-    pathogens = json_read(args.input_pathogens_json)
+    input_pathogens = json_read(args.input_pathogens_json)
 
-    pathogens = [
-        process_one_pathogen(pathogen, input_dir, args.output_dir)
-        for pathogen in pathogens
-        if pathogen["isVisible"]
-    ]
+    all_pathogens = []
+    all_regions = set()
+    all_countries = set()
+    for pathogen in input_pathogens:
+        if pathogen["isVisible"]:
+            pathogen, regions, countries = process_one_pathogen(pathogen, input_dir, args.output_dir)
+            all_pathogens.append(pathogen)
+            all_regions.update(set(regions))
+            all_countries.update(set(countries))
 
+    # Make index.json
     index_json = {
         "lastUpdate": date_to_iso(date_now()),
-        "pathogens": pathogens
+        "pathogens": all_pathogens
     }
     json_write(index_json, join(args.output_dir, "index.json"))
+
+    cl = CountryLookupFromFile("profiles/flu/iso3_to_region.tsv")
+    global_geography_json = {
+        "lastUpdate": date_to_iso(date_now()),
+        "countryNames": {
+            country_code: cl.iso3_to_name(country_code) if country_code != "other" else "Other"
+            for country_code in all_countries
+        }
+    }
+    json_write(global_geography_json, join(args.output_dir, "global_geography.json"))
+
+    # Update additional keys for the internationalization
+    all_country_names = [v for k, v in global_geography_json["countryNames"].items()]
+    i18n_keys_file = join(input_dir, "../../web/src/i18n/additional_keys.json")
+    i18n_keys = json_read(i18n_keys_file)
+    i18n_keys.extend(all_country_names)
+    i18n_keys.extend(all_regions)
+    i18n_keys = list(sorted(set(i18n_keys)))
+    json_write(i18n_keys, i18n_keys_file)
+
+
+def get_country_name(iso3_codes: pl.DataFrame, country_code: str):
+    return iso3_codes.row(by_predicate=(pl.col("iso3") == country_code))
 
 
 def process_one_pathogen(pathogen: dict, input_dir: str, output_dir: str):
@@ -58,8 +87,10 @@ def process_one_pathogen(pathogen: dict, input_dir: str, output_dir: str):
     n_regions = 0
     n_countries = 0
     n_variants = 0
+    regions = []
+    countries = []
     if pathogen["isEnabled"]:
-        df = csv_read(join(input_dir, f'{pathogen["name"]}.csv'))
+        df = csv_read(join(input_dir, f'{pathogen["name"]}.csv')).sort("date")
 
         condition = (pl.col('country') == '?') | (pl.col('region') == '?')
         if len(df.filter(condition)) > 0:
@@ -70,6 +101,8 @@ def process_one_pathogen(pathogen: dict, input_dir: str, output_dir: str):
         max_date = df["date"].max()
 
         regions_json = extract_geography_hierarchy(df)
+        countries = regions_json["countries"]
+        regions = regions_json["regions"]
         n_regions = len(regions_json["regions"])
         n_countries = len(regions_json["countries"])
         json_write(regions_json, join(output_dir, "pathogens", pathogen["name"], "geography.json"))
@@ -95,7 +128,7 @@ def process_one_pathogen(pathogen: dict, input_dir: str, output_dir: str):
     }
     json_write(pathogen_json, join(output_dir, "pathogens", pathogen["name"], "pathogen.json"))
 
-    return pathogen_json
+    return pathogen_json, regions, countries
 
 
 def two_columns_to_dict(date_df, key_column, value_column):
@@ -224,11 +257,11 @@ def json_read(filepath: str):
 def json_write(obj: Union[dict, list], filepath: str):
     ensure_dir(filepath)
     with open(filepath, "w") as f:
-        json.dump(obj, f, indent=2, sort_keys=True)
+        json.dump(obj, f, indent=2, sort_keys=True, ensure_ascii=False)
 
 
-def csv_read(filepath: str):
-    return pl.read_csv(filepath, infer_schema_length=1_000_000).sort("date")
+def csv_read(filepath: str, **kwargs):
+    return pl.read_csv(filepath, infer_schema_length=1_000_000, **kwargs)
 
 
 def csv_write(df: pl.DataFrame, filepath: str):

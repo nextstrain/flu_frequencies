@@ -2,6 +2,7 @@ import { get } from 'lodash-es'
 import urljoin from 'url-join'
 import { useAxiosQueries, useAxiosQuery } from 'src/hooks/useAxiosQuery'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
+import { useCallback } from 'react'
 
 export interface Pathogen {
   isEnabled: boolean
@@ -85,6 +86,19 @@ export function useRegionDataQuery(
 
 export function useRegionsDataQuery(pathogenName: string): GeographyData {
   return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'geography.json'))
+}
+
+export interface GlobalGeographyData {
+  countryNames: Record<string, string>
+}
+
+export function useGlobalGeographyDataQuery(): GlobalGeographyData {
+  return useAxiosQuery(urljoin(getDataRootUrl(), 'global_geography.json'))
+}
+
+export function useCountryName() {
+  const { countryNames } = useGlobalGeographyDataQuery()
+  return useCallback((countryCode: string) => countryNames[countryCode] ?? countryCode, [countryNames])
 }
 
 export function usePathogen(pathogenName: string): Pathogen {
