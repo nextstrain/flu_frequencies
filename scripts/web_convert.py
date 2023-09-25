@@ -64,10 +64,12 @@ def main():
 
     # Update additional keys for the internationalization
     all_country_names = [v for k, v in global_geography_json["countryNames"].items()]
+    all_pathogen_names = [pathogen["nameFriendly"] for pathogen in all_pathogens]
     i18n_keys_file = join(input_dir, "../../web/src/i18n/additional_keys.json")
     i18n_keys = json_read(i18n_keys_file)
     i18n_keys.extend(all_country_names)
     i18n_keys.extend(all_regions)
+    i18n_keys.extend(all_pathogen_names)
     i18n_keys = list(sorted(set(i18n_keys)))
     json_write(i18n_keys, i18n_keys_file)
 
