@@ -79,100 +79,100 @@
   ],
   "geography": {
     "Africa": [
+      "BFA",
+      "CIV",
+      "ETH",
+      "GHA",
+      "KEN",
+      "MDG",
+      "MOZ",
+      "MUS",
       "SEN",
       "TGO",
-      "ZMB",
-      "BFA",
-      "MOZ",
-      "MDG",
-      "GHA",
-      "MUS",
       "ZAF",
-      "CIV",
-      "KEN",
-      "ETH"
+      "ZMB"
     ],
     "China": [
       "CHN"
     ],
     "Eastern Asia": [
       "JPN",
-      "other",
-      "KOR"
+      "KOR",
+      "other"
     ],
     "Europe": [
-      "BGR",
-      "PRT",
-      "NOR",
-      "BEL",
-      "DEU",
-      "POL",
-      "SWE",
-      "ITA",
-      "GBR",
+      "ALB",
       "AUT",
+      "BEL",
+      "BGR",
+      "CHE",
+      "CZE",
+      "DEU",
+      "DNK",
+      "ESP",
       "EST",
+      "FIN",
+      "FRA",
+      "GBR",
+      "IRL",
+      "ISL",
+      "ITA",
+      "LUX",
+      "NLD",
+      "NOR",
+      "POL",
+      "PRT",
+      "ROU",
       "RUS",
       "SRB",
-      "IRL",
-      "CHE",
-      "DNK",
-      "ISL",
       "SVN",
-      "CZE",
-      "FRA",
-      "LUX",
-      "FIN",
+      "SWE",
       "UKR",
-      "ROU",
-      "NLD",
-      "XKX",
-      "ALB",
-      "ESP"
+      "XKX"
     ],
     "North America": [
       "CAN",
+      "CRI",
       "GTM",
-      "USA",
-      "PAN",
       "HTI",
-      "CRI"
+      "PAN",
+      "USA"
     ],
     "Oceania": [
+      "AUS",
       "FJI",
       "NCL",
-      "AUS",
       "NZL"
     ],
     "South America": [
-      "VEN",
-      "CHL",
-      "PER",
-      "BRA",
       "ARG",
-      "GUF",
       "BOL",
-      "PRY"
+      "BRA",
+      "CHL",
+      "GUF",
+      "PER",
+      "PRY",
+      "VEN"
     ],
     "South-eastern Asia": [
-      "LAO",
-      "THA",
       "KHM",
+      "LAO",
+      "PHL",
       "SGP",
-      "PHL"
+      "THA"
     ],
     "Southern Asia": [
-      "PAK",
-      "IND"
+      "IND",
+      "PAK"
     ],
     "Western Asia": [
-      "ISR",
-      "LBN",
-      "QAT",
-      "OMN",
+      "ARE",
       "BHR",
+      "ISR",
       "KGZ",
-      "ARE"
+      "LBN",
+      "OMN",
+      "QAT"
     ]
   },
   "geographyStyles": {

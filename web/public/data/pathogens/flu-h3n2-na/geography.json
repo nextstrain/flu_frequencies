@@ -84,105 +84,105 @@
   ],
   "geography": {
     "Africa": [
-      "TGO",
-      "SEN",
-      "MDG",
-      "ZAF",
       "GHA",
+      "MDG",
       "NER",
-      "TUN"
+      "SEN",
+      "TGO",
+      "TUN",
+      "ZAF"
     ],
     "China": [
       "CHN"
     ],
     "Eastern Asia": [
+      "HKG",
       "JPN",
-      "KOR",
-      "HKG"
+      "KOR"
     ],
     "Europe": [
+      "ALB",
+      "AUT",
       "BEL",
-      "POL",
-      "ITA",
-      "GBR",
-      "EST",
-      "RUS",
-      "IRL",
+      "BGR",
+      "BLR",
       "CHE",
       "CZE",
-      "BLR",
-      "ROU",
-      "NLD",
-      "ESP",
-      "SRB",
-      "BGR",
-      "PRT",
-      "NOR",
       "DEU",
-      "SWE",
-      "LTU",
-      "AUT",
       "DNK",
-      "ISL",
-      "SVN",
-      "FRA",
+      "ESP",
+      "EST",
       "FIN",
-      "LUX",
-      "UKR",
+      "FRA",
+      "GBR",
       "HRV",
+      "IRL",
+      "ISL",
+      "ITA",
+      "LTU",
+      "LUX",
       "LVA",
-      "ALB"
+      "NLD",
+      "NOR",
+      "POL",
+      "PRT",
+      "ROU",
+      "RUS",
+      "SRB",
+      "SVN",
+      "SWE",
+      "UKR"
     ],
     "North America": [
-      "HND",
       "CAN",
-      "PRI",
-      "GTM",
-      "USA",
-      "TTO",
-      "MEX",
       "CRI",
-      "SLV"
+      "GTM",
+      "HND",
+      "MEX",
+      "PRI",
+      "SLV",
+      "TTO",
+      "USA"
     ],
     "Oceania": [
+      "AUS",
       "FJI",
       "NCL",
-      "AUS",
       "NZL"
     ],
     "South America": [
-      "COL",
-      "CHL",
-      "PER",
-      "BRA",
       "ARG",
-      "GUF",
       "BOL",
-      "ECU"
+      "BRA",
+      "CHL",
+      "COL",
+      "ECU",
+      "GUF",
+      "PER"
     ],
     "South-eastern Asia": [
-      "LAO",
-      "THA",
-      "other",
-      "MYS",
-      "SGP",
       "BRN",
+      "LAO",
+      "MYS",
       "PHL",
-      "TLS"
+      "SGP",
+      "THA",
+      "TLS",
+      "other"
     ],
     "Southern Asia": [
       "BGD",
-      "IND",
-      "NPL",
       "BTN",
-      "MDV"
+      "IND",
+      "MDV",
+      "NPL"
     ],
     "Western Asia": [
-      "LBN",
-      "QAT",
-      "OMN",
+      "ARE",
       "BHR",
-      "ARE"
+      "LBN",
+      "OMN",
+      "QAT"
     ]
   },
   "geographyStyles": {

@@ -173,7 +173,7 @@ def extract_geography_hierarchy(df: pl.DataFrame):
         .partition_by(by=["region"], as_dict=True, maintain_order=True) \
         .items()
 
-    geography = {region: list(set(region_df["country"]) - {region}) for region, region_df in geo_items}
+    geography = {region: list(sorted(set(region_df["country"]) - {region})) for region, region_df in geo_items}
 
     styles = {country: {"color": colorhash(country), "lineStyle": "normal"} for country in regions + countries}
 
