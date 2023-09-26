@@ -1,10 +1,12 @@
-import { get, sortBy } from 'lodash-es'
+import { get, groupBy, last, sortBy } from 'lodash-es'
 import urljoin from 'url-join'
 import { useAxiosQueries, useAxiosQuery } from 'src/hooks/useAxiosQuery'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
 import { useCallback, useMemo } from 'react'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { transliterate } from 'transliteration'
+import { useRecoilValue } from 'recoil'
+import { VariantsSortingBy, variantsSortingCriteriaAtom } from 'src/state/settings.state'
 
 export interface Pathogen {
   isEnabled: boolean
@@ -62,17 +64,16 @@ export function useVariantDataQuery(
 }
 
 export interface RegionDatum {
-  variant: string
   date: string
-  freqHi: number
-  freqLo: number
-  freqMi: number
-  count: number
-  total: number
+  avgs: Record<string, number>
+  counts: Record<string, number>
+  ranges: Record<string, [number, number]>
+  totals: Record<string, number>
 }
 
 export interface RegionDataJson {
-  variant: string
+  country: string
+  region: string
   values: RegionDatum[]
 }
 
@@ -199,4 +200,41 @@ export interface VariantsJson {
 
 export function useVariantsDataQuery(pathogenName: string): VariantsJson {
   return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'variants.json'))
+}
+
+export function useVariants(pathogenName: string, region: string): string[] {
+  const { variants } = useVariantsDataQuery(pathogenName)
+  const sorting = useRecoilValue(variantsSortingCriteriaAtom)
+  const { regionData } = useRegionDataQuery(pathogenName, region)
+  return useMemo(() => {
+    if (sorting === VariantsSortingBy.Frequency) {
+      const valuesFlat = flattenVariantsAvgsData(regionData.values)
+      const byVariant = groupBy(valuesFlat, (r) => r.variant)
+      const withLastFreq = Object.entries(byVariant).map(([variant, data]) => {
+        const lastFreq = last(sortBy(data, (datum) => datum.date))?.avg ?? 0
+        return { variant, lastFreq }
+      })
+      return sortBy(withLastFreq, ({ lastFreq }) => -lastFreq).map(({ variant }) => variant)
+    }
+    return variants.sort()
+  }, [regionData.values, sorting, variants])
+}
+
+export interface RegionDatumFlat {
+  variant: string
+  date: string
+  avg: number
+  // range: [number, number]   // TODO
+  // count: number             // TODO
+  // total: number             // TODO
+}
+
+export function flattenVariantsAvgsData(values: RegionDatum[]): RegionDatumFlat[] {
+  return values.flatMap((value) =>
+    Object.entries(value.avgs).map(([variant, avg]) => ({
+      date: value.date,
+      avg,
+      variant,
+    })),
+  )
 }

@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { rgba, darken } from 'polished'
+import { darken } from 'polished'
 import {
   Dropdown as DropdownBase,
   DropdownToggle as DropdownToggleBase,
@@ -10,25 +10,30 @@ import {
 } from 'reactstrap'
 import { MdArrowDropDown } from 'react-icons/md'
 
-export interface DropdownEntry {
-  key: string
+export interface DropdownEntry<K> {
+  key: K
   value: ReactNode
 }
 
-export interface DropdownProps extends DropdownBaseProps {
-  entries: DropdownEntry[]
-  currentEntry: DropdownEntry
-  setCurrentEntry(key: DropdownEntry): void
+export interface DropdownProps<K> extends DropdownBaseProps {
+  entries: DropdownEntry<K>[]
+  currentEntry: DropdownEntry<K>
+  setCurrentEntry(key: DropdownEntry<K>): void
 }
 
-export function Dropdown({ currentEntry, setCurrentEntry, entries, ...restProps }: DropdownProps) {
+export function Dropdown<K extends { toString(): string }>({
+  currentEntry,
+  setCurrentEntry,
+  entries,
+  ...restProps
+}: DropdownProps<K>) {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const toggle = useCallback(() => setDropdownOpen((prevState) => !prevState), [])
-  const onClick = useCallback((entry: DropdownEntry) => () => setCurrentEntry(entry), [setCurrentEntry])
+  const onClick = useCallback((entry: DropdownEntry<K>) => () => setCurrentEntry(entry), [setCurrentEntry])
   const menuItems = useMemo(() => {
     return entries.map((entry) => {
       return (
-        <DropdownItem key={entry.key} active={entry.key === currentEntry.key} onClick={onClick(entry)}>
+        <DropdownItem key={entry.key.toString()} active={entry.key === currentEntry.key} onClick={onClick(entry)}>
           {entry.value}
         </DropdownItem>
       )
@@ -48,9 +53,10 @@ export function Dropdown({ currentEntry, setCurrentEntry, entries, ...restProps 
 
 const DropdownStyled = styled(DropdownBase)`
   display: flex;
-  border: ${(props) => rgba(props.theme.primary, 0.5)} solid 1px;
+  border: ${(props) => props.theme.gray200} solid 1px;
   border-radius: 3px;
   box-shadow: ${(props) => props.theme.shadows.lighter};
+  background-color: ${(props) => props.theme.bodyBg};
 
   color: ${(props) => props.theme.bodyColor};
 
@@ -59,7 +65,9 @@ const DropdownStyled = styled(DropdownBase)`
   }
 
   & > a {
-    // min-width: 200px;
+    width: 100%;
+    padding: 4px;
+    padding-left: 10px;
   }
 `
 
@@ -71,6 +79,13 @@ const DropdownToggle = styled(DropdownToggleBase)`
 const DropdownToggleText = styled.span`
   flex: 1;
   color: ${(props) => props.theme.bodyColor};
+
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  display: block;
+
+  max-width: 200px;
 
   :hover {
     color: ${(props) => props.theme.bodyColor};
@@ -88,10 +103,18 @@ const DropdownMenu = styled(DropdownMenuBase)`
   background-color: ${(props) => props.theme.bodyBg};
   box-shadow: ${(props) => props.theme.shadows.blurredMedium};
   max-height: 70vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 `
 
 const DropdownItem = styled(DropdownItemBase)<{ active: boolean }>`
+  * {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+
+  max-width: 70vw;
+
   :hover {
     color: ${({ active, theme }) => (active ? theme.white : theme.bodyColor)};
     background: ${({ active, theme }) => (active ? darken(0.025)(theme.primary) : theme.gray200)};
