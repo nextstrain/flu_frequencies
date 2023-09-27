@@ -56,9 +56,7 @@ A month is 30 days, so a value around 1000 seems sensible.
 The benefit of this Gaussian model is that this can be solved exactly.
 The minimum is obtained by setting the derivative with respect to $p_j$ to 0.
 \begin{equation}
-    \partial_j logL(\{p_i\} | \{n_i\}, \{k_i\}) = n_j^2\frac{(k_j - p_j n_j)}{(k_j+p_c)(n_j-k_j+p_c)}
-%    - \lambda (p_j - p_{j-1}) + \lambda (p_{j+1} - p_{j})
-- \lambda (2p_j - p_{j-1}-p_{j+1}) = 0
+    \partial_j logL(\{p_i\} | \{n_i\}, \{k_i\}) = n_j^2\frac{(k_j - p_j n_j)}{(k_j+p_c)(n_j-k_j+p_c)} - \lambda (2p_j - p_{j-1}-p_{j+1}) = 0
 \end{equation}
 For $j=0$ the last term is just $\lambda (p_1 - p_0)$, for $p_m$, the  $-\lambda (p_m - p_{m-1})$
 This is a very sparse linear system of equations that owing to the stiffness constraint should non-degenerate.
