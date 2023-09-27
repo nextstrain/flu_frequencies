@@ -9,9 +9,9 @@ import { FlagWrapper as FlagWrapperBase } from 'src/components/Common/CountryFla
 
 export function LanguageSwitcher({
   ...restProps
-}: Omit<DropdownProps, 'entries' | 'currentEntry' | 'setCurrentEntry'>) {
+}: Omit<DropdownProps<string>, 'entries' | 'currentEntry' | 'setCurrentEntry'>) {
   const [currentLocale, setCurrentLocale] = useRecoilState(localeAtom)
-  const setCurrentEntry = useCallback((entry: DropdownEntry) => setCurrentLocale(entry.key), [setCurrentLocale])
+  const setCurrentEntry = useCallback((entry: DropdownEntry<string>) => setCurrentLocale(entry.key), [setCurrentLocale])
 
   const { entries } = useMemo(() => {
     const entries = localesArray.map((locale) => ({

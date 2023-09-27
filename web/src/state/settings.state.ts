@@ -30,3 +30,14 @@ export const isSidebarSettingsCollapsedAtom = atom({
   default: false,
   effects: [persistAtom],
 })
+
+export enum VariantsSortingBy {
+  Name = 'Name',
+  Frequency = 'Frequency',
+}
+
+export const variantsSortingCriteriaAtom = atom<VariantsSortingBy>({
+  key: 'variantsSortingCriteriaAtom',
+  default: VariantsSortingBy.Name,
+  effects: [persistAtom],
+})

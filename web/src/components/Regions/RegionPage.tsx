@@ -42,7 +42,7 @@ export function RegionPage({ pathogenName, location }: RegionsPageProps) {
 
   return (
     <PageContainerHorizontal>
-      <RegionsSidebar pathogenName={pathogenName} />
+      <RegionsSidebar pathogenName={pathogenName} region={location} />
 
       <MainContent>
         <MainContentInner>
