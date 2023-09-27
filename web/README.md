@@ -84,7 +84,7 @@ This document provides some instructions for setting up a development environmen
    art@Kestrel:~/git/flu_frequencies/web$ which node
    /home/art/.nvm/versions/node/v18.14.0/bin/node
    ```
-5. The above step also installs the [Node Package Manager](https://www.npmjs.com/) `npm` in the same local directory. Install the package dependencies by running `npm install` (if the package manager complains about conflicting dependencies, use a `-force` flag).
+5. The above step also installs the [Node Package Manager](https://www.npmjs.com/) `npm` in the same local directory.
 6. Install the [Yarn](https://yarnpkg.com/) package manager: `npm install --global yarn`
 7. Copy the environment variables with `cp .env.example .env`.
 8. Run `yarn install` and `yarn dev` to start the server.
