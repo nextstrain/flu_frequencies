@@ -10,7 +10,7 @@ import urljoin from 'url-join'
 import { BsCaretRightFill as ArrowRight } from 'react-icons/bs'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Link } from 'src/components/Link/Link'
-import { usePathogen, useRegionsDataQuery, useVariantsDataQuery } from 'src/io/getData'
+import { useCountryName, usePathogen, useRegionsDataQuery, useVariantsDataQuery } from 'src/io/getData'
 import type { DropdownOption } from 'src/components/Common/DropdownWithSearch'
 
 const paths = [
@@ -206,16 +206,18 @@ export function BreadcrumbRegionSelector({ pathogenName, region }: BreadcrumbReg
   const { push } = useRouter()
   const [value, setValue] = useState(region)
   const { regions, countries } = useRegionsDataQuery(pathogenName)
+  const getCountryName = useCountryName()
+
   const locations = useMemo(() => [...regions, ...countries], [countries, regions])
   const options = useMemo(
     () =>
       locations.map((location) => ({
-        label: t(location),
+        label: t(getCountryName(location)),
         value: location,
       })),
-    [locations, t],
+    [getCountryName, locations, t],
   )
-  const option = useMemo(() => ({ label: t(value), value }), [t, value])
+  const option = useMemo(() => ({ label: t(getCountryName(value)), value }), [getCountryName, t, value])
   const onChange = useCallback(
     (newValue: OnChangeValue<DropdownOption<string>, false>) => {
       if (newValue) {

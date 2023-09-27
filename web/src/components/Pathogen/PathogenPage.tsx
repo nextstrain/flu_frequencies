@@ -3,7 +3,7 @@ import { Card as CardBase, CardBody as CardBodyBase, CardHeader as CardHeaderBas
 import styled from 'styled-components'
 import urljoin from 'url-join'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { useRegionsDataQuery, useVariantsDataQuery, useVariantStyle } from 'src/io/getData'
+import { useCountryName, useRegionsDataQuery, useVariantsDataQuery, useVariantStyle } from 'src/io/getData'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { GeoIconContinent } from 'src/components/Common/GeoIconContinent'
 import { GeoIconCountry } from 'src/components/Common/GeoIconCountry'
@@ -146,16 +146,19 @@ export function ListOfRegions({ pathogenName, ...restProps }: ListOfRegionsProps
   const { t } = useTranslationSafe()
   const { regions, countries } = useRegionsDataQuery(pathogenName)
   const [searchTerm, setSearchTerm] = useState('')
+  const getCountryName = useCountryName()
+
   const items = useMemo(() => {
     const regionsTranslated = regions.map((region) => {
       const translated = t(region)
       const transliterated = transliterate(translated)
       return { region, translated, transliterated }
     })
-    const countriesTranslated = countries.map((country) => {
-      const translated = t(country)
+    const countriesTranslated = countries.map((countryCode) => {
+      const countryName = getCountryName(countryCode)
+      const translated = t(countryName)
       const transliterated = transliterate(translated)
-      return { country, translated, transliterated }
+      return { countryCode, countryName, translated, transliterated }
     })
 
     const scored = [
@@ -165,15 +168,22 @@ export function ListOfRegions({ pathogenName, ...restProps }: ListOfRegionsProps
           score,
         }),
       ),
-      ...fuzzySearchObj(countriesTranslated, ['country', 'translated', 'transliterated'], searchTerm).map(
-        ({ item: { country }, score }) => ({
-          component: <CountryItem key={country} pathogenName={pathogenName} country={country} />,
+      ...fuzzySearchObj(countriesTranslated, ['countryName', 'translated', 'transliterated'], searchTerm).map(
+        ({ item: { countryName, countryCode }, score }) => ({
+          component: (
+            <CountryItem
+              key={countryCode}
+              pathogenName={pathogenName}
+              countryCode={countryCode}
+              countryName={countryName}
+            />
+          ),
           score,
         }),
       ),
     ]
     return sortBy(scored, ({ score }) => score).map(({ component }) => component)
-  }, [countries, pathogenName, regions, searchTerm, t])
+  }, [countries, getCountryName, pathogenName, regions, searchTerm, t])
 
   return (
     <Card {...restProps}>
@@ -231,14 +241,15 @@ export function ListOfVariants({ pathogenName, ...restProps }: ListOfVariantsPro
 
 interface CountryItemProps {
   pathogenName: string
-  country: string
+  countryCode: string
+  countryName: string
 }
 
-function CountryItem({ pathogenName, country }: CountryItemProps) {
+function CountryItem({ pathogenName, countryName, countryCode }: CountryItemProps) {
   const { t } = useTranslationSafe()
-  const Icon = useMemo(() => <GeoIconCountry country={country} size={25} />, [country])
-  const text = useMemo(() => t(country), [country, t])
-  const href = useMemo(() => urljoin('/pathogen', pathogenName, 'regions', country), [country, pathogenName])
+  const Icon = useMemo(() => <GeoIconCountry country={countryName} size={25} />, [countryName])
+  const text = useMemo(() => t(countryName), [countryName, t])
+  const href = useMemo(() => urljoin('/pathogen', pathogenName, 'regions', countryCode), [countryCode, pathogenName])
   return (
     <Li>
       <Link href={href} title={text} className="text-decoration-none d-flex align-middle">

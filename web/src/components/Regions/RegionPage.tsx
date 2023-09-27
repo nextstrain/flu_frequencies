@@ -3,7 +3,7 @@ import { Col, Row } from 'reactstrap'
 import urljoin from 'url-join'
 import styled from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { usePathogen, useRegionsDataQuery } from 'src/io/getData'
+import { useCountryName, usePathogen, useRegionsDataQuery } from 'src/io/getData'
 import { RegionsPlot } from 'src/components/Regions/RegionsPlot'
 import { PageContainerHorizontal } from 'src/components/Layout/PageContainer'
 import { RegionsSidebar } from 'src/components/Regions/RegionsSidebar'
@@ -19,15 +19,26 @@ export function RegionPage({ pathogenName, location }: RegionsPageProps) {
   const pathogen = usePathogen(pathogenName)
   const { regions, countries } = useRegionsDataQuery(pathogen.name)
   const locations = useMemo(() => [...regions, ...countries], [countries, regions])
+  const getCountryName = useCountryName()
 
   const { prev, next } = useMemo(() => {
     const i = locations.indexOf(location)
     const prevName = locations[i - 1] ?? locations[locations.length - 1]
-    const prev = <LinkButtonPrev text={t(prevName)} href={urljoin('pathogen', pathogenName, 'regions', prevName)} />
+    const prev = (
+      <LinkButtonPrev
+        text={t(getCountryName(prevName))}
+        href={urljoin('pathogen', pathogenName, 'regions', prevName)}
+      />
+    )
     const nextName = locations[i + 1] ?? locations[0]
-    const next = <LinkButtonNext text={t(nextName)} href={urljoin('pathogen', pathogenName, 'regions', nextName)} />
+    const next = (
+      <LinkButtonNext
+        text={t(getCountryName(nextName))}
+        href={urljoin('pathogen', pathogenName, 'regions', nextName)}
+      />
+    )
     return { prev, next }
-  }, [locations, location, t, pathogenName])
+  }, [locations, location, t, getCountryName, pathogenName])
 
   return (
     <PageContainerHorizontal>
@@ -40,9 +51,9 @@ export function RegionPage({ pathogenName, location }: RegionsPageProps) {
               <span className="d-flex w-100 mt-2">
                 <span className="ml-2 mr-auto">{prev}</span>
                 <h4 className="text-center">
-                  {t('{{pathogen}} in {{region}}', {
+                  {t('{{pathogen}}, {{region}}', {
                     pathogen: t(pathogen.nameFriendly),
-                    region: t(location),
+                    region: t(getCountryName(location)),
                   })}
                 </h4>
                 <span className="mr-2 ml-auto">{next}</span>

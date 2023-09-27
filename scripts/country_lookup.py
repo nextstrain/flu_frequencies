@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
+from os.path import isfile
 # pip install pandas pycountry country-converter
 
 from typing import List, Union
@@ -32,13 +32,17 @@ def _get_many_iso3_codes(some_names: List[str]):
     return codes
 
 
-class CountryLookup(object):
+class CountryLookup:
     """
     Lookup country information, such as standardized names and ISO codes, given a non-standard name
     """
 
-    def __init__(self):
+    def __init__(self, additional_infos_file=""):
         self.infos = pd.DataFrame.from_records([country.__dict__['_fields'] for country in countries])
+        if isfile(additional_infos_file):
+            self.additional_infos = pd.read_csv(additional_infos_file, sep="\t")
+        else:
+            self.additional_infos = pd.DataFrame(columns=["country", "iso3"])
 
     def _convert_one_iso3_code_to_info(self, country_code: str):
         info = self.infos[self.infos['alpha_3'] == country_code]
@@ -66,3 +70,24 @@ class CountryLookup(object):
         if type(some_names) is list:
             return self._lookup_many(some_names)
         return self._lookup_one(some_names)
+
+    def iso3_to_name(self, iso3: str):
+        try:
+            name = self[iso3]["common_name"].dropna().item()
+            if name != "nan":
+                return name
+        except:
+            pass
+
+        try:
+            name = self[iso3]["name"].item()
+            if name != "nan":
+                return name
+        except:
+            pass
+
+        additional_info = self.additional_infos.loc[self.additional_infos['iso3'] == iso3, 'country']
+        if len(additional_info) > 0:
+            return additional_info.iloc[0]
+
+        raise ValueError(f"Unable to find country name by code: '{iso3}'")

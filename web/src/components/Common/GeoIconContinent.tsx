@@ -19,7 +19,14 @@ export interface GeoIconContinentProps {
 }
 
 export function GeoIconContinent({ continent, size = 18, color = '#444444' }: GeoIconContinentProps) {
-  const Icon = useMemo(() => get(CONTINENT_ICONS, continent, EmptyIcon), [continent])
+  const Icon = useMemo(() => {
+    const icon = get(CONTINENT_ICONS, continent)
+    if (icon) {
+      return icon
+    }
+    console.info(`Unable to find icon for region '${continent}'`)
+    return EmptyIcon
+  }, [continent])
   return (
     <GeoIconWrapper $size={size}>
       <Icon fill={color} />
@@ -29,9 +36,39 @@ export function GeoIconContinent({ continent, size = 18, color = '#444444' }: Ge
 
 const CONTINENT_ICONS: Record<string, ComponentType<S>> = {
   'Africa': Africa,
+  'Northern Africa': Africa,
+  'Sub-Saharan Africa': Africa,
+  'Eastern Africa': Africa,
+  'Middle Africa': Africa,
+  'Southern Africa': Africa,
+  'Western Africa': Africa,
+
+  'Central Asia': Asia,
+  'Eastern Asia': Asia,
+  'South-eastern Asia': Asia,
+  'Southern Asia': Asia,
+  'Western Asia': Asia,
+  'China': Asia,
+
   'Asia': Asia,
   'Europe': Europe,
+  'Eastern Europe': Europe,
+  'Northern Europe': Europe,
+  'Channel Islands': Europe,
+  'Southern Europe': Europe,
+  'Western Europe': Europe,
+
   'North America': NorthAmerica,
+  'Central America': NorthAmerica,
+  'Northern America': NorthAmerica,
+
   'Oceania': Oceania,
+  'Australia and New Zealand': Oceania,
+  'Melanesia': Oceania,
+  'Micronesia': Oceania,
+  'Polynesia': Oceania,
+
   'South America': SouthAmerica,
+  'Latin America and the Caribbean': SouthAmerica,
+  'Caribbean': SouthAmerica,
 }

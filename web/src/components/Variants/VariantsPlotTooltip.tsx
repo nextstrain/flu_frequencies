@@ -5,7 +5,7 @@ import { get, isNil, reverse, sortBy, uniqBy } from 'lodash-es'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { maybe } from 'src/helpers/notUndefined'
 import { formatDateWeekly, formatInteger, formatProportion, formatRange } from 'src/helpers/format'
-import { useCountryStyle } from 'src/io/getData'
+import { useCountryName, useCountryStyle } from 'src/io/getData'
 import { localeAtom } from 'src/state/locale.state'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
@@ -113,6 +113,7 @@ function VariantsPlotTooltipRow({ pathogenName, country, value, range, count, to
   const locale = useRecoilValue(localeAtom)
   const { t } = useTranslationSafe()
   const { color } = useCountryStyle(pathogenName, country)
+  const getCountryName = useCountryName()
 
   const valueDisplay = useMemo(() => {
     if (!isNil(value)) {
@@ -138,7 +139,7 @@ function VariantsPlotTooltipRow({ pathogenName, country, value, range, count, to
     <tr key={country}>
       <td className="px-2 text-left">
         <ColoredBox $size={16} $color={color} />
-        <span className="ml-2">{t(country)}</span>
+        <span className="ml-2">{t(getCountryName(country))}</span>
       </td>
       <td className="px-2 text-right">{valueDisplay}</td>
       <td className="px-2 text-right">{rangeDisplay}</td>
