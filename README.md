@@ -1,8 +1,15 @@
-# Estimating flu clade and mutation frequencies
+# Flu frequencies
 
-This README is for the data analysis pipeline. For the web interface, see [web/README.md](web/README.md).
+> Estimating flu clade and mutation frequencies
+
+| branch  | URL                                        |
+|---------|--------------------------------------------|
+| release | https://flu-frequencies.vercel.app/        |
+| master  | https://master-flu-frequencies.vercel.app/ |
 
 ## Development
+
+This README is for the data analysis pipeline. For the web interface, see [web/README.md](web/README.md).
 
 ### Setup
 
