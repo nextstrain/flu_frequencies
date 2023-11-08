@@ -1,0 +1,91 @@
+{
+  "variants": [
+    "A",
+    "A*",
+    "A.1.1",
+    "A.1.1*",
+    "A.1.1.1",
+    "A.1.1.2",
+    "A.1.1.3",
+    "A.1.2",
+    "B",
+    "B*",
+    "B.1",
+    "B.2",
+    "B.3",
+    "B.4",
+    "B.5",
+    "B.6",
+    "B.7"
+  ],
+  "variantsStyles": {
+    "A": {
+      "color": "#43862d",
+      "lineStyle": "normal"
+    },
+    "A*": {
+      "color": "#c5a087",
+      "lineStyle": "normal"
+    },
+    "A.1.1": {
+      "color": "#6cd0e0",
+      "lineStyle": "normal"
+    },
+    "A.1.1*": {
+      "color": "#3a5778",
+      "lineStyle": "normal"
+    },
+    "A.1.1.1": {
+      "color": "#9fac53",
+      "lineStyle": "normal"
+    },
+    "A.1.1.2": {
+      "color": "#78623a",
+      "lineStyle": "normal"
+    },
+    "A.1.1.3": {
+      "color": "#408cbf",
+      "lineStyle": "normal"
+    },
+    "A.1.2": {
+      "color": "#423a78",
+      "lineStyle": "normal"
+    },
+    "B": {
+      "color": "#796ce0",
+      "lineStyle": "normal"
+    },
+    "B*": {
+      "color": "#2d3d86",
+      "lineStyle": "normal"
+    },
+    "B.1": {
+      "color": "#6b783a",
+      "lineStyle": "normal"
+    },
+    "B.2": {
+      "color": "#d2a92d",
+      "lineStyle": "normal"
+    },
+    "B.3": {
+      "color": "#79a7d2",
+      "lineStyle": "normal"
+    },
+    "B.4": {
+      "color": "#7fe06c",
+      "lineStyle": "normal"
+    },
+    "B.5": {
+      "color": "#b0bf40",
+      "lineStyle": "normal"
+    },
+    "B.6": {
+      "color": "#2dd2ba",
+      "lineStyle": "normal"
+    },
+    "B.7": {
+      "color": "#65862d",
+      "lineStyle": "normal"
+    }
+  }
+}

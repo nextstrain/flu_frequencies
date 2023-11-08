@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2023-11-08T13:50:07Z",
+  "lastUpdate": "2023-11-08T14:39:37Z",
   "pathogens": [
     {
       "color": "#8a931f",
@@ -68,6 +68,40 @@
       "nVariants": 28,
       "name": "flu-h1n1pdm-na",
       "nameFriendly": "Influenza H1N1pdm NA"
+    },
+    {
+      "color": "#405bbf",
+      "image": {
+        "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
+        "file": "pathogens/flu-vic-ha/image.png",
+        "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
+      },
+      "isEnabled": true,
+      "isVisible": true,
+      "maxDate": "2023-09-23",
+      "minDate": "2022-01-01",
+      "nCountries": 66,
+      "nRegions": 10,
+      "nVariants": 18,
+      "name": "flu-vic-ha",
+      "nameFriendly": "Influenza B/Vic HA"
+    },
+    {
+      "color": "#3a5778",
+      "image": {
+        "credit": "Centers for Disease Control and Prevention, National Center for Immunization and Respiratory Diseases (NCIRD)",
+        "file": "pathogens/flu-vic-na/image.png",
+        "source": "https://www.cdc.gov/flu/resource-center/freeresources/graphics/images.htm"
+      },
+      "isEnabled": true,
+      "isVisible": true,
+      "maxDate": "2023-09-23",
+      "minDate": "2022-01-01",
+      "nCountries": 62,
+      "nRegions": 10,
+      "nVariants": 17,
+      "name": "flu-vic-na",
+      "nameFriendly": "Influenza B/Vic NA"
     },
     {
       "color": "#bf40bb",

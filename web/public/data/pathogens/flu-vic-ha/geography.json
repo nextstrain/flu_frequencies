@@ -1,0 +1,476 @@
+{
+  "countries": [
+    "ARE",
+    "ARG",
+    "AUS",
+    "AUT",
+    "BEL",
+    "BFA",
+    "BGD",
+    "BGR",
+    "BHR",
+    "BOL",
+    "BRA",
+    "BTN",
+    "CAN",
+    "CHE",
+    "CHL",
+    "CHN",
+    "CIV",
+    "COG",
+    "COL",
+    "CRI",
+    "DEU",
+    "DNK",
+    "ESP",
+    "EST",
+    "FJI",
+    "FRA",
+    "GBR",
+    "GTM",
+    "HKG",
+    "IND",
+    "ITA",
+    "JPN",
+    "KAZ",
+    "KGZ",
+    "KHM",
+    "LAO",
+    "LUX",
+    "MDG",
+    "MYS",
+    "NER",
+    "NIC",
+    "NLD",
+    "NOR",
+    "NZL",
+    "OMN",
+    "PER",
+    "POL",
+    "PRT",
+    "QAT",
+    "ROU",
+    "RUS",
+    "SGP",
+    "SLV",
+    "SRB",
+    "SVK",
+    "SVN",
+    "SWE",
+    "TGO",
+    "THA",
+    "TLS",
+    "TTO",
+    "UKR",
+    "USA",
+    "ZAF",
+    "ZMB",
+    "other"
+  ],
+  "geography": {
+    "Africa": [
+      "BFA",
+      "CIV",
+      "COG",
+      "MDG",
+      "NER",
+      "TGO",
+      "ZAF",
+      "ZMB"
+    ],
+    "China": [
+      "CHN"
+    ],
+    "Eastern Asia": [
+      "HKG",
+      "JPN"
+    ],
+    "Europe": [
+      "AUT",
+      "BEL",
+      "BGR",
+      "CHE",
+      "DEU",
+      "DNK",
+      "ESP",
+      "EST",
+      "FRA",
+      "GBR",
+      "ITA",
+      "LUX",
+      "NLD",
+      "NOR",
+      "POL",
+      "PRT",
+      "ROU",
+      "RUS",
+      "SRB",
+      "SVK",
+      "SVN",
+      "SWE",
+      "UKR"
+    ],
+    "North America": [
+      "CAN",
+      "CRI",
+      "GTM",
+      "NIC",
+      "SLV",
+      "TTO",
+      "USA"
+    ],
+    "Oceania": [
+      "AUS",
+      "FJI",
+      "NZL"
+    ],
+    "South America": [
+      "ARG",
+      "BOL",
+      "BRA",
+      "CHL",
+      "COL",
+      "PER"
+    ],
+    "South-eastern Asia": [
+      "KHM",
+      "LAO",
+      "MYS",
+      "SGP",
+      "THA",
+      "TLS",
+      "other"
+    ],
+    "Southern Asia": [
+      "BGD",
+      "BTN",
+      "IND"
+    ],
+    "Western Asia": [
+      "ARE",
+      "BHR",
+      "KAZ",
+      "KGZ",
+      "OMN",
+      "QAT"
+    ]
+  },
+  "geographyStyles": {
+    "ARE": {
+      "color": "#b3e06c",
+      "lineStyle": "normal"
+    },
+    "ARG": {
+      "color": "#931f67",
+      "lineStyle": "normal"
+    },
+    "AUS": {
+      "color": "#86502d",
+      "lineStyle": "normal"
+    },
+    "AUT": {
+      "color": "#c5878f",
+      "lineStyle": "normal"
+    },
+    "Africa": {
+      "color": "#6d931f",
+      "lineStyle": "normal"
+    },
+    "BEL": {
+      "color": "#6ce0c5",
+      "lineStyle": "normal"
+    },
+    "BFA": {
+      "color": "#40bf51",
+      "lineStyle": "normal"
+    },
+    "BGD": {
+      "color": "#49862d",
+      "lineStyle": "normal"
+    },
+    "BGR": {
+      "color": "#2dd282",
+      "lineStyle": "normal"
+    },
+    "BHR": {
+      "color": "#c5a487",
+      "lineStyle": "normal"
+    },
+    "BOL": {
+      "color": "#dce06c",
+      "lineStyle": "normal"
+    },
+    "BRA": {
+      "color": "#866e2d",
+      "lineStyle": "normal"
+    },
+    "BTN": {
+      "color": "#4e2dd2",
+      "lineStyle": "normal"
+    },
+    "CAN": {
+      "color": "#5353ac",
+      "lineStyle": "normal"
+    },
+    "CHE": {
+      "color": "#3a862d",
+      "lineStyle": "normal"
+    },
+    "CHL": {
+      "color": "#8eac53",
+      "lineStyle": "normal"
+    },
+    "CHN": {
+      "color": "#763a78",
+      "lineStyle": "normal"
+    },
+    "CIV": {
+      "color": "#e0ac6c",
+      "lineStyle": "normal"
+    },
+    "COG": {
+      "color": "#6c98e0",
+      "lineStyle": "normal"
+    },
+    "COL": {
+      "color": "#7d2dd2",
+      "lineStyle": "normal"
+    },
+    "CRI": {
+      "color": "#87c5a5",
+      "lineStyle": "normal"
+    },
+    "China": {
+      "color": "#79d2a0",
+      "lineStyle": "normal"
+    },
+    "DEU": {
+      "color": "#c58796",
+      "lineStyle": "normal"
+    },
+    "DNK": {
+      "color": "#932d1f",
+      "lineStyle": "normal"
+    },
+    "ESP": {
+      "color": "#53ac75",
+      "lineStyle": "normal"
+    },
+    "EST": {
+      "color": "#79d281",
+      "lineStyle": "normal"
+    },
+    "Eastern Asia": {
+      "color": "#78483a",
+      "lineStyle": "normal"
+    },
+    "Europe": {
+      "color": "#d279b3",
+      "lineStyle": "normal"
+    },
+    "FJI": {
+      "color": "#c5879d",
+      "lineStyle": "normal"
+    },
+    "FRA": {
+      "color": "#5372ac",
+      "lineStyle": "normal"
+    },
+    "GBR": {
+      "color": "#783a4b",
+      "lineStyle": "normal"
+    },
+    "GTM": {
+      "color": "#d279b3",
+      "lineStyle": "normal"
+    },
+    "HKG": {
+      "color": "#d28c79",
+      "lineStyle": "normal"
+    },
+    "IND": {
+      "color": "#7981d2",
+      "lineStyle": "normal"
+    },
+    "ITA": {
+      "color": "#bfb540",
+      "lineStyle": "normal"
+    },
+    "JPN": {
+      "color": "#783a75",
+      "lineStyle": "normal"
+    },
+    "KAZ": {
+      "color": "#e08b6c",
+      "lineStyle": "normal"
+    },
+    "KGZ": {
+      "color": "#78653a",
+      "lineStyle": "normal"
+    },
+    "KHM": {
+      "color": "#d2e06c",
+      "lineStyle": "normal"
+    },
+    "LAO": {
+      "color": "#e06cc5",
+      "lineStyle": "normal"
+    },
+    "LUX": {
+      "color": "#e07b6c",
+      "lineStyle": "normal"
+    },
+    "MDG": {
+      "color": "#6f3a78",
+      "lineStyle": "normal"
+    },
+    "MYS": {
+      "color": "#c5b387",
+      "lineStyle": "normal"
+    },
+    "NER": {
+      "color": "#6b862d",
+      "lineStyle": "normal"
+    },
+    "NIC": {
+      "color": "#879ac5",
+      "lineStyle": "normal"
+    },
+    "NLD": {
+      "color": "#ac9353",
+      "lineStyle": "normal"
+    },
+    "NOR": {
+      "color": "#2d865b",
+      "lineStyle": "normal"
+    },
+    "NZL": {
+      "color": "#a287c5",
+      "lineStyle": "normal"
+    },
+    "North America": {
+      "color": "#4048bf",
+      "lineStyle": "normal"
+    },
+    "OMN": {
+      "color": "#821f93",
+      "lineStyle": "normal"
+    },
+    "Oceania": {
+      "color": "#723a78",
+      "lineStyle": "normal"
+    },
+    "PER": {
+      "color": "#d2962d",
+      "lineStyle": "normal"
+    },
+    "POL": {
+      "color": "#e06c81",
+      "lineStyle": "normal"
+    },
+    "PRT": {
+      "color": "#6253ac",
+      "lineStyle": "normal"
+    },
+    "QAT": {
+      "color": "#bf407d",
+      "lineStyle": "normal"
+    },
+    "ROU": {
+      "color": "#864a2d",
+      "lineStyle": "normal"
+    },
+    "RUS": {
+      "color": "#78633a",
+      "lineStyle": "normal"
+    },
+    "SGP": {
+      "color": "#2dd27d",
+      "lineStyle": "normal"
+    },
+    "SLV": {
+      "color": "#e0d06c",
+      "lineStyle": "normal"
+    },
+    "SRB": {
+      "color": "#74ac53",
+      "lineStyle": "normal"
+    },
+    "SVK": {
+      "color": "#ac8e53",
+      "lineStyle": "normal"
+    },
+    "SVN": {
+      "color": "#e0b36c",
+      "lineStyle": "normal"
+    },
+    "SWE": {
+      "color": "#4068bf",
+      "lineStyle": "normal"
+    },
+    "South America": {
+      "color": "#612dd2",
+      "lineStyle": "normal"
+    },
+    "South-eastern Asia": {
+      "color": "#a6e06c",
+      "lineStyle": "normal"
+    },
+    "Southern Asia": {
+      "color": "#7987d2",
+      "lineStyle": "normal"
+    },
+    "TGO": {
+      "color": "#ac538a",
+      "lineStyle": "normal"
+    },
+    "THA": {
+      "color": "#d2432d",
+      "lineStyle": "normal"
+    },
+    "TLS": {
+      "color": "#8479d2",
+      "lineStyle": "normal"
+    },
+    "TTO": {
+      "color": "#86362d",
+      "lineStyle": "normal"
+    },
+    "UKR": {
+      "color": "#bf9040",
+      "lineStyle": "normal"
+    },
+    "USA": {
+      "color": "#d0d22d",
+      "lineStyle": "normal"
+    },
+    "Western Asia": {
+      "color": "#a66ce0",
+      "lineStyle": "normal"
+    },
+    "ZAF": {
+      "color": "#40bf5e",
+      "lineStyle": "normal"
+    },
+    "ZMB": {
+      "color": "#ac6e53",
+      "lineStyle": "normal"
+    },
+    "other": {
+      "color": "#ac9653",
+      "lineStyle": "normal"
+    }
+  },
+  "regions": [
+    "Africa",
+    "China",
+    "Eastern Asia",
+    "Europe",
+    "North America",
+    "Oceania",
+    "South America",
+    "South-eastern Asia",
+    "Southern Asia",
+    "Western Asia"
+  ]
+}

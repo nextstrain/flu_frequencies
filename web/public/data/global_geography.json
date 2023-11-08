@@ -20,6 +20,7 @@
     "CHL": "Chile",
     "CHN": "China",
     "CIV": "Cote d'Ivoire",
+    "COG": "Congo Republic",
     "COL": "Colombia",
     "CRI": "Costa Rica",
     "CZE": "Czech Republic",
@@ -47,6 +48,7 @@
     "ISR": "Israel",
     "ITA": "Italy",
     "JPN": "Japan",
+    "KAZ": "Kazakhstan",
     "KEN": "Kenya",
     "KGZ": "Kyrgyz Republic",
     "KHM": "Cambodia",
@@ -64,6 +66,7 @@
     "MYS": "Malaysia",
     "NCL": "New Caledonia",
     "NER": "Niger",
+    "NIC": "Nicaragua",
     "NLD": "Netherlands",
     "NOR": "Norway",
     "NPL": "Nepal",
@@ -101,5 +104,5 @@
     "ZMB": "Zambia",
     "other": "Other"
   },
-  "lastUpdate": "2023-11-08T13:50:07Z"
+  "lastUpdate": "2023-11-08T14:39:37Z"
 }
