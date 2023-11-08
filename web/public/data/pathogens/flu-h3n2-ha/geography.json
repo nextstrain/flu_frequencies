@@ -18,6 +18,7 @@
     "CHE",
     "CHL",
     "CHN",
+    "CIV",
     "COL",
     "CRI",
     "CZE",
@@ -88,6 +89,7 @@
   ],
   "geography": {
     "Africa": [
+      "CIV",
       "GHA",
       "MDG",
       "NER",
@@ -149,8 +151,7 @@
       "PRI",
       "SLV",
       "TTO",
-      "USA",
-      "other"
+      "USA"
     ],
     "Oceania": [
       "AUS",
@@ -183,7 +184,8 @@
       "BTN",
       "IND",
       "MDV",
-      "NPL"
+      "NPL",
+      "other"
     ],
     "Western Asia": [
       "ARE",
@@ -268,6 +270,10 @@
     },
     "CHN": {
       "color": "#763a78",
+      "lineStyle": "normal"
+    },
+    "CIV": {
+      "color": "#e0ac6c",
       "lineStyle": "normal"
     },
     "COL": {

@@ -18,6 +18,7 @@
     "CHE",
     "CHL",
     "CHN",
+    "CIV",
     "COL",
     "CRI",
     "CZE",
@@ -70,6 +71,7 @@
     "SGP",
     "SLV",
     "SRB",
+    "SVK",
     "SVN",
     "SWE",
     "TGO",
@@ -80,17 +82,20 @@
     "UKR",
     "USA",
     "ZAF",
+    "ZMB",
     "other"
   ],
   "geography": {
     "Africa": [
+      "CIV",
       "GHA",
       "MDG",
       "NER",
       "SEN",
       "TGO",
       "TUN",
-      "ZAF"
+      "ZAF",
+      "ZMB"
     ],
     "China": [
       "CHN"
@@ -129,6 +134,7 @@
       "ROU",
       "RUS",
       "SRB",
+      "SVK",
       "SVN",
       "SWE",
       "UKR"
@@ -142,7 +148,8 @@
       "PRI",
       "SLV",
       "TTO",
-      "USA"
+      "USA",
+      "other"
     ],
     "Oceania": [
       "AUS",
@@ -167,8 +174,7 @@
       "PHL",
       "SGP",
       "THA",
-      "TLS",
-      "other"
+      "TLS"
     ],
     "Southern Asia": [
       "BGD",
@@ -260,6 +266,10 @@
     },
     "CHN": {
       "color": "#763a78",
+      "lineStyle": "normal"
+    },
+    "CIV": {
+      "color": "#e0ac6c",
       "lineStyle": "normal"
     },
     "COL": {
@@ -490,6 +500,10 @@
       "color": "#74ac53",
       "lineStyle": "normal"
     },
+    "SVK": {
+      "color": "#ac8e53",
+      "lineStyle": "normal"
+    },
     "SVN": {
       "color": "#e0b36c",
       "lineStyle": "normal"
@@ -544,6 +558,10 @@
     },
     "ZAF": {
       "color": "#40bf5e",
+      "lineStyle": "normal"
+    },
+    "ZMB": {
+      "color": "#ac6e53",
       "lineStyle": "normal"
     },
     "other": {

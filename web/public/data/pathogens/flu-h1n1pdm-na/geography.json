@@ -47,6 +47,7 @@
     "MDG",
     "MOZ",
     "MUS",
+    "MYS",
     "NCL",
     "NLD",
     "NOR",
@@ -70,6 +71,7 @@
     "TGO",
     "THA",
     "UKR",
+    "URY",
     "USA",
     "VEN",
     "XKX",
@@ -97,8 +99,7 @@
     ],
     "Eastern Asia": [
       "JPN",
-      "KOR",
-      "other"
+      "KOR"
     ],
     "Europe": [
       "ALB",
@@ -128,7 +129,8 @@
       "SVN",
       "SWE",
       "UKR",
-      "XKX"
+      "XKX",
+      "other"
     ],
     "North America": [
       "CAN",
@@ -152,11 +154,13 @@
       "GUF",
       "PER",
       "PRY",
+      "URY",
       "VEN"
     ],
     "South-eastern Asia": [
       "KHM",
       "LAO",
+      "MYS",
       "PHL",
       "SGP",
       "THA"
@@ -380,6 +384,10 @@
       "color": "#2b1f93",
       "lineStyle": "normal"
     },
+    "MYS": {
+      "color": "#c5b387",
+      "lineStyle": "normal"
+    },
     "NCL": {
       "color": "#7c1f93",
       "lineStyle": "normal"
@@ -490,6 +498,10 @@
     },
     "UKR": {
       "color": "#bf9040",
+      "lineStyle": "normal"
+    },
+    "URY": {
+      "color": "#783a4e",
       "lineStyle": "normal"
     },
     "USA": {

@@ -1,0 +1,10 @@
+strain	virus	segment	accession	date	date_submitted	region	country	division	location	passage_category	originating_lab	submitting_lab	age	gender	iso3	continent
+A/NorthDakota/23/2022	flu	ha	EPI2253627	2022-11-15	2022-12-20	North America	Usa	North Dakota	North Dakota	unpassaged	North Dakota Department Of Health	Centers For Disease Control And Prevention	72y	male	USA	North America
+A/Norway/36587/2022	flu	ha	EPI2286487	2022-07-12	2023-01-10	Europe	Norway	Norway	Norway	unpassaged	Norwegian Institute Of Public Health	Norwegian Institute Of Public Health	2y	female	NOR	Europe
+A/Extremadura/509/2018	flu	ha	EPI1200396	2018-01-09	2018-03-14	Europe	Spain	Extremadura	Extremadura	cell	Servicio De Microbiología Hospital San Pedro De Alcántara	Instituto De Salud Carlos Iii	85y	female	ESP	Europe
+A/Jamaica/612/2018	flu	ha	EPI1205386	2018-01-15	2018-03-26	North America	Jamaica	Jamaica	Jamaica	unpassaged	University Of The West Indies	Centers For Disease Control And Prevention	2y	male	JAM	North America
+A/CastillaLaMancha/2831/2022	flu	ha	EPI2130522	2022-06-06	2022-08-18	Europe	Spain	Castilla La Mancha	Castilla La Mancha	unpassaged	Instituto De Salud Carlos Iii	Instituto De Salud Carlos Iii	78y	male	ESP	Europe
+A/Brazil/BA-LACEN-BA049-292062071/2022	flu	ha	EPI2186404	2022-01-06	2022-09-27	South America	Brazil	Brazil	Brazil	undetermined	Laboratório Central De Saúde Pública Professor Gonçalo Moniz, Lacen Ba	Laborat?rio Central De Sa?de Publica Do Estado Da Bahia	46y	female	BRA	South America
+A/NewMexico/AF1521/2008	flu	ha	EPI153299	2008-02-07	?	North America	Usa	New Mexico	New Mexico	undetermined	?	Other Database Import	?	?	USA	North America
+A/Saskatchewan/SKFLU244217/2022	flu	ha	EPI2243335	2022-11-06	2022-12-13	North America	Canada	Saskatchewan	Saskatchewan	undetermined	Roy Romanow Provincial Laboratory	Row Roamnow Provincial Laboratory	68y	male	CAN	North America
+A/Michigan/UOM10048807381/2022	flu	ha	EPI2389836	2022-12-09	2023-02-09	North America	Usa	Michigan	Michigan	undetermined	University Of Michigan Clinical Microbiology Laboratory	University Of Michigan	?	?	USA	North America

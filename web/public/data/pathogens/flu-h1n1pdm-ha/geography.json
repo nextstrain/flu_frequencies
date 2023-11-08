@@ -47,6 +47,7 @@
     "MDG",
     "MOZ",
     "MUS",
+    "MYS",
     "NCL",
     "NLD",
     "NOR",
@@ -136,7 +137,8 @@
       "GTM",
       "HTI",
       "PAN",
-      "USA"
+      "USA",
+      "other"
     ],
     "Oceania": [
       "AUS",
@@ -158,6 +160,7 @@
     "South-eastern Asia": [
       "KHM",
       "LAO",
+      "MYS",
       "PHL",
       "SGP",
       "THA"
@@ -173,8 +176,7 @@
       "KGZ",
       "LBN",
       "OMN",
-      "QAT",
-      "other"
+      "QAT"
     ]
   },
   "geographyStyles": {
@@ -380,6 +382,10 @@
     },
     "MUS": {
       "color": "#2b1f93",
+      "lineStyle": "normal"
+    },
+    "MYS": {
+      "color": "#c5b387",
       "lineStyle": "normal"
     },
     "NCL": {
