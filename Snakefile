@@ -132,9 +132,9 @@ rule combined_with_metadata:
     output:
         metadata="data/{lineage}/combined_{segment}.tsv",
     params:
-        nextclade_columns=lambda wildcards: ",".join(
-            config.get(
-                "nextclade_columns",
+        nextclade_columns=lambda w: ",".join(
+            config["nextclade_columns"].get(
+                w.segment,
                 ["seqName", "clade", "short_clade", "aaSubstitutions"],
             )
         ),
@@ -153,7 +153,7 @@ rule estimate_region_frequencies:
     params:
         min_date=min_date,
         geo_categories=config.get("geo_categories", "continent"),
-        frequency_category=config.get("frequency_category", "clade"),
+        frequency_category=lambda w: config["frequency_category"][w.segment],
     shell:
         """
         python scripts/fit_single_frequencies.py \
@@ -194,12 +194,13 @@ rule estimate_region_country_frequencies:
         output_csv="results/{lineage}_{segment}/continent-country-frequencies.csv",
     params:
         min_date=min_date,
+        frequency_category=lambda w: config["frequency_category"][w.segment],
     shell:
         """
         python scripts/fit_hierarchical_frequencies.py \
             --metadata {input} \
             --geo-categories continent iso3 \
-            --frequency-category subclade \
+            --frequency-category {params.frequency_category} \
             --min-date {params.min_date} \
             --days 14 \
             --inclusive-clades flu \
