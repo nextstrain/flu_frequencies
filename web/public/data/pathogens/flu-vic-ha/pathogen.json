@@ -7,11 +7,11 @@
   },
   "isEnabled": true,
   "isVisible": true,
-  "maxDate": "2023-09-23",
-  "minDate": "2022-01-01",
-  "nCountries": 66,
+  "maxDate": "2023-10-26",
+  "minDate": "2021-04-01",
+  "nCountries": 67,
   "nRegions": 10,
-  "nVariants": 18,
+  "nVariants": 22,
   "name": "flu-vic-ha",
   "nameFriendly": "Influenza B/Vic HA"
 }

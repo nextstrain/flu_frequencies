@@ -1,5 +1,6 @@
 {
   "countryNames": {
+    "AFG": "Afghanistan",
     "ALB": "Albania",
     "ARE": "United Arab Emirates",
     "ARG": "Argentina",
@@ -44,6 +45,7 @@
     "HTI": "Haiti",
     "IND": "India",
     "IRL": "Ireland",
+    "IRN": "Iran",
     "ISL": "Iceland",
     "ISR": "Israel",
     "ITA": "Italy",
@@ -61,6 +63,9 @@
     "MDG": "Madagascar",
     "MDV": "Maldives",
     "MEX": "Mexico",
+    "MKD": "North Macedonia",
+    "MMR": "Myanmar",
+    "MNE": "Montenegro",
     "MOZ": "Mozambique",
     "MUS": "Mauritius",
     "MYS": "Malaysia",
@@ -104,5 +109,5 @@
     "ZMB": "Zambia",
     "other": "Other"
   },
-  "lastUpdate": "2023-11-08T14:39:37Z"
+  "lastUpdate": "2023-11-19T13:04:48Z"
 }

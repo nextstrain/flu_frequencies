@@ -33,6 +33,7 @@
     "ITA",
     "JPN",
     "KAZ",
+    "KEN",
     "KGZ",
     "KHM",
     "LAO",
@@ -72,6 +73,7 @@
       "BFA",
       "CIV",
       "COG",
+      "KEN",
       "MDG",
       "NER",
       "TGO",
@@ -138,13 +140,13 @@
       "MYS",
       "SGP",
       "THA",
-      "TLS",
-      "other"
+      "TLS"
     ],
     "Southern Asia": [
       "BGD",
       "BTN",
-      "IND"
+      "IND",
+      "other"
     ],
     "Western Asia": [
       "ARE",
@@ -302,6 +304,10 @@
     },
     "KAZ": {
       "color": "#e08b6c",
+      "lineStyle": "normal"
+    },
+    "KEN": {
+      "color": "#c58797",
       "lineStyle": "normal"
     },
     "KGZ": {

@@ -4,20 +4,24 @@
     "A*",
     "A.3",
     "A.3*",
+    "A.3.1",
+    "A.3.1*",
     "A.3.1.1",
     "A.3.2",
     "A.3.3",
     "C",
     "C*",
     "C.1",
-    "C.2",
     "C.3",
-    "C.4",
     "C.5",
     "C.5*",
     "C.5.1",
     "C.5.2",
-    "C.5.3"
+    "C.5.3",
+    "C.5.4",
+    "C.5.5",
+    "C.5.6",
+    "C.5.7"
   ],
   "variantsStyles": {
     "A": {
@@ -34,6 +38,14 @@
     },
     "A.3*": {
       "color": "#6b2d86",
+      "lineStyle": "normal"
+    },
+    "A.3.1": {
+      "color": "#bf407b",
+      "lineStyle": "normal"
+    },
+    "A.3.1*": {
+      "color": "#e06ca4",
       "lineStyle": "normal"
     },
     "A.3.1.1": {
@@ -60,16 +72,8 @@
       "color": "#ac9c53",
       "lineStyle": "normal"
     },
-    "C.2": {
-      "color": "#40bfbd",
-      "lineStyle": "normal"
-    },
     "C.3": {
       "color": "#d2798e",
-      "lineStyle": "normal"
-    },
-    "C.4": {
-      "color": "#d279a6",
       "lineStyle": "normal"
     },
     "C.5": {
@@ -90,6 +94,22 @@
     },
     "C.5.3": {
       "color": "#e0bb6c",
+      "lineStyle": "normal"
+    },
+    "C.5.4": {
+      "color": "#87c58d",
+      "lineStyle": "normal"
+    },
+    "C.5.5": {
+      "color": "#5360ac",
+      "lineStyle": "normal"
+    },
+    "C.5.6": {
+      "color": "#2d7386",
+      "lineStyle": "normal"
+    },
+    "C.5.7": {
+      "color": "#1f5d93",
       "lineStyle": "normal"
     }
   }

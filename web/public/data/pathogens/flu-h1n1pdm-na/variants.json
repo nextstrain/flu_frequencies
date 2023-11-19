@@ -1,14 +1,12 @@
 {
   "variants": [
-    "A",
-    "A*",
     "A.1",
     "A.1*",
     "A.1.1",
-    "B",
-    "B*",
     "B.1",
     "B.2",
+    "B.2*",
+    "B.2.1",
     "B.3",
     "B.3*",
     "B.3.1",
@@ -30,14 +28,6 @@
     "C.5.3"
   ],
   "variantsStyles": {
-    "A": {
-      "color": "#43862d",
-      "lineStyle": "normal"
-    },
-    "A*": {
-      "color": "#c5a087",
-      "lineStyle": "normal"
-    },
     "A.1": {
       "color": "#40a4bf",
       "lineStyle": "normal"
@@ -50,20 +40,20 @@
       "color": "#6cd0e0",
       "lineStyle": "normal"
     },
-    "B": {
-      "color": "#796ce0",
-      "lineStyle": "normal"
-    },
-    "B*": {
-      "color": "#2d3d86",
-      "lineStyle": "normal"
-    },
     "B.1": {
       "color": "#6b783a",
       "lineStyle": "normal"
     },
     "B.2": {
       "color": "#d2a92d",
+      "lineStyle": "normal"
+    },
+    "B.2*": {
+      "color": "#79bf40",
+      "lineStyle": "normal"
+    },
+    "B.2.1": {
+      "color": "#5354ac",
       "lineStyle": "normal"
     },
     "B.3": {

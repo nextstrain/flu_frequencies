@@ -29,6 +29,7 @@
     "GTM",
     "IND",
     "JPN",
+    "KEN",
     "KGZ",
     "KHM",
     "LAO",
@@ -67,6 +68,7 @@
     "Africa": [
       "BFA",
       "CIV",
+      "KEN",
       "MDG",
       "NER",
       "TGO",
@@ -278,6 +280,10 @@
     },
     "JPN": {
       "color": "#783a75",
+      "lineStyle": "normal"
+    },
+    "KEN": {
+      "color": "#c58797",
       "lineStyle": "normal"
     },
     "KGZ": {

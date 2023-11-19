@@ -1,7 +1,8 @@
 {
   "variants": [
-    "A",
-    "A*",
+    "A.2",
+    "A.2*",
+    "A.2.1",
     "A.2.2",
     "A.2.2*",
     "A.2.2.1",
@@ -15,15 +16,20 @@
     "B.2*",
     "B.2.2",
     "B.3",
-    "B.4"
+    "B.4",
+    "unassigned"
   ],
   "variantsStyles": {
-    "A": {
-      "color": "#43862d",
+    "A.2": {
+      "color": "#4077bf",
       "lineStyle": "normal"
     },
-    "A*": {
-      "color": "#c5a087",
+    "A.2*": {
+      "color": "#3a7862",
+      "lineStyle": "normal"
+    },
+    "A.2.1": {
+      "color": "#1f6593",
       "lineStyle": "normal"
     },
     "A.2.2": {
@@ -80,6 +86,10 @@
     },
     "B.4": {
       "color": "#7fe06c",
+      "lineStyle": "normal"
+    },
+    "unassigned": {
+      "color": "#93ac53",
       "lineStyle": "normal"
     }
   }

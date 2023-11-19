@@ -7,6 +7,7 @@
     "AUT",
     "BEL",
     "BFA",
+    "BGD",
     "BGR",
     "BHR",
     "BOL",
@@ -99,7 +100,8 @@
     ],
     "Eastern Asia": [
       "JPN",
-      "KOR"
+      "KOR",
+      "other"
     ],
     "Europe": [
       "ALB",
@@ -137,8 +139,7 @@
       "GTM",
       "HTI",
       "PAN",
-      "USA",
-      "other"
+      "USA"
     ],
     "Oceania": [
       "AUS",
@@ -166,6 +167,7 @@
       "THA"
     ],
     "Southern Asia": [
+      "BGD",
       "IND",
       "PAK"
     ],
@@ -210,6 +212,10 @@
     },
     "BFA": {
       "color": "#40bf51",
+      "lineStyle": "normal"
+    },
+    "BGD": {
+      "color": "#49862d",
       "lineStyle": "normal"
     },
     "BGR": {

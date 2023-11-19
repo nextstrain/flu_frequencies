@@ -14,6 +14,7 @@
     "C.1.4",
     "C.1.5",
     "C.1.6",
+    "C.1.7",
     "unassigned"
   ],
   "variantsStyles": {
@@ -71,6 +72,10 @@
     },
     "C.1.6": {
       "color": "#c587ae",
+      "lineStyle": "normal"
+    },
+    "C.1.7": {
+      "color": "#537dac",
       "lineStyle": "normal"
     },
     "unassigned": {

@@ -1,11 +1,13 @@
 {
   "countries": [
+    "AFG",
     "ALB",
     "ARE",
     "ARG",
     "AUS",
     "AUT",
     "BEL",
+    "BFA",
     "BGD",
     "BGR",
     "BHR",
@@ -27,6 +29,7 @@
     "ECU",
     "ESP",
     "EST",
+    "ETH",
     "FIN",
     "FJI",
     "FRA",
@@ -39,9 +42,13 @@
     "HRV",
     "IND",
     "IRL",
+    "IRN",
     "ISL",
+    "ISR",
     "ITA",
     "JPN",
+    "KAZ",
+    "KEN",
     "KOR",
     "LAO",
     "LBN",
@@ -51,6 +58,8 @@
     "MDG",
     "MDV",
     "MEX",
+    "MKD",
+    "MMR",
     "MYS",
     "NCL",
     "NER",
@@ -59,6 +68,7 @@
     "NPL",
     "NZL",
     "OMN",
+    "PAK",
     "PER",
     "PHL",
     "POL",
@@ -81,14 +91,18 @@
     "TUN",
     "UKR",
     "USA",
+    "XKX",
     "ZAF",
     "ZMB",
     "other"
   ],
   "geography": {
     "Africa": [
+      "BFA",
       "CIV",
+      "ETH",
       "GHA",
+      "KEN",
       "MDG",
       "NER",
       "SEN",
@@ -127,6 +141,7 @@
       "LTU",
       "LUX",
       "LVA",
+      "MKD",
       "NLD",
       "NOR",
       "POL",
@@ -137,7 +152,8 @@
       "SVK",
       "SVN",
       "SWE",
-      "UKR"
+      "UKR",
+      "XKX"
     ],
     "North America": [
       "CAN",
@@ -148,8 +164,7 @@
       "PRI",
       "SLV",
       "TTO",
-      "USA",
-      "other"
+      "USA"
     ],
     "Oceania": [
       "AUS",
@@ -165,11 +180,13 @@
       "COL",
       "ECU",
       "GUF",
-      "PER"
+      "PER",
+      "other"
     ],
     "South-eastern Asia": [
       "BRN",
       "LAO",
+      "MMR",
       "MYS",
       "PHL",
       "SGP",
@@ -177,21 +194,30 @@
       "TLS"
     ],
     "Southern Asia": [
+      "AFG",
       "BGD",
       "BTN",
       "IND",
+      "IRN",
       "MDV",
-      "NPL"
+      "NPL",
+      "PAK"
     ],
     "Western Asia": [
       "ARE",
       "BHR",
+      "ISR",
+      "KAZ",
       "LBN",
       "OMN",
       "QAT"
     ]
   },
   "geographyStyles": {
+    "AFG": {
+      "color": "#54783a",
+      "lineStyle": "normal"
+    },
     "ALB": {
       "color": "#351f93",
       "lineStyle": "normal"
@@ -218,6 +244,10 @@
     },
     "BEL": {
       "color": "#6ce0c5",
+      "lineStyle": "normal"
+    },
+    "BFA": {
+      "color": "#40bf51",
       "lineStyle": "normal"
     },
     "BGD": {
@@ -308,6 +338,10 @@
       "color": "#79d281",
       "lineStyle": "normal"
     },
+    "ETH": {
+      "color": "#2dd26c",
+      "lineStyle": "normal"
+    },
     "Eastern Asia": {
       "color": "#78483a",
       "lineStyle": "normal"
@@ -364,8 +398,16 @@
       "color": "#ac6653",
       "lineStyle": "normal"
     },
+    "IRN": {
+      "color": "#87c5b8",
+      "lineStyle": "normal"
+    },
     "ISL": {
       "color": "#93861f",
+      "lineStyle": "normal"
+    },
+    "ISR": {
+      "color": "#2d7dd2",
       "lineStyle": "normal"
     },
     "ITA": {
@@ -374,6 +416,14 @@
     },
     "JPN": {
       "color": "#783a75",
+      "lineStyle": "normal"
+    },
+    "KAZ": {
+      "color": "#e08b6c",
+      "lineStyle": "normal"
+    },
+    "KEN": {
+      "color": "#c58797",
       "lineStyle": "normal"
     },
     "KOR": {
@@ -410,6 +460,14 @@
     },
     "MEX": {
       "color": "#a4e06c",
+      "lineStyle": "normal"
+    },
+    "MKD": {
+      "color": "#2d867e",
+      "lineStyle": "normal"
+    },
+    "MMR": {
+      "color": "#87c3c5",
       "lineStyle": "normal"
     },
     "MYS": {
@@ -450,6 +508,10 @@
     },
     "Oceania": {
       "color": "#723a78",
+      "lineStyle": "normal"
+    },
+    "PAK": {
+      "color": "#3a5678",
       "lineStyle": "normal"
     },
     "PER": {
@@ -554,6 +616,10 @@
     },
     "Western Asia": {
       "color": "#a66ce0",
+      "lineStyle": "normal"
+    },
+    "XKX": {
+      "color": "#521f93",
       "lineStyle": "normal"
     },
     "ZAF": {
