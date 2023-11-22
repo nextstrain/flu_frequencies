@@ -11,7 +11,7 @@
   "minDate": "2021-04-01",
   "nCountries": 67,
   "nRegions": 10,
-  "nVariants": 22,
+  "nVariants": 24,
   "name": "flu-vic-ha",
   "nameFriendly": "Influenza B/Vic HA"
 }

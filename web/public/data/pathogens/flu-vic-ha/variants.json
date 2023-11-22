@@ -12,7 +12,9 @@
     "C",
     "C*",
     "C.1",
+    "C.2",
     "C.3",
+    "C.4",
     "C.5",
     "C.5*",
     "C.5.1",
@@ -72,8 +74,16 @@
       "color": "#ac9c53",
       "lineStyle": "normal"
     },
+    "C.2": {
+      "color": "#40bfbd",
+      "lineStyle": "normal"
+    },
     "C.3": {
       "color": "#d2798e",
+      "lineStyle": "normal"
+    },
+    "C.4": {
+      "color": "#d279a6",
       "lineStyle": "normal"
     },
     "C.5": {

@@ -145,8 +145,7 @@
     "Southern Asia": [
       "BGD",
       "BTN",
-      "IND",
-      "other"
+      "IND"
     ],
     "Western Asia": [
       "ARE",
@@ -154,7 +153,8 @@
       "KAZ",
       "KGZ",
       "OMN",
-      "QAT"
+      "QAT",
+      "other"
     ]
   },
   "geographyStyles": {
