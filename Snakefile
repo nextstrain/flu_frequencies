@@ -107,7 +107,7 @@ rule get_nextclade_dataset:
     threads: 4
     shell:
         """
-        nextclade dataset get -n flu_{wildcards.lineage}_{wildcards.segment} --output-dir nextclade/{wildcards.lineage}_{wildcards.segment}
+        nextclade2 dataset get -n flu_{wildcards.lineage}_{wildcards.segment} --output-dir nextclade/{wildcards.lineage}_{wildcards.segment}
         """
 
 
@@ -120,7 +120,7 @@ rule run_nextclade:
     threads: workflow.cores
     shell:
         """
-        nextclade run -j {threads} -D nextclade/{wildcards.lineage}_{wildcards.segment} \
+        nextclade2 run -j {threads} -D nextclade/{wildcards.lineage}_{wildcards.segment} \
                   {input.sequences} --quiet --output-tsv {output}
         """
 
