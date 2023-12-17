@@ -120,7 +120,8 @@
     "Eastern Asia": [
       "HKG",
       "JPN",
-      "KOR"
+      "KOR",
+      "other"
     ],
     "Europe": [
       "ALB",
@@ -196,8 +197,7 @@
       "PHL",
       "SGP",
       "THA",
-      "TLS",
-      "other"
+      "TLS"
     ],
     "Southern Asia": [
       "AFG",

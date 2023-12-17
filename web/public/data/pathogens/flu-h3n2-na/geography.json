@@ -180,8 +180,7 @@
       "COL",
       "ECU",
       "GUF",
-      "PER",
-      "other"
+      "PER"
     ],
     "South-eastern Asia": [
       "BRN",
@@ -191,7 +190,8 @@
       "PHL",
       "SGP",
       "THA",
-      "TLS"
+      "TLS",
+      "other"
     ],
     "Southern Asia": [
       "AFG",

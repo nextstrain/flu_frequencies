@@ -12,6 +12,7 @@
     "BHR",
     "BOL",
     "BRA",
+    "BTN",
     "CAN",
     "CHE",
     "CHL",
@@ -50,6 +51,7 @@
     "MUS",
     "MYS",
     "NCL",
+    "NER",
     "NLD",
     "NOR",
     "NZL",
@@ -90,6 +92,7 @@
       "MDG",
       "MOZ",
       "MUS",
+      "NER",
       "SEN",
       "TGO",
       "ZAF",
@@ -138,7 +141,8 @@
       "GTM",
       "HTI",
       "PAN",
-      "USA"
+      "USA",
+      "other"
     ],
     "Oceania": [
       "AUS",
@@ -155,8 +159,7 @@
       "PER",
       "PRY",
       "URY",
-      "VEN",
-      "other"
+      "VEN"
     ],
     "South-eastern Asia": [
       "KHM",
@@ -168,6 +171,7 @@
     ],
     "Southern Asia": [
       "BGD",
+      "BTN",
       "IND",
       "PAK"
     ],
@@ -232,6 +236,10 @@
     },
     "BRA": {
       "color": "#866e2d",
+      "lineStyle": "normal"
+    },
+    "BTN": {
+      "color": "#4e2dd2",
       "lineStyle": "normal"
     },
     "CAN": {
@@ -396,6 +404,10 @@
     },
     "NCL": {
       "color": "#7c1f93",
+      "lineStyle": "normal"
+    },
+    "NER": {
+      "color": "#6b862d",
       "lineStyle": "normal"
     },
     "NLD": {

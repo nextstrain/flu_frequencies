@@ -19,6 +19,7 @@
     "CIV",
     "COL",
     "CRI",
+    "CZE",
     "DEU",
     "DNK",
     "ESP",
@@ -27,6 +28,7 @@
     "FRA",
     "GBR",
     "GTM",
+    "HTI",
     "IND",
     "JPN",
     "KEN",
@@ -79,13 +81,15 @@
       "CHN"
     ],
     "Eastern Asia": [
-      "JPN"
+      "JPN",
+      "other"
     ],
     "Europe": [
       "AUT",
       "BEL",
       "BGR",
       "CHE",
+      "CZE",
       "DEU",
       "DNK",
       "ESP",
@@ -109,6 +113,7 @@
       "CAN",
       "CRI",
       "GTM",
+      "HTI",
       "NIC",
       "SLV",
       "TTO",
@@ -125,8 +130,7 @@
       "BRA",
       "CHL",
       "COL",
-      "PER",
-      "other"
+      "PER"
     ],
     "South-eastern Asia": [
       "KHM",
@@ -230,6 +234,10 @@
       "color": "#87c5a5",
       "lineStyle": "normal"
     },
+    "CZE": {
+      "color": "#ac9953",
+      "lineStyle": "normal"
+    },
     "China": {
       "color": "#79d2a0",
       "lineStyle": "normal"
@@ -272,6 +280,10 @@
     },
     "GTM": {
       "color": "#d279b3",
+      "lineStyle": "normal"
+    },
+    "HTI": {
+      "color": "#7e2d86",
       "lineStyle": "normal"
     },
     "IND": {

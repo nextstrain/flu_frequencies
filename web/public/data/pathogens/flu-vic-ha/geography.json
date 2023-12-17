@@ -20,6 +20,7 @@
     "COG",
     "COL",
     "CRI",
+    "CZE",
     "DEU",
     "DNK",
     "ESP",
@@ -29,6 +30,7 @@
     "GBR",
     "GTM",
     "HKG",
+    "HTI",
     "IND",
     "ITA",
     "JPN",
@@ -92,6 +94,7 @@
       "BEL",
       "BGR",
       "CHE",
+      "CZE",
       "DEU",
       "DNK",
       "ESP",
@@ -116,6 +119,7 @@
       "CAN",
       "CRI",
       "GTM",
+      "HTI",
       "NIC",
       "SLV",
       "TTO",
@@ -140,7 +144,8 @@
       "MYS",
       "SGP",
       "THA",
-      "TLS"
+      "TLS",
+      "other"
     ],
     "Southern Asia": [
       "BGD",
@@ -153,8 +158,7 @@
       "KAZ",
       "KGZ",
       "OMN",
-      "QAT",
-      "other"
+      "QAT"
     ]
   },
   "geographyStyles": {
@@ -242,6 +246,10 @@
       "color": "#87c5a5",
       "lineStyle": "normal"
     },
+    "CZE": {
+      "color": "#ac9953",
+      "lineStyle": "normal"
+    },
     "China": {
       "color": "#79d2a0",
       "lineStyle": "normal"
@@ -288,6 +296,10 @@
     },
     "HKG": {
       "color": "#d28c79",
+      "lineStyle": "normal"
+    },
+    "HTI": {
+      "color": "#7e2d86",
       "lineStyle": "normal"
     },
     "IND": {
