@@ -33,7 +33,12 @@
     "G.2.1",
     "G.2.2",
     "G.3",
-    "H"
+    "H",
+    "H*",
+    "H.1",
+    "H.2",
+    "H.3",
+    "H.4"
   ],
   "variantsStyles": {
     "B": {
@@ -170,6 +175,26 @@
     },
     "H": {
       "color": "#2d3186",
+      "lineStyle": "normal"
+    },
+    "H*": {
+      "color": "#1f3c93",
+      "lineStyle": "normal"
+    },
+    "H.1": {
+      "color": "#53ac66",
+      "lineStyle": "normal"
+    },
+    "H.2": {
+      "color": "#c16ce0",
+      "lineStyle": "normal"
+    },
+    "H.3": {
+      "color": "#afd279",
+      "lineStyle": "normal"
+    },
+    "H.4": {
+      "color": "#b2d279",
       "lineStyle": "normal"
     }
   }

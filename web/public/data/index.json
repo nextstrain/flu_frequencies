@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2023-12-17T16:04:20Z",
+  "lastUpdate": "2023-12-21T21:18:14Z",
   "pathogens": [
     {
       "color": "#8a931f",
@@ -10,11 +10,11 @@
       },
       "isEnabled": true,
       "isVisible": true,
-      "maxDate": "2023-11-23",
+      "maxDate": "2023-12-07",
       "minDate": "2021-04-01",
       "nCountries": 98,
       "nRegions": 10,
-      "nVariants": 34,
+      "nVariants": 39,
       "name": "flu-h3n2-ha",
       "nameFriendly": "Influenza H3N2 HA"
     },
@@ -27,7 +27,7 @@
       },
       "isEnabled": true,
       "isVisible": true,
-      "maxDate": "2023-11-23",
+      "maxDate": "2023-12-07",
       "minDate": "2021-04-01",
       "nCountries": 95,
       "nRegions": 10,
@@ -78,7 +78,7 @@
       },
       "isEnabled": true,
       "isVisible": true,
-      "maxDate": "2023-11-23",
+      "maxDate": "2023-12-07",
       "minDate": "2021-04-01",
       "nCountries": 69,
       "nRegions": 10,
@@ -95,7 +95,7 @@
       },
       "isEnabled": true,
       "isVisible": true,
-      "maxDate": "2023-11-23",
+      "maxDate": "2023-12-07",
       "minDate": "2021-04-01",
       "nCountries": 65,
       "nRegions": 10,

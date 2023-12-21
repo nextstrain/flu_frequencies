@@ -81,8 +81,7 @@
       "CHN"
     ],
     "Eastern Asia": [
-      "JPN",
-      "other"
+      "JPN"
     ],
     "Europe": [
       "AUT",
@@ -138,7 +137,8 @@
       "MYS",
       "SGP",
       "THA",
-      "TLS"
+      "TLS",
+      "other"
     ],
     "Southern Asia": [
       "BGD",

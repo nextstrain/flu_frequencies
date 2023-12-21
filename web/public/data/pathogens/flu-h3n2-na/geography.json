@@ -164,7 +164,8 @@
       "PRI",
       "SLV",
       "TTO",
-      "USA"
+      "USA",
+      "other"
     ],
     "Oceania": [
       "AUS",
@@ -190,8 +191,7 @@
       "PHL",
       "SGP",
       "THA",
-      "TLS",
-      "other"
+      "TLS"
     ],
     "Southern Asia": [
       "AFG",

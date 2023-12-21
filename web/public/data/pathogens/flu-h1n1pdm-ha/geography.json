@@ -141,7 +141,8 @@
       "GTM",
       "HTI",
       "PAN",
-      "USA"
+      "USA",
+      "other"
     ],
     "Oceania": [
       "AUS",
@@ -172,8 +173,7 @@
       "BGD",
       "BTN",
       "IND",
-      "PAK",
-      "other"
+      "PAK"
     ],
     "Western Asia": [
       "ARE",

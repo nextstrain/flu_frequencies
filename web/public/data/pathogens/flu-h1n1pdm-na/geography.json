@@ -141,8 +141,7 @@
       "GTM",
       "HTI",
       "PAN",
-      "USA",
-      "other"
+      "USA"
     ],
     "Oceania": [
       "AUS",
@@ -182,7 +181,8 @@
       "KGZ",
       "LBN",
       "OMN",
-      "QAT"
+      "QAT",
+      "other"
     ]
   },
   "geographyStyles": {
