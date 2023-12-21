@@ -104,10 +104,10 @@ rule add_iso3:
 rule get_nextclade_dataset:
     output:
         "nextclade/{lineage}_{segment}/reference.fasta",
-    threads: 4
+    threads: 1
     shell:
         """
-        nextclade2 dataset get -n flu_{wildcards.lineage}_{wildcards.segment} --output-dir nextclade/{wildcards.lineage}_{wildcards.segment}
+        nextclade3 dataset get -n flu-{wildcards.lineage}-{wildcards.segment} --output-dir nextclade/{wildcards.lineage}_{wildcards.segment}
         """
 
 
@@ -120,7 +120,7 @@ rule run_nextclade:
     threads: workflow.cores
     shell:
         """
-        nextclade2 run -j {threads} -D nextclade/{wildcards.lineage}_{wildcards.segment} \
+        nextclade3 run -j {threads} -D nextclade/{wildcards.lineage}_{wildcards.segment} \
                   {input.sequences} --quiet --output-tsv {output}
         """
 
