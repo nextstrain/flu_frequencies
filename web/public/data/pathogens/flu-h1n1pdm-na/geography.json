@@ -32,6 +32,7 @@
     "GHA",
     "GTM",
     "GUF",
+    "HKG",
     "HTI",
     "IND",
     "IRL",
@@ -45,6 +46,7 @@
     "KOR",
     "LAO",
     "LBN",
+    "LKA",
     "LUX",
     "MDG",
     "MOZ",
@@ -102,6 +104,7 @@
       "CHN"
     ],
     "Eastern Asia": [
+      "HKG",
       "JPN",
       "KOR"
     ],
@@ -147,7 +150,8 @@
       "AUS",
       "FJI",
       "NCL",
-      "NZL"
+      "NZL",
+      "other"
     ],
     "South America": [
       "ARG",
@@ -172,6 +176,7 @@
       "BGD",
       "BTN",
       "IND",
+      "LKA",
       "PAK"
     ],
     "Western Asia": [
@@ -181,8 +186,7 @@
       "KGZ",
       "LBN",
       "OMN",
-      "QAT",
-      "other"
+      "QAT"
     ]
   },
   "geographyStyles": {
@@ -330,6 +334,10 @@
       "color": "#d2ac79",
       "lineStyle": "normal"
     },
+    "HKG": {
+      "color": "#d28c79",
+      "lineStyle": "normal"
+    },
     "HTI": {
       "color": "#7e2d86",
       "lineStyle": "normal"
@@ -380,6 +388,10 @@
     },
     "LBN": {
       "color": "#7d40bf",
+      "lineStyle": "normal"
+    },
+    "LKA": {
+      "color": "#d279cc",
       "lineStyle": "normal"
     },
     "LUX": {

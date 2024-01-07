@@ -106,7 +106,8 @@
       "SVK",
       "SVN",
       "SWE",
-      "UKR"
+      "UKR",
+      "other"
     ],
     "North America": [
       "CAN",
@@ -137,8 +138,7 @@
       "MYS",
       "SGP",
       "THA",
-      "TLS",
-      "other"
+      "TLS"
     ],
     "Southern Asia": [
       "BGD",

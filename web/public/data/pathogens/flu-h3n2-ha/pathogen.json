@@ -7,11 +7,11 @@
   },
   "isEnabled": true,
   "isVisible": true,
-  "maxDate": "2023-12-07",
+  "maxDate": "2023-12-21",
   "minDate": "2021-04-01",
-  "nCountries": 98,
+  "nCountries": 99,
   "nRegions": 10,
-  "nVariants": 39,
+  "nVariants": 41,
   "name": "flu-h3n2-ha",
   "nameFriendly": "Influenza H3N2 HA"
 }

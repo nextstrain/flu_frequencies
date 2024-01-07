@@ -45,6 +45,7 @@
     "KOR",
     "LAO",
     "LBN",
+    "LKA",
     "LUX",
     "MDG",
     "MOZ",
@@ -173,6 +174,7 @@
       "BGD",
       "BTN",
       "IND",
+      "LKA",
       "PAK"
     ],
     "Western Asia": [
@@ -380,6 +382,10 @@
     },
     "LBN": {
       "color": "#7d40bf",
+      "lineStyle": "normal"
+    },
+    "LKA": {
+      "color": "#d279cc",
       "lineStyle": "normal"
     },
     "LUX": {

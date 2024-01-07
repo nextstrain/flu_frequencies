@@ -53,6 +53,7 @@
     "KOR",
     "LAO",
     "LBN",
+    "LKA",
     "LTU",
     "LUX",
     "LVA",
@@ -120,8 +121,7 @@
     "Eastern Asia": [
       "HKG",
       "JPN",
-      "KOR",
-      "other"
+      "KOR"
     ],
     "Europe": [
       "ALB",
@@ -159,7 +159,8 @@
       "SVN",
       "SWE",
       "UKR",
-      "XKX"
+      "XKX",
+      "other"
     ],
     "North America": [
       "CAN",
@@ -205,6 +206,7 @@
       "BTN",
       "IND",
       "IRN",
+      "LKA",
       "MDV",
       "NPL",
       "PAK"
@@ -446,6 +448,10 @@
     },
     "LBN": {
       "color": "#7d40bf",
+      "lineStyle": "normal"
+    },
+    "LKA": {
+      "color": "#d279cc",
       "lineStyle": "normal"
     },
     "LTU": {
