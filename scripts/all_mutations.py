@@ -4,6 +4,33 @@ import numpy as np
 from fit_single_frequencies import fit_single_category, load_and_aggregate
 from collections import defaultdict
 
+def cluster_trajectories(trajs):
+    by_time_point = defaultdict(list)
+    for (fcat, fi), traj in trajs.items():
+        by_time_point[fi].append((fcat, traj))
+
+    collapsed_trajs = defaultdict(list)
+    for fi in by_time_point:
+        tmp_traj = []
+        tmp_names = []
+        for fcat, traj in by_time_point[fi]:
+            found = False
+            for n,c in zip(tmp_names, tmp_traj):
+                if np.mean(traj - np.mean(c, axis=0))**2 < 0.05:
+                    c.append(traj)
+                    n.append(fcat)
+                    tmp_names
+                    found=True
+                    break
+            if found==False:
+                tmp_traj.append([traj])
+                tmp_names.append([fcat])
+        for n,c in zip(tmp_names, tmp_traj):
+            collapsed_trajs[(fi,','.join(n))] = np.mean(c, axis=0)
+
+    return collapsed_trajs
+
+
 if __name__=='__main__':
     import argparse
     parser = argparse.ArgumentParser()
@@ -17,8 +44,9 @@ if __name__=='__main__':
 
     args = parser.parse_args()
     stiffness = 500/args.days
+    count_cutoff = 100*args.days/30
 
-    d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=["region", "aaSubstitutions", 'date'])
+    d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=["region", "aaSubstitutions", 'date']).select(['date', "region", "aaSubstitutions"])
     d = d.filter((pl.col('date')>=args.min_date)&(pl.col('date')<args.max_date))
 
     mutation_count_by_year = defaultdict(int)
@@ -36,7 +64,8 @@ if __name__=='__main__':
 
     mutations_to_keep = set()
     for (year, mut), count in mutation_count_by_year.items():
-        if count/sequence_count_by_year[year]>args.cutoff:
+        f = count/sequence_count_by_year[year]
+        if f*(1-f)>args.cutoff:
             mutations_to_keep.add(mut)
 
 
@@ -77,15 +106,15 @@ if __name__=='__main__':
 
     import matplotlib.pyplot as plt
     fig, axs = plt.subplots(1,2, figsize=(12,5))
-    n_pre = 720//args.days
-    n_past = 6*360//args.days
-    width = 0.1
+    n_pre = 360//args.days
+    n_past = 3*360//args.days
+    width = 0.2
     average_trajectories = []
     std_trajectories = []
     all_trajectories = {}
     time_axis = np.arange(-n_pre,n_past)*args.days
     plot_threshold=0.3
-    thresholds = np.linspace(0.1, 0.8, 8)
+    thresholds = np.linspace(0.1, 0.7, 7)
     axs[0].fill_between(time_axis[n_pre:], np.ones_like(time_axis[n_pre:])*plot_threshold,
                         np.ones_like(time_axis[n_pre:])*plot_threshold+width, color='k', alpha=0.2)
     axs[0].plot([0,0], [0,1], c='k', lw=1)
@@ -98,14 +127,16 @@ if __name__=='__main__':
             for fi, f in enumerate(freqs[:-(n_past//2)]):
                 if max(freqs[fi:n_pre+fi])<0.03:
                     new_mut=True
-                if new_mut and f>threshold and freqs[fi-1]<threshold and counts[fi][1]>300 and f<threshold+width:
+                if new_mut and f>threshold and freqs[fi-1]<threshold and counts[fi][1]>count_cutoff and f<threshold+width:
                     normalized_traj[(fcat, fi)] = freqs[fi-n_pre:fi+n_past] + [freqs[len(freqs)-1]]*max(0,fi+n_past - len(freqs))
                     new_mut = False
                 if fi and max(freqs[max(0,fi-n_pre):fi])>threshold+width:
                     new_mut = False
 
 
-        normalized_traj_array = np.array([x for x in normalized_traj.values()])
+        collapsed_trajs = cluster_trajectories(normalized_traj)
+        print(f"range {threshold:1.2f}--{threshold+width:1.2f}: {len(normalized_traj)} trajectories, clustered {len(collapsed_trajs)}")
+        normalized_traj_array = np.array([x for x in collapsed_trajs.values()])
         average_trajectories.append(normalized_traj_array.mean(axis=0))
         std_trajectories.append(normalized_traj_array.std(axis=0)/np.sqrt(normalized_traj_array.shape[0]))
         all_trajectories[threshold] = normalized_traj
@@ -125,3 +156,9 @@ if __name__=='__main__':
     plt.savefig(args.output)
 
 
+
+    # t = [time_bins[ti] for ti in time_bins]
+    # for fcat in frequencies:
+    #     freqs = [x['val'] for x in frequencies[fcat].values()]
+    #     if freqs[0]<0.2:
+    #         plt.plot(t, freqs, c='C0' if freqs[-1]>0.5 else 'C1')
