@@ -36,13 +36,13 @@ if __name__=='__main__':
     sequence_count_by_year = defaultdict(int)
     total = len(d)
     for ri,row in enumerate(d.iter_rows()):
-        year = int(row[0][:4])
+        year_mo = row[0][:7]
         if ri%10000==0:
             print(f"{ri} of {total}")
         try:
             for mut in row[2].split(','):
-                mutation_count_by_year[(year, mut[:-1])]+=1
-            sequence_count_by_year[year]+=1
+                mutation_count_by_year[(year_mo, mut[:-1])]+=1
+            sequence_count_by_year[year_mo]+=1
         except:
             pass
 
