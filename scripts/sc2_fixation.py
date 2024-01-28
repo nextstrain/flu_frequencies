@@ -26,14 +26,19 @@ if __name__=='__main__':
     plot_threshold=0.2  ## threshold window for example trajectories
     thresholds = [0.1, 0.2, 0.3, 0.4, 0.5,0.6, 0.7, 0.8]
 
-    d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=["region", "aaSubstitutions", 'date']).select(['date', "region", "aaSubstitutions"])
-    d = d.filter((pl.col('date')>=args.min_date)&(pl.col('date')<args.max_date)&(pl.col('region')==args.region))
+    d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=["region", "aaSubstitutions", 'date','QC_overall_status']).select(['date', "region", "aaSubstitutions", "QC_overall_status"])
+    print('loaded data', d.shape)
+    d = d.filter((pl.col('date')>=args.min_date)&(pl.col('date')<args.max_date)
+                 &(pl.col('region')==args.region)&(pl.col('QC_overall_status')=='good'))
+    print('filtered data', d.shape)
 
     mutation_count_by_year = defaultdict(int)
     sequence_count_by_year = defaultdict(int)
-
-    for row in d.iter_rows():
+    total = len(d)
+    for ri,row in enumerate(d.iter_rows()):
         year = int(row[0][:4])
+        if ri%10000==0:
+            print(f"{ri} of {total}")
         try:
             for mut in row[2].split(','):
                 mutation_count_by_year[(year, mut[:-1])]+=1
@@ -41,6 +46,7 @@ if __name__=='__main__':
         except:
             pass
 
+    print('counted mutations')
 
     mutations_to_keep = set()
     for (year, mut), count in mutation_count_by_year.items():
@@ -48,6 +54,7 @@ if __name__=='__main__':
         if f*(1-f)>args.cutoff:
             mutations_to_keep.add(mut)
 
+    print(f'keeping {len(mutations_to_keep)} mutations')
 
     def extract_mut(muts, mutation):
         if type(muts)==str:
@@ -58,10 +65,13 @@ if __name__=='__main__':
 
     new_columns = []
     for mut in mutations_to_keep:
+        print('prepping mutation',mut)
         new_columns.append(d["aaSubstitutions"].apply((lambda x:extract_mut(x, mut))).alias(mut))
 
     d = d.with_columns(new_columns + [pl.col('date').apply(lambda x:'dummy').alias('dummy'),
                         pl.col("date").str.strptime(pl.Date, format="%Y-%m-%d", strict=False)])
+
+    print('made big table')
 
     frequencies = {}
     traj_counts = {}
@@ -83,6 +93,7 @@ if __name__=='__main__':
                 traj_counts[fcat] = [(sub_counts[fcat].get(ti,0), totals.get(ti,0)) for ti in time_bins]
                 print(len(frequencies), fcat)
 
+    print('calculated frequencies')
 
     import matplotlib.pyplot as plt
     fig, axs = plt.subplots(1,2, figsize=(12,5))
