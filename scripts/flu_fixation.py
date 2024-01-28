@@ -35,16 +35,20 @@ if __name__=='__main__':
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--metadata", type=str, help="filename with metadata")
-    parser.add_argument("--geo-categories", nargs='+', type=str, help="field to use for geographic categories")
     parser.add_argument("--days", default=7, type=int, help="number of days in one time bin")
     parser.add_argument("--min-date", type=str, help="date to start frequency calculation")
     parser.add_argument("--max-date", type=str, help="date to end frequency calculation")
     parser.add_argument("--cutoff", type=float, default=0.1)
-    parser.add_argument("--output", type=str, help="file for json output")
+    parser.add_argument("--output", type=str, help="file for plot output")
 
     args = parser.parse_args()
     stiffness = 500/args.days
     count_cutoff = 100*args.days/30
+    n_pre = 360//args.days
+    n_past = 3*360//args.days
+    width = 0.2
+    plot_threshold=0.3  ## threshold window for example trajectories
+    thresholds = [0.1, 0.3, 0.5, 0.7]
 
     d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=["region", "aaSubstitutions", 'date']).select(['date', "region", "aaSubstitutions"])
     d = d.filter((pl.col('date')>=args.min_date)&(pl.col('date')<args.max_date))
@@ -106,15 +110,10 @@ if __name__=='__main__':
 
     import matplotlib.pyplot as plt
     fig, axs = plt.subplots(1,2, figsize=(12,5))
-    n_pre = 360//args.days
-    n_past = 3*360//args.days
-    width = 0.2
     average_trajectories = []
     std_trajectories = []
     all_trajectories = {}
     time_axis = np.arange(-n_pre,n_past)*args.days
-    plot_threshold=0.3
-    thresholds = np.linspace(0.1, 0.7, 7)
     axs[0].fill_between(time_axis[n_pre:], np.ones_like(time_axis[n_pre:])*plot_threshold,
                         np.ones_like(time_axis[n_pre:])*plot_threshold+width, color='k', alpha=0.2)
     axs[0].plot([0,0], [0,1], c='k', lw=1)
@@ -149,9 +148,10 @@ if __name__=='__main__':
 
     for ti, traj in enumerate(average_trajectories):
         axs[1].plot(time_axis, traj, lw=2, c=f"C{ti}")
-        axs[1].plot([0,time_axis[-1]],[thresholds[ti]+width*0.5, thresholds[ti]+width*0.5] , lw=2, c='k', alpha=0.5)
+        axs[1].plot([0,time_axis[-1]],[thresholds[ti]+width*0.5, thresholds[ti]+width*0.5] , lw=2, c=f"C{ti}", alpha=0.5)
         axs[1].fill_between(time_axis, traj-std_trajectories[ti], traj+std_trajectories[ti], color=f"C{ti}", alpha=0.3)
     axs[1].set_xlabel('days')
+    axs[0].plot([0,0], [0,1], c='k', lw=1)
 
     plt.savefig(args.output)
 
