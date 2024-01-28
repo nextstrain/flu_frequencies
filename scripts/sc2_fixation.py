@@ -63,21 +63,20 @@ if __name__=='__main__':
         else:
             return mutation
 
-    new_columns = []
-    for mut in mutations_to_keep:
-        print('prepping mutation',mut)
-        new_columns.append(d["aaSubstitutions"].apply((lambda x:extract_mut(x, mut))).alias(mut))
-
-    d = d.with_columns(new_columns + [pl.col('date').apply(lambda x:'dummy').alias('dummy'),
-                        pl.col("date").str.strptime(pl.Date, format="%Y-%m-%d", strict=False)])
-
-    print('made big table')
 
     frequencies = {}
     traj_counts = {}
+    d_template = d.with_columns([pl.col('date').apply(lambda x:'dummy').alias('dummy'),
+                            pl.col("date").str.strptime(pl.Date, format="%Y-%m-%d", strict=False)])
+
     for mut in mutations_to_keep:
         print(mut)
-        data, tmp_totals, counts, time_bins = load_and_aggregate(d, ['dummy'], mut,
+        print('prepping mutation',mut)
+        new_column = d["aaSubstitutions"].apply((lambda x:extract_mut(x, mut))).alias(mut)
+
+        d2 = d_template.with_columns(new_column)
+
+        data, tmp_totals, counts, time_bins = load_and_aggregate(d2, ['dummy'], mut,
                                                     bin_size=args.days, min_date=args.min_date)
 
         geo_label = 'dummy'
