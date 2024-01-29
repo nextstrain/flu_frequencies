@@ -90,28 +90,3 @@ auspice_config:
   h1n1pdm: "profiles/flu/auspice_config_h1n1pdm.json"
   h3n2: "profiles/flu/auspice_config_h3n2.json"
   vic: "profiles/flu/auspice_config_vic.json"
-
-
-fasta_fields:
-  - strain
-  - virus
-  - segment
-  - accession
-  - date
-  - date_submitted
-  - region
-  - country
-  - division
-  - location
-  - passage_category
-  - originating_lab
-  - submitting_lab
-  - age
-  - gender
-prettify_fields:
-  - region
-  - country
-  - division
-  - location
-  - originating_lab
-  - submitting_lab
