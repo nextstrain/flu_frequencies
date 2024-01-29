@@ -4,5 +4,5 @@ channels:
   - conda-forge
 dependencies:
   - nextstrain-base
-  - polars
+  - polars=0.20.3
   - typer
