@@ -89,7 +89,3 @@ clades_to_plot:
       - B.8
 
 coloring_field: subclade
-auspice_config:
-  h1n1pdm: "profiles/flu/auspice_config_h1n1pdm.json"
-  h3n2: "profiles/flu/auspice_config_h3n2.json"
-  vic: "profiles/flu/auspice_config_vic.json"

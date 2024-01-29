@@ -278,10 +278,21 @@ rule plot_country:
             --output {output.plot}
         """
 
+rule download_auspice_config_json:
+    output:
+        config="results/{lineage}_{segment}/auspice_config.json",
+    shell:
+        """
+        curl \
+            -o {output.config} \
+            -L \
+            'https://raw.githubusercontent.com/nextstrain/seasonal-flu/master/profiles/nextflu-private/{wildcards.lineage}/{wildcards.segment}/auspice_config.json'
+        """
 
 rule multi_region_plot_clades:
     input:
         freqs="results/{lineage}_{segment}/region-frequencies.csv",
+        auspice_config="results/{lineage}_{segment}/auspice_config.json",
     output:
         plot="plots/{lineage}_{segment}/region-clades.png",
     params:
@@ -290,9 +301,6 @@ rule multi_region_plot_clades:
         .get(wildcards.lineage, {})
         .get(wildcards.segment)
         else "",
-        auspice_config_argument=lambda wildcards: f"--auspice-config {config['auspice_config'][wildcards.lineage]}"
-        if config.get("auspice_config", {}).get(wildcards.lineage)
-        else "",
         coloring_field_argument=lambda wildcards: f"--coloring-field {config['coloring_field']}"
         if config.get("coloring_field")
         else "",
@@ -300,10 +308,12 @@ rule multi_region_plot_clades:
         max_freq=0.2,
     shell:
         """
-        python3 scripts/plot_multi-region.py --frequencies {input.freqs}  \
-                --regions {params.regions:q}  --max-freq {params.max_freq} \
+        python3 scripts/plot_multi-region.py \
+                --frequencies {input.freqs}  \
+                --regions {params.regions:q} \
+                --max-freq {params.max_freq} \
+                --auspice-config {input.auspice_config} \
                 {params.clades_argument} \
-                {params.auspice_config_argument} \
                 {params.coloring_field_argument} \
                 --output {output.plot}
         """
