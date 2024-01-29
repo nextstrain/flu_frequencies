@@ -107,7 +107,7 @@ rule get_nextclade_dataset:
     threads: 1
     shell:
         """
-        nextclade3 dataset get -n flu-{wildcards.lineage}-{wildcards.segment} --output-dir nextclade/{wildcards.lineage}_{wildcards.segment}
+        nextclade3 dataset get -n flu_{wildcards.lineage}_{wildcards.segment} --output-dir nextclade/{wildcards.lineage}_{wildcards.segment}
         """
 
 
