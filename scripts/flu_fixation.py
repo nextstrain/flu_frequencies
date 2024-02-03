@@ -1,6 +1,7 @@
 import polars as  pl
 from datetime import datetime
 import numpy as np
+import json
 from fit_single_frequencies import fit_single_category, load_and_aggregate
 from collections import defaultdict
 
@@ -16,7 +17,7 @@ def cluster_trajectories(trajs):
         for fcat, traj in by_time_point[fi]:
             found = False
             for n,c in zip(tmp_names, tmp_traj):
-                if np.mean(traj - np.mean(c, axis=0))**2 < 0.05:
+                if np.mean(traj - np.mean(c, axis=0))**2 < (0.05)**2 and np.max(np.abs(traj - np.mean(c, axis=0)))<0.1:
                     c.append(traj)
                     n.append(fcat)
                     tmp_names
@@ -26,7 +27,7 @@ def cluster_trajectories(trajs):
                 tmp_traj.append([traj])
                 tmp_names.append([fcat])
         for n,c in zip(tmp_names, tmp_traj):
-            collapsed_trajs[(fi,','.join(n))] = np.mean(c, axis=0)
+            collapsed_trajs[str(fi) + '_' + ','.join(n)] = [float(x) for x in np.mean(c, axis=0)]
 
     return collapsed_trajs
 
@@ -39,16 +40,19 @@ if __name__=='__main__':
     parser.add_argument("--min-date", type=str, help="date to start frequency calculation")
     parser.add_argument("--max-date", type=str, help="date to end frequency calculation")
     parser.add_argument("--cutoff", type=float, default=0.1)
-    parser.add_argument("--output", type=str, help="file for plot output")
+    parser.add_argument("--output-plot", type=str, help="file for plot output")
+    parser.add_argument("--output-json", type=str, help="file for data")
 
     args = parser.parse_args()
     stiffness = 500/args.days
-    count_cutoff = 100*args.days/30
+    count_cutoff = 30*args.days/30
     n_pre = 360//args.days
     n_past = 3*360//args.days
-    width = 0.2
     plot_threshold=0.3  ## threshold window for example trajectories
-    thresholds = [0.1, 0.3, 0.5, 0.7]
+    width = 0.1
+    thresholds = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+    # width = 0.2
+    # thresholds = [0.1, 0.3, 0.5, 0.7]
 
     d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=["region", "aaSubstitutions", 'date']).select(['date', "region", "aaSubstitutions"])
     d = d.filter((pl.col('date')>=args.min_date)&(pl.col('date')<args.max_date))
@@ -123,12 +127,14 @@ if __name__=='__main__':
             new_mut = False
             freqs = [x['val'] for x in frequencies[fcat].values()]
             counts = traj_counts[fcat]
-            for fi, f in enumerate(freqs[:-(n_past//2)]):
+            for fi, f in enumerate(freqs[:-(n_past//3)]):
                 if max(freqs[fi:n_pre+fi])<0.03:
                     new_mut=True
+                # take new trajectories that cross into the window from below
                 if new_mut and f>threshold and freqs[fi-1]<threshold and counts[fi][1]>count_cutoff and f<threshold+width:
                     normalized_traj[(fcat, fi)] = freqs[fi-n_pre:fi+n_past] + [freqs[len(freqs)-1]]*max(0,fi+n_past - len(freqs))
                     new_mut = False
+                # exclude trajectories that overshoot the window
                 if fi and max(freqs[max(0,fi-n_pre):fi])>threshold+width:
                     new_mut = False
 
@@ -138,7 +144,7 @@ if __name__=='__main__':
         normalized_traj_array = np.array([x for x in collapsed_trajs.values()])
         average_trajectories.append(normalized_traj_array.mean(axis=0))
         std_trajectories.append(normalized_traj_array.std(axis=0)/np.sqrt(normalized_traj_array.shape[0]))
-        all_trajectories[threshold] = normalized_traj
+        all_trajectories[threshold] = collapsed_trajs
         if np.abs(threshold-plot_threshold)<1e-6:
             for traj in normalized_traj_array:
                 axs[0].plot(time_axis, traj, c='C0' if traj[-1]<threshold else 'C1')
@@ -153,8 +159,10 @@ if __name__=='__main__':
     axs[1].set_xlabel('days')
     axs[0].plot([0,0], [0,1], c='k', lw=1)
 
-    plt.savefig(args.output)
+    plt.savefig(args.output_plot)
 
+    with open(args.output_json, 'w') as fh:
+        json.dump({'time_points': [float(x) for x in time_axis], 'trajectories': all_trajectories}, fh)
 
 
     # t = [time_bins[ti] for ti in time_bins]

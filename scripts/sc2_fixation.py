@@ -1,6 +1,7 @@
 import polars as  pl
 from datetime import datetime
 import numpy as np
+import json
 from fit_single_frequencies import fit_single_category, load_and_aggregate
 from flu_fixation import cluster_trajectories
 from collections import defaultdict
@@ -15,16 +16,20 @@ if __name__=='__main__':
     parser.add_argument("--min-date", type=str, help="date to start frequency calculation")
     parser.add_argument("--max-date", type=str, help="date to end frequency calculation")
     parser.add_argument("--cutoff", type=float, default=0.1)
-    parser.add_argument("--output", type=str, help="file for plot output")
+    parser.add_argument("--output-plot", type=str, help="file for plot output")
+    parser.add_argument("--output-json", type=str, help="file for data")
 
     args = parser.parse_args()
     stiffness = 500/args.days
     count_cutoff = 500*args.days/30
     n_pre = 50//args.days
     n_past = 180//args.days
+    plot_threshold=0.3  ## threshold window for example trajectories
+
     width = 0.1
-    plot_threshold=0.2  ## threshold window for example trajectories
-    thresholds = [0.1, 0.2, 0.3, 0.4, 0.5,0.6, 0.7, 0.8]
+    thresholds = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+    # width = 0.2
+    # thresholds = [0.1, 0.3, 0.5, 0.7]
 
     d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=["region", "aaSubstitutions", 'date','QC_overall_status']).select(['date', "region", "aaSubstitutions", "QC_overall_status"])
     print('loaded data', d.shape)
@@ -109,7 +114,7 @@ if __name__=='__main__':
             new_mut = False
             freqs = [x['val'] for x in frequencies[fcat].values()]
             counts = traj_counts[fcat]
-            for fi, f in enumerate(freqs[:-(n_past//2)]):
+            for fi, f in enumerate(freqs[:-(n_past//3)]):
                 if max(freqs[fi:n_pre+fi])<0.03:
                     new_mut=True
                 if new_mut and f>threshold and freqs[fi-1]<threshold and counts[fi][1]>count_cutoff and f<threshold+width:
@@ -124,7 +129,7 @@ if __name__=='__main__':
         normalized_traj_array = np.array([x for x in collapsed_trajs.values()])
         average_trajectories.append(normalized_traj_array.mean(axis=0))
         std_trajectories.append(normalized_traj_array.std(axis=0)/np.sqrt(normalized_traj_array.shape[0]))
-        all_trajectories[threshold] = normalized_traj
+        all_trajectories[threshold] = collapsed_trajs
         if np.abs(threshold-plot_threshold)<1e-6:
             for traj in normalized_traj_array:
                 axs[0].plot(time_axis, traj, c='C0' if traj[-1]<threshold else 'C1')
@@ -139,9 +144,10 @@ if __name__=='__main__':
     axs[1].set_xlabel('days')
     axs[0].plot([0,0], [0,1], c='k', lw=1)
 
-    plt.savefig(args.output)
+    plt.savefig(args.output_plot)
 
-
+    with open(args.output_json, 'w') as fh:
+        json.dump({'time_points': [float(x) for x in time_bins], 'trajectories': all_trajectories})
 
     # t = [time_bins[ti] for ti in time_bins]
     # for fcat in frequencies:
