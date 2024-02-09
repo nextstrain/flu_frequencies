@@ -52,14 +52,17 @@ clades_to_plot:
       - C.5.3
   h3n2:
     ha:
-      - "G.1.1"
       - "G.1.1.2"
-      - "G.1.3"
       - "G.1.3.1"
+      - "G.1.3.2"
       - "G.2"
       - "G.2.1"
       - "G.2.2"
       - "H"
+      - "H.1"
+      - "H.2"
+      - "H.3"
+      - "H.4"
     na:
       - A.2.2.2
       - B.2
@@ -86,32 +89,3 @@ clades_to_plot:
       - B.8
 
 coloring_field: subclade
-auspice_config:
-  h1n1pdm: "profiles/flu/auspice_config_h1n1pdm.json"
-  h3n2: "profiles/flu/auspice_config_h3n2.json"
-  vic: "profiles/flu/auspice_config_vic.json"
-
-
-fasta_fields:
-  - strain
-  - virus
-  - segment
-  - accession
-  - date
-  - date_submitted
-  - region
-  - country
-  - division
-  - location
-  - passage_category
-  - originating_lab
-  - submitting_lab
-  - age
-  - gender
-prettify_fields:
-  - region
-  - country
-  - division
-  - location
-  - originating_lab
-  - submitting_lab

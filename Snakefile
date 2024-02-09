@@ -44,38 +44,23 @@ rule europe:
 
 rule download_sequences:
     output:
-        sequences="data/{lineage}/raw_{segment}.fasta",
+        sequences="data/{lineage}/{segment}.fasta",
     params:
-        s3_path="s3://nextstrain-data-private/files/workflows/seasonal-flu/{lineage}/{segment}/raw_sequences.fasta.xz",
+        s3_path="s3://nextstrain-data-private/files/workflows/seasonal-flu/{lineage}/{segment}/sequences.fasta.xz",
     shell:
         """
         aws s3 cp {params.s3_path} - | xz -c -d > {output.sequences}
         """
 
-
-rule parse:
-    """
-    Parsing fasta into sequences and metadata
-    TODO: Download results directly once https://github.com/nextstrain/seasonal-flu/issues/107 is resolved
-    """
-    input:
-        sequences="data/{lineage}/raw_{segment}.fasta",
+rule download_metadata:
     output:
-        sequences="data/{lineage}/{segment}.fasta",
         metadata="data/{lineage}/metadata_raw_{segment}.tsv",
     params:
-        fasta_fields=config["fasta_fields"],
-        prettify_fields=config["prettify_fields"],
+        s3_path="s3://nextstrain-data-private/files/workflows/seasonal-flu/{lineage}/metadata.tsv.xz",
     shell:
         """
-        augur parse \
-            --sequences {input.sequences} \
-            --output-sequences {output.sequences} \
-            --output-metadata {output.metadata} \
-            --fields {params.fasta_fields} \
-            --prettify-fields {params.prettify_fields}
+        aws s3 cp {params.s3_path} - | xz -c -d > {output.metadata}
         """
-
 
 rule add_iso3:
     input:
@@ -107,7 +92,7 @@ rule get_nextclade_dataset:
     threads: 1
     shell:
         """
-        nextclade3 dataset get -n flu-{wildcards.lineage}-{wildcards.segment} --output-dir nextclade/{wildcards.lineage}_{wildcards.segment}
+        nextclade3 dataset get -n flu_{wildcards.lineage}_{wildcards.segment} --output-dir nextclade/{wildcards.lineage}_{wildcards.segment}
         """
 
 
@@ -293,10 +278,21 @@ rule plot_country:
             --output {output.plot}
         """
 
+rule download_auspice_config_json:
+    output:
+        config="results/{lineage}_{segment}/auspice_config.json",
+    shell:
+        """
+        curl \
+            -o {output.config} \
+            -L \
+            'https://raw.githubusercontent.com/nextstrain/seasonal-flu/master/profiles/nextflu-private/{wildcards.lineage}/{wildcards.segment}/auspice_config.json'
+        """
 
 rule multi_region_plot_clades:
     input:
         freqs="results/{lineage}_{segment}/region-frequencies.csv",
+        auspice_config="results/{lineage}_{segment}/auspice_config.json",
     output:
         plot="plots/{lineage}_{segment}/region-clades.png",
     params:
@@ -305,9 +301,6 @@ rule multi_region_plot_clades:
         .get(wildcards.lineage, {})
         .get(wildcards.segment)
         else "",
-        auspice_config_argument=lambda wildcards: f"--auspice-config {config['auspice_config'][wildcards.lineage]}"
-        if config.get("auspice_config", {}).get(wildcards.lineage)
-        else "",
         coloring_field_argument=lambda wildcards: f"--coloring-field {config['coloring_field']}"
         if config.get("coloring_field")
         else "",
@@ -315,10 +308,12 @@ rule multi_region_plot_clades:
         max_freq=0.2,
     shell:
         """
-        python3 scripts/plot_multi-region.py --frequencies {input.freqs}  \
-                --regions {params.regions:q}  --max-freq {params.max_freq} \
+        python3 scripts/plot_multi-region.py \
+                --frequencies {input.freqs}  \
+                --regions {params.regions:q} \
+                --max-freq {params.max_freq} \
+                --auspice-config {input.auspice_config} \
                 {params.clades_argument} \
-                {params.auspice_config_argument} \
                 {params.coloring_field_argument} \
                 --output {output.plot}
         """
