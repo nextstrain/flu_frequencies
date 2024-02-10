@@ -28,8 +28,10 @@
     "FRA",
     "GBR",
     "GTM",
+    "HKG",
     "HTI",
     "IND",
+    "ITA",
     "JPN",
     "KEN",
     "KGZ",
@@ -37,6 +39,7 @@
     "LAO",
     "LUX",
     "MDG",
+    "MEX",
     "MYS",
     "NER",
     "NIC",
@@ -75,12 +78,14 @@
       "NER",
       "TGO",
       "ZAF",
-      "ZMB"
+      "ZMB",
+      "other"
     ],
     "China": [
       "CHN"
     ],
     "Eastern Asia": [
+      "HKG",
       "JPN"
     ],
     "Europe": [
@@ -95,6 +100,7 @@
       "EST",
       "FRA",
       "GBR",
+      "ITA",
       "LUX",
       "NLD",
       "NOR",
@@ -106,14 +112,14 @@
       "SVK",
       "SVN",
       "SWE",
-      "UKR",
-      "other"
+      "UKR"
     ],
     "North America": [
       "CAN",
       "CRI",
       "GTM",
       "HTI",
+      "MEX",
       "NIC",
       "SLV",
       "TTO",
@@ -282,12 +288,20 @@
       "color": "#d279b3",
       "lineStyle": "normal"
     },
+    "HKG": {
+      "color": "#d28c79",
+      "lineStyle": "normal"
+    },
     "HTI": {
       "color": "#7e2d86",
       "lineStyle": "normal"
     },
     "IND": {
       "color": "#7981d2",
+      "lineStyle": "normal"
+    },
+    "ITA": {
+      "color": "#bfb540",
       "lineStyle": "normal"
     },
     "JPN": {
@@ -316,6 +330,10 @@
     },
     "MDG": {
       "color": "#6f3a78",
+      "lineStyle": "normal"
+    },
+    "MEX": {
+      "color": "#a4e06c",
       "lineStyle": "normal"
     },
     "MYS": {

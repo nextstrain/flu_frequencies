@@ -41,6 +41,8 @@
     "HKG",
     "HND",
     "HRV",
+    "HUN",
+    "IDN",
     "IND",
     "IRL",
     "IRN",
@@ -50,6 +52,7 @@
     "JPN",
     "KAZ",
     "KEN",
+    "KHM",
     "KOR",
     "LAO",
     "LBN",
@@ -62,6 +65,7 @@
     "MEX",
     "MKD",
     "MMR",
+    "MNE",
     "MYS",
     "NCL",
     "NER",
@@ -138,6 +142,7 @@
       "GBR",
       "GRC",
       "HRV",
+      "HUN",
       "IRL",
       "ISL",
       "ITA",
@@ -145,6 +150,7 @@
       "LUX",
       "LVA",
       "MKD",
+      "MNE",
       "NLD",
       "NOR",
       "POL",
@@ -156,8 +162,7 @@
       "SVN",
       "SWE",
       "UKR",
-      "XKX",
-      "other"
+      "XKX"
     ],
     "North America": [
       "CAN",
@@ -168,7 +173,8 @@
       "PRI",
       "SLV",
       "TTO",
-      "USA"
+      "USA",
+      "other"
     ],
     "Oceania": [
       "AUS",
@@ -188,6 +194,8 @@
     ],
     "South-eastern Asia": [
       "BRN",
+      "IDN",
+      "KHM",
       "LAO",
       "MMR",
       "MYS",
@@ -398,6 +406,14 @@
       "color": "#3a785d",
       "lineStyle": "normal"
     },
+    "HUN": {
+      "color": "#e06cdc",
+      "lineStyle": "normal"
+    },
+    "IDN": {
+      "color": "#2d3186",
+      "lineStyle": "normal"
+    },
     "IND": {
       "color": "#7981d2",
       "lineStyle": "normal"
@@ -432,6 +448,10 @@
     },
     "KEN": {
       "color": "#c58797",
+      "lineStyle": "normal"
+    },
+    "KHM": {
+      "color": "#d2e06c",
       "lineStyle": "normal"
     },
     "KOR": {
@@ -480,6 +500,10 @@
     },
     "MMR": {
       "color": "#87c3c5",
+      "lineStyle": "normal"
+    },
+    "MNE": {
+      "color": "#d27988",
       "lineStyle": "normal"
     },
     "MYS": {

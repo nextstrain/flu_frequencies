@@ -18,6 +18,7 @@
     "CHL",
     "CHN",
     "CIV",
+    "COL",
     "CRI",
     "CZE",
     "DEU",
@@ -34,11 +35,14 @@
     "GUF",
     "HKG",
     "HTI",
+    "HUN",
+    "IDN",
     "IND",
     "IRL",
     "ISL",
     "ISR",
     "ITA",
+    "JAM",
     "JPN",
     "KEN",
     "KGZ",
@@ -49,6 +53,8 @@
     "LKA",
     "LUX",
     "MDG",
+    "MDV",
+    "MEX",
     "MOZ",
     "MUS",
     "MYS",
@@ -75,6 +81,7 @@
     "SWE",
     "TGO",
     "THA",
+    "TUN",
     "UKR",
     "URY",
     "USA",
@@ -97,6 +104,7 @@
       "NER",
       "SEN",
       "TGO",
+      "TUN",
       "ZAF",
       "ZMB"
     ],
@@ -122,6 +130,7 @@
       "FIN",
       "FRA",
       "GBR",
+      "HUN",
       "IRL",
       "ISL",
       "ITA",
@@ -143,6 +152,8 @@
       "CRI",
       "GTM",
       "HTI",
+      "JAM",
+      "MEX",
       "PAN",
       "USA"
     ],
@@ -150,21 +161,23 @@
       "AUS",
       "FJI",
       "NCL",
-      "NZL",
-      "other"
+      "NZL"
     ],
     "South America": [
       "ARG",
       "BOL",
       "BRA",
       "CHL",
+      "COL",
       "GUF",
       "PER",
       "PRY",
       "URY",
-      "VEN"
+      "VEN",
+      "other"
     ],
     "South-eastern Asia": [
+      "IDN",
       "KHM",
       "LAO",
       "MYS",
@@ -177,6 +190,7 @@
       "BTN",
       "IND",
       "LKA",
+      "MDV",
       "PAK"
     ],
     "Western Asia": [
@@ -266,6 +280,10 @@
       "color": "#e0ac6c",
       "lineStyle": "normal"
     },
+    "COL": {
+      "color": "#7d2dd2",
+      "lineStyle": "normal"
+    },
     "CRI": {
       "color": "#87c5a5",
       "lineStyle": "normal"
@@ -342,6 +360,14 @@
       "color": "#7e2d86",
       "lineStyle": "normal"
     },
+    "HUN": {
+      "color": "#e06cdc",
+      "lineStyle": "normal"
+    },
+    "IDN": {
+      "color": "#2d3186",
+      "lineStyle": "normal"
+    },
     "IND": {
       "color": "#7981d2",
       "lineStyle": "normal"
@@ -360,6 +386,10 @@
     },
     "ITA": {
       "color": "#bfb540",
+      "lineStyle": "normal"
+    },
+    "JAM": {
+      "color": "#6ce096",
       "lineStyle": "normal"
     },
     "JPN": {
@@ -400,6 +430,14 @@
     },
     "MDG": {
       "color": "#6f3a78",
+      "lineStyle": "normal"
+    },
+    "MDV": {
+      "color": "#2dc2d2",
+      "lineStyle": "normal"
+    },
+    "MEX": {
+      "color": "#a4e06c",
       "lineStyle": "normal"
     },
     "MOZ": {
@@ -524,6 +562,10 @@
     },
     "THA": {
       "color": "#d2432d",
+      "lineStyle": "normal"
+    },
+    "TUN": {
+      "color": "#79c1d2",
       "lineStyle": "normal"
     },
     "UKR": {

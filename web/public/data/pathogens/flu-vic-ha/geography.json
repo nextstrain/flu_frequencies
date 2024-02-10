@@ -32,6 +32,7 @@
     "HKG",
     "HTI",
     "IND",
+    "IRL",
     "ITA",
     "JPN",
     "KAZ",
@@ -41,6 +42,7 @@
     "LAO",
     "LUX",
     "MDG",
+    "MEX",
     "MYS",
     "NER",
     "NIC",
@@ -101,6 +103,7 @@
       "EST",
       "FRA",
       "GBR",
+      "IRL",
       "ITA",
       "LUX",
       "NLD",
@@ -120,6 +123,7 @@
       "CRI",
       "GTM",
       "HTI",
+      "MEX",
       "NIC",
       "SLV",
       "TTO",
@@ -136,7 +140,8 @@
       "BRA",
       "CHL",
       "COL",
-      "PER"
+      "PER",
+      "other"
     ],
     "South-eastern Asia": [
       "KHM",
@@ -144,8 +149,7 @@
       "MYS",
       "SGP",
       "THA",
-      "TLS",
-      "other"
+      "TLS"
     ],
     "Southern Asia": [
       "BGD",
@@ -306,6 +310,10 @@
       "color": "#7981d2",
       "lineStyle": "normal"
     },
+    "IRL": {
+      "color": "#ac6653",
+      "lineStyle": "normal"
+    },
     "ITA": {
       "color": "#bfb540",
       "lineStyle": "normal"
@@ -340,6 +348,10 @@
     },
     "MDG": {
       "color": "#6f3a78",
+      "lineStyle": "normal"
+    },
+    "MEX": {
+      "color": "#a4e06c",
       "lineStyle": "normal"
     },
     "MYS": {
