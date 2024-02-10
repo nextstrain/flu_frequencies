@@ -147,7 +147,7 @@ if __name__=='__main__':
     plt.savefig(args.output_plot)
 
     with open(args.output_json, 'w') as fh:
-        json.dump({'time_points': [float(x) for x in time_bins], 'trajectories': all_trajectories})
+        json.dump({'time_points': [float(x) for x in time_axis], 'trajectories': all_trajectories}, fh)
 
     # t = [time_bins[ti] for ti in time_bins]
     # for fcat in frequencies:
