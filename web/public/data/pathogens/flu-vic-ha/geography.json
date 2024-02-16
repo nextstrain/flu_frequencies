@@ -51,6 +51,7 @@
     "NZL",
     "OMN",
     "PER",
+    "PHL",
     "POL",
     "PRT",
     "QAT",
@@ -140,13 +141,13 @@
       "BRA",
       "CHL",
       "COL",
-      "PER",
-      "other"
+      "PER"
     ],
     "South-eastern Asia": [
       "KHM",
       "LAO",
       "MYS",
+      "PHL",
       "SGP",
       "THA",
       "TLS"
@@ -154,7 +155,8 @@
     "Southern Asia": [
       "BGD",
       "BTN",
-      "IND"
+      "IND",
+      "other"
     ],
     "Western Asia": [
       "ARE",
@@ -392,6 +394,10 @@
     },
     "PER": {
       "color": "#d2962d",
+      "lineStyle": "normal"
+    },
+    "PHL": {
+      "color": "#e0966c",
       "lineStyle": "normal"
     },
     "POL": {

@@ -115,7 +115,8 @@
       "TGO",
       "TUN",
       "ZAF",
-      "ZMB"
+      "ZMB",
+      "other"
     ],
     "China": [
       "CHN"
@@ -173,8 +174,7 @@
       "PRI",
       "SLV",
       "TTO",
-      "USA",
-      "other"
+      "USA"
     ],
     "Oceania": [
       "AUS",

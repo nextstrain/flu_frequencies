@@ -121,13 +121,13 @@
       "ZMB"
     ],
     "China": [
-      "CHN"
+      "CHN",
+      "other"
     ],
     "Eastern Asia": [
       "HKG",
       "JPN",
-      "KOR",
-      "other"
+      "KOR"
     ],
     "Europe": [
       "ALB",

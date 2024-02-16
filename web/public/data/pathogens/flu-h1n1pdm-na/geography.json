@@ -145,7 +145,8 @@
       "SVN",
       "SWE",
       "UKR",
-      "XKX"
+      "XKX",
+      "other"
     ],
     "North America": [
       "CAN",
@@ -173,8 +174,7 @@
       "PER",
       "PRY",
       "URY",
-      "VEN",
-      "other"
+      "VEN"
     ],
     "South-eastern Asia": [
       "IDN",

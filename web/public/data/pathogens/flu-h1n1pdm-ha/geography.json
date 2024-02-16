@@ -182,7 +182,8 @@
       "MYS",
       "PHL",
       "SGP",
-      "THA"
+      "THA",
+      "other"
     ],
     "Southern Asia": [
       "BGD",
@@ -199,8 +200,7 @@
       "KGZ",
       "LBN",
       "OMN",
-      "QAT",
-      "other"
+      "QAT"
     ]
   },
   "geographyStyles": {
