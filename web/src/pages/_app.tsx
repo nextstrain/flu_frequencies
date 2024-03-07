@@ -22,6 +22,8 @@ import { getMdxComponents } from 'src/components/Common/MdxComponents'
 import { ErrorBoundary } from 'src/components/Error/ErrorBoundary'
 import { Layout } from 'src/components/Layout/Layout'
 import { PathogenPage } from 'src/components/Pathogen/PathogenPage'
+import { RegionsPage } from 'src/components/Regions/RegionsPage'
+import { VariantsPage } from 'src/components/Variants/VariantsPage'
 import { RegionPage } from 'src/components/Regions/RegionPage'
 import { VariantPage } from 'src/components/Variants/VariantPage'
 import { localeAtom } from 'src/state/locale.state'
@@ -97,6 +99,20 @@ function Router({ children }: PropsWithChildren) {
       if (match) {
         const { pathogenName } = match
         return { Component: <PathogenPage pathogenName={pathogenName} />, pathogenName }
+      }
+    }
+    {
+      const match = matchRoute(asPath, '/pathogen/:pathogenName/variants')
+      if (match) {
+        const { pathogenName } = match
+        return { Component: <VariantsPage pathogenName={pathogenName} />, pathogenName }
+      }
+    }
+    {
+      const match = matchRoute(asPath, '/pathogen/:pathogenName/regions')
+      if (match) {
+        const { pathogenName } = match
+        return { Component: <RegionsPage pathogenName={pathogenName} />, pathogenName }
       }
     }
     {

@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { fuzzySearch } from 'src/helpers/fuzzySearch'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { Pathogen, usePathogen, useVariants, useVariantStyle } from 'src/io/getData'
+import { Pathogen, usePathogen, useVariantStyle } from 'src/io/getData'
 import { variantsSearchTermAtom } from 'src/state/geography.state'
 import { variantAtom, variantsEnableAllAtom } from 'src/state/variants.state'
 import { CheckboxIndeterminateWithText, CheckboxWithIcon } from 'src/components/Common/Checkbox'
@@ -18,12 +18,11 @@ const Container = styled.div`
 
 export interface SidebarSectionVariantsProps {
   pathogenName: string
-  region: string
+  variants: string[]
 }
 
-export function SidebarSectionVariants({ pathogenName, region }: SidebarSectionVariantsProps) {
+export function SidebarSectionVariants({ pathogenName, variants }: SidebarSectionVariantsProps) {
   const pathogen = usePathogen(pathogenName)
-  const variants = useVariants(pathogenName, region)
   const [searchTerm] = useRecoilState(variantsSearchTermAtom)
   const checkboxes = useMemo(() => {
     const checkboxes = fuzzySearch(variants, searchTerm).map(({ item }) => (
