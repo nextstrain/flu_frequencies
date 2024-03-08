@@ -10,20 +10,14 @@ import { Theme } from 'src/theme'
 import { localeAtom } from 'src/state/locale.state'
 
 export interface DateSliderProps {
-  minTimestamp: number
-  maxTimestamp: number
-  initialTimestampRange: number[]
+  range: [number, number]
+  initialRange: [number, number]
+  fullRange: [number, number]
   marks: Record<string | number, ReactNode | MarkObj>
   onDateRangeChange(range: number | number[]): void
 }
 
-export function DateSlider({
-  minTimestamp,
-  maxTimestamp,
-  initialTimestampRange,
-  marks,
-  onDateRangeChange,
-}: DateSliderProps) {
+export function DateSlider({ range, fullRange, initialRange, marks, onDateRangeChange }: DateSliderProps) {
   const theme = useTheme()
   const locale = useRecoilValue(localeAtom)
 
@@ -41,15 +35,16 @@ export function DateSlider({
   return (
     <DateSliderOuter>
       <DateSliderTextWrapper>
-        <DateSliderText>{formatDateHumanely(locale)(minTimestamp)}</DateSliderText>
+        <DateSliderText>{formatDateHumanely(locale)(range[0])}</DateSliderText>
       </DateSliderTextWrapper>
       <DateSliderWrapper>
         <Slider
           range
-          min={minTimestamp}
-          max={maxTimestamp}
+          min={fullRange[0]}
+          max={fullRange[1]}
           marks={marks}
-          defaultValue={initialTimestampRange}
+          value={range}
+          defaultValue={initialRange}
           onChange={onChange}
           step={null}
           allowCross={false}
@@ -57,7 +52,7 @@ export function DateSlider({
         />
       </DateSliderWrapper>
       <DateSliderTextWrapper>
-        <DateSliderText>{formatDateHumanely(locale)(maxTimestamp)}</DateSliderText>
+        <DateSliderText>{formatDateHumanely(locale)(range[1])}</DateSliderText>
       </DateSliderTextWrapper>
     </DateSliderOuter>
   )

@@ -1,19 +1,12 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { get, isArray, max, min } from 'lodash-es'
-import { DateTime } from 'luxon'
 import { useRecoilValue } from 'recoil'
 import { useResizeDetector } from 'react-resize-detector'
 import styled, { useTheme } from 'styled-components'
 import { Area, CartesianGrid, ComposedChart, Line, Tooltip as RechartsTooltip, XAxis, YAxis } from 'recharts'
-import {
-  formatDateHumanely,
-  formatDateWeekly,
-  formatProportion,
-  timestampToDate,
-  ymdToTimestamp,
-} from 'src/helpers/format'
+import { formatDateHumanely, formatDateWeekly, formatProportion, ymdToTimestamp } from 'src/helpers/format'
 import { calculateTicks } from 'src/helpers/adjustTicks'
-import { getCountryColor, getCountryStrokeDashArray, Pathogen, useRegionDataQuery } from 'src/io/getData'
+import { getCountryColor, getCountryStrokeDashArray, Pathogen, RegionDatum, useRegionDataQuery } from 'src/io/getData'
 import { shouldShowDotsOnRegionsPlotAtom, shouldShowRangesOnRegionsPlotAtom } from 'src/state/settings.state'
 import { variantsAtom } from 'src/state/variants.state'
 import { RegionsPlotTooltip } from 'src/components/Regions/RegionsPlotTooltip'
@@ -24,17 +17,16 @@ import { localeAtom } from 'src/state/locale.state'
 const allowEscapeViewBox = { x: false, y: false }
 const tooltipStyle = { zIndex: 1000, outline: 'none' }
 
-interface LinePlotProps<T> {
+export interface LinePlotProps<T> {
   data: T[]
-  minDate: DateTime
-  maxDate: DateTime
+  dateRange: [number, number]
   width: number
   height: number
   pathogen: Pathogen
   countryName: string
 }
 
-function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, countryName }: LinePlotProps<T>) {
+export function RegionsPlotImpl<T>({ width, height, data, dateRange, pathogen, countryName }: LinePlotProps<T>) {
   const theme = useTheme()
   const locale = useRecoilValue(localeAtom)
   const shouldShowRanges = useRecoilValue(shouldShowRangesOnRegionsPlotAtom)
@@ -45,8 +37,8 @@ function RegionsPlotImpl<T>({ width, height, data, minDate, maxDate, pathogen, c
   } = useRegionDataQuery(pathogen.name, countryName)
 
   const { adjustedTicks, domainX, domainY } = useMemo(
-    () => calculateTicks(minDate, maxDate, width ?? 0, theme.plot.tickWidthMin),
-    [maxDate, minDate, theme.plot.tickWidthMin, width],
+    () => calculateTicks(dateRange, width ?? 0, theme.plot.tickWidthMin),
+    [dateRange, theme.plot.tickWidthMin, width],
   )
 
   const { lines, ranges } = useMemo(() => {
@@ -146,39 +138,7 @@ export interface RegionsPlotProps {
 }
 
 export function RegionsPlot({ pathogen, countryName }: RegionsPlotProps) {
-  const { regionData } = useRegionDataQuery(pathogen.name, countryName)
-
-  const { minTimestamp, maxTimestamp, initialTimestampRange, marks } = useMemo(() => {
-    const timestamps = regionData.values.map(({ date }) => ymdToTimestamp(date))
-    const minTimestamp = min(timestamps) ?? 0
-    const maxTimestamp = max(timestamps) ?? 0
-    const initialTimestampRange = [minTimestamp, maxTimestamp]
-    const marks = Object.fromEntries(timestamps.map((timestamp) => [timestamp, formatDateWeekly(timestamp)]))
-    return { minTimestamp, maxTimestamp, initialTimestampRange, marks }
-  }, [regionData.values])
-
-  const [dateRange, setDateRange] = useState(initialTimestampRange)
-
-  const onDateRangeChange = useCallback((range: number | number[]) => {
-    if (isArray(range)) {
-      setDateRange(range)
-    }
-  }, [])
-
-  const { data, minDate, maxDate } = useMemo(() => {
-    // subset data (avgs, counts, date, ranges, totals) to date range
-    const data = regionData.values
-      .filter(({ date }) => {
-        const ts = ymdToTimestamp(date)
-        return ts <= dateRange[1] && ts >= dateRange[0]
-      })
-      .map(({ date, ...rest }) => ({ ...rest, timestamp: ymdToTimestamp(date) }))
-
-    const minDate = timestampToDate(dateRange[0])
-    const maxDate = timestampToDate(dateRange[1])
-
-    return { data, minDate, maxDate }
-  }, [dateRange, regionData.values])
+  const { data, dateRange, initialDateRange, marks, onDateRangeChange } = useRegionPlotData(pathogen, countryName)
 
   const {
     width = 0,
@@ -198,17 +158,16 @@ export function RegionsPlot({ pathogen, countryName }: RegionsPlotProps) {
           data={data}
           width={width}
           height={height}
-          minDate={minDate}
-          maxDate={maxDate}
+          dateRange={dateRange}
           pathogen={pathogen}
           countryName={countryName}
         />
       </PlotWrapper>
 
       <DateSlider
-        minTimestamp={minTimestamp}
-        maxTimestamp={maxTimestamp}
-        initialTimestampRange={initialTimestampRange}
+        range={dateRange}
+        fullRange={initialDateRange}
+        initialRange={initialDateRange}
         marks={marks}
         onDateRangeChange={onDateRangeChange}
       />
@@ -219,3 +178,54 @@ export function RegionsPlot({ pathogen, countryName }: RegionsPlotProps) {
 const PlotWrapper = styled.div`
   flex: 1;
 `
+
+export interface RegionPlotData {
+  data: (RegionDatum & { timestamp: number })[]
+  dateRange: [number, number]
+  initialDateRange: [number, number]
+  marks: Record<number, string>
+  onDateRangeChange: (dateRange: [number, number]) => void
+}
+
+export function useRegionPlotData(pathogen: Pathogen, location: string): RegionPlotData {
+  const { regionData } = useRegionDataQuery(pathogen.name, location)
+
+  const { initialDateRange, marks } = useMemo(() => {
+    const timestamps = regionData.values.map(({ date }) => ymdToTimestamp(date))
+    const minTimestamp = min(timestamps) ?? 0
+    const maxTimestamp = max(timestamps) ?? 0
+    const initialDateRange: [number, number] = [minTimestamp, maxTimestamp]
+    const marks = Object.fromEntries(timestamps.map((timestamp) => [timestamp, formatDateWeekly(timestamp)]))
+    return { initialDateRange, marks }
+  }, [regionData.values])
+
+  const [dateRange, setDateRange] = useState(initialDateRange)
+
+  const onDateRangeChange = useCallback((range: [number, number]) => {
+    if (isArray(range)) {
+      setDateRange(range)
+    }
+  }, [])
+
+  const { data } = useMemo(() => {
+    // subset data (avgs, counts, date, ranges, totals) to date range
+    const data = regionData.values
+      .filter(({ date }) => {
+        const ts = ymdToTimestamp(date)
+        return ts <= dateRange[1] && ts >= dateRange[0]
+      })
+      .map(({ date, ...rest }) => ({ date, ...rest, timestamp: ymdToTimestamp(date) }))
+    return { data }
+  }, [dateRange, regionData.values])
+
+  return useMemo(
+    () => ({
+      data,
+      dateRange,
+      initialDateRange,
+      marks,
+      onDateRangeChange,
+    }),
+    [data, dateRange, initialDateRange, marks, onDateRangeChange],
+  )
+}

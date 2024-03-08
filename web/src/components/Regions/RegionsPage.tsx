@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { Col, Row } from 'reactstrap'
 import styled from 'styled-components'
 import { PageContainerHorizontal } from 'src/components/Layout/PageContainer'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { useCountries, usePathogen, useRegions } from 'src/io/getData'
+import { usePathogen } from 'src/io/getData'
 import { VariantsAndRegionsSidebar } from 'src/components/Sidebar/VariantsAndRegionsSidebar'
-import { RegionsPlot } from 'src/components/Regions/RegionsPlot'
+import { RegionsPlotMulti } from 'src/components/Regions/RegionsPlotMulti'
 
 export interface RegionsPageProps {
   pathogenName: string
@@ -14,15 +14,6 @@ export interface RegionsPageProps {
 export function RegionsPage({ pathogenName }: RegionsPageProps) {
   const { t } = useTranslationSafe()
   const pathogen = usePathogen(pathogenName)
-
-  const regionsTranslated = useRegions(pathogenName)
-  const countriesTranslated = useCountries(pathogenName)
-
-  const plots = useMemo(() => {
-    return [...regionsTranslated, ...countriesTranslated].map((location) => (
-      <RegionsPlot key={location.code} pathogen={pathogen} countryName={location.code} />
-    ))
-  }, [countriesTranslated, pathogen, regionsTranslated])
 
   return (
     <PageContainerHorizontal>
@@ -40,7 +31,7 @@ export function RegionsPage({ pathogenName }: RegionsPageProps) {
             </Col>
           </Row>
 
-          {plots}
+          <RegionsPlotMulti pathogen={pathogen} />
         </MainContentInner>
       </MainContent>
     </PageContainerHorizontal>

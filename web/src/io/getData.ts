@@ -81,10 +81,19 @@ export function useRegionDataQuery(
   pathogenName: string,
   countryName: string,
 ): { regionData: RegionDataJson; variantsData: VariantsData } {
-  return useAxiosQueries({
-    regionData: urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'geography', `${countryName}.json`),
-    variantsData: urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'variants.json'),
-  })
+  const regionData = useAxiosQuery<RegionDataJson>(
+    urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'geography', `${countryName}.json`),
+  )
+  const variantsData = useAxiosQuery<VariantsData>(
+    urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'variants.json'),
+  )
+  return useMemo(
+    () => ({
+      regionData,
+      variantsData,
+    }),
+    [regionData, variantsData],
+  )
 }
 
 export function useRegionsDataQuery(pathogenName: string): GeographyData {
