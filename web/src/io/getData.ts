@@ -100,6 +100,13 @@ export function useRegionsDataQuery(pathogenName: string): GeographyData {
   return useAxiosQuery(urljoin(getDataRootUrl(), 'pathogens', pathogenName, 'geography.json'))
 }
 
+export interface LocationInfo {
+  code: string
+  name: string
+  translated: string
+  transliterated: string
+}
+
 export function useRegions(pathogenName: string) {
   const { t } = useTranslationSafe()
   const { regions } = useRegionsDataQuery(pathogenName)

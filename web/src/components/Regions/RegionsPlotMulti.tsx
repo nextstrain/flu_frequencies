@@ -1,15 +1,18 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { Suspense, useCallback, useMemo, useState } from 'react'
 import { isArray } from 'lodash-es'
-import { useResizeDetector } from 'react-resize-detector'
 import styled from 'styled-components'
 import { Interval } from 'luxon'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { dateToTimestamp, formatDateWeekly, timestampToDate, ymdToTimestamp } from 'src/helpers/format'
-import { Pathogen, useCountries, usePathogen, useRegionDataQuery, useRegions } from 'src/io/getData'
+import { LocationInfo, Pathogen, useCountries, usePathogen, useRegionDataQuery, useRegions } from 'src/io/getData'
 import { DateSlider } from 'src/components/Common/DateSlider'
 import { RegionsPlotImpl } from 'src/components/Regions/RegionsPlot'
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
+import { ChartContainer, ChartContainerDimensions } from 'src/components/Common/ChartContainer'
+import { SPINNER } from 'src/components/Loading/Loading'
+
+const gridSize: 1 | 2 | 3 | 4 = 2 // TODO: make dynamic
 
 export interface RegionsPlotMultiProps {
   pathogen: Pathogen
@@ -17,8 +20,6 @@ export interface RegionsPlotMultiProps {
 
 export function RegionsPlotMulti({ pathogen }: RegionsPlotMultiProps) {
   const { t } = useTranslationSafe()
-
-  const gridSize: 1 | 2 | 3 | 4 = 2
 
   const { minDate, maxDate } = usePathogen(pathogen.name)
   const regionsTranslated = useRegions(pathogen.name)
@@ -52,29 +53,30 @@ export function RegionsPlotMulti({ pathogen }: RegionsPlotMultiProps) {
     }
   }, [])
 
+  const plots = useMemo(() => {
+    return locations.map((location) => (
+      <PlotGridCol key={location.code} sm={12 / gridSize}>
+        <PlotCard>
+          <LinkSmart className="text-decoration-none" href={`/pathogen/${pathogen.name}/regions/${location.code}`}>
+            <PlotCardHeader>
+              <h5 className="m-auto">{t(location.name)}</h5>
+            </PlotCardHeader>
+          </LinkSmart>
+          <PlotCardBody>
+            <Suspense fallback={SPINNER}>
+              <RegionsPlotMultiImpl dateRange={dateRange} pathogen={pathogen} location={location} />
+            </Suspense>
+          </PlotCardBody>
+        </PlotCard>
+      </PlotGridCol>
+    ))
+  }, [dateRange, locations, pathogen, t])
+
   return (
     <>
       <MainContent>
         <MainContentInner>
-          <PlotGridRow noGutters>
-            {locations.slice(0, 15).map((location) => (
-              <PlotGridCol key={location.code} sm={12 / gridSize}>
-                <PlotCard>
-                  <LinkSmart
-                    className="text-decoration-none"
-                    href={`/pathogen/${pathogen.name}/regions/${location.code}`}
-                  >
-                    <PlotCardHeader>
-                      <h5 className="m-auto">{t(location.name)}</h5>
-                    </PlotCardHeader>
-                  </LinkSmart>
-                  <PlotCardBody>
-                    <RegionsPlotMultiImpl dateRange={dateRange} pathogen={pathogen} countryName={location.code} />
-                  </PlotCardBody>
-                </PlotCard>
-              </PlotGridCol>
-            ))}
-          </PlotGridRow>
+          <PlotGridRow noGutters>{plots}</PlotGridRow>
         </MainContentInner>
       </MainContent>
 
@@ -95,7 +97,6 @@ const PlotGridRow = styled(Row)`
 
 const PlotGridCol = styled(Col)`
   display: flex;
-  aspect-ratio: 1;
 `
 
 const PlotCard = styled(Card)`
@@ -140,27 +141,15 @@ const MainContentInner = styled.div`
 function RegionsPlotMultiImpl({
   dateRange,
   pathogen,
-  countryName,
+  location,
 }: {
   dateRange: [number, number]
   pathogen: Pathogen
-  countryName: string
+  location: LocationInfo
 }) {
-  const {
-    width = 0,
-    height = 0,
-    ref: resizeRef,
-  } = useResizeDetector({
-    handleWidth: true,
-    handleHeight: true,
-    refreshRate: 300,
-    refreshMode: 'debounce',
-  })
-
-  const { regionData } = useRegionDataQuery(pathogen.name, countryName)
+  const { regionData } = useRegionDataQuery(pathogen.name, location.code)
 
   const { data } = useMemo(() => {
-    // subset data (avgs, counts, date, ranges, totals) to date range
     const data = regionData.values
       .filter(({ date }) => {
         const ts = ymdToTimestamp(date)
@@ -171,22 +160,19 @@ function RegionsPlotMultiImpl({
     return { data }
   }, [dateRange, regionData.values])
 
-  return (
-    <PlotWrapper ref={resizeRef}>
+  const render = useCallback(
+    ({ width, height }: ChartContainerDimensions) => (
       <RegionsPlotImpl
         data={data}
         width={width}
         height={height}
         dateRange={dateRange}
         pathogen={pathogen}
-        countryName={countryName}
+        countryName={location.code}
       />
-    </PlotWrapper>
+    ),
+    [data, dateRange, location.code, pathogen],
   )
-}
 
-const PlotWrapper = styled.div`
-  flex: 1;
-  width: 100%;
-  height: 100%;
-`
+  return <ChartContainer>{render}</ChartContainer>
+}
