@@ -8,6 +8,7 @@ import { MdxContent } from 'src/i18n/getMdxContent'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
 import { PageContainerNarrow } from 'src/components/Layout/PageContainer'
 import { PathogenCard } from 'src/components/Home/PathogenCard'
+import 'katex/dist/katex.min.css'
 
 export interface IndexJson {
   pathogens: Pathogen[]
@@ -31,7 +32,7 @@ export function HomePage() {
       </Row>
       <Row noGutters>
         <Col>
-          <MdxContent filepath="Home.md" />
+          <MdxContent filepath="Notes.md" />
         </Col>
       </Row>
     </PageContainerNarrow>

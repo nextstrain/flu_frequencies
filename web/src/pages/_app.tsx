@@ -26,6 +26,7 @@ import { RegionPage } from 'src/components/Regions/RegionPage'
 import { VariantPage } from 'src/components/Variants/VariantPage'
 import { localeAtom } from 'src/state/locale.state'
 import 'src/styles/global.scss'
+import 'katex/dist/katex.css'
 
 const NotFoundPage = dynamic(() => import('src/pages/404'))
 
