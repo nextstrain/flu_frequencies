@@ -3,22 +3,29 @@ import { isArray } from 'lodash-es'
 import { useResizeDetector } from 'react-resize-detector'
 import styled from 'styled-components'
 import { Interval } from 'luxon'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { dateToTimestamp, formatDateWeekly, timestampToDate, ymdToTimestamp } from 'src/helpers/format'
 import { Pathogen, useCountries, usePathogen, useRegionDataQuery, useRegions } from 'src/io/getData'
 import { DateSlider } from 'src/components/Common/DateSlider'
 import { RegionsPlotImpl } from 'src/components/Regions/RegionsPlot'
+import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
+import { LinkSmart } from 'src/components/Link/LinkSmart'
 
 export interface RegionsPlotMultiProps {
   pathogen: Pathogen
 }
 
 export function RegionsPlotMulti({ pathogen }: RegionsPlotMultiProps) {
+  const { t } = useTranslationSafe()
+
+  const gridSize: 1 | 2 | 3 | 4 = 2
+
   const { minDate, maxDate } = usePathogen(pathogen.name)
   const regionsTranslated = useRegions(pathogen.name)
   const countriesTranslated = useCountries(pathogen.name)
 
   const locations = useMemo(() => {
-    return [...regionsTranslated, ...countriesTranslated].map((l) => l.code)
+    return [...regionsTranslated, ...countriesTranslated]
   }, [countriesTranslated, regionsTranslated])
 
   const { initialDateRange, marks } = useMemo(() => {
@@ -48,11 +55,27 @@ export function RegionsPlotMulti({ pathogen }: RegionsPlotMultiProps) {
   return (
     <>
       <MainContent>
-        {locations.slice(0, 3).map((location) => (
-          <MainContentInner key={location}>
-            <RegionsPlotMultiImpl key={location} dateRange={dateRange} pathogen={pathogen} countryName={location} />
-          </MainContentInner>
-        ))}
+        <MainContentInner>
+          <PlotGridRow noGutters>
+            {locations.slice(0, 15).map((location) => (
+              <PlotGridCol key={location.code} sm={12 / gridSize}>
+                <PlotCard>
+                  <LinkSmart
+                    className="text-decoration-none"
+                    href={`/pathogen/${pathogen.name}/regions/${location.code}`}
+                  >
+                    <PlotCardHeader>
+                      <h5 className="m-auto">{t(location.name)}</h5>
+                    </PlotCardHeader>
+                  </LinkSmart>
+                  <PlotCardBody>
+                    <RegionsPlotMultiImpl dateRange={dateRange} pathogen={pathogen} countryName={location.code} />
+                  </PlotCardBody>
+                </PlotCard>
+              </PlotGridCol>
+            ))}
+          </PlotGridRow>
+        </MainContentInner>
       </MainContent>
 
       <DateSlider
@@ -65,6 +88,40 @@ export function RegionsPlotMulti({ pathogen }: RegionsPlotMultiProps) {
     </>
   )
 }
+
+const PlotGridRow = styled(Row)`
+  overflow-y: auto;
+`
+
+const PlotGridCol = styled(Col)`
+  display: flex;
+  aspect-ratio: 1;
+`
+
+const PlotCard = styled(Card)`
+  display: flex;
+  flex: 1;
+  margin: 0.33rem;
+  padding: 0;
+  box-shadow: ${(props) => props.theme.shadows.light};
+`
+
+const PlotCardHeader = styled(CardHeader)`
+  display: flex;
+  padding: 0.5rem;
+  background: ${(props) => props.theme.gray300};
+
+  h5 {
+    color: ${(props) => props.theme.bodyColor};
+    text-decoration: none;
+  }
+`
+
+const PlotCardBody = styled(CardBody)`
+  display: flex;
+  flex: 1;
+  padding: 0;
+`
 
 const MainContent = styled.div`
   display: flex;
@@ -130,4 +187,6 @@ function RegionsPlotMultiImpl({
 
 const PlotWrapper = styled.div`
   flex: 1;
+  width: 100%;
+  height: 100%;
 `
