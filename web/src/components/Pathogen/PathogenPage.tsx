@@ -47,7 +47,7 @@ export interface PathogenPageProps {
   pathogenName: string
 }
 
-export function PathogenPage({ pathogenName }: PathogenPageProps) {
+export default function PathogenPage({ pathogenName }: PathogenPageProps) {
   return (
     <PageContainer>
       <ScreenHeightRow noGutters>

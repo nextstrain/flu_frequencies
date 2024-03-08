@@ -11,7 +11,7 @@ export interface RegionsPageProps {
   pathogenName: string
 }
 
-export function RegionsPage({ pathogenName }: RegionsPageProps) {
+export default function RegionsPage({ pathogenName }: RegionsPageProps) {
   const { t } = useTranslationSafe()
   const pathogen = usePathogen(pathogenName)
 
