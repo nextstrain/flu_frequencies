@@ -1,50 +1,47 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
-import { useRecoilState_TRANSITION_SUPPORT_UNSTABLE as useRecoilState } from 'recoil'
-import { SearchBox } from 'src/components/Common/SearchBox'
-import { variantsSearchTermAtom } from 'src/state/geography.state'
 import { isSidebarSettingsCollapsedAtom } from 'src/state/settings.state'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { useVariants } from 'src/io/getData'
 import { SidebarSectionVariants } from 'src/components/Sidebar/SidebarSectionVariants'
 import { Sidebar, SidebarSection, SidebarSectionCollapsible } from 'src/components/Sidebar/SidebarCard'
+import { SidebarSectionGeography } from 'src/components/Sidebar/SidebarSectionGeography'
 import { RegionsPlotSettings } from 'src/components/Regions/RegionsPlotSettings'
-import { SortingCriteriaSelector } from 'src/components/Sidebar/SidebarSortVariants'
+import { GeographySectionHeader } from 'src/components/Variants/VariantsSidebar'
+import { VariantsSectionHeader } from 'src/components/Regions/RegionsSidebar'
+import { useVariantsDataQuery } from 'src/io/getData'
 
 export interface RegionsSidebarProps {
   pathogenName: string
-  region: string
 }
 
-export function RegionsSidebar({ pathogenName, region }: RegionsSidebarProps) {
+export function VariantsAndRegionsSidebar({ pathogenName }: RegionsSidebarProps) {
   const { t } = useTranslationSafe()
 
-  const variants = useVariants(pathogenName, region)
+  const { variants } = useVariantsDataQuery(pathogenName)
 
   const variantsHeader = useMemo(
     () => (
       <Wrapper>
         <VariantsSectionHeader />
-        <SortingCriteriaSelector />
       </Wrapper>
     ),
     [],
   )
+  const geographyHeader = useMemo(() => <GeographySectionHeader />, [])
+
   return (
     <Sidebar>
       <SidebarSection header={variantsHeader}>
         <SidebarSectionVariants pathogenName={pathogenName} variants={variants} />
+      </SidebarSection>
+      <SidebarSection header={geographyHeader}>
+        <SidebarSectionGeography pathogenName={pathogenName} />
       </SidebarSection>
       <SidebarSectionCollapsible header={t('Settings')} recoilState={isSidebarSettingsCollapsedAtom}>
         <RegionsPlotSettings />
       </SidebarSectionCollapsible>
     </Sidebar>
   )
-}
-
-export function VariantsSectionHeader() {
-  const [searchTerm, setSearchTerm] = useRecoilState(variantsSearchTermAtom)
-  return <SearchBox searchTitle={'Search variants'} searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
 }
 
 const Wrapper = styled.div`

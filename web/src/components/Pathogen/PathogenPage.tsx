@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import urljoin from 'url-join'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { useCountries, useRegions, useVariantsDataQuery, useVariantStyle } from 'src/io/getData'
+import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { GeoIconContinent } from 'src/components/Common/GeoIconContinent'
 import { GeoIconCountry } from 'src/components/Common/GeoIconCountry'
@@ -171,6 +172,9 @@ export function ListOfRegions({ pathogenName, ...restProps }: ListOfRegionsProps
         <Row noGutters className="d-flex w-100">
           <Col>
             <h3 className="mx-2">{t('Regions')}</h3>
+            <LinkSmart className="mx-2" href={`/pathogen/${pathogenName}/regions`}>
+              {t('Compare')}
+            </LinkSmart>
           </Col>
           <Col md={6} className="ml-auto">
             <SearchBox searchTitle={'Search regions'} searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
@@ -206,6 +210,9 @@ export function ListOfVariants({ pathogenName, ...restProps }: ListOfVariantsPro
         <Row noGutters className="d-flex w-100">
           <Col>
             <h3 className="mx-2">{t('Variants')}</h3>
+            <LinkSmart className="mx-2" href={`/pathogen/${pathogenName}/variants`}>
+              {t('Compare')}
+            </LinkSmart>
           </Col>
           <Col md={6} className="ml-auto">
             <SearchBox searchTitle={'Search variants'} searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />

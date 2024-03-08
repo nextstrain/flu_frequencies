@@ -29,6 +29,10 @@ export function timestampToDate(seconds: number) {
   return DateTime.fromSeconds(seconds)
 }
 
+export function dateToTimestamp(date: DateTime): number {
+  return date.toSeconds()
+}
+
 export function formatDateRange(weekTimestamp: number, range: DurationLike) {
   const begin = DateTime.fromSeconds(weekTimestamp)
   const end = begin.plus(range)
