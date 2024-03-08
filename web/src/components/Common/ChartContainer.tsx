@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import type { ResizeDetectorProps } from 'react-resize-detector'
 import { useInView } from 'react-intersection-observer'
 import { theme } from 'src/theme'
-import { FadeIn } from 'src/components/Common/FadeIn'
 
 export interface ChartContainerDimensions {
   width: number
@@ -29,7 +28,7 @@ export function ChartContainer({ children, resizeOptions }: ChartContainerProps)
     rootMargin: '500px',
     initialInView: false,
     fallbackInView: true,
-    triggerOnce: true,
+    // triggerOnce: true,
   })
 
   const dimensions = useMemo(() => ({ width: width ?? 0, height: (width ?? 0) / theme.plot.aspectRatio }), [width])
@@ -43,9 +42,7 @@ export function ChartContainer({ children, resizeOptions }: ChartContainerProps)
 
   return (
     <PlotWrapper ref={resizeRef}>
-      <PlotWrapperInner ref={intersectionRef}>
-        <FadeIn>{childrenWithDims}</FadeIn>
-      </PlotWrapperInner>
+      <PlotWrapperInner ref={intersectionRef}>{childrenWithDims}</PlotWrapperInner>
     </PlotWrapper>
   )
 }
