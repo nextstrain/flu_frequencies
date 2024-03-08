@@ -17,6 +17,6 @@ function stripDebugRequire(source) {
  * This is especially important in presence of WebWorkers: `debug` package uses `windows` global, which is not
  * present in WebWorker environment.
  */
-export default function removeDebugPackageLoader(source) {
+module.exports = function removeDebugPackageLoader(source) {
   this.callback(null, stripDebugRequire(source))
 }
