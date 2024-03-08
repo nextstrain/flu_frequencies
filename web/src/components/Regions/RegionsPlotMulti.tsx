@@ -2,12 +2,14 @@ import React, { Suspense, useCallback, useMemo, useState } from 'react'
 import { isArray } from 'lodash-es'
 import styled from 'styled-components'
 import { Interval } from 'luxon'
+import { useRecoilValue } from 'recoil'
+import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
+import { geographyEnabledAtom } from 'src/state/geography.state'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { dateToTimestamp, formatDateWeekly, timestampToDate, ymdToTimestamp } from 'src/helpers/format'
 import { LocationInfo, Pathogen, useCountries, usePathogen, useRegionDataQuery, useRegions } from 'src/io/getData'
 import { DateSlider } from 'src/components/Common/DateSlider'
 import { RegionsPlotImpl } from 'src/components/Regions/RegionsPlot'
-import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { ChartContainer, ChartContainerDimensions } from 'src/components/Common/ChartContainer'
 import { SPINNER } from 'src/components/Loading/Loading'
@@ -22,10 +24,12 @@ export function RegionsPlotMulti({ pathogen }: RegionsPlotMultiProps) {
   const { minDate, maxDate } = usePathogen(pathogen.name)
   const regionsTranslated = useRegions(pathogen.name)
   const countriesTranslated = useCountries(pathogen.name)
+  const geographyEnabled = useRecoilValue(geographyEnabledAtom(pathogen.name))
 
   const locations = useMemo(() => {
-    return [...regionsTranslated, ...countriesTranslated]
-  }, [countriesTranslated, regionsTranslated])
+    const enabled = new Set(geographyEnabled.filter((loc) => loc.enabled).map((loc) => loc.name))
+    return [...regionsTranslated, ...countriesTranslated].filter((loc) => enabled.has(loc.code))
+  }, [countriesTranslated, geographyEnabled, regionsTranslated])
 
   const { initialDateRange, marks } = useMemo(() => {
     const minTimestamp = ymdToTimestamp(minDate)

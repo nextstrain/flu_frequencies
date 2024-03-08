@@ -91,6 +91,17 @@ export const countryAtom = selectorFamily<boolean, { pathogen: string; country: 
     },
 })
 
+export const geographyEnabledAtom = selectorFamily<{ name: string; enabled: boolean }[], string>({
+  key: 'geographyAtom',
+  get:
+    (pathogen) =>
+    ({ get }) => {
+      const countries = get(countriesAtom(pathogen))
+      const regions = get(continentsAtom(pathogen))
+      return [...regions, ...countries]
+    },
+})
+
 function isEnabledAll<T extends { enabled: boolean }>(items: T[]) {
   return items.every((item) => item.enabled)
 }
@@ -106,10 +117,10 @@ function setEnabledAll<T extends { enabled: boolean }>(items: T[], enabled: bool
 export const geographyEnableAllAtom = selectorFamily<CheckboxState, string>({
   key: 'geographyEnableAllAtom',
   get:
-    (region) =>
+    (pathogen) =>
     ({ get }) => {
-      const countries = get(countriesAtom(region))
-      const regions = get(continentsAtom(region))
+      const countries = get(countriesAtom(pathogen))
+      const regions = get(continentsAtom(pathogen))
       const locations = [...regions, ...countries]
       if (isEnabledAll(locations)) {
         return CheckboxState.Checked
@@ -120,17 +131,17 @@ export const geographyEnableAllAtom = selectorFamily<CheckboxState, string>({
       return CheckboxState.Indeterminate
     },
   set:
-    (region) =>
+    (pathogen) =>
     ({ get, set, reset }, value) => {
       if (isDefaultValue(value)) {
-        reset(countriesAtom(region))
-        reset(continentsAtom(region))
+        reset(countriesAtom(pathogen))
+        reset(continentsAtom(pathogen))
       } else if (value === CheckboxState.Checked) {
-        set(countriesAtom(region), setEnabledAll(get(countriesAtom(region)), true))
-        set(continentsAtom(region), setEnabledAll(get(continentsAtom(region)), true))
+        set(countriesAtom(pathogen), setEnabledAll(get(countriesAtom(pathogen)), true))
+        set(continentsAtom(pathogen), setEnabledAll(get(continentsAtom(pathogen)), true))
       } else if (value === CheckboxState.Unchecked) {
-        set(countriesAtom(region), setEnabledAll(get(countriesAtom(region)), false))
-        set(continentsAtom(region), setEnabledAll(get(continentsAtom(region)), false))
+        set(countriesAtom(pathogen), setEnabledAll(get(countriesAtom(pathogen)), false))
+        set(continentsAtom(pathogen), setEnabledAll(get(continentsAtom(pathogen)), false))
       }
     },
 })
