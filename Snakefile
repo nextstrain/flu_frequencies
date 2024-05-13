@@ -52,6 +52,16 @@ rule download_sequences:
         aws s3 cp {params.s3_path} - | xz -c -d > {output.sequences}
         """
 
+rule download_nextclade:
+    output:
+        nextclade="data/{lineage}/nextclade_{segment}.tsv",
+    params:
+        s3_path="s3://nextstrain-data-private/files/workflows/seasonal-flu/{lineage}/{segment}/nextclade.tsv.xz",
+    shell:
+        """
+        aws s3 cp {params.s3_path} - | xz -c -d > {output.nextclade}
+        """
+
 rule download_metadata:
     output:
         metadata="data/{lineage}/metadata_raw_{segment}.tsv",
@@ -83,30 +93,6 @@ rule add_iso3:
             --append-fields continent \
             --write-all="?" \
             > {output.metadata}
-        """
-
-
-rule get_nextclade_dataset:
-    output:
-        "nextclade/{lineage}_{segment}/reference.fasta",
-    threads: 1
-    shell:
-        """
-        nextclade3 dataset get -n flu_{wildcards.lineage}_{wildcards.segment} --output-dir nextclade/{wildcards.lineage}_{wildcards.segment}
-        """
-
-
-rule run_nextclade:
-    input:
-        sequences="data/{lineage}/{segment}.fasta",
-        reference="nextclade/{lineage}_{segment}/reference.fasta",
-    output:
-        "data/{lineage}/nextclade_{segment}.tsv",
-    threads: workflow.cores
-    shell:
-        """
-        nextclade3 run -j {threads} -D nextclade/{wildcards.lineage}_{wildcards.segment} \
-                  {input.sequences} --quiet --output-tsv {output}
         """
 
 
