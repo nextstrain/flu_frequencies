@@ -14,7 +14,7 @@ export interface RegionsPageProps {
   location: string
 }
 
-export function RegionPage({ pathogenName, location }: RegionsPageProps) {
+export default function RegionPage({ pathogenName, location }: RegionsPageProps) {
   const { t } = useTranslationSafe()
   const pathogen = usePathogen(pathogenName)
   const { regions, countries } = useRegionsDataQuery(pathogen.name)

@@ -49,9 +49,9 @@ export const LOADING = <Loading />
 
 export function Spinner() {
   return (
-    <div className="d-flex">
-      <div className="mx-auto">
-        <OvalLoader color="#777" height={100} width={50} />
+    <div className="d-flex flex-1 w-100 h-100">
+      <div className="m-auto">
+        <OvalLoader color="#777" height={100} width={30} />
       </div>
     </div>
   )
@@ -62,7 +62,7 @@ export const SPINNER = <Spinner />
 export function ThreeDots() {
   return (
     <div className="d-flex">
-      <div className="mx-auto">
+      <div className="m-auto">
         <ThreeDotsLoader color="#777" height={100} width={50} />
       </div>
     </div>

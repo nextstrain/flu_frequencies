@@ -1,17 +1,10 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { get, isArray, max, min } from 'lodash-es'
-import { DateTime } from 'luxon'
 import { useRecoilValue } from 'recoil'
 import { useResizeDetector } from 'react-resize-detector'
 import styled, { useTheme } from 'styled-components'
 import { Area, CartesianGrid, ComposedChart, Line, Tooltip as RechartsTooltip, XAxis, YAxis } from 'recharts'
-import {
-  formatDateHumanely,
-  formatDateWeekly,
-  formatProportion,
-  timestampToDate,
-  ymdToTimestamp,
-} from 'src/helpers/format'
+import { formatDateHumanely, formatDateWeekly, formatProportion, ymdToTimestamp } from 'src/helpers/format'
 import { calculateTicks } from 'src/helpers/adjustTicks'
 import { getCountryColor, getCountryStrokeDashArray, Pathogen, useVariantDataQuery } from 'src/io/getData'
 import { continentsAtom, countriesAtom } from 'src/state/geography.state'
@@ -26,15 +19,14 @@ const tooltipStyle = { zIndex: 1000, outline: 'none' }
 
 interface LinePlotProps<T> {
   data: T[]
-  minDate: DateTime
-  maxDate: DateTime
+  dateRange: [number, number]
   width: number
   height: number
   pathogen: Pathogen
   variantName: string
 }
 
-function LinePlot<T>({ width, height, data, minDate, maxDate, pathogen, variantName }: LinePlotProps<T>) {
+function LinePlot<T>({ width, height, data, dateRange, pathogen, variantName }: LinePlotProps<T>) {
   const theme = useTheme()
   const locale = useRecoilValue(localeAtom)
   const shouldShowRanges = useRecoilValue(shouldShowRangesOnVariantsPlotAtom)
@@ -46,8 +38,8 @@ function LinePlot<T>({ width, height, data, minDate, maxDate, pathogen, variantN
   } = useVariantDataQuery(pathogen.name, variantName)
 
   const { adjustedTicks, domainX, domainY } = useMemo(
-    () => calculateTicks(minDate, maxDate, width ?? 0, theme.plot.tickWidthMin),
-    [maxDate, minDate, theme.plot.tickWidthMin, width],
+    () => calculateTicks(dateRange, width ?? 0, theme.plot.tickWidthMin),
+    [dateRange, theme.plot.tickWidthMin, width],
   )
 
   const { lines, ranges } = useMemo(() => {
@@ -149,35 +141,31 @@ export interface VariantsPlotProps {
 export function VariantsPlot({ pathogen, variantName }: VariantsPlotProps) {
   const { variantData } = useVariantDataQuery(pathogen.name, variantName)
 
-  const { minTimestamp, maxTimestamp, initialTimestampRange, marks } = useMemo(() => {
+  const { initialTimestampRange, marks } = useMemo(() => {
     const timestamps = variantData.values.map(({ date }) => ymdToTimestamp(date))
     const minTimestamp = min(timestamps) ?? 0
     const maxTimestamp = max(timestamps) ?? 0
-    const initialTimestampRange = [minTimestamp, maxTimestamp]
+    const initialTimestampRange: [number, number] = [minTimestamp, maxTimestamp]
     const marks = Object.fromEntries(timestamps.map((timestamp) => [timestamp, formatDateWeekly(timestamp)]))
     return { minTimestamp, maxTimestamp, initialTimestampRange, marks }
   }, [variantData.values])
 
   const [dateRange, setDateRange] = useState(initialTimestampRange)
 
-  const onDateRangeChange = useCallback((range: number | number[]) => {
+  const onDateRangeChange = useCallback((range: [number, number]) => {
     if (isArray(range)) {
       setDateRange(range)
     }
   }, [])
 
-  const { data, minDate, maxDate } = useMemo(() => {
+  const { data } = useMemo(() => {
     const data = variantData.values
       .filter(({ date }) => {
         const ts = ymdToTimestamp(date)
         return ts <= dateRange[1] && ts >= dateRange[0]
       })
       .map(({ date, ...rest }) => ({ ...rest, timestamp: ymdToTimestamp(date) }))
-
-    const minDate = timestampToDate(dateRange[0])
-    const maxDate = timestampToDate(dateRange[1])
-
-    return { data, minDate, maxDate }
+    return { data }
   }, [dateRange, variantData.values])
 
   const {
@@ -198,17 +186,16 @@ export function VariantsPlot({ pathogen, variantName }: VariantsPlotProps) {
           data={data}
           width={width}
           height={height}
-          minDate={minDate}
-          maxDate={maxDate}
+          dateRange={dateRange}
           pathogen={pathogen}
           variantName={variantName}
         />
       </PlotWrapper>
 
       <DateSlider
-        minTimestamp={minTimestamp}
-        maxTimestamp={maxTimestamp}
-        initialTimestampRange={initialTimestampRange}
+        range={dateRange}
+        fullRange={initialTimestampRange}
+        initialRange={initialTimestampRange}
         marks={marks}
         onDateRangeChange={onDateRangeChange}
       />
