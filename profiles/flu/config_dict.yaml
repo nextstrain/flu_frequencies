@@ -1,6 +1,6 @@
 # Everything here is available through the `config` dict in the Snakefile
 
-min_date: "2021-04-01"
+min_date: "2023-01-01"
 geo_categories: region
 frequency_category:
   ha: subclade
