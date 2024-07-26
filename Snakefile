@@ -16,6 +16,7 @@ rule europe:
             "plots/h1n1pdm_ha/region_mut-HA1:P137.png",
             "plots/h1n1pdm_ha/region_mut-HA1:K142.png",
             "plots/h1n1pdm_ha/region_mut-HA1:P137,K142.png",
+            "plots/h1n1pdm_na/region_mut-NA:S200.png",
             "plots/h1n1pdm_ha/region-clades.png",
             "plots/h1n1pdm_na/region-clades.png",
             "plots/vic_ha/region-clades.png",
@@ -106,7 +107,7 @@ rule combined_with_metadata:
         nextclade_columns=lambda w: ",".join(
             config["nextclade_columns"].get(
                 w.segment,
-                ["seqName", "clade", "short_clade", "aaSubstitutions"],
+                ["seqName", "clade", "short_clade", "aaSubstitutions", "qc.overallStatus"],
             )
         ),
     shell:

@@ -1,9 +1,9 @@
 # Everything here is available through the `config` dict in the Snakefile
 
-min_date: "2021-04-01"
+min_date: "2022-04-01"
 geo_categories: region
 frequency_category:
-  ha: subclade
+  ha: clade
   na: clade
 
 nextclade_columns:
@@ -12,6 +12,7 @@ nextclade_columns:
     - "clade"
     - "subclade"
     - "aaSubstitutions"
+    - "qc.overallStatus"
   na:
     - "seqName"
     - "clade"
@@ -25,9 +26,7 @@ regions:
   - "North America"
   - "Oceania"
   - "South America"
-  - "South Asia"
   - "Southeast Asia"
-  - "West Asia"
 
 clades_to_plot:
   h1n1pdm:
