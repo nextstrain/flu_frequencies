@@ -1,11 +1,11 @@
 {
   "variants": [
+    "A",
+    "A*",
     "A.2",
     "A.2*",
-    "A.2.1",
     "A.2.2",
     "A.2.2*",
-    "A.2.2.1",
     "A.2.2.2",
     "B",
     "B*",
@@ -17,9 +17,20 @@
     "B.2.2",
     "B.3",
     "B.4",
-    "unassigned"
+    "B.4*",
+    "B.4.1",
+    "B.4.2",
+    "B.4.3"
   ],
   "variantsStyles": {
+    "A": {
+      "color": "#43862d",
+      "lineStyle": "normal"
+    },
+    "A*": {
+      "color": "#c5a087",
+      "lineStyle": "normal"
+    },
     "A.2": {
       "color": "#4077bf",
       "lineStyle": "normal"
@@ -28,20 +39,12 @@
       "color": "#3a7862",
       "lineStyle": "normal"
     },
-    "A.2.1": {
-      "color": "#1f6593",
-      "lineStyle": "normal"
-    },
     "A.2.2": {
       "color": "#796ce0",
       "lineStyle": "normal"
     },
     "A.2.2*": {
       "color": "#8fc587",
-      "lineStyle": "normal"
-    },
-    "A.2.2.1": {
-      "color": "#2b931f",
       "lineStyle": "normal"
     },
     "A.2.2.2": {
@@ -88,8 +91,20 @@
       "color": "#7fe06c",
       "lineStyle": "normal"
     },
-    "unassigned": {
-      "color": "#93ac53",
+    "B.4*": {
+      "color": "#8bd22d",
+      "lineStyle": "normal"
+    },
+    "B.4.1": {
+      "color": "#2dd24e",
+      "lineStyle": "normal"
+    },
+    "B.4.2": {
+      "color": "#3a4778",
+      "lineStyle": "normal"
+    },
+    "B.4.3": {
+      "color": "#bf4044",
       "lineStyle": "normal"
     }
   }

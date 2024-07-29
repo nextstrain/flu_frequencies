@@ -2,10 +2,6 @@
   "variants": [
     "A",
     "A*",
-    "A.3",
-    "A.3*",
-    "A.3.1",
-    "A.3.1*",
     "A.3.1.1",
     "A.3.2",
     "A.3.3",
@@ -32,22 +28,6 @@
     },
     "A*": {
       "color": "#c5a087",
-      "lineStyle": "normal"
-    },
-    "A.3": {
-      "color": "#6040bf",
-      "lineStyle": "normal"
-    },
-    "A.3*": {
-      "color": "#6b2d86",
-      "lineStyle": "normal"
-    },
-    "A.3.1": {
-      "color": "#bf407b",
-      "lineStyle": "normal"
-    },
-    "A.3.1*": {
-      "color": "#e06ca4",
       "lineStyle": "normal"
     },
     "A.3.1.1": {

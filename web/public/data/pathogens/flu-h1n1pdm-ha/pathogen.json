@@ -7,11 +7,11 @@
   },
   "isEnabled": true,
   "isVisible": true,
-  "maxDate": "2024-02-01",
-  "minDate": "2021-04-01",
-  "nCountries": 90,
+  "maxDate": "2024-07-14",
+  "minDate": "2023-01-01",
+  "nCountries": 91,
   "nRegions": 10,
-  "nVariants": 16,
+  "nVariants": 23,
   "name": "flu-h1n1pdm-ha",
   "nameFriendly": "Influenza H1N1pdm HA"
 }

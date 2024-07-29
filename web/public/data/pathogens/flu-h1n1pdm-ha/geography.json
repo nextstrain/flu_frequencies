@@ -23,6 +23,7 @@
     "CZE",
     "DEU",
     "DNK",
+    "ECU",
     "ESP",
     "EST",
     "ETH",
@@ -31,21 +32,21 @@
     "FRA",
     "GBR",
     "GHA",
+    "GRC",
     "GTM",
     "GUF",
     "HKG",
+    "HND",
     "HTI",
     "HUN",
     "IDN",
     "IND",
     "IRL",
     "ISL",
-    "ISR",
     "ITA",
     "JAM",
     "JPN",
     "KEN",
-    "KGZ",
     "KHM",
     "KOR",
     "LAO",
@@ -55,11 +56,11 @@
     "MDG",
     "MDV",
     "MEX",
-    "MOZ",
+    "MKD",
+    "MMR",
     "MUS",
     "MYS",
     "NCL",
-    "NER",
     "NLD",
     "NOR",
     "NZL",
@@ -69,9 +70,9 @@
     "PER",
     "PHL",
     "POL",
+    "PRI",
     "PRT",
     "PRY",
-    "QAT",
     "ROU",
     "RUS",
     "SEN",
@@ -99,9 +100,7 @@
       "GHA",
       "KEN",
       "MDG",
-      "MOZ",
       "MUS",
-      "NER",
       "SEN",
       "TGO",
       "TUN",
@@ -130,11 +129,13 @@
       "FIN",
       "FRA",
       "GBR",
+      "GRC",
       "HUN",
       "IRL",
       "ISL",
       "ITA",
       "LUX",
+      "MKD",
       "NLD",
       "NOR",
       "POL",
@@ -145,16 +146,19 @@
       "SVN",
       "SWE",
       "UKR",
-      "XKX"
+      "XKX",
+      "other"
     ],
     "North America": [
       "CAN",
       "CRI",
       "GTM",
+      "HND",
       "HTI",
       "JAM",
       "MEX",
       "PAN",
+      "PRI",
       "USA"
     ],
     "Oceania": [
@@ -169,6 +173,7 @@
       "BRA",
       "CHL",
       "COL",
+      "ECU",
       "GUF",
       "PER",
       "PRY",
@@ -179,11 +184,11 @@
       "IDN",
       "KHM",
       "LAO",
+      "MMR",
       "MYS",
       "PHL",
       "SGP",
-      "THA",
-      "other"
+      "THA"
     ],
     "Southern Asia": [
       "BGD",
@@ -196,11 +201,8 @@
     "Western Asia": [
       "ARE",
       "BHR",
-      "ISR",
-      "KGZ",
       "LBN",
-      "OMN",
-      "QAT"
+      "OMN"
     ]
   },
   "geographyStyles": {
@@ -304,6 +306,10 @@
       "color": "#932d1f",
       "lineStyle": "normal"
     },
+    "ECU": {
+      "color": "#d22d4e",
+      "lineStyle": "normal"
+    },
     "ESP": {
       "color": "#53ac75",
       "lineStyle": "normal"
@@ -344,6 +350,10 @@
       "color": "#862d65",
       "lineStyle": "normal"
     },
+    "GRC": {
+      "color": "#4e931f",
+      "lineStyle": "normal"
+    },
     "GTM": {
       "color": "#d279b3",
       "lineStyle": "normal"
@@ -354,6 +364,10 @@
     },
     "HKG": {
       "color": "#d28c79",
+      "lineStyle": "normal"
+    },
+    "HND": {
+      "color": "#d29d79",
       "lineStyle": "normal"
     },
     "HTI": {
@@ -380,10 +394,6 @@
       "color": "#93861f",
       "lineStyle": "normal"
     },
-    "ISR": {
-      "color": "#2d7dd2",
-      "lineStyle": "normal"
-    },
     "ITA": {
       "color": "#bfb540",
       "lineStyle": "normal"
@@ -398,10 +408,6 @@
     },
     "KEN": {
       "color": "#c58797",
-      "lineStyle": "normal"
-    },
-    "KGZ": {
-      "color": "#78653a",
       "lineStyle": "normal"
     },
     "KHM": {
@@ -440,8 +446,12 @@
       "color": "#a4e06c",
       "lineStyle": "normal"
     },
-    "MOZ": {
-      "color": "#78931f",
+    "MKD": {
+      "color": "#2d867e",
+      "lineStyle": "normal"
+    },
+    "MMR": {
+      "color": "#87c3c5",
       "lineStyle": "normal"
     },
     "MUS": {
@@ -454,10 +464,6 @@
     },
     "NCL": {
       "color": "#7c1f93",
-      "lineStyle": "normal"
-    },
-    "NER": {
-      "color": "#6b862d",
       "lineStyle": "normal"
     },
     "NLD": {
@@ -504,16 +510,16 @@
       "color": "#e06c81",
       "lineStyle": "normal"
     },
+    "PRI": {
+      "color": "#7753ac",
+      "lineStyle": "normal"
+    },
     "PRT": {
       "color": "#6253ac",
       "lineStyle": "normal"
     },
     "PRY": {
       "color": "#866b2d",
-      "lineStyle": "normal"
-    },
-    "QAT": {
-      "color": "#bf407d",
       "lineStyle": "normal"
     },
     "ROU": {

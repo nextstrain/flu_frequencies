@@ -13,7 +13,6 @@
     "B",
     "B*",
     "B.1",
-    "B.2",
     "B.3",
     "B.4",
     "B.5",
@@ -21,6 +20,8 @@
     "B.7",
     "B.7*",
     "B.7.1",
+    "B.7.2",
+    "B.7.3",
     "B.8"
   ],
   "variantsStyles": {
@@ -76,10 +77,6 @@
       "color": "#6b783a",
       "lineStyle": "normal"
     },
-    "B.2": {
-      "color": "#d2a92d",
-      "lineStyle": "normal"
-    },
     "B.3": {
       "color": "#79a7d2",
       "lineStyle": "normal"
@@ -106,6 +103,14 @@
     },
     "B.7.1": {
       "color": "#e06cc1",
+      "lineStyle": "normal"
+    },
+    "B.7.2": {
+      "color": "#c3d279",
+      "lineStyle": "normal"
+    },
+    "B.7.3": {
+      "color": "#783a4d",
       "lineStyle": "normal"
     },
     "B.8": {
