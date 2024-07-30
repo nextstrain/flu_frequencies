@@ -27,7 +27,7 @@ export function VariantsSidebar({ pathogenName }: VariantsSidebarProps) {
   )
 }
 
-function GeographySectionHeader() {
+export function GeographySectionHeader() {
   const [searchTerm, setSearchTerm] = useRecoilState(geographySearchTermAtom)
   return <SearchBox searchTitle={'Search locations'} searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
 }

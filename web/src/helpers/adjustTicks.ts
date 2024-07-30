@@ -1,4 +1,5 @@
-import { DateTime, Interval } from 'luxon'
+import { Interval } from 'luxon'
+import { timestampToDate } from 'src/helpers/format'
 
 /** Returns an array containing only every n-th element of the original array */
 export function everyNth<T>(arr: T[], every: number) {
@@ -12,8 +13,11 @@ export function adjustTicks(ticks: number[], availableWidth: number, tickWidth: 
   return everyNth(ticks, interval)
 }
 
-export function calculateTicks(minDate: DateTime, maxDate: DateTime, availableWidth: number, tickWidth: number) {
-  const ticks = Interval.fromDateTimes(minDate.startOf('month'), maxDate.endOf('month'))
+export function calculateTicks(dateRange: [number, number], availableWidth: number, tickWidth: number) {
+  const minDate = timestampToDate(dateRange[0]).startOf('month')
+  const maxDate = timestampToDate(dateRange[1]).endOf('month')
+
+  const ticks = Interval.fromDateTimes(minDate, maxDate)
     .splitBy({ months: 1 })
     .map((d) => d.start.toSeconds())
     .filter((d) => d >= minDate.toSeconds() && d <= maxDate.toSeconds())
