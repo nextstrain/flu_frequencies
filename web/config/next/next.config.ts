@@ -7,6 +7,7 @@ import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import remarkSlug from 'remark-slug'
 import remarkImages from 'remark-images'
+import rehypeKatex from 'rehype-katex'
 
 import { findModuleRoot } from '../../lib/findModuleRoot'
 import { getGitBranch } from '../../lib/getGitBranch'
@@ -134,7 +135,7 @@ const withMDX = getWithMDX({
       //   },
       // ],
     ],
-    rehypePlugins: [],
+    rehypePlugins: [rehypeKatex],
   },
 })
 
