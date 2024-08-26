@@ -15,6 +15,8 @@ import type { DropdownOption } from 'src/components/Common/DropdownWithSearch'
 
 const paths = [
   '/pathogen/:pathogenName',
+  '/pathogen/:pathogenName/variants',
+  '/pathogen/:pathogenName/regions',
   '/pathogen/:pathogenName/variants/:variant',
   '/pathogen/:pathogenName/regions/:region',
 ]
@@ -70,6 +72,20 @@ export function NavigationBreadcrumb() {
           <PathogenName pathogenName={pathogenName} />
         </BreadcrumbLink>,
       )
+    } else if (path === '/pathogen/:pathogenName/variants' && !isNil(pathogenName)) {
+      segments.push(
+        <BreadcrumbLink key={pathogenName} href={urljoin('pathogen', pathogenName)}>
+          <PathogenName pathogenName={pathogenName} />
+        </BreadcrumbLink>,
+        <BreadcrumbText key="Variants">{t('Variants')}</BreadcrumbText>,
+      )
+    } else if (path === '/pathogen/:pathogenName/regions' && !isNil(pathogenName)) {
+      segments.push(
+        <BreadcrumbLink key={pathogenName} href={urljoin('pathogen', pathogenName)}>
+          <PathogenName pathogenName={pathogenName} />
+        </BreadcrumbLink>,
+        <BreadcrumbText key="Regions">{t('Regions')}</BreadcrumbText>,
+      )
     } else if (path === '/pathogen/:pathogenName/variants/:variant' && !isNil(pathogenName) && !isNil(variant)) {
       segments.push(
         <BreadcrumbLink key={pathogenName} href={urljoin('pathogen', pathogenName)}>
@@ -101,6 +117,14 @@ export function NavigationBreadcrumb() {
   }, [segments])
 
   return <span>{segmentsAndArrows}</span>
+}
+
+export function BreadcrumbText({ children }: PropsWithChildren) {
+  return (
+    <NavItem>
+      <NavLink tag={'span'}>{children}</NavLink>
+    </NavItem>
+  )
 }
 
 export interface BreadcrumbLinkProps extends PropsWithChildren {

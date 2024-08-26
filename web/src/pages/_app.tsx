@@ -21,13 +21,15 @@ import { LOADING } from 'src/components/Loading/Loading'
 import { getMdxComponents } from 'src/components/Common/MdxComponents'
 import { ErrorBoundary } from 'src/components/Error/ErrorBoundary'
 import { Layout } from 'src/components/Layout/Layout'
-import { PathogenPage } from 'src/components/Pathogen/PathogenPage'
-import { RegionPage } from 'src/components/Regions/RegionPage'
-import { VariantPage } from 'src/components/Variants/VariantPage'
 import { localeAtom } from 'src/state/locale.state'
 import 'src/styles/global.scss'
 
 const NotFoundPage = dynamic(() => import('src/pages/404'))
+const PathogenPage = dynamic(() => import('src/components/Pathogen/PathogenPage'))
+const RegionsPage = dynamic(() => import('src/components/Regions/RegionsPage'))
+const VariantsPage = dynamic(() => import('src/components/Variants/VariantsPage'))
+const RegionPage = dynamic(() => import('src/components/Regions/RegionPage'))
+const VariantPage = dynamic(() => import('src/components/Variants/VariantPage'))
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
 
@@ -97,6 +99,20 @@ function Router({ children }: PropsWithChildren) {
       if (match) {
         const { pathogenName } = match
         return { Component: <PathogenPage pathogenName={pathogenName} />, pathogenName }
+      }
+    }
+    {
+      const match = matchRoute(asPath, '/pathogen/:pathogenName/variants')
+      if (match) {
+        const { pathogenName } = match
+        return { Component: <VariantsPage pathogenName={pathogenName} />, pathogenName }
+      }
+    }
+    {
+      const match = matchRoute(asPath, '/pathogen/:pathogenName/regions')
+      if (match) {
+        const { pathogenName } = match
+        return { Component: <RegionsPage pathogenName={pathogenName} />, pathogenName }
       }
     }
     {

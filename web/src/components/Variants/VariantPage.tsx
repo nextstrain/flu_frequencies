@@ -14,7 +14,7 @@ export interface VariantsPageProps {
   variantName: string
 }
 
-export function VariantPage({ pathogenName, variantName }: VariantsPageProps) {
+export default function VariantPage({ pathogenName, variantName }: VariantsPageProps) {
   const { t } = useTranslationSafe()
   const pathogen = usePathogen(pathogenName)
   const {
