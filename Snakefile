@@ -72,9 +72,31 @@ rule download_metadata:
         aws s3 cp {params.s3_path} - | xz -c -d > {output.metadata}
         """
 
-rule add_iso3:
+rule download_outliers:
+    output:
+        outliers="data/{lineage}/outliers.txt",
+    shell:
+        """
+        curl -L -o {output.outliers} "https://raw.githubusercontent.com/nextstrain/seasonal-flu/master/config/{wildcards.lineage}/outliers.txt"
+        """
+
+rule filter_outliers:
     input:
         metadata="data/{lineage}/metadata_raw_{segment}.tsv",
+        outliers="data/{lineage}/outliers.txt",
+    output:
+        metadata="data/{lineage}/metadata_filtered_{segment}.tsv"
+    shell:
+        """
+        augur filter \
+            --metadata {input.metadata} \
+            --exclude {input.outliers} \
+            --output-metadata {output.metadata}
+        """
+
+rule add_iso3:
+    input:
+        metadata="data/{lineage}/metadata_filtered_{segment}.tsv",
         country_to_iso3="profiles/flu/country_to_iso3.tsv",
         iso3_to_region="profiles/flu/iso3_to_region.tsv",
     output:
