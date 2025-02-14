@@ -334,7 +334,7 @@ rule multi_region_plot_mutation:
         plot="plots/{lineage}_{segment}/region_mut-{mutation}.png",
     params:
         regions=regions,
-        max_freq=0.2,
+        max_freq=0.05,
     shell:
         """
         python3 scripts/plot_multi-region.py --frequencies {input.freqs} --regions {params.regions:q}  --max-freq {params.max_freq} --output {output.plot}
