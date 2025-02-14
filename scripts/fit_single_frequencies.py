@@ -146,10 +146,11 @@ if __name__=='__main__':
     if args.frequency_category.startswith('mutation-'):
         d = pl.read_csv(args.metadata, separator='\t', try_parse_dates=False, columns=args.geo_categories + ["aaSubstitutions", 'date'])
         mutation = args.frequency_category.split('-')[-1]
+        mutations = mutation.split(",")
         def extract_mut(muts):
             if type(muts)==str:
-                a = [y for y in muts.split(',') if y.startswith(mutation)]
-                return a[0] if len(a) else 'WT'
+                a = [y for y in muts.split(',') if y in mutations]
+                return ",".join(a) if len(a) else 'WT'
             else:
                 return 'WT'
         d = d.with_columns([d["aaSubstitutions",:].map_elements(extract_mut).alias("mutation")])
